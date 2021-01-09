@@ -1,0 +1,12 @@
+(declare-const X String)
+; isSAH\*Agentwww\.raxsearch\.comHost\x3A-~-\x22The
+(assert (str.in.re X (str.to.re "isSAH*Agentwww.raxsearch.comHost:-~-\x22The\x0a")))
+; var phonePattern = /^(([^\.\-\,a-wy-z]([\(]?(\+|[x])?\d+[\)]?)?[\s\.\-\,]?([\(]?\d+[\)]?)?[\s\.\-\,]?(\d+[\s\.\-\,]?)+[^\.\-\,a-z])|((\+|[x])?\d+))$/i
+(assert (str.in.re X (re.++ (str.to.re "var phonePattern = /") (re.union (re.++ (re.union (str.to.re ".") (str.to.re "-") (str.to.re ",") (re.range "a" "w") (re.range "y" "z")) (re.opt (re.++ (re.opt (str.to.re "(")) (re.opt (re.union (str.to.re "+") (str.to.re "x"))) (re.+ (re.range "0" "9")) (re.opt (str.to.re ")")))) (re.opt (re.union (str.to.re ".") (str.to.re "-") (str.to.re ",") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (re.++ (re.opt (str.to.re "(")) (re.+ (re.range "0" "9")) (re.opt (str.to.re ")")))) (re.opt (re.union (str.to.re ".") (str.to.re "-") (str.to.re ",") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.+ (re.++ (re.+ (re.range "0" "9")) (re.opt (re.union (str.to.re ".") (str.to.re "-") (str.to.re ",") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))))) (re.union (str.to.re ".") (str.to.re "-") (str.to.re ",") (re.range "a" "z"))) (re.++ (re.opt (re.union (str.to.re "+") (str.to.re "x"))) (re.+ (re.range "0" "9")))) (str.to.re "/i\x0a"))))
+; /[^&]+&[a-z]=[a-f0-9]{16}&[a-z]=[a-f0-9]{16}$/U
+(assert (str.in.re X (re.++ (str.to.re "/") (re.+ (re.comp (str.to.re "&"))) (str.to.re "&") (re.range "a" "z") (str.to.re "=") ((_ re.loop 16 16) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to.re "&") (re.range "a" "z") (str.to.re "=") ((_ re.loop 16 16) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to.re "/U\x0a"))))
+; /\x2f1020\d{6,16}$/U
+(assert (str.in.re X (re.++ (str.to.re "//1020") ((_ re.loop 6 16) (re.range "0" "9")) (str.to.re "/U\x0a"))))
+; ([A-Z]:\\[^/:\*;\/\:\?<>\|]+)|(\\{2}[^/:\*;\/\:\?<>\|]+)
+(assert (str.in.re X (re.union (re.++ (re.range "A" "Z") (str.to.re ":\x5c") (re.+ (re.union (str.to.re "/") (str.to.re ":") (str.to.re "*") (str.to.re ";") (str.to.re "?") (str.to.re "<") (str.to.re ">") (str.to.re "|")))) (re.++ (str.to.re "\x0a") ((_ re.loop 2 2) (str.to.re "\x5c")) (re.+ (re.union (str.to.re "/") (str.to.re ":") (str.to.re "*") (str.to.re ";") (str.to.re "?") (str.to.re "<") (str.to.re ">") (str.to.re "|")))))))
+(check-sat)

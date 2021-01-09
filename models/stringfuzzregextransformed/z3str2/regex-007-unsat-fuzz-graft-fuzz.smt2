@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 5 (str.to.int x)))
+(assert (str.in.re x (re.+ (re.+ (str.to.re "a9_$wFNC<C9S/K=GDG:")))))
+(assert (str.in.re x (str.to.re "$WsI<UD")))
+(check-sat)

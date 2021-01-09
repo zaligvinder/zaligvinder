@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "a}'\n'lcd"))))
+(assert (str.in.re y (re.* (str.to.re "aeb:$cdd"))))
+(assert (= (str.len x) 11))
+(check-sat)

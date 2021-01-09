@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (str.to.re "$$^^''''\\\\nn''RRll!!RR<<II") (str.to.re "11vv")))))
+(assert (= 18 (str.to.int x)))
+(assert (not (= x "mmuuEEIIHH22bbVVyysskkkkllllDD33")))
+(assert (not (= x "!!%%EEppSS__FFFF$$``''' '' '''ggEE7755!!%%yy++zzRRrrRRNN1111ss@@DD''\\\\nn''")))
+(check-sat)

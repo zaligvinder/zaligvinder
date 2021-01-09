@@ -1,0 +1,6 @@
+(declare-const X String)
+; Subject\x3aPorta\x2Fasp\x2Foffers\.asp\?\x2Fiis2ebs\.aspwww\x2Esmileycentral\x2Ecom
+(assert (not (str.in.re X (str.to.re "Subject:Porta/asp/offers.asp?/iis2ebs.aspwww.smileycentral.com\x0a"))))
+; href\s*=\s*\"((\/)([i])(\/)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#]+)*)\"
+(assert (not (str.in.re X (re.++ (str.to.re "href") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "=") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x22\x22\x0a/i") (re.+ (str.to.re "/")) (re.* (re.++ (re.* (re.union (str.to.re "-") (str.to.re ".") (str.to.re ",") (str.to.re "@") (str.to.re "?") (str.to.re "^") (str.to.re "=") (str.to.re "%") (str.to.re "&") (str.to.re ":") (str.to.re "/") (str.to.re "~") (str.to.re "+") (str.to.re "#") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.+ (re.union (str.to.re "-") (str.to.re "@") (str.to.re "?") (str.to.re "^") (str.to.re "=") (str.to.re "%") (str.to.re "&") (str.to.re "/") (str.to.re "~") (str.to.re "+") (str.to.re "#") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_")))))))))
+(check-sat)

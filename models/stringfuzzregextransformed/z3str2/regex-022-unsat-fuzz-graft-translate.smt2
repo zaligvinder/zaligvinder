@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.union (str.to.re "'\t'") (re.* (str.to.re "_"))))))
+(assert (= 3 (str.to.int x)))
+(assert (not (= x "'\t''\t'")))
+(assert (not (= x "X")))
+(check-sat)

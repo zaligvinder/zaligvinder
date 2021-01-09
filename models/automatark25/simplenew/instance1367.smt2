@@ -1,0 +1,4 @@
+(declare-const X String)
+; (jar:)?file:/(([A-Z]:)?/([A-Z0-9\*\()\+\-\&$#@_.!~\[\]/])+)((/[A-Z0-9_()\[\]\-=\+_~]+\.jar!)|([^!])(/com/regexlib/example/))
+(assert (str.in.re X (re.++ (re.opt (str.to.re "jar:")) (str.to.re "file:/") (re.union (re.++ (str.to.re "/") (re.+ (re.union (re.range "A" "Z") (re.range "0" "9") (str.to.re "_") (str.to.re "(") (str.to.re ")") (str.to.re "[") (str.to.re "]") (str.to.re "-") (str.to.re "=") (str.to.re "+") (str.to.re "~"))) (str.to.re ".jar!")) (re.++ (re.comp (str.to.re "!")) (str.to.re "/com/regexlib/example/"))) (str.to.re "\x0a") (re.opt (re.++ (re.range "A" "Z") (str.to.re ":"))) (str.to.re "/") (re.+ (re.union (re.range "A" "Z") (re.range "0" "9") (str.to.re "*") (str.to.re "(") (str.to.re ")") (str.to.re "+") (str.to.re "-") (str.to.re "&") (str.to.re "$") (str.to.re "#") (str.to.re "@") (str.to.re "_") (str.to.re ".") (str.to.re "!") (str.to.re "~") (str.to.re "[") (str.to.re "]") (str.to.re "/"))))))
+(check-sat)

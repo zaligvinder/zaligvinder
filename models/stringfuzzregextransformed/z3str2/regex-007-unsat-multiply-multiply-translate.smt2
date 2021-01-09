@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.len x) 32))
+(assert (str.in.re x (re.* (str.to.re "%%%%dddd(((("))))
+(assert (str.in.re x (re.* (str.to.re "mmmmgggg%%%%(((("))))
+(check-sat)

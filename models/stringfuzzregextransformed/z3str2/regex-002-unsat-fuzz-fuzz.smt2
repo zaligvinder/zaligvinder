@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "YV2{VXaa?k4$q{c{7xyt1p~%'\t'<?N%b'x}2|M"))
+(assert (str.in.re x (re.+ (str.to.re "V"))))
+(check-sat)

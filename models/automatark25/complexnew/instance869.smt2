@@ -1,0 +1,12 @@
+(declare-const X String)
+; /User-Agent\x3a\x20Agent\d{5,9}/Hi
+(assert (not (str.in.re X (re.++ (str.to.re "/User-Agent: Agent") ((_ re.loop 5 9) (re.range "0" "9")) (str.to.re "/Hi\x0a")))))
+; (^(\d{3}.\d{3}.\d{3}-\d{2})|(\d{11})$)
+(assert (not (str.in.re X (re.++ (re.union (re.++ ((_ re.loop 3 3) (re.range "0" "9")) re.allchar ((_ re.loop 3 3) (re.range "0" "9")) re.allchar ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "-") ((_ re.loop 2 2) (re.range "0" "9"))) ((_ re.loop 11 11) (re.range "0" "9"))) (str.to.re "\x0a")))))
+; ^((((19|20)(([02468][048])|([13579][26]))-02-29))|((20[0-9][0-9])|(19[0-9][0-9]))-((((0[1-9])|(1[0-2]))-((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))-31)|(((0[1,3-9])|(1[0-2]))-(29|30)))))$
+(assert (str.in.re X (re.++ (re.union (re.++ (re.union (str.to.re "19") (str.to.re "20")) (re.union (re.++ (re.union (str.to.re "0") (str.to.re "2") (str.to.re "4") (str.to.re "6") (str.to.re "8")) (re.union (str.to.re "0") (str.to.re "4") (str.to.re "8"))) (re.++ (re.union (str.to.re "1") (str.to.re "3") (str.to.re "5") (str.to.re "7") (str.to.re "9")) (re.union (str.to.re "2") (str.to.re "6")))) (str.to.re "-02-29")) (re.++ (re.union (re.++ (str.to.re "20") (re.range "0" "9") (re.range "0" "9")) (re.++ (str.to.re "19") (re.range "0" "9") (re.range "0" "9"))) (str.to.re "-") (re.union (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re "-") (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "9")) (re.++ (str.to.re "2") (re.range "0" "8")))) (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "1") (str.to.re "3") (str.to.re "5") (str.to.re "7") (str.to.re "8"))) (re.++ (str.to.re "1") (re.union (str.to.re "0") (str.to.re "2")))) (str.to.re "-31")) (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "1") (str.to.re ",") (re.range "3" "9"))) (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re "-") (re.union (str.to.re "29") (str.to.re "30")))))) (str.to.re "\x0a"))))
+; ^([012346789][0-9]{4})$
+(assert (not (str.in.re X (re.++ (str.to.re "\x0a") (re.union (str.to.re "0") (str.to.re "1") (str.to.re "2") (str.to.re "3") (str.to.re "4") (str.to.re "6") (str.to.re "7") (str.to.re "8") (str.to.re "9")) ((_ re.loop 4 4) (re.range "0" "9"))))))
+; /\x2Epor([\?\x5c\x2f]|$)/smiU
+(assert (str.in.re X (re.++ (str.to.re "/.por") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
+(check-sat)

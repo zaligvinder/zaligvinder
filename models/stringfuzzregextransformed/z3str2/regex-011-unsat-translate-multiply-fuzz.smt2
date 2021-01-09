@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "}X' 'yn><mQWt"))))
+(assert (str.in.re y (re.* (str.to.re "}VxgXX[xy2'\x0c'M<"))))
+(assert (= (str.to.int x) 19))
+(check-sat)

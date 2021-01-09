@@ -1,0 +1,8 @@
+(declare-const X String)
+; /\/3001[0-9A-F]{262,304}/
+(assert (not (str.in.re X (re.++ (str.to.re "//3001") ((_ re.loop 262 304) (re.union (re.range "0" "9") (re.range "A" "F"))) (str.to.re "/\x0a")))))
+; /^\s*(http[s]*\:\/\/)?([wwW]{3}\.)+[a-zA-Z0-9]+\.[a-zA-Z]{2,3}.*$|^http[s]*\:\/\/[^w]{3}[a-zA-Z0-9]+\.[a-zA-Z]{2,3}.*$|http[s]*\:\/\/[0-9]{2,3}\.[0-9]{2,3}\.[0-9]{2,3}\.[0-9]{2,3}.*$/;
+(assert (not (str.in.re X (re.union (re.++ (str.to.re "/") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (re.++ (str.to.re "http") (re.* (str.to.re "s")) (str.to.re "://"))) (re.+ (re.++ ((_ re.loop 3 3) (re.union (str.to.re "w") (str.to.re "W"))) (str.to.re "."))) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9"))) (str.to.re ".") ((_ re.loop 2 3) (re.union (re.range "a" "z") (re.range "A" "Z"))) (re.* re.allchar)) (re.++ (str.to.re "http") (re.* (str.to.re "s")) (str.to.re "://") ((_ re.loop 3 3) (re.comp (str.to.re "w"))) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9"))) (str.to.re ".") ((_ re.loop 2 3) (re.union (re.range "a" "z") (re.range "A" "Z"))) (re.* re.allchar)) (re.++ (str.to.re "http") (re.* (str.to.re "s")) (str.to.re "://") ((_ re.loop 2 3) (re.range "0" "9")) (str.to.re ".") ((_ re.loop 2 3) (re.range "0" "9")) (str.to.re ".") ((_ re.loop 2 3) (re.range "0" "9")) (str.to.re ".") ((_ re.loop 2 3) (re.range "0" "9")) (re.* re.allchar) (str.to.re "/;\x0a"))))))
+; Port\x2E[^\n\r]*007\d+Logsdl\x2Eweb-nexus\x2Enet
+(assert (not (str.in.re X (re.++ (str.to.re "Port.") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "007") (re.+ (re.range "0" "9")) (str.to.re "Logsdl.web-nexus.net\x0a")))))
+(check-sat)

@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "22^^EE")))
+(assert (= (str.to.int x) 12))
+(assert (not (= x "{{~~''\\\\xx00cc''``ggll__BB")))
+(check-sat)

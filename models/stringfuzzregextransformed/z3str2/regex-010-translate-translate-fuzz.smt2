@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "X\\H\\7R/B]"))))
+(assert (str.in.re x (re.+ (str.to.re "P1'v\\~y[F'\x0c'zhJzn'\\v[S{]"))))
+(assert (str.in.re x (re.* (str.to.re "f"";*'\r'&/:/nUcQX' 'u?HnXHKeS@~6lzJP<q`H5E'\x0b'~'\\^i}99yLL@\\`^c1?'\t''L'\\]G'\x0b'RB#K`fc' ';S;DqD;cIJ' 'f"))))
+(check-sat)

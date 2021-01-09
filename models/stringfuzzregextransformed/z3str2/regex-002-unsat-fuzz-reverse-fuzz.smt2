@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "#(@a.J2GET4'\n'o'\r'HiNQt' '""Q*XB!<K+ZJ;YK;[u5C6kj' '_y*Wmn\\'hAh}1K'\n'{cl'\r''\n''\n'.}W:=#hrq|EP'\x0b'RC7NH-2i:og^(fr/m^BtmM'\n'zW*-cNmj&XzZ=:>Pj$}4xH%9CAxnF0@_"))
+(assert (str.in.re x (re.* (str.to.re "ET"))))
+(check-sat)

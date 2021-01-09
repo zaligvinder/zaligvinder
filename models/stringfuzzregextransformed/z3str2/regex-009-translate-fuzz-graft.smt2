@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "j^&a#A`1BekOB!oVHvx`")))
+(assert (str.in.re x (re.+ (re.* (str.to.re "j!`z")))))
+(assert (> 46 9))
+(assert (< (str.to.int x) (str.len x)))
+(check-sat)

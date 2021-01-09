@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "|<@FM|<|<@"))
+(assert (str.in.re x (re.* (str.to.re "FM|<"))))
+(check-sat)

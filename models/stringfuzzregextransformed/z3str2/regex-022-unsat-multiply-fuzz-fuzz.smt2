@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (re.* (str.to.re "1")) (str.to.re "")))))
+(assert (= (str.len x) 14))
+(assert (not (= x "`P?(A@pO=S<")))
+(assert (not (= x "W{Ic""aDw'?2""X")))
+(check-sat)

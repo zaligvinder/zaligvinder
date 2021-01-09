@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "'\t''\t''\t''\t'QQQQ") (re.union (str.to.re ",,,,'''''\r''\r''\r''\r'----") (str.to.re "111122223333"))))))
+(assert (= 20 (str.len x)))
+(check-sat)

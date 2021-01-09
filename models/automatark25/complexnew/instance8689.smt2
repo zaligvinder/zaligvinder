@@ -1,0 +1,8 @@
+(declare-const X String)
+; \b(0?[1-9]|1[0-2])(\/)(0?[1-9]|1[0-9]|2[0-9]|3[0-1])(\/)(0[0-8])\b
+(assert (str.in.re X (re.++ (re.union (re.++ (re.opt (str.to.re "0")) (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re "/") (re.union (re.++ (re.opt (str.to.re "0")) (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "9")) (re.++ (str.to.re "2") (re.range "0" "9")) (re.++ (str.to.re "3") (re.range "0" "1"))) (str.to.re "/\x0a0") (re.range "0" "8"))))
+; ^((6011)((-|\s)?[0-9]{4}){3})$
+(assert (not (str.in.re X (re.++ (str.to.re "\x0a6011") ((_ re.loop 3 3) (re.++ (re.opt (re.union (str.to.re "-") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) ((_ re.loop 4 4) (re.range "0" "9"))))))))
+; ^[A-Za-z]:\\([^"*/:?|<>\\.\x00-\x20]([^"*/:?|<>\\\x00-\x1F]*[^"*/:?|<>\\.\x00-\x20])?\\)*$
+(assert (not (str.in.re X (re.++ (re.union (re.range "A" "Z") (re.range "a" "z")) (str.to.re ":\x5c") (re.* (re.++ (re.union (str.to.re "\x22") (str.to.re "*") (str.to.re "/") (str.to.re ":") (str.to.re "?") (str.to.re "|") (str.to.re "<") (str.to.re ">") (str.to.re "\x5c") (str.to.re ".") (re.range "\x00" " ")) (re.opt (re.++ (re.* (re.union (str.to.re "\x22") (str.to.re "*") (str.to.re "/") (str.to.re ":") (str.to.re "?") (str.to.re "|") (str.to.re "<") (str.to.re ">") (str.to.re "\x5c") (re.range "\x00" "\x1f"))) (re.union (str.to.re "\x22") (str.to.re "*") (str.to.re "/") (str.to.re ":") (str.to.re "?") (str.to.re "|") (str.to.re "<") (str.to.re ">") (str.to.re "\x5c") (str.to.re ".") (re.range "\x00" " ")))) (str.to.re "\x5c"))) (str.to.re "\x0a")))))
+(check-sat)

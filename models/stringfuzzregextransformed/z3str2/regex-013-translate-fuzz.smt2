@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re y (re.* (re.* (str.to.re "^us'\n'[1MZx#+r{ot<")))))
+(assert (= (str.to.int y) 16))
+(check-sat)

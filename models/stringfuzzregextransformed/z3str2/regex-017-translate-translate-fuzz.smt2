@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "'Yb\\<z$aLm]0v.'\t'") (re.++ (str.to.re "$k8J'<h;?nMLod(Is$xuU^$\\sq@z-}pj") (str.to.re "''"))))))
+(assert (= 6 (str.to.int x)))
+(check-sat)

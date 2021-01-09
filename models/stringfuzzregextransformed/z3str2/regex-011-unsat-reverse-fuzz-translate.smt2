@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "C=bg|"))))
+(assert (str.in.re y (re.+ (str.to.re "|Z"))))
+(assert (= (str.len x) 3))
+(check-sat)

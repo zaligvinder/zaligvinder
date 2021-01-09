@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "\\\\\\\\\\\\\\\\NN''00||++||''\\\\rr''``SS!!<<11JJii==11ddTT\\\\\\\\33kkmmcckkEEqq''\\\\nn''""""""""hhOOzzEEOO{{''RR99**&&""""""""(("))
+(assert (str.in.re x (re.+ (re.union (str.to.re "}}00ww''' '' ''',,ccqq44<<++SS99SS..") (str.to.re "\\\\\\\\((")))))
+(check-sat)

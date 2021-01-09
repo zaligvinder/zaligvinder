@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "'\n'_sMKUi:\\dla")))
+(assert (str.in.re y (re.* (str.to.re ")r4xa"))))
+(assert (= 1 (str.to.int x)))
+(check-sat)

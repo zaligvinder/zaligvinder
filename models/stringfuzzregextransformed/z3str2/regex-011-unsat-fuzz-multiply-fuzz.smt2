@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "O>Fabtonv=;'\x0c'{4bRw8j%|h!Z$"))))
+(assert (str.in.re y (re.+ (str.to.re "a'%-R\\IyAh'"))))
+(assert (= (str.len x) 15))
+(check-sat)

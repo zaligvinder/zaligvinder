@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "vrNrNk[vrN"))
+(assert (str.in.re x (re.* (re.union (str.to.re "rNk[") (str.to.re "vrN")))))
+(check-sat)

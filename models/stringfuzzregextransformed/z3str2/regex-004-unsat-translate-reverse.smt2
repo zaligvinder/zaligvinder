@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "'b0x\\'nini)R"))
+(assert (str.in.re x (re.union (re.* (str.to.re "ni)R")) (re.* (str.to.re "'b0x\\'ni")))))
+(check-sat)

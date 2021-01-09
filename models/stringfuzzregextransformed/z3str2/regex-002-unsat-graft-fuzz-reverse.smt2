@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "aaa1eMvE:2T-9<`}Z|a"))
+(assert (str.in.re x (str.to.re "]V")))
+(check-sat)

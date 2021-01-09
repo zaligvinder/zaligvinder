@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 12 (str.to.int x)))
+(assert (str.in.re x (re.+ (str.to.re "$!ed"))))
+(assert (str.in.re x (str.to.re "aAh'{:")))
+(check-sat)

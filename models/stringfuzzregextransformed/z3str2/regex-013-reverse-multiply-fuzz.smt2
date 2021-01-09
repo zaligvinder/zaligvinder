@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re y (re.+ (re.+ (str.to.re "-$3tW#Ccb[P%2rA,a")))))
+(assert (= (str.to.int y) 29))
+(check-sat)

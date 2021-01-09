@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (str.to.re "aaaabbbb$$$$!!!!PPPPdddd") (str.to.re "11112222")))))
+(assert (= 36 (str.len x)))
+(assert (not (= x "wwww''''{{{{::::iiiiDDDDcccc~~~~9999^^^^bbbbccccTTTTEEEE;;;;>>>>qqqq))))22223333bbbb1111bbbb}}}}PPPP{{{{\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\====0000;;;;dddd")))
+(assert (not (= x "aaaa{{{{8888oooo++++ssssuuuuVVVVbbbbaaaaEEEE$$$$!!!!ddddCCCC))))ddddGGGG((((qqqq::::))))....AAAAUUUUbbbbdddd1111nnnnoooonnnn4444;;;;")))
+(check-sat)

@@ -1,0 +1,12 @@
+(declare-const X String)
+; \x2Ephp\s+www\x2Ewebfringe\x2Ecom
+(assert (not (str.in.re X (re.++ (str.to.re ".php") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "www.webfringe.com\x0a")))))
+; (0?[1-9]|[12][0-9]|3[01])[/ -](0?[1-9]|1[12])[/ -](19[0-9]{2}|[2][0-9][0-9]{2})
+(assert (str.in.re X (re.++ (re.union (re.++ (re.opt (str.to.re "0")) (re.range "1" "9")) (re.++ (re.union (str.to.re "1") (str.to.re "2")) (re.range "0" "9")) (re.++ (str.to.re "3") (re.union (str.to.re "0") (str.to.re "1")))) (re.union (str.to.re "/") (str.to.re " ") (str.to.re "-")) (re.union (re.++ (re.opt (str.to.re "0")) (re.range "1" "9")) (re.++ (str.to.re "1") (re.union (str.to.re "1") (str.to.re "2")))) (re.union (str.to.re "/") (str.to.re " ") (str.to.re "-")) (re.union (re.++ (str.to.re "19") ((_ re.loop 2 2) (re.range "0" "9"))) (re.++ (str.to.re "2") (re.range "0" "9") ((_ re.loop 2 2) (re.range "0" "9")))) (str.to.re "\x0a"))))
+; ^[a-zA-Z]\w{0,30}$
+(assert (str.in.re X (re.++ (re.union (re.range "a" "z") (re.range "A" "Z")) ((_ re.loop 0 30) (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "\x0a"))))
+; /filename=[^\n]*\x2ewal/i
+(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wal/i\x0a"))))
+; ([A-PR-UWYZa-pr-uwyz]([0-9]{1,2}|([A-HK-Ya-hk-y][0-9]|[A-HK-Ya-hk-y][0-9]([0-9]|[ABEHMNPRV-Yabehmnprv-y]))|[0-9][A-HJKS-UWa-hjks-uw]))
+(assert (not (str.in.re X (re.++ (str.to.re "\x0a") (re.union (re.range "A" "P") (re.range "R" "U") (str.to.re "W") (str.to.re "Y") (str.to.re "Z") (re.range "a" "p") (re.range "r" "u") (str.to.re "w") (str.to.re "y") (str.to.re "z")) (re.union ((_ re.loop 1 2) (re.range "0" "9")) (re.++ (re.union (re.range "A" "H") (re.range "K" "Y") (re.range "a" "h") (re.range "k" "y")) (re.range "0" "9") (re.union (re.range "0" "9") (str.to.re "A") (str.to.re "B") (str.to.re "E") (str.to.re "H") (str.to.re "M") (str.to.re "N") (str.to.re "P") (str.to.re "R") (re.range "V" "Y") (str.to.re "a") (str.to.re "b") (str.to.re "e") (str.to.re "h") (str.to.re "m") (str.to.re "n") (str.to.re "p") (str.to.re "r") (re.range "v" "y"))) (re.++ (re.range "0" "9") (re.union (re.range "A" "H") (str.to.re "J") (str.to.re "K") (re.range "S" "U") (str.to.re "W") (re.range "a" "h") (str.to.re "j") (str.to.re "k") (re.range "s" "u") (str.to.re "w"))))))))
+(check-sat)

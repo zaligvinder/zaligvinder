@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "#0Ny<9"))))
+(assert (str.in.re x (re.* (str.to.re "abcSXCO'\n'"))))
+(assert (> (str.len x) 21))
+(assert (< (str.to.int x) 25))
+(check-sat)

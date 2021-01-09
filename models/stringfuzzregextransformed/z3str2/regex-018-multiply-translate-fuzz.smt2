@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.union (str.to.re "qo*x") (str.to.re "'\x0c'")))))
+(assert (= 17 (str.len x)))
+(assert (not (= x "17tf[%hj'\x0b'dubZ[R3qqf")))
+(check-sat)

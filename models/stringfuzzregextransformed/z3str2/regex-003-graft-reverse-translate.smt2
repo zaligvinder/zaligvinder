@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "|GwGwJ<|Gw"))
+(assert (str.in.re x (str.to.re "GwJ<")))
+(check-sat)

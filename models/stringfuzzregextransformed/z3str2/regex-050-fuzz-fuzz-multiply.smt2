@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= (str.to.int x) 8))
+(assert (= x y))
+(assert (str.in.re y (re.+ (re.range "N" "Y"))))
+(assert (str.contains "11" x))
+(check-sat)

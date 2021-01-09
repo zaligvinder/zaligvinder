@@ -1,0 +1,6 @@
+(declare-const X String)
+; www\x2Erichfind\x2EcomHost\x3A
+(assert (str.in.re X (str.to.re "www.richfind.comHost:\x0a")))
+; ^(\-)?1000([.][0]{1,3})?$|^(\-)?\d{1,3}$|^(\-)?\d{1,3}([.]\d{1,3})$|^(\-)?([.]\d{1,3})$
+(assert (str.in.re X (re.union (re.++ (re.opt (str.to.re "-")) (str.to.re "1000") (re.opt (re.++ (str.to.re ".") ((_ re.loop 1 3) (str.to.re "0"))))) (re.++ (re.opt (str.to.re "-")) ((_ re.loop 1 3) (re.range "0" "9"))) (re.++ (re.opt (str.to.re "-")) ((_ re.loop 1 3) (re.range "0" "9")) (str.to.re ".") ((_ re.loop 1 3) (re.range "0" "9"))) (re.++ (re.opt (str.to.re "-")) (str.to.re "\x0a.") ((_ re.loop 1 3) (re.range "0" "9"))))))
+(check-sat)

@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"))
+(assert (str.in.re x (re.* (str.to.re "rrrrmmmmdddd"))))
+(check-sat)

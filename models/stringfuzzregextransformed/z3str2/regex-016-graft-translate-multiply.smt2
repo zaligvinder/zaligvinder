@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "112233")))
+(assert (= (str.len x) 22))
+(assert (not (= x "CC''' '' '''RR//112233CC''' '' '''RR//")))
+(assert (not (= x "CC''' '' '''RR//CC''' '' '''RR//112233")))
+(check-sat)

@@ -1,0 +1,12 @@
+(declare-const X String)
+; [0-9.\-/+() ]{4,}
+(assert (str.in.re X (re.++ (str.to.re "\x0a") ((_ re.loop 4 4) (re.union (re.range "0" "9") (str.to.re ".") (str.to.re "-") (str.to.re "/") (str.to.re "+") (str.to.re "(") (str.to.re ")") (str.to.re " "))) (re.* (re.union (re.range "0" "9") (str.to.re ".") (str.to.re "-") (str.to.re "/") (str.to.re "+") (str.to.re "(") (str.to.re ")") (str.to.re " "))))))
+; /\x2eppt([\?\x5c\x2f]|$)/smiU
+(assert (not (str.in.re X (re.++ (str.to.re "/.ppt") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+; ^([A-Z]|[a-z]|[0-9])([A-Z]|[a-z]|[0-9]|([A-Z]|[a-z]|[0-9]|(%|&|'|\+|\-|@|_|\.|\ )[^%&'\+\-@_\.\ ]|\.$|([%&'\+\-@_\.]\ [^\ ]|\ [%&'\+\-@_\.][^%&'\+\-@_\.])))+$
+(assert (not (str.in.re X (re.++ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9")) (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (re.++ (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".") (str.to.re " ")) (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".") (str.to.re " "))) (str.to.re ".") (re.++ (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".")) (str.to.re " ") (re.comp (str.to.re " "))) (re.++ (str.to.re " ") (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".")) (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re "."))))) (str.to.re "\x0a")))))
+; A + B
+(assert (not (str.in.re X (re.++ (str.to.re "A") (re.+ (str.to.re " ")) (str.to.re " B\x0a")))))
+; @"^\d[a-zA-Z]\w{1}\d{2}[a-zA-Z]\w{1}\d{3}$"
+(assert (str.in.re X (re.++ (str.to.re "@\x22") (re.range "0" "9") (re.union (re.range "a" "z") (re.range "A" "Z")) ((_ re.loop 1 1) (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) ((_ re.loop 2 2) (re.range "0" "9")) (re.union (re.range "a" "z") (re.range "A" "Z")) ((_ re.loop 1 1) (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "\x22\x0a"))))
+(check-sat)

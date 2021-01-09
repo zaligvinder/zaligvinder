@@ -1,0 +1,8 @@
+(declare-const X String)
+; /filename=[^\n]*\x2esami/i
+(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".sami/i\x0a"))))
+; (^\(\)$|^\(((\([0-9]+,(\((\([0-9]+,[0-9]+,[0-9]+\),)*(\([0-9]+,[0-9]+,[0-9]+\)){1}\))+\),)*(\([0-9]+,(\((\([0-9]+,[0-9]+,[0-9]+\),)*(\([0-9]+,[0-9]+,[0-9]+\)){1}\))+\)){1}\)))$
+(assert (str.in.re X (re.++ (str.to.re "\x0a(") (re.union (str.to.re ")") (re.++ (re.* (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.++ (str.to.re "(") (re.* (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re "),"))) ((_ re.loop 1 1) (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ")"))) (str.to.re ")"))) (str.to.re "),"))) ((_ re.loop 1 1) (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.++ (str.to.re "(") (re.* (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re "),"))) ((_ re.loop 1 1) (re.++ (str.to.re "(") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ",") (re.+ (re.range "0" "9")) (str.to.re ")"))) (str.to.re ")"))) (str.to.re ")"))) (str.to.re ")"))))))
+; ^[a-zA-Z]+(\.[a-zA-Z]+)+$
+(assert (str.in.re X (re.++ (re.+ (re.union (re.range "a" "z") (re.range "A" "Z"))) (re.+ (re.++ (str.to.re ".") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z"))))) (str.to.re "\x0a"))))
+(check-sat)

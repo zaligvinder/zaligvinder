@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const S String)
+(assert (not (str.in.re S (re.union (str.to.re "$!'\x0b'r'Qn:7Xxorlb") re.allchar))))
+(assert (str.in.re S (re.union re.allchar (re.++ (str.to.re "c~]^p*") (re.++ (str.to.re "XsB\\Fu{k'\t'^^:#u7[7HC[2wG' 'f~' 'u") re.allchar)))))
+(check-sat)

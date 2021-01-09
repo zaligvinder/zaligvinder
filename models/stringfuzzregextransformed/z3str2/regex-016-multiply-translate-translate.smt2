@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "kk[[DD++") (str.to.re "112233")))))
+(assert (= 22 (str.len x)))
+(assert (not (= x "kk[[DD++112233kk[[DD++")))
+(assert (not (= x "kk[[DD++kk[[DD++112233")))
+(check-sat)

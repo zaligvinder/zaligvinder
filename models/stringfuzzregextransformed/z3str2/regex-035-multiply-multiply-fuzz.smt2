@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(declare-const m String)
+(declare-const n String)
+(assert (str.in.re (str.++ x y) (re.* (str.to.re "a~Z,!^Bs""{Zv.Obb:1' ''\r'Pc]'\x0c'1p.xC"))))
+(check-sat)

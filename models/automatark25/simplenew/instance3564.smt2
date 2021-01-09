@@ -1,0 +1,4 @@
+(declare-const X String)
+; \b[P|p]*(OST|ost)*\.*\s*[O|o|0]*(ffice|FFICE)*\.*\s*[B|b][O|o|0][X|x]\b
+(assert (not (str.in.re X (re.++ (re.* (re.union (str.to.re "P") (str.to.re "|") (str.to.re "p"))) (re.* (re.union (str.to.re "OST") (str.to.re "ost"))) (re.* (str.to.re ".")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.* (re.union (str.to.re "O") (str.to.re "|") (str.to.re "o") (str.to.re "0"))) (re.* (re.union (str.to.re "ffice") (str.to.re "FFICE"))) (re.* (str.to.re ".")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.union (str.to.re "B") (str.to.re "|") (str.to.re "b")) (re.union (str.to.re "O") (str.to.re "|") (str.to.re "o") (str.to.re "0")) (re.union (str.to.re "X") (str.to.re "|") (str.to.re "x")) (str.to.re "\x0a")))))
+(check-sat)

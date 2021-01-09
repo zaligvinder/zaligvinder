@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.len x) 1))
+(assert (str.in.re x (re.* (str.to.re "js7$"))))
+(assert (str.in.re x (re.* (str.to.re "k't\\'cxx+#a"))))
+(check-sat)

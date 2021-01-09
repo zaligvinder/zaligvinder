@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re y (str.to.re "WQqVi!}7[4Zn.mcc,w&")))
+(assert (= 27 (str.to.int y)))
+(check-sat)

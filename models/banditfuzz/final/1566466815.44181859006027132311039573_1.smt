@@ -1,0 +1,8 @@
+;  depth   = 3
+;  nconst  = 6
+;  assertions = 7
+;  timeout = 2500
+;  time    = {'smt_solvers/QF_S/z3seq/': 0.08098602294921875, 'smt_solvers/QF_S/z3str3/': 0.10550832748413086, 'smt_solvers/QF_S/cvc4/': 0.7490420341491699, 'smt_solvers/QF_S/z3str3fed/': 0.06337213516235352}
+;  score   = 0.6435337066650391
+;  stdout  = {'smt_solvers/QF_S/z3seq/': 'unsat', 'smt_solvers/QF_S/z3str3/': 'unsat', 'smt_solvers/QF_S/cvc4/': 'unsat', 'smt_solvers/QF_S/z3str3fed/': 'unsat'}
+(set-logic QF_S)(declare-fun var0 () String)(declare-fun var1 () String)(declare-fun var2 () String)(declare-fun var3 () String)(declare-fun var4 () String)(declare-fun var5 () String)(declare-fun var6 () Int)(declare-fun var7 () Int)(declare-fun var8 () Int)(declare-fun var9 () Int)(declare-fun var10 () Int)(declare-fun var11 () Int)(declare-fun var12 () Bool)(declare-fun var13 () Bool)(declare-fun var14 () Bool)(declare-fun var15 () Bool)(declare-fun var16 () Bool)(declare-fun var17 () Bool)(assert (not (<= 0 var7)))(assert (> (str.indexof (str.replace "&#Po;*H|1<" var5 var0) (str.replace var5 var3 var1) (str.indexof var3 var0 var10)) (str.indexof (str.substr "-w0>x<fl9E" var9 var8) (str.substr var0 var6 var10) (str.indexof var0 var3 9))))(assert (> (str.len var3) (str.indexof var4 var5 var10)))(assert (str.in.re var2 re.allchar))(assert (str.contains (str.substr (str.replace var0 var1 var0) (str.indexof var3 var5 var9) (str.indexof var0 var3 var11)) (str.replace (str.at var4 (str.indexof (str.substr var5 var11 var7) (str.replace var3 var5 var3) (str.indexof var0 var2 var10))) (str.++ var3 var3) (str.at var3 var7))))(assert (< (str.len var0) (str.indexof "VU[b*Z):+(" var5 var7)))(assert (> (str.len var0) (str.len "O$t(5OPn]""")))(check-sat)

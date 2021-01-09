@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "aZ-E.|m;#sp'\x0c'N/HylQQkcd2")))
+(assert (= (str.to.int x) 31))
+(assert (not (= x "aa)K<@hTmccdRr]IWcu9R2v|i$<33abcdd")))
+(assert (not (= x "aabcdda'\n'sfy@zNkKV8)g`sk_cdeFz0}'\r''\x0c'F[""12'\r'yT<V'\x0b''\n'cOrjQ*|dR'\n'")))
+(check-sat)

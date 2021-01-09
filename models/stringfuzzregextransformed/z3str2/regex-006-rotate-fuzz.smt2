@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "ba)>IML;etr"))
+(assert (str.in.re x (re.+ (re.+ (str.to.re "Z")))))
+(check-sat)

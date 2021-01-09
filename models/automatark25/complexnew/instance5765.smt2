@@ -1,0 +1,10 @@
+(declare-const X String)
+; ^(((Ctrl\+Shift\+Alt\+|Ctrl\+Shift\+|Ctrl\+Alt\+|Shift\+Alt\+|Ctrl\+|Alt\+){1}(F1[0-2]|F[1-9]|[A-Za-z0-9\-\=\[\]\\\;\'\,\.\/]){1}){1}|(Shift\+)?(F1[0-2]|F[1-9]){1})$
+(assert (str.in.re X (re.++ (re.union ((_ re.loop 1 1) (re.++ ((_ re.loop 1 1) (re.union (str.to.re "Ctrl+Shift+Alt+") (str.to.re "Ctrl+Shift+") (str.to.re "Ctrl+Alt+") (str.to.re "Shift+Alt+") (str.to.re "Ctrl+") (str.to.re "Alt+"))) ((_ re.loop 1 1) (re.union (re.++ (str.to.re "F1") (re.range "0" "2")) (re.++ (str.to.re "F") (re.range "1" "9")) (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (str.to.re "-") (str.to.re "=") (str.to.re "[") (str.to.re "]") (str.to.re "\x5c") (str.to.re ";") (str.to.re "'") (str.to.re ",") (str.to.re ".") (str.to.re "/"))))) (re.++ (re.opt (str.to.re "Shift+")) ((_ re.loop 1 1) (re.++ (str.to.re "F") (re.union (re.++ (str.to.re "1") (re.range "0" "2")) (re.range "1" "9")))))) (str.to.re "\x0a"))))
+; http[s]?://(www|[a-zA-Z]{2}-[a-zA-Z]{2})\.facebook\.com/(pages/[a-zA-Z0-9\.-]+/[0-9]+|[a-zA-Z0-9\.-]+)[/]?$
+(assert (not (str.in.re X (re.++ (str.to.re "http") (re.opt (str.to.re "s")) (str.to.re "://") (re.union (str.to.re "www") (re.++ ((_ re.loop 2 2) (re.union (re.range "a" "z") (re.range "A" "Z"))) (str.to.re "-") ((_ re.loop 2 2) (re.union (re.range "a" "z") (re.range "A" "Z"))))) (str.to.re ".facebook.com/") (re.union (re.++ (str.to.re "pages/") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re ".") (str.to.re "-"))) (str.to.re "/") (re.+ (re.range "0" "9"))) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re ".") (str.to.re "-")))) (re.opt (str.to.re "/")) (str.to.re "\x0a")))))
+; DesktopBladeclient=wwwHello\x2Exmlns\x3A
+(assert (str.in.re X (str.to.re "DesktopBladeclient=wwwHello.xmlns:\x0a")))
+; IP\s+\.hta.*Theef2trustyfiles\x2Ecomlogs
+(assert (not (str.in.re X (re.++ (str.to.re "IP") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ".hta") (re.* re.allchar) (str.to.re "Theef2trustyfiles.comlogs\x0a")))))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= 2 (str.len x)))
+(assert (= x y))
+(assert (str.in.re y (re.+ (re.range "!" "3"))))
+(assert (str.contains "1kN" x))
+(check-sat)

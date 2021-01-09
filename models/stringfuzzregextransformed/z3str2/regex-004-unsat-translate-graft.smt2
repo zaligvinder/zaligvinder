@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "R)inin'\\x0b'"))
+(assert (str.in.re x (re.union (re.* (str.to.re "R)in")) (str.to.re "in'\\x0b'"))))
+(check-sat)

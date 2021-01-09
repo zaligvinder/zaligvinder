@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 1 (str.len x)))
+(assert (str.in.re x (str.to.re "Cd")))
+(assert (str.in.re x (re.+ (str.to.re ".n"))))
+(check-sat)

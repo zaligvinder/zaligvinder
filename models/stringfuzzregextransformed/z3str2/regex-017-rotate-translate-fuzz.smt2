@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "P|Z$x'\x0b'3") (re.++ (str.to.re "'\x0c'I2'\x0b'&") (str.to.re "'' ''"))))))
+(assert (= 10 (str.to.int x)))
+(check-sat)

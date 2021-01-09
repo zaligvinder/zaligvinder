@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "ANB.B.>"))
+(assert (str.in.re x (re.union (re.* (str.to.re "ANB.")) (re.* (str.to.re "B.>")))))
+(check-sat)

@@ -1,0 +1,10 @@
+(declare-const X String)
+; User-Agent\x3aHost\x3Apasswordhavewww\x2Ealfacleaner\x2Ecom
+(assert (str.in.re X (str.to.re "User-Agent:Host:passwordhavewww.alfacleaner.com\x0a")))
+; Host\x3A1\-extreme\x2EbizX-Mailer\x3awww\x2Ewebcruiser\x2Ecc
+(assert (str.in.re X (str.to.re "Host:1-extreme.bizX-Mailer:\x13www.webcruiser.cc\x0a")))
+; ^(.)+\.(jpg|jpeg|JPG|JPEG)$
+(assert (str.in.re X (re.++ (re.+ re.allchar) (str.to.re ".") (re.union (str.to.re "jpg") (str.to.re "jpeg") (str.to.re "JPG") (str.to.re "JPEG")) (str.to.re "\x0a"))))
+; ^[0][5][0]-\d{7}|[0][5][2]-\d{7}|[0][5][4]-\d{7}|[0][5][7]-\d{7}|[0][7][7]-\d{7}|[0][2]-\d{7}|[0][3]-\d{7}|[0][4]-\d{7}|[0][8]-\d{7}|[0][9]-\d{7}|[0][5][0]\d{7}|[0][5][2]\d{7}|[0][5][4]\d{7}|[0][5][7]\d{7}|[0][7][7]\d{7}|[0][2]\d{7}|[0][3]\d{7}|[0][4]\d{7}|[0][8]\d{7}|[0][9]\d{7}$
+(assert (str.in.re X (re.union (re.++ (str.to.re "050-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "052-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "054-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "057-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "077-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "02-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "03-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "04-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "08-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "09-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "050") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "052") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "054") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "057") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "077") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "02") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "03") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "04") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "08") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "09") ((_ re.loop 7 7) (re.range "0" "9")) (str.to.re "\x0a")))))
+(check-sat)

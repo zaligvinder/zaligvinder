@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "\\\\\\\\(N'\\\\x0b']\\\\\\\\(\\\\\\\\(N"))
+(assert (str.in.re x (re.* (str.to.re "\\\\\\\\(N"))))
+(check-sat)

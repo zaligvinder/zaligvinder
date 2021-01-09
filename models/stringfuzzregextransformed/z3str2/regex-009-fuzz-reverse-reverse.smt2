@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "ab$!Pd"))))
+(assert (str.in.re x (re.+ (str.to.re "aAh'\\\\n''{:iD^GbTE;>q)"))))
+(assert (> (str.to.int x) 28))
+(assert (< (str.len x) 3))
+(check-sat)

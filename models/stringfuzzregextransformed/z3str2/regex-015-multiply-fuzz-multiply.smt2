@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "%%XX3311xxMMHHQQss%%jj"))))
+(assert (str.in.re y (re.+ (re.+ (str.to.re "--!!tt''\\\\xx00cc''yy//nnQQ??qqvv<<??((VV,,11rree**TTtthh")))))
+(assert (= (str.len x) 4))
+(assert (= (str.to.int y) 14))
+(check-sat)

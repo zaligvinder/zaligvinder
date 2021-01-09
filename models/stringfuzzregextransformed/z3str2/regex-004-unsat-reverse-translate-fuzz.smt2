@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "''\n'/wdt*9"))
+(assert (str.in.re x (re.union (re.* (str.to.re "O*gy}""tIU")) (re.+ (str.to.re "qiOF")))))
+(check-sat)

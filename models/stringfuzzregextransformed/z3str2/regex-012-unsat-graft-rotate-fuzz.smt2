@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "'uH3")))
+(assert (= (str.len x) 3))
+(check-sat)

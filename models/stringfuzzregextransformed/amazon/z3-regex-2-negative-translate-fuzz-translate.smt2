@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const S String)
+(assert (str.in.re S (re.union (str.to.re "`LzAL.mc'\r'""doU") re.allchar)))
+(assert (not (str.in.re S (re.union (re.union (re.union (str.to.re "Lzt0wL") re.allchar) (str.to.re "|'\x0c'~")) re.allchar))))
+(check-sat)

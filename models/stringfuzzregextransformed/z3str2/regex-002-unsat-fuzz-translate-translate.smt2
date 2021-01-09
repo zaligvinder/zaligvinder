@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "??upt??}|4K$kEO0&kk&fa4"))
+(assert (str.in.re x (re.+ (str.to.re "$f"))))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "YY'\n''\n'\\\\..") (str.to.re "332211")))))
+(assert (= 22 (str.len x)))
+(assert (not (= x "YY'\n''\n'\\\\..332211YY'\n''\n'\\\\..")))
+(assert (not (= x "332211YY'\n''\n'\\\\..YY'\n''\n'\\\\..")))
+(check-sat)

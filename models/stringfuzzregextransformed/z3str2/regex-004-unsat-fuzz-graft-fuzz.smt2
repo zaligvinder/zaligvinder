@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "a\\Kj-$=rl\\'\n'XPd89g7^d|U@"))
+(assert (str.in.re x (re.union (str.to.re "cd") (re.+ (re.* (str.to.re "hHoLLvc~"))))))
+(check-sat)

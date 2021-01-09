@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "odckabb{"))))
+(assert (str.in.re x (re.+ (str.to.re "aUGaabx)KA*I][8rmEqO+82>iOj?J?Kn9DV\\]ma;vh'\n'SZ'\x0c'bVy<E&xQ' 'Z'k'\x0c'6Ld"))))
+(assert (str.in.re x (re.+ (str.to.re "aQ('o'YQ(-<F_iY)F#[\\4{af'\r'$^xbXdDFm-x8hO'\n'O&Ao3cN1aTGFk*U?Pe--UgomxoH#^H/B{a+/T'>1P)aa'Qe&/gEp7eaccU%<&c"))))
+(assert (> (str.len x) 4))
+(check-sat)

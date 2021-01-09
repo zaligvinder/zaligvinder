@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "!F4K'\x0b'I'\n'g"))))
+(assert (str.in.re y (re.* (str.to.re "}dV:["))))
+(assert (= (str.len x) 3))
+(check-sat)

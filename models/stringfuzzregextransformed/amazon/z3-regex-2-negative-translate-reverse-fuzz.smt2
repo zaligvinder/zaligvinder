@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const S String)
+(assert (str.in.re S (re.++ re.allchar (str.to.re "$$LL<R)"))))
+(assert (not (str.in.re S (re.++ re.allchar (re.union (str.to.re "x_$'\r'") (re.++ re.allchar (str.to.re "LL")))))))
+(check-sat)

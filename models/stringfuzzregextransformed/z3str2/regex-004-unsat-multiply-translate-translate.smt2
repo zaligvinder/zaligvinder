@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "'\x0c''\x0c'{{'\r''\r'-sl--sl-'\r''\r'-sl--sl--sV0'\r'--sV0'\r'-"))
+(assert (str.in.re x (re.union (re.* (str.to.re "'\x0c''\x0c'{{'\r''\r'-sl--sl-")) (re.* (str.to.re "'\r''\r'-sl--sl--sV0'\r'--sV0'\r'-")))))
+(check-sat)

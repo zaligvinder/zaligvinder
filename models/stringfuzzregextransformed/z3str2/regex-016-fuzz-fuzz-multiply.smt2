@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (str.to.re "##PPdd") (str.to.re "11HH")))))
+(assert (= 16 (str.to.int x)))
+(assert (not (= x "ww''{{''' '' '''QQ&&bbzzooRRqqAANNGGNN@@]]@@OO[[vv@@@@RRUU::RRHH''\\\\tt''))hhWW((DDJJ[[DDJJtt\\\\\\\\PPoo''\\\\tt''KK33pp\\\\\\\\77EEOOnn))]]HHbb>>ddWW00kkxxOOEE00YY==``..::FF//99bbNNjjbb++jjxx``AAUUss}}ppFF::00kkvvkkbb{{gg33YY''\\\\xx00cc''44PPAA::{{EEYYssAAbb..JJHH''\\\\xx00bb''''' '' '''JJJJpp>>))33bb``nn00kkyy55>>**??::PP''' '' '''..ddII88##22ccyyGG**iihh__>>BBRRllJJ\\\\\\\\..''' '' '''hh''\\\\xx00cc''hhJJ%%%%rrJJ33OO\\\\\\\\::!!33..}}??__''\\\\tt''__uuLL77vv44''\\\\rr''00mmbbiinnVV||>>PPssppzzvv''NN||yy}}dd")))
+(assert (not (= x "aa==11YY''\\\\tt''TT44''\\\\tt''ll**TT>>vv77ssDDrrZZrrXX__AAVVnn,,ZZ``%%BBwwTTrr99HH''\\\\rr''EE--77vv@@99QQCCii''\\\\rr''__CC""""""""KKoo\\\\\\\\KK''\\\\nn''WW^^ffSSaa;;TT''\\\\xx00bb''hh##``WW7722KKRR''\\\\rr''CC//BB{{44--JJ66++\\\\\\\\__55..II~~@@LL''2288__$$GGEEJJzzXX||ii..CCrr((qq@@??!!~~{{ttLLxx..AAUURRPP""""""""::&&YYSS%%88''PPIIggEEAA%%>>UU~~zzSSXXCC''\\\\tt''--##==jj;;((")))
+(check-sat)

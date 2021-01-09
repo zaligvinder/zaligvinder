@@ -1,0 +1,8 @@
+;  depth   = 3
+;  nconst  = 6
+;  assertions = 7
+;  timeout = 2500
+;  time    = {'smt_solvers/QF_S/cvc4/': 2500, 'smt_solvers/QF_S/z3str3fed/': 0.20108890533447266, 'smt_solvers/QF_S/z3str3/': 0.31018590927124023, 'smt_solvers/QF_S/z3seq/': 0.2271595001220703}
+;  score   = 7499.689814090729
+;  stdout  = {'smt_solvers/QF_S/cvc4/': 'timeout', 'smt_solvers/QF_S/z3str3fed/': 'unsat', 'smt_solvers/QF_S/z3str3/': 'unsat', 'smt_solvers/QF_S/z3seq/': 'unsat'}
+(set-logic QF_S)(declare-fun var0 () String)(declare-fun var1 () String)(declare-fun var2 () String)(declare-fun var3 () String)(declare-fun var4 () String)(declare-fun var5 () String)(declare-fun var6 () Int)(declare-fun var7 () Int)(declare-fun var8 () Int)(declare-fun var9 () Int)(declare-fun var10 () Int)(declare-fun var11 () Int)(declare-fun var12 () Bool)(declare-fun var13 () Bool)(declare-fun var14 () Bool)(declare-fun var15 () Bool)(declare-fun var16 () Bool)(declare-fun var17 () Bool)(assert (< (str.len var3) (str.indexof (str.replace "TLu1B$k2zD" "hqT7tXg,:x" var4) (str.substr var0 5 var11) (str.indexof var1 var4 9))))(assert (str.prefixof var4 var4))(assert (str.prefixof (str.replace (str.replace var0 var3 "}fgxazV%!c") (str.substr var4 var10 var7) (str.at var5 var7)) (str.replace (str.at var2 var6) (str.at var3 var7) (str.++ var2 var2))))(assert (> (str.indexof var3 var2 var11) (str.len (str.replace var3 var4 var3))))(assert (str.contains (str.at "(i_x?B6ozf" var6) (str.++ var3 var3)))(assert (>= (str.indexof var0 var3 var11) (str.indexof var4 var0 var7)))(assert (str.prefixof var4 var2))(check-sat)

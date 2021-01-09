@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const key String)
+(declare-const val String)
+(assert (str.in.re key (re.* (re.range "A" "N"))))
+(assert (<= (str.to.int key) (str.len key)))
+(assert (>= 11 7))
+(check-sat)

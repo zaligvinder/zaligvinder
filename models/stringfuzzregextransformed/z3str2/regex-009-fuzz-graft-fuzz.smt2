@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "Oz.fCBa0'{6' '_'\t'c'\n'o'\x0c''\x0b'^[i4'\r'Kia8INP'\n'gFc/a{'\n'=i^R3*T[@APuS'\t'Tq)")))
+(assert (str.in.re x (re.+ (re.* (str.to.re "A'\x0b'\\]$.bU""ng/9{y'\x0b'd")))))
+(assert (> 1 (str.len x)))
+(assert (< (str.to.int x) 2))
+(check-sat)

@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "td7#eczIZvcm'\t''PtU'\t's_['\n''\x0c'yE'\\nW"))
+(assert (str.in.re x (re.union (re.+ (re.* (str.to.re "19i?_'\\' 'me'"))) (str.to.re "rteag"))))
+(check-sat)

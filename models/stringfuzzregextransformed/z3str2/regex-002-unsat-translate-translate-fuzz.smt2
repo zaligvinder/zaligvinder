@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "++!zrec#iC+++;:xN6'\x0c'>K%"))
+(assert (str.in.re x (re.+ (str.to.re "c$~-"))))
+(check-sat)

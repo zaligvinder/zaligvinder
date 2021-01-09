@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "$rM0+")))
+(assert (= (str.to.int x) 3))
+(assert (not (= x "5(}O;FQWi;\\nT'\n'}F&$&m^c{9]u")))
+(check-sat)

@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.to.int x) 10))
+(assert (str.in.re x (re.+ (str.to.re "ccmmAA}}@@"))))
+(assert (str.in.re x (re.+ (str.to.re "))QQ//~~aa::qqFFccdd\\\\\\\\""""""""3344"))))
+(check-sat)

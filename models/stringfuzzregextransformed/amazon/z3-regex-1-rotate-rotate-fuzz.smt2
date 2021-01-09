@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const S String)
+(assert (not (str.in.re S (re.++ (str.to.re "bb") re.allchar))))
+(assert (str.in.re S (re.union (str.to.re "Py6a") (re.union (re.union re.allchar (str.to.re "bb")) re.allchar))))
+(check-sat)

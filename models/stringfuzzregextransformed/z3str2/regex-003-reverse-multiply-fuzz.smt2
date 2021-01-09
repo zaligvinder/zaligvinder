@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "e'\r'C'\x0b'tHlV$dc^y<'\t'Ew5LGnhk'\r'FEeIBmjR^SY>Ap>ZI'\x0b'mco*<KmW'\n'sj?{E'\r']>dW`P]A)EUwT' '~'\t'.1""nf)I&I<D''\x0c'+8aur['\r';K'\x0c'Ili/OWBr|2c"))
+(assert (str.in.re x (re.* (re.++ (str.to.re "dcal") (str.to.re "edB_?*v-Nc")))))
+(check-sat)

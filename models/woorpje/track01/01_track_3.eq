@@ -1,0 +1,4 @@
+Variables {BA}
+Terminals {a}
+Equation: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBBaaaaaaaa = ABaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+SatGlucose(100)

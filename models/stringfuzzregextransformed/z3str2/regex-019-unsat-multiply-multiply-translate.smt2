@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "'\t''\t''\t''\t'"))))
+(assert (= 20 (str.len x)))
+(assert (not (= x "'\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t''\t'")))
+(check-sat)

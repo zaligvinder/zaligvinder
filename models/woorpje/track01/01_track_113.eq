@@ -1,0 +1,4 @@
+Variables {IBEJ}
+Terminals {dcgfeab}
+Equation: dcbgbggeagdfbbgdfebffacgEgcedacebdfabcbfafgacggebbfegfdceeabecgdgbcd = dcbgbggeagdfJbBfbffgbegacfdbdIbdfabcbfafgacggebbfegfdceeabecgdgbcd
+SatGlucose(100)

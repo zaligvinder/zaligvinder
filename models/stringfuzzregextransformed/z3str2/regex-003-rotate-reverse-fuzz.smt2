@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "ryX\\/:'8wz\\2iY'\r'!*^#I;'""88(' 'd"))
+(assert (str.in.re x (re.* (re.++ (str.to.re "S#b") (str.to.re "'\t'AI")))))
+(check-sat)

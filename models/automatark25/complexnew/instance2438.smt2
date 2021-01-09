@@ -1,0 +1,10 @@
+(declare-const X String)
+; /(((ftp|http|https):\/\/)|(\w+:{0,1}\w*@))?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+(assert (str.in.re X (re.++ (str.to.re "/") (re.opt (re.union (re.++ (re.union (str.to.re "ftp") (str.to.re "http") (str.to.re "https")) (str.to.re "://")) (re.++ (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.opt (str.to.re ":")) (re.* (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "@")))) (re.+ (re.comp (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")))) (re.opt (re.++ (str.to.re ":") (re.+ (re.range "0" "9")))) (re.opt (re.++ (str.to.re "/") (re.union (str.to.re "#") (str.to.re "!") (str.to.re ":") (str.to.re ".") (str.to.re "?") (str.to.re "+") (str.to.re "=") (str.to.re "&") (str.to.re "%") (str.to.re "@") (str.to.re "-") (str.to.re "/") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_")))) (str.to.re "/\x0a"))))
+; Host\x3a\s+ToolBarX-Mailer\x3aUser-Agent\x3AMM_RECO\x2EEXE
+(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "ToolBarX-Mailer:\x13User-Agent:MM_RECO.EXE\x0a"))))
+; ^(\d{3}|\d{4})[-](\d{5})$
+(assert (str.in.re X (re.++ (re.union ((_ re.loop 3 3) (re.range "0" "9")) ((_ re.loop 4 4) (re.range "0" "9"))) (str.to.re "-") ((_ re.loop 5 5) (re.range "0" "9")) (str.to.re "\x0a"))))
+; httphost[^\n\r]*www\x2Emaxifiles\x2Ecom
+(assert (not (str.in.re X (re.++ (str.to.re "httphost") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "www.maxifiles.com\x0a")))))
+(check-sat)

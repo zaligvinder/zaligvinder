@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "aC{F2;>rcd"))))
+(assert (str.in.re x (re.+ (str.to.re "aa.XE3BVQ\\""znvg#7cuw*Z%t(C/'\n'N'&O'\x0b'&m'\r'2E<@lzc$)[6rqnN' 'SW1;V\\.v+r' '7zLf&'>{&paa%r!r\\R'x\\L^bcd"))))
+(assert (> (str.to.int x) 31))
+(assert (< (str.to.int x) 16))
+(check-sat)

@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const key String)
+(declare-const val String)
+(assert (str.in.re key (re.+ (re.range "0" "3"))))
+(assert (<= 8 (str.to.int key)))
+(assert (>= 19 (str.to.int key)))
+(check-sat)

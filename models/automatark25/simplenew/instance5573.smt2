@@ -1,0 +1,4 @@
+(declare-const X String)
+; <[^/bp][^><]*>|<p[a-z][^><]*>|<b[^r][^><]*>|<br[a-z][^><]*>|</[^bp]+>|</p[a-z]+>|</b[^r]+>|</br[a-z]+>
+(assert (not (str.in.re X (re.++ (str.to.re "<") (re.union (re.++ (re.union (str.to.re "/") (str.to.re "b") (str.to.re "p")) (re.* (re.union (str.to.re ">") (str.to.re "<"))) (str.to.re ">")) (re.++ (str.to.re "p") (re.range "a" "z") (re.* (re.union (str.to.re ">") (str.to.re "<"))) (str.to.re ">")) (re.++ (str.to.re "b") (re.comp (str.to.re "r")) (re.* (re.union (str.to.re ">") (str.to.re "<"))) (str.to.re ">")) (re.++ (str.to.re "br") (re.range "a" "z") (re.* (re.union (str.to.re ">") (str.to.re "<"))) (str.to.re ">")) (re.++ (str.to.re "/") (re.+ (re.union (str.to.re "b") (str.to.re "p"))) (str.to.re ">")) (re.++ (str.to.re "/p") (re.+ (re.range "a" "z")) (str.to.re ">")) (re.++ (str.to.re "/b") (re.+ (re.comp (str.to.re "r"))) (str.to.re ">")) (re.++ (str.to.re "/br") (re.+ (re.range "a" "z")) (str.to.re ">\x0a")))))))
+(check-sat)

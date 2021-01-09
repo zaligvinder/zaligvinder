@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (str.to.re "@X%") (str.to.re "3N9")))))
+(assert (= 6 (str.len x)))
+(assert (not (= x "HF'\t'#(|]]/]C/BU62o")))
+(check-sat)

@@ -1,0 +1,12 @@
+(declare-const X String)
+; ^((5)/(1|2|5)/([0-9])/([0-9])/([0-9])/([0-9])/([0-9])/([0-9])/([2-9]))$
+(assert (str.in.re X (re.++ (str.to.re "\x0a5/") (re.union (str.to.re "1") (str.to.re "2") (str.to.re "5")) (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "0" "9") (str.to.re "/") (re.range "2" "9"))))
+; ^(\+){0,1}\d{1,10}$
+(assert (str.in.re X (re.++ (re.opt (str.to.re "+")) ((_ re.loop 1 10) (re.range "0" "9")) (str.to.re "\x0a"))))
+; Host\x3A\d+\.compress.*sidebar\.activeshopper\.com
+(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.range "0" "9")) (str.to.re ".compress") (re.* re.allchar) (str.to.re "sidebar.activeshopper.com\x0a"))))
+; Host\x3A\s+Eyewww\x2Eccnnlc\x2EcomHost\x3aHost\x3a
+(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Eyewww.ccnnlc.com\x13Host:Host:\x0a"))))
+; ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(-?[a-z0-9]+)?(\.[a-z0-9]+(-?[a-z0-9]+)?)*\.([a-z]{2}|xn\-{2}[a-z0-9]{4,18}|arpa|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|xxx)$
+(assert (not (str.in.re X (re.++ (re.+ (re.union (str.to.re "_") (re.range "a" "z") (re.range "0" "9") (str.to.re "-"))) (re.* (re.++ (str.to.re ".") (re.+ (re.union (str.to.re "_") (re.range "a" "z") (re.range "0" "9") (str.to.re "-"))))) (str.to.re "@") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (re.opt (re.++ (re.opt (str.to.re "-")) (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))))) (re.* (re.++ (str.to.re ".") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (re.opt (re.++ (re.opt (str.to.re "-")) (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))))))) (str.to.re ".") (re.union ((_ re.loop 2 2) (re.range "a" "z")) (re.++ (str.to.re "xn") ((_ re.loop 2 2) (str.to.re "-")) ((_ re.loop 4 18) (re.union (re.range "a" "z") (re.range "0" "9")))) (str.to.re "arpa") (str.to.re "aero") (str.to.re "asia") (str.to.re "biz") (str.to.re "cat") (str.to.re "com") (str.to.re "coop") (str.to.re "edu") (str.to.re "gov") (str.to.re "info") (str.to.re "int") (str.to.re "jobs") (str.to.re "mil") (str.to.re "mobi") (str.to.re "museum") (str.to.re "name") (str.to.re "net") (str.to.re "org") (str.to.re "pro") (str.to.re "tel") (str.to.re "travel") (str.to.re "xxx")) (str.to.re "\x0a")))))
+(check-sat)

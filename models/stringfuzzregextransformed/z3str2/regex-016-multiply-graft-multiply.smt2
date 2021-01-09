@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "aaaabbbbccccdddd")))
+(assert (= (str.len x) 44))
+(assert (not (= x "aaaabbbbccccdddd111122223333aaaabbbbccccdddd")))
+(assert (not (= x "aaaabbbbccccddddaaaabbbbccccdddd111122223333")))
+(check-sat)

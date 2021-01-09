@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 8 (str.len x)))
+(assert (str.in.re x (re.* (re.* (str.to.re "ivcm")))))
+(assert (str.in.re x (str.to.re "cIm")))
+(check-sat)

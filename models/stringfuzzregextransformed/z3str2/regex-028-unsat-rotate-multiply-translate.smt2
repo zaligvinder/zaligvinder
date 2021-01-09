@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re """""bb"))))
+(assert (str.in.re x (re.* (str.to.re """""bb""""bb"))))
+(assert (str.in.re x (re.* (str.to.re """""bb""""bb""""uu"))))
+(assert (> (str.len x) 2))
+(check-sat)

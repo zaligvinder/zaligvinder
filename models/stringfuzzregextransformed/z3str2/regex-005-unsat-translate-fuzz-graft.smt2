@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "Vua.JY)'\\x0c'-D}2]<'\\x0b'.6VV"))
+(assert (str.in.re x (re.* (str.to.re "+'\\x0b'/X"))))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.* (str.to.re "\\_Ls%Obd^:=Fb(fnmj""k")))))
+(assert (str.in.re x (str.to.re "/VcL:/")))
+(assert (> 38 (str.to.int x)))
+(assert (< (str.len x) 11))
+(check-sat)

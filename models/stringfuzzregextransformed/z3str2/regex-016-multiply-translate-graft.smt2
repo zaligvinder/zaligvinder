@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "112233"))))
+(assert (= (str.len x) 22))
+(assert (not (= x "**dd%%,,112233**dd%%,,")))
+(assert (not (= x "**dd%%,,**dd%%,,112233")))
+(check-sat)

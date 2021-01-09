@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "mof")))
+(assert (= 12 (str.to.int x)))
+(assert (not (= x "bc&)|r-v123c")))
+(assert (not (= x "u[:aUV1Cr93(!(/{P%Mdbc~Z1")))
+(check-sat)

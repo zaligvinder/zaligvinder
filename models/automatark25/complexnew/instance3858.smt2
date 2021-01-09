@@ -1,0 +1,12 @@
+(declare-const X String)
+; (^13((\ )?\d){4}$)|(^1[38]00((\ )?\d){6}$)|(^(((\(0[23478]\))|(0[23478]))(\ )?)?\d((\ )?\d){7}$)
+(assert (str.in.re X (re.union (re.++ (str.to.re "13") ((_ re.loop 4 4) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))) (re.++ (str.to.re "1") (re.union (str.to.re "3") (str.to.re "8")) (str.to.re "00") ((_ re.loop 6 6) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))) (re.++ (str.to.re "\x0a") (re.opt (re.++ (re.union (re.++ (str.to.re "(0") (re.union (str.to.re "2") (str.to.re "3") (str.to.re "4") (str.to.re "7") (str.to.re "8")) (str.to.re ")")) (re.++ (str.to.re "0") (re.union (str.to.re "2") (str.to.re "3") (str.to.re "4") (str.to.re "7") (str.to.re "8")))) (re.opt (str.to.re " ")))) (re.range "0" "9") ((_ re.loop 7 7) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))))))
+; Hours\w+User-Agent\x3AChildWebGuardian
+(assert (not (str.in.re X (re.++ (str.to.re "Hours") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "User-Agent:ChildWebGuardian\x0a")))))
+; /filename=[^\n]*\x2esmil/i
+(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".smil/i\x0a")))))
+; ^<\s*(td|TD)\s*(\w|\W)*\s*>(\w|\W)*</(td|TD)>$
+(assert (str.in.re X (re.++ (str.to.re "<") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.union (str.to.re "td") (str.to.re "TD")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.* (re.union (re.comp (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ">") (re.* (re.union (re.comp (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "</") (re.union (str.to.re "td") (str.to.re "TD")) (str.to.re ">\x0a"))))
+; ^([0-9a-fA-F]{1,2})(\s[0-9a-fA-F]{1,2})*$
+(assert (not (str.in.re X (re.++ ((_ re.loop 1 2) (re.union (re.range "0" "9") (re.range "a" "f") (re.range "A" "F"))) (re.* (re.++ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) ((_ re.loop 1 2) (re.union (re.range "0" "9") (re.range "a" "f") (re.range "A" "F"))))) (str.to.re "\x0a")))))
+(check-sat)

@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "aarrhh''\\\\rr''''\\\\tt''88[[//"))))
+(assert (str.in.re y (re.* (str.to.re "bb&&''\\\\rr''''' '' '''PP"))))
+(assert (= (str.to.int x) 14))
+(check-sat)

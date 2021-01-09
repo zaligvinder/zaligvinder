@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "Cu>k+ush.V[h={k=#n38f777'\n'ujDr@==/vTBTEdb"))
+(assert (str.in.re x (re.union (re.+ (str.to.re "5LY}'\x0c'y")) (re.+ (str.to.re "e")))))
+(check-sat)

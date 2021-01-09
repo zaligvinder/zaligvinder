@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "?Z't\\'g") (str.to.re "123")))))
+(assert (= 11 (str.len x)))
+(assert (not (= x "?Z't\\'g123?Z't\\'g")))
+(assert (not (= x "?Z't\\'g?Z't\\'g123")))
+(check-sat)

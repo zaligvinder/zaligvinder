@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (str.to.re "GA7F!4UV&B<'\x0c'$vBgIELA#T!)2") (re.union (str.to.re "o.6lgCkm5va;Izn'\n'K>ZP!' 'e,'CA`S9'\n'ccT_u2+'\t'NL#t)%td") (str.to.re "1}ee1]#@'\n'B((FG<2230>;'\n'sbw4J3' 'kX=OH"))))))
+(assert (= 32 (str.to.int x)))
+(check-sat)

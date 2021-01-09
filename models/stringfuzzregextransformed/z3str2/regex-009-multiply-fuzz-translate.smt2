@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "i%3psHp*)DU7f""e'\n''\x0c''\x0c'TT"))))
+(assert (str.in.re x (re.+ (str.to.re "ipsRp' '2Pan'\t'{G`BF:ptcZ<S6`'\x0c''\x0c'TTc.v9jCpsHp_Fq.~~pJpi:jSxiA|Z3ddVSCcTmR['\x0b'_P'\x0b'"))))
+(assert (> (str.len x) 58))
+(assert (< (str.len x) 67))
+(check-sat)

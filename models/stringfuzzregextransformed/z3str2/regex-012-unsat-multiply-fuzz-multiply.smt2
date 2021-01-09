@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (str.to.re "aattOOdd") (str.to.re "22mm1122==22AAXX33")))))
+(assert (= 40 (str.to.int x)))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "vv~"))))
+(assert (str.in.re x (re.* (str.to.re "vv~~vvz~"))))
+(assert (str.in.re x (re.+ (str.to.re "vM+kMq/7s$!Dv&""2?>TF85B'\t''\t'kvQEcr~)r}>/\\_g'\t''\t'M+`0EMn"))))
+(assert (> (str.len x) 1))
+(check-sat)

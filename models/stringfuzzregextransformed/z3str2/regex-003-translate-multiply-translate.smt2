@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "tttttttt>>@@$$ttttMM00II$$ZZtttttttt>>tttttttt>>@@"))
+(assert (str.in.re x (re.* (re.union (str.to.re "$$ttttMM00II$$ZZtttttttt>>") (str.to.re "tttttttt>>@@")))))
+(check-sat)

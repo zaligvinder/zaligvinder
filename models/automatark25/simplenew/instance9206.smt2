@@ -1,0 +1,4 @@
+(declare-const X String)
+; ^\d?\d'(\d|1[01])?.?(\d|1[01])"$
+(assert (str.in.re X (re.++ (re.opt (re.range "0" "9")) (re.range "0" "9") (str.to.re "'") (re.opt (re.union (re.range "0" "9") (re.++ (str.to.re "1") (re.union (str.to.re "0") (str.to.re "1"))))) (re.opt re.allchar) (re.union (re.range "0" "9") (re.++ (str.to.re "1") (re.union (str.to.re "0") (str.to.re "1")))) (str.to.re "\x22\x0a"))))
+(check-sat)

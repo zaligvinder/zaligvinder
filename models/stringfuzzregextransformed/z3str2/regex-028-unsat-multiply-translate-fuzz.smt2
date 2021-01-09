@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "f%=Bj)p"))))
+(assert (str.in.re x (re.+ (str.to.re "0/9[qf//x'\r'-"))))
+(assert (str.in.re x (re.* (str.to.re "'\x0b'5-(@$_\\WIwiveXqf'\t'JO>_4-cx_[uEwj4O"))))
+(assert (> (str.len x) 0))
+(check-sat)

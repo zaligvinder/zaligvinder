@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= 1 (str.len x)))
+(assert (= x y))
+(assert (str.in.re y (re.* (re.range "$" "3"))))
+(assert (str.prefixof "U" x))
+(check-sat)

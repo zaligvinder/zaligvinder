@@ -1,0 +1,8 @@
+;  depth   = 3
+;  nconst  = 6
+;  assertions = 7
+;  timeout = 2500
+;  time    = {'smt_solvers/QF_S/cvc4/': 1.958268642425537, 'smt_solvers/QF_S/z3str3fed/': 0.06787490844726562, 'smt_solvers/QF_S/z3str3/': 0.09726095199584961, 'smt_solvers/QF_S/z3seq/': 0.08166217803955078}
+;  score   = 1.8610076904296875
+;  stdout  = {'smt_solvers/QF_S/cvc4/': 'unsat', 'smt_solvers/QF_S/z3str3fed/': 'unsat', 'smt_solvers/QF_S/z3str3/': 'unsat', 'smt_solvers/QF_S/z3seq/': 'unsat'}
+(set-logic QF_S)(declare-fun var0 () String)(declare-fun var1 () String)(declare-fun var2 () String)(declare-fun var3 () String)(declare-fun var4 () String)(declare-fun var5 () String)(declare-fun var6 () Int)(declare-fun var7 () Int)(declare-fun var8 () Int)(declare-fun var9 () Int)(declare-fun var10 () Int)(declare-fun var11 () Int)(declare-fun var12 () Bool)(declare-fun var13 () Bool)(declare-fun var14 () Bool)(declare-fun var15 () Bool)(declare-fun var16 () Bool)(declare-fun var17 () Bool)(assert (str.in.re (str.at var2 var6) (re.+ re.allchar)))(assert (<= (str.indexof (str.replace var4 var2 var1) (str.substr var1 8 var11) (str.len var0)) (str.indexof (str.at var5 var6) (str.substr var5 var11 var10) (str.indexof var2 var0 var10))))(assert (< (str.len (str.substr var2 var10 var7)) (str.len var2)))(assert (>= (str.len var5) (str.len var2)))(assert (> (str.indexof (str.at var1 var7) (str.substr var4 var6 var11) (str.len var1)) (str.len (str.at "sR6eZ=5E6Z" (str.len var4)))))(assert (str.prefixof (str.replace var5 var3 var5) (str.at var2 var8)))(assert (str.suffixof var4 var1))(check-sat)

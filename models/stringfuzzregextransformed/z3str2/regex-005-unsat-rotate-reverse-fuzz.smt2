@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "5628Z:x[Vaaqa'\x0c'A)wu@TVqLy8=g+D' 'P"))
+(assert (str.in.re x (re.* (re.* (str.to.re "DDEg0")))))
+(check-sat)

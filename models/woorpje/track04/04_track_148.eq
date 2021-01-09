@@ -1,0 +1,23 @@
+Variables {BC}
+Terminals {cabde}
+Equation: dbbcbeBeeacCcBdd = dbbcbeBeeacCcadd
+Equation: becdbcBBbbddececcedcBceecdb = becdbcBabbddececcedcaceecdb
+Equation: cbadeBceebdBaBdebeceebabcbb = cbadeBceebdBaBdebeceebBbcbb
+Equation: bebBBecedbaaebdebaeedbceced = bebBaecedbBaebdebaeedbceced
+Equation: BbbbeddBeaaBdddBeddebdcaecb = BbbbeddBeBBBdddaeddebdcaecb
+Equation: bccceedebecdBdBcBbBbeeddccB = bccceedebecdadacBbBbeeddcca
+Equation: BcbecbecBaBdcacccBecebebdbb = acbecbecaaadcacccBecebebdbb
+Equation: cbccedcbBaebeBdeBdbeecbcbbd = cbccedcbBaebeBdeadbeecbcbbd
+Equation: bebbedbbaeaBaceebecaecBdcaB = bebbedbbaeBBBceebecBecadcaa
+Equation: eeddccecebcbeaccecebebccdBB = eeddccecebcbeaccecebebccdBB
+Equation: bBecbbbcdeBeacdbccaadBaaBba = baecbbbcdeBeacdbccaBdBBaabB
+Equation: daBcaedecBecbBcbcddBdeeacae = dBBcBedecBecbacbcddBdeeacae
+Equation: bbcebeedeadcBbcdBbccdeddccd = bbcebeedeadcabcdabccdeddccd
+Equation: ccdccccbdccdbdbceeacceeccBc = ccdccccbdccdbdbceeBcceeccBc
+Equation: ebeebBebebbbaaebccaeebBdbcb = ebeebBebebbbBBebccaeebBdbcb
+Equation: dddbbbaBcbebBcebaedcbddbbae = dddbbbaBcbebacebaedcbddbbae
+Equation: deecBBceabadbeecbdcecabbebc = deecBBceBbBdbeecbdcecBbbebc
+Equation: cBcedeccbcbBbcdedcdcdBbBcdB = cacedeccbcbabcdedcdcdabBcda
+Equation: eeabdebBdbaccdccadecBdcdBcB = eeabdebadbaccdccadecBdcdacB
+Equation: eBceeeccddcBdddeddedceceaBd = eBceeeccddcBdddeddedceceBad
+SatGlucose(100)

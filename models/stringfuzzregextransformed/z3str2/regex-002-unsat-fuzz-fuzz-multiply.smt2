@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "nnEE00BBnnYYkkddRRMMVVnn[[~~LLsshh''\\\\xx00bb''[[==TT//pp~~kk$$FFllZZ~~##BBhh__wwJJHH))ii""""""""MM^^UU??bbkk''' '' '''QQHH66llbb[[ooddxxqqxxyy[[!!\\\\\\\\DD''\\\\rr''II||''\\\\rr''ppnnII}}%%ZZaahhAA~~44UU""""""""RR''' '' '''MM>>nn!!::QQ??==IIDDjj''!!HHaa##YYooGGllDD||99pp44dd,,''uu{{VVCCTT``ppss__//::IIkkKK++((JJ[[LLDD..^^GG$$++ddnnSSAAUU{{II''\\\\xx00bb''OO[[qqKK\\\\\\\\~~4433"))
+(assert (str.in.re x (re.* (str.to.re "JJ>>RR%%"))))
+(check-sat)

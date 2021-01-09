@@ -1,0 +1,12 @@
+(declare-const X String)
+; ([+(]?\d{0,2}[)]?)([-/.\s]?\d+)+
+(assert (not (str.in.re X (re.++ (re.+ (re.++ (re.opt (re.union (str.to.re "-") (str.to.re "/") (str.to.re ".") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.+ (re.range "0" "9")))) (str.to.re "\x0a") (re.opt (re.union (str.to.re "+") (str.to.re "("))) ((_ re.loop 0 2) (re.range "0" "9")) (re.opt (str.to.re ")"))))))
+; <script.*/*>|</script>|<[a-zA-Z][^>]*=['"]+javascript:\w+.*['"]+>|<\w+[^>]*\son\w+=.*[ /]*>
+(assert (not (str.in.re X (re.++ (str.to.re "<") (re.union (re.++ (str.to.re "script") (re.* re.allchar) (re.* (str.to.re "/")) (str.to.re ">")) (str.to.re "/script>") (re.++ (re.union (re.range "a" "z") (re.range "A" "Z")) (re.* (re.comp (str.to.re ">"))) (str.to.re "=") (re.+ (re.union (str.to.re "'") (str.to.re "\x22"))) (str.to.re "javascript:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.* re.allchar) (re.+ (re.union (str.to.re "'") (str.to.re "\x22"))) (str.to.re ">")) (re.++ (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (re.* (re.comp (str.to.re ">"))) (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "on") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "=") (re.* re.allchar) (re.* (re.union (str.to.re " ") (str.to.re "/"))) (str.to.re ">\x0a")))))))
+; ^(\+86)(13[0-9]|145|147|15[0-3,5-9]|18[0,2,5-9])(\d{8})$
+(assert (str.in.re X (re.++ (str.to.re "+86") ((_ re.loop 8 8) (re.range "0" "9")) (str.to.re "\x0a1") (re.union (re.++ (str.to.re "3") (re.range "0" "9")) (str.to.re "45") (str.to.re "47") (re.++ (str.to.re "5") (re.union (re.range "0" "3") (str.to.re ",") (re.range "5" "9"))) (re.++ (str.to.re "8") (re.union (str.to.re "0") (str.to.re ",") (str.to.re "2") (re.range "5" "9")))))))
+; A-311[^\n\r]*Attached\sHost\x3AWordmyway\.comhoroscope2
+(assert (not (str.in.re X (re.++ (str.to.re "A-311") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "Attached") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "Host:Wordmyway.comhoroscope2\x0a")))))
+; ^([987]{1})(\d{1})(\d{8})
+(assert (not (str.in.re X (re.++ ((_ re.loop 1 1) (re.union (str.to.re "9") (str.to.re "8") (str.to.re "7"))) ((_ re.loop 1 1) (re.range "0" "9")) ((_ re.loop 8 8) (re.range "0" "9")) (str.to.re "\x0a")))))
+(check-sat)

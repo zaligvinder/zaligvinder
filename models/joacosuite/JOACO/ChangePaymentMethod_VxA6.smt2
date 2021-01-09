@@ -1,0 +1,22 @@
+(set-logic QF_S)
+(set-option :produce-models true)
+
+(declare-fun var102 () String)
+(declare-fun var103 () String)
+(declare-fun var95 () String)
+(declare-fun var96 () String)
+(declare-fun var97 () String)
+(declare-fun var98 () String)
+(declare-fun var100 () String)
+(declare-fun sv1 () String)
+(declare-fun sv2 () String)
+
+(assert (= true (= sv1 sv2 ) ))
+(assert (= true (str.in.re var103 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (= (str.++ var102 var103 ) var100 ) ))
+(assert (= true (= var96  var95 ) ))
+(assert (= true (= (str.++ var97 var98 ) var96 ) ))
+(assert (= true (= (str.++ var100 "where C_ID =" ) var97 ) ))
+
+(check-sat)
+(get-model)

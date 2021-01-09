@@ -1,0 +1,6 @@
+(declare-const X String)
+; ^\b\d{2,3}-*\d{7}\b$
+(assert (not (str.in.re X (re.++ ((_ re.loop 2 3) (re.range "0" "9")) (re.* (str.to.re "-")) ((_ re.loop 7 7) (re.range "0" "9")) (str.to.re "\x0a")))))
+; ([^\w\s\-\_])|(\b\d)|(\b[^a-zA-z\-\s]\b)|(\[^a-zA-z\-\s]+\s)|(\;+[(\s)(\d)(\W)])
+(assert (str.in.re X (re.union (re.range "0" "9") (re.++ (str.to.re "[a-zA-z-") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (re.+ (str.to.re "]")) (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.++ (str.to.re "\x0a") (re.+ (str.to.re ";")) (re.union (str.to.re "(") (str.to.re ")") (re.range "0" "9") (re.comp (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "-") (str.to.re "_") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d") (re.range "a" "z") (re.range "A" "z") (str.to.re "-") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))))
+(check-sat)

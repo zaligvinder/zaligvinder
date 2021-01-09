@@ -1,0 +1,10 @@
+(declare-const X String)
+; ^[0][5][0]-\d{7}|[0][5][2]-\d{7}|[0][5][4]-\d{7}|[0][5][7]-\d{7}|[0][7][7]-\d{7}|[0][2]-\d{7}|[0][3]-\d{7}|[0][4]-\d{7}|[0][8]-\d{7}|[0][9]-\d{7}|[0][5][0]\d{7}|[0][5][2]\d{7}|[0][5][4]\d{7}|[0][5][7]\d{7}|[0][7][7]\d{7}|[0][2]\d{7}|[0][3]\d{7}|[0][4]\d{7}|[0][8]\d{7}|[0][9]\d{7}$
+(assert (str.in.re X (re.union (re.++ (str.to.re "050-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "052-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "054-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "057-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "077-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "02-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "03-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "04-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "08-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "09-") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "050") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "052") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "054") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "057") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "077") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "02") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "03") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "04") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "08") ((_ re.loop 7 7) (re.range "0" "9"))) (re.++ (str.to.re "09") ((_ re.loop 7 7) (re.range "0" "9")) (str.to.re "\x0a")))))
+; ^\+[0-9]{1,3}\([0-9]{3}\)[0-9]{7}$
+(assert (str.in.re X (re.++ (str.to.re "+") ((_ re.loop 1 3) (re.range "0" "9")) (str.to.re "(") ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re ")") ((_ re.loop 7 7) (re.range "0" "9")) (str.to.re "\x0a"))))
+; Host\x3A\x2Fta\x2FNEWS\x2Fyayad\x2Ecom
+(assert (not (str.in.re X (str.to.re "Host:/ta/NEWS/yayad.com\x13\x0a"))))
+; /\x2eplp([\?\x5c\x2f]|$)/smiU
+(assert (not (str.in.re X (re.++ (str.to.re "/.plp") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+(check-sat)

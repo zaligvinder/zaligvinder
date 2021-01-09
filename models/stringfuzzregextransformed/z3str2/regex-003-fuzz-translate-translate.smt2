@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "M9b}.q0' '}TH<l/'\x0b'n/a/2g}y/'\x0b'-0B/d-1kBu('\n'6{mV/'\x0b'}.q0=}/}.q0' '}<DD;,Q"))
+(assert (str.in.re x (re.* (re.union (str.to.re "Dbs") (str.to.re "BHQ")))))
+(check-sat)

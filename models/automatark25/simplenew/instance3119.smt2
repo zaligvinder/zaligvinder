@@ -1,0 +1,4 @@
+(declare-const X String)
+; ^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$
+(assert (str.in.re X (re.++ (re.union (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "1") (str.to.re "3") (str.to.re "5") (str.to.re "7") (str.to.re "8"))) (re.++ (str.to.re "1") (re.union (str.to.re "0") (str.to.re "2")))) (re.opt (str.to.re "/")) (re.union (re.++ (re.range "0" "2") (re.range "0" "9")) (re.++ (str.to.re "3") (re.union (str.to.re "0") (str.to.re "1"))))) (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "4") (str.to.re "6") (str.to.re "9"))) (str.to.re "11")) (re.opt (str.to.re "/")) (re.union (re.++ (re.range "0" "2") (re.range "0" "9")) (str.to.re "30"))) (re.++ (str.to.re "02") (re.opt (str.to.re "/")) (re.range "0" "2") (re.range "0" "9"))) (re.opt (str.to.re "/")) ((_ re.loop 4 4) (re.range "0" "9")) (str.to.re "\x0a"))))
+(check-sat)

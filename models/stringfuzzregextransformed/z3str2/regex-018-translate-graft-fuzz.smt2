@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "j83+")))
+(assert (= (str.to.int x) 7))
+(assert (not (= x "12GpQ:")))
+(check-sat)

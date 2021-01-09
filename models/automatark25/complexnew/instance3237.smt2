@@ -1,0 +1,8 @@
+(declare-const X String)
+; /^\x2f[a-z\d]{1,8}\.exe$/Ui
+(assert (not (str.in.re X (re.++ (str.to.re "//") ((_ re.loop 1 8) (re.union (re.range "a" "z") (re.range "0" "9"))) (str.to.re ".exe/Ui\x0a")))))
+; ProtoSubject\x3asource\=IncrediFindProjectAgentHost\x3AHost\x3AHost\x3A
+(assert (not (str.in.re X (str.to.re "ProtoSubject:source=IncrediFindProjectAgentHost:Host:Host:\x0a"))))
+; ^([A-Z]|[a-z]|[0-9])([A-Z]|[a-z]|[0-9]|([A-Z]|[a-z]|[0-9]|(%|&|'|\+|\-|@|_|\.|\ )[^%&'\+\-@_\.\ ]|\.$|([%&'\+\-@_\.]\ [^\ ]|\ [%&'\+\-@_\.][^%&'\+\-@_\.])))+$
+(assert (str.in.re X (re.++ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9")) (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (re.++ (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".") (str.to.re " ")) (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".") (str.to.re " "))) (str.to.re ".") (re.++ (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".")) (str.to.re " ") (re.comp (str.to.re " "))) (re.++ (str.to.re " ") (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re ".")) (re.union (str.to.re "%") (str.to.re "&") (str.to.re "'") (str.to.re "+") (str.to.re "-") (str.to.re "@") (str.to.re "_") (str.to.re "."))))) (str.to.re "\x0a"))))
+(check-sat)

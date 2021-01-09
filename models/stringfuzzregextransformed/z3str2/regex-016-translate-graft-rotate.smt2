@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "NF{t"))))
+(assert (= (str.len x) 11))
+(assert (not (= x "NF{t123NF{t")))
+(assert (not (= x "NF{tNF{t123")))
+(check-sat)

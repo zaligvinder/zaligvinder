@@ -1,0 +1,10 @@
+(declare-const X String)
+; /^sleep\x7c\d+\x7c\d+\x7C[a-z0-9]+\x2E[a-z]{2,3}\x7C[a-z0-9]+\x7C/
+(assert (not (str.in.re X (re.++ (str.to.re "/sleep|") (re.+ (re.range "0" "9")) (str.to.re "|") (re.+ (re.range "0" "9")) (str.to.re "|") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (str.to.re ".") ((_ re.loop 2 3) (re.range "a" "z")) (str.to.re "|") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (str.to.re "|/\x0a")))))
+; LOGGuardedHost\x3Awww\x2Esearchreslt\x2Ecomwp-includes\x2Ffeed\x2Ephp\x3F
+(assert (not (str.in.re X (str.to.re "LOGGuardedHost:www.searchreslt.comwp-includes/feed.php?\x0a"))))
+; /filename\s*=\s*[^\r\n]*?\x2emcl[\x22\x27\x3b\s\r\n]/i
+(assert (str.in.re X (re.++ (str.to.re "/filename") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "=") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.* (re.union (str.to.re "\x0d") (str.to.re "\x0a"))) (str.to.re ".mcl") (re.union (str.to.re "\x22") (str.to.re "'") (str.to.re ";") (str.to.re "\x0d") (str.to.re "\x0a") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "/i\x0a"))))
+; %[\-\+0\s\#]{0,1}(\d+){0,1}(\.\d+){0,1}[hlI]{0,1}[cCdiouxXeEfgGnpsS]{1}
+(assert (not (str.in.re X (re.++ (str.to.re "%") (re.opt (re.union (str.to.re "-") (str.to.re "+") (str.to.re "0") (str.to.re "#") (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (re.+ (re.range "0" "9"))) (re.opt (re.++ (str.to.re ".") (re.+ (re.range "0" "9")))) (re.opt (re.union (str.to.re "h") (str.to.re "l") (str.to.re "I"))) ((_ re.loop 1 1) (re.union (str.to.re "c") (str.to.re "C") (str.to.re "d") (str.to.re "i") (str.to.re "o") (str.to.re "u") (str.to.re "x") (str.to.re "X") (str.to.re "e") (str.to.re "E") (str.to.re "f") (str.to.re "g") (str.to.re "G") (str.to.re "n") (str.to.re "p") (str.to.re "s") (str.to.re "S"))) (str.to.re "\x0a")))))
+(check-sat)

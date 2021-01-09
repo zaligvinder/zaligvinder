@@ -1,0 +1,10 @@
+(declare-const X String)
+; ^[a-zA-z0-9]+[@]{1}[a-zA-Z]+[.]{1}[a-zA-Z]+$
+(assert (str.in.re X (re.++ (re.+ (re.union (re.range "a" "z") (re.range "A" "z") (re.range "0" "9"))) ((_ re.loop 1 1) (str.to.re "@")) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z"))) ((_ re.loop 1 1) (str.to.re ".")) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z"))) (str.to.re "\x0a"))))
+; ^((.){1,}(\d){1,}(.){0,})$
+(assert (not (str.in.re X (re.++ (str.to.re "\x0a") (re.+ re.allchar) (re.+ (re.range "0" "9")) (re.* re.allchar)))))
+; wjpropqmlpohj\x2flo\d+Host\x3AUser-Agent\x3A
+(assert (str.in.re X (re.++ (str.to.re "wjpropqmlpohj/lo") (re.+ (re.range "0" "9")) (str.to.re "Host:User-Agent:\x0a"))))
+; ^((A[LKZR])|(C[AOT])|(D[EC])|(FL)|(GA)|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EDAINSOT])|(N[EVHJMYCD])|(O[HKR])|(PA)|(RI)|(S[CD])|(T[NX])|(UT)|(V[TA])|(W[AVIY]))$
+(assert (not (str.in.re X (re.++ (re.union (re.++ (str.to.re "A") (re.union (str.to.re "L") (str.to.re "K") (str.to.re "Z") (str.to.re "R"))) (re.++ (str.to.re "C") (re.union (str.to.re "A") (str.to.re "O") (str.to.re "T"))) (re.++ (str.to.re "D") (re.union (str.to.re "E") (str.to.re "C"))) (str.to.re "FL") (str.to.re "GA") (str.to.re "HI") (re.++ (str.to.re "I") (re.union (str.to.re "D") (str.to.re "L") (str.to.re "N") (str.to.re "A"))) (re.++ (str.to.re "K") (re.union (str.to.re "S") (str.to.re "Y"))) (str.to.re "LA") (re.++ (str.to.re "M") (re.union (str.to.re "E") (str.to.re "D") (str.to.re "A") (str.to.re "I") (str.to.re "N") (str.to.re "S") (str.to.re "O") (str.to.re "T"))) (re.++ (str.to.re "N") (re.union (str.to.re "E") (str.to.re "V") (str.to.re "H") (str.to.re "J") (str.to.re "M") (str.to.re "Y") (str.to.re "C") (str.to.re "D"))) (re.++ (str.to.re "O") (re.union (str.to.re "H") (str.to.re "K") (str.to.re "R"))) (str.to.re "PA") (str.to.re "RI") (re.++ (str.to.re "S") (re.union (str.to.re "C") (str.to.re "D"))) (re.++ (str.to.re "T") (re.union (str.to.re "N") (str.to.re "X"))) (str.to.re "UT") (re.++ (str.to.re "V") (re.union (str.to.re "T") (str.to.re "A"))) (re.++ (str.to.re "W") (re.union (str.to.re "A") (str.to.re "V") (str.to.re "I") (str.to.re "Y")))) (str.to.re "\x0a")))))
+(check-sat)

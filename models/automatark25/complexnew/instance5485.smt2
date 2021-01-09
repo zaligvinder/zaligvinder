@@ -1,0 +1,10 @@
+(declare-const X String)
+; ^(((\+{1})|(0{2}))98|(0{1}))9[1-9]{1}\d{8}\Z$
+(assert (not (str.in.re X (re.++ (re.union (re.++ (re.union ((_ re.loop 1 1) (str.to.re "+")) ((_ re.loop 2 2) (str.to.re "0"))) (str.to.re "98")) ((_ re.loop 1 1) (str.to.re "0"))) (str.to.re "9") ((_ re.loop 1 1) (re.range "1" "9")) ((_ re.loop 8 8) (re.range "0" "9")) (str.to.re "\x0a")))))
+; [\x80-\xFF]
+(assert (str.in.re X (re.++ (re.range "\x80" "\xff") (str.to.re "\x0a"))))
+; (?i)^((((0[1-9])|([12][0-9])|(3[01])) ((JAN)|(MAR)|(MAY)|(JUL)|(AUG)|(OCT)|(DEC)))|((((0[1-9])|([12][0-9])|(30)) ((APR)|(JUN)|(SEP)|(NOV)))|(((0[1-9])|([12][0-9])) FEB))) \d\d\d\d ((([0-1][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9])$
+(assert (str.in.re X (re.++ (re.union (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (re.union (str.to.re "1") (str.to.re "2")) (re.range "0" "9")) (re.++ (str.to.re "3") (re.union (str.to.re "0") (str.to.re "1")))) (str.to.re " ") (re.union (str.to.re "JAN") (str.to.re "MAR") (str.to.re "MAY") (str.to.re "JUL") (str.to.re "AUG") (str.to.re "OCT") (str.to.re "DEC"))) (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (re.union (str.to.re "1") (str.to.re "2")) (re.range "0" "9")) (str.to.re "30")) (str.to.re " ") (re.union (str.to.re "APR") (str.to.re "JUN") (str.to.re "SEP") (str.to.re "NOV"))) (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (re.union (str.to.re "1") (str.to.re "2")) (re.range "0" "9"))) (str.to.re " FEB"))) (str.to.re " ") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (str.to.re " \x0a") (re.union (re.++ (re.range "0" "1") (re.range "0" "9")) (re.++ (str.to.re "2") (re.range "0" "3"))) (str.to.re ":") (re.range "0" "5") (re.range "0" "9") (str.to.re ":") (re.range "0" "5") (re.range "0" "9"))))
+; /[0-9a-fA-F]{8}[a-z]{6}.php/
+(assert (str.in.re X (re.++ (str.to.re "/") ((_ re.loop 8 8) (re.union (re.range "0" "9") (re.range "a" "f") (re.range "A" "F"))) ((_ re.loop 6 6) (re.range "a" "z")) re.allchar (str.to.re "php/\x0a"))))
+(check-sat)

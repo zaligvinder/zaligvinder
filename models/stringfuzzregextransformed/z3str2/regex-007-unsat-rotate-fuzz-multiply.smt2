@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.to.int x) 18))
+(assert (str.in.re x (re.+ (str.to.re "qq\\\\\\\\66<<TTyy"))))
+(assert (str.in.re x (re.* (str.to.re "aaQQ''\\\\tt''cc"))))
+(check-sat)

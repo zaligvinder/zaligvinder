@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "aabb$$!!PPdd")))
+(assert (= (str.len x) 18))
+(assert (not (= x "ww''{{::iiDDcc~~99^^bbccTTEE;;>>qq))2233bb11bb}}PP{{\\\\\\\\\\\\\\\\==00;;dd")))
+(assert (not (= x "aa{{88oo++ssuuVVbbaaEE$$!!ddCC))ddGG((qq::))..AAUUbbdd11nnoonn44;;")))
+(check-sat)

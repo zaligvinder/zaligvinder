@@ -1,0 +1,4 @@
+Variables {GEAD}
+Terminals {dcfeab}
+Equation: aadbabccceabfffdcbdaadffeGfdeccdddefededcdbeecfabcAfbcbEefcceeaadbadcfacddbffddcadeed = aadbabccceabfffdcbdaadffeGfdeccdddefededcdDdbffddcadeed
+SatGlucose(100)

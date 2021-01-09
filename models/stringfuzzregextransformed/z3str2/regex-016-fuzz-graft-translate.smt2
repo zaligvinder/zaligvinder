@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "{~|szL")))
+(assert (= (str.len x) 9))
+(assert (not (= x "toHVZM;?9K~;&UB#SC23~1~XzHqqqqG0BL")))
+(assert (not (= x "{H8$/Tfg~{U|sL[CLr.SVCk'\x0c'J~L1%$%4B")))
+(check-sat)

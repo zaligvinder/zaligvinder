@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-fun var0 () String)
+(assert (str.in.re var0 (re.++ (re.* (re.* (re.union (re.* (re.* (re.+ (re.+ (str.to.re "00"))))) (re.+ (re.+ (re.union (re.+ (str.to.re "111")) (re.union (str.to.re "22") (str.to.re "33")))))))) (re.union (re.* (re.union (re.union (re.union (re.+ (re.union (str.to.re "444") (str.to.re "55"))) (re.* (re.+ (str.to.re "666")))) (re.+ (re.* (re.union (str.to.re "777") (str.to.re "88"))))) (re.union (re.+ (re.+ (re.+ (str.to.re "9")))) (re.* (re.+ (re.union (str.to.re "aaa") (str.to.re "b"))))))) (re.union (re.+ (re.union (re.+ (re.+ (re.+ (str.to.re "cc")))) (re.* (re.* (re.+ (str.to.re "dd")))))) (re.union (re.+ (re.union (re.union (re.* (str.to.re "eee")) (re.+ (str.to.re "fff"))) (re.union (re.union (str.to.re "gg") (str.to.re "hhh")) (re.union (str.to.re "ii") (str.to.re "j"))))) (re.* (re.union (re.+ (re.* (str.to.re "k"))) (re.+ (re.* (str.to.re "l")))))))))))
+(assert (<= 15 (str.len var0)))
+(check-sat)

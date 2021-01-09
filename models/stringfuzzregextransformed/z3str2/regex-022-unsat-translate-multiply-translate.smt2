@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (re.* (str.to.re "II")) (str.to.re "'\x0b''\x0b'")))))
+(assert (= (str.len x) 4))
+(assert (not (= x "'\x0b''\x0b''\x0b''\x0b'")))
+(assert (not (= x "II'\x0b''\x0b'")))
+(check-sat)

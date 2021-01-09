@@ -1,0 +1,4 @@
+Variables {SJXHKRUGVLMZ}
+Terminals {ab}
+Equation: JaHKKKJaJaHKKKJbaaLLKbSaSSbSSbX = aaHHHaHHaHGHHHHHMLaMLMMMMLaMLMMMbRRRRbUVUVbZZbaa
+SatGlucose(100)

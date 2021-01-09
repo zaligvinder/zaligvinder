@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-fun F () String)
+(declare-fun J () String)
+(assert (= (str.++  "hdcbeciaedcahahgaf" J "ggcgbaaiebfcdi")  (str.++  "hdcbeciaedcahahgafacidagi" F "hgdcafggcgbaaiebfcdi") ))
+(check-sat)
+(get-model)

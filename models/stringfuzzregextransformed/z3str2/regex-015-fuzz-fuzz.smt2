@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "R}9{OW/q`p'\\5?]/ddv'\x0c'r,><12"))))
+(assert (str.in.re y (re.* (re.* (str.to.re "H")))))
+(assert (= (str.len x) 0))
+(assert (= (str.len y) 19))
+(check-sat)

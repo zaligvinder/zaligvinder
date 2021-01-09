@@ -1,0 +1,7 @@
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun var_0xINPUT_185938 () String)
+(assert (= T_1 (not (= "EMy6QEb2YT" var_0xINPUT_185938))))
+(assert (= T_2 (not T_1)))
+(assert T_2)
+(check-sat)

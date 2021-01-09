@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 13 (str.to.int x)))
+(assert (str.in.re x (re.* (re.+ (str.to.re "jil")))))
+(assert (str.in.re x (str.to.re "ce5_E")))
+(check-sat)

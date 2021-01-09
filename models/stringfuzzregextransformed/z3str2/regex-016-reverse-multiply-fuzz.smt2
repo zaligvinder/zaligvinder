@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (str.to.re "yw0AZ2dS5bbLuh&") (str.to.re "221'\r'p""7")))))
+(assert (= 37 (str.len x)))
+(assert (not (= x "dB26faCpe<-YwF'\x0c'M'\x0c'LMQRO|Y$o6'\x0b'5B(?o#'\t'v6bOD8AUR^JbwTta`z80~l|}]CL:uDwNddcOQR`7a8Ez' '}3>/M""6")))
+(assert (not (= x "q8WcBOT%%h2UwH!'1dT&[[(VDYoP}f?jr%uvQnf,(wG8'\n'Y' 'tz\\I:yGv+Yj9s)7~-!K!)c^x,abb")))
+(check-sat)

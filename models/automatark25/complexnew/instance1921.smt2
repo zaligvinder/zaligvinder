@@ -1,0 +1,6 @@
+(declare-const X String)
+; ((X|x):-?(180(\.0+)?|[0-1]?[0-7]?[0-9](\.\d+)?))([ ]|,)*((Y|y):-?(90(\.0+)?|[0-8]?[0-9](\.\d+)?))
+(assert (not (str.in.re X (re.++ (re.* (re.union (str.to.re " ") (str.to.re ","))) (str.to.re "\x0a") (re.union (str.to.re "X") (str.to.re "x")) (str.to.re ":") (re.opt (str.to.re "-")) (re.union (re.++ (str.to.re "180") (re.opt (re.++ (str.to.re ".") (re.+ (str.to.re "0"))))) (re.++ (re.opt (re.range "0" "1")) (re.opt (re.range "0" "7")) (re.range "0" "9") (re.opt (re.++ (str.to.re ".") (re.+ (re.range "0" "9")))))) (re.union (str.to.re "Y") (str.to.re "y")) (str.to.re ":") (re.opt (str.to.re "-")) (re.union (re.++ (str.to.re "90") (re.opt (re.++ (str.to.re ".") (re.+ (str.to.re "0"))))) (re.++ (re.opt (re.range "0" "8")) (re.range "0" "9") (re.opt (re.++ (str.to.re ".") (re.+ (re.range "0" "9"))))))))))
+; /^[a-z][\w\.]+@([\w\-]+\.)+[a-z]{2,7}$/i
+(assert (str.in.re X (re.++ (str.to.re "/") (re.range "a" "z") (re.+ (re.union (str.to.re ".") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "@") (re.+ (re.++ (re.+ (re.union (str.to.re "-") (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "."))) ((_ re.loop 2 7) (re.range "a" "z")) (str.to.re "/i\x0a"))))
+(check-sat)

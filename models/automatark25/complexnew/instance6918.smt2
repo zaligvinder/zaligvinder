@@ -1,0 +1,10 @@
+(declare-const X String)
+; \+44\s\(0\)\s\d{2}\s\d{4}\s\d{4}
+(assert (not (str.in.re X (re.++ (str.to.re "+44") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "(0)") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) ((_ re.loop 2 2) (re.range "0" "9")) (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) ((_ re.loop 4 4) (re.range "0" "9")) (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) ((_ re.loop 4 4) (re.range "0" "9")) (str.to.re "\x0a")))))
+; (\d{1,3}[\.]\d*)[, ]+-?(\d{1,3}[\.]\d*)
+(assert (str.in.re X (re.++ (re.+ (re.union (str.to.re ",") (str.to.re " "))) (re.opt (str.to.re "-")) (str.to.re "\x0a") ((_ re.loop 1 3) (re.range "0" "9")) (str.to.re ".") (re.* (re.range "0" "9")) ((_ re.loop 1 3) (re.range "0" "9")) (str.to.re ".") (re.* (re.range "0" "9")))))
+; ^[1-4]\d{3}\/((0?[1-6]\/((3[0-1])|([1-2][0-9])|(0?[1-9])))|((1[0-2]|(0?[7-9]))\/(30|([1-2][0-9])|(0?[1-9]))))$
+(assert (str.in.re X (re.++ (re.range "1" "4") ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "/") (re.union (re.++ (re.opt (str.to.re "0")) (re.range "1" "6") (str.to.re "/") (re.union (re.++ (str.to.re "3") (re.range "0" "1")) (re.++ (re.range "1" "2") (re.range "0" "9")) (re.++ (re.opt (str.to.re "0")) (re.range "1" "9")))) (re.++ (re.union (re.++ (str.to.re "1") (re.range "0" "2")) (re.++ (re.opt (str.to.re "0")) (re.range "7" "9"))) (str.to.re "/") (re.union (str.to.re "30") (re.++ (re.range "1" "2") (re.range "0" "9")) (re.++ (re.opt (str.to.re "0")) (re.range "1" "9"))))) (str.to.re "\x0a"))))
+; /\.makeMeasurement\s*\x28[^\x3b]+?Array/i
+(assert (not (str.in.re X (re.++ (str.to.re "/.makeMeasurement") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.+ (re.comp (str.to.re ";"))) (str.to.re "Array/i\x0a")))))
+(check-sat)

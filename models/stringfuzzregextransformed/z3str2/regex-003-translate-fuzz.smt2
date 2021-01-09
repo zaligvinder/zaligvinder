@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "CCtCga(]'\x0c'*1z"))
+(assert (str.in.re x (re.* (re.union (str.to.re "Olt@m") (str.to.re "1$")))))
+(check-sat)

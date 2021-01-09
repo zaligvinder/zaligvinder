@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (re.++ (str.to.re "C-'\x0b'xX'\r'Lk0p<'\r'O:N'\t'Kw'\t'#{7^0' 'Pdr\\&2cTH") (str.to.re "w'\x0b'&OoLr")))))
+(assert (= 8 (str.to.int x)))
+(check-sat)

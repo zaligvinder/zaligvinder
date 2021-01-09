@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "'\n'&|5$^Tp""CPJJ'\x0c'tC'\r't"))
+(assert (str.in.re x (re.+ (str.to.re "q`"))))
+(check-sat)

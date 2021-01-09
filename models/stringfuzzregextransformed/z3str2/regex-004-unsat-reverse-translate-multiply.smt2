@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "zz>>FF>>FF}}.."))
+(assert (str.in.re x (re.union (re.* (str.to.re ">>FF}}..")) (re.* (str.to.re "zz>>FF")))))
+(check-sat)

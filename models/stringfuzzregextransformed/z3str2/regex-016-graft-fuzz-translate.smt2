@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "-lK")))
+(assert (= (str.to.int x) 12))
+(assert (not (= x "./t+`#c'\n'123/")))
+(assert (not (= x "EfYAih1'\x0c'#93I'\r'IQ!>|R]./sj1")))
+(check-sat)

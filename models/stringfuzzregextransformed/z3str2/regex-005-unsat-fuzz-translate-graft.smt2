@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "YYYYI5{/GW}G3"))
+(assert (str.in.re x (re.+ (str.to.re "?c&s"))))
+(check-sat)

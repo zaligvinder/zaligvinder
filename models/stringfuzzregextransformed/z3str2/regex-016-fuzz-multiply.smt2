@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (str.to.re "zzggppBB''\\\\tt''NNdd") (str.to.re "11DD")))))
+(assert (= 18 (str.to.int x)))
+(assert (not (= x "PP++ccdd;;22**%%FF//VVVV\\\\\\\\mm33")))
+(assert (not (= x "ttbbcckkRR||""""""""zzuu^^aacc7755ttbbFF__!!''' '' ''',,1111//wwmmBB")))
+(check-sat)

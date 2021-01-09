@@ -1,0 +1,9 @@
+vuln10.sol,sat
+vuln20.sol,sat
+vuln21.sol,sat
+vuln22.sol,sat
+vuln30.sol,sat
+vuln31.sol,sat
+vuln32.sol,sat
+vuln40.sol,sat
+vuln56.sol,sat

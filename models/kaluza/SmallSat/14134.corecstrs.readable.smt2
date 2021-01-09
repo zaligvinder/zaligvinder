@@ -1,0 +1,5 @@
+(declare-fun T_1 () Bool)
+(declare-fun var_0xINPUT_203941 () String)
+(assert (= T_1 (= var_0xINPUT_203941 "https:")))
+(assert T_1)
+(check-sat)

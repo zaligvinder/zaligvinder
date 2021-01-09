@@ -1,0 +1,4 @@
+Variables {DA}
+Terminals {ab}
+Equation: bDbbbabbabbaabababababbabaabbbbaaDDbabbbbbaDDAbbabababbbaabaababaaaaabDbbbababbDababaaaaaabbbabbaabbab = baabbbbabbabbDababababbabaabbbbaaaabaabbabbbbbaDaabbbbbbababaabaababbaDbbDbbbDbabababbbDDabaaaaabaabbbbababbaabababaaaaaabbbabbDbab
+SatGlucose(100)

@@ -1,0 +1,12 @@
+(declare-const X String)
+; ProjectMyWebSearchSearchAssistantfast-look\x2EcomOneReporter
+(assert (not (str.in.re X (str.to.re "ProjectMyWebSearchSearchAssistantfast-look.comOneReporter\x0a"))))
+; /filename=[^\n]*\x2efli/i
+(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".fli/i\x0a"))))
+; Host\x3a[^\n\r]*pgwtjgxwthx\x2fbyb\.xky[^\n\r]*source%3Dultrasearch136%26campaign%3Dsnap
+(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "pgwtjgxwthx/byb.xky") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "source%3Dultrasearch136%26campaign%3Dsnap\x0a")))))
+; ^((((19|20)(([02468][048])|([13579][26])).02.29))|((20[0-9][0-9])|(19[0-9][0-9])).((((0[1-9])|(1[0-2])).((0[1-9])|(1[0-9])|(2[0-8])))|((((0[13578])|(1[02])).31)|(((0[1,3-9])|(1[0-2])).(29|30)))))$
+(assert (str.in.re X (re.++ (re.union (re.++ (re.union (str.to.re "19") (str.to.re "20")) (re.union (re.++ (re.union (str.to.re "0") (str.to.re "2") (str.to.re "4") (str.to.re "6") (str.to.re "8")) (re.union (str.to.re "0") (str.to.re "4") (str.to.re "8"))) (re.++ (re.union (str.to.re "1") (str.to.re "3") (str.to.re "5") (str.to.re "7") (str.to.re "9")) (re.union (str.to.re "2") (str.to.re "6")))) re.allchar (str.to.re "02") re.allchar (str.to.re "29")) (re.++ (re.union (re.++ (str.to.re "20") (re.range "0" "9") (re.range "0" "9")) (re.++ (str.to.re "19") (re.range "0" "9") (re.range "0" "9"))) re.allchar (re.union (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "2"))) re.allchar (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "9")) (re.++ (str.to.re "2") (re.range "0" "8")))) (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "1") (str.to.re "3") (str.to.re "5") (str.to.re "7") (str.to.re "8"))) (re.++ (str.to.re "1") (re.union (str.to.re "0") (str.to.re "2")))) re.allchar (str.to.re "31")) (re.++ (re.union (re.++ (str.to.re "0") (re.union (str.to.re "1") (str.to.re ",") (re.range "3" "9"))) (re.++ (str.to.re "1") (re.range "0" "2"))) re.allchar (re.union (str.to.re "29") (str.to.re "30")))))) (str.to.re "\x0a"))))
+; /\xFF\xFE\x3F\x10\x00\x00.{14}[\x2Bx\x2Fa-z0-9]{20}/smi
+(assert (not (str.in.re X (re.++ (str.to.re "/\xff\xfe?\x10\x00\x00") ((_ re.loop 14 14) re.allchar) ((_ re.loop 20 20) (re.union (str.to.re "+") (str.to.re "x") (str.to.re "/") (re.range "a" "z") (re.range "0" "9"))) (str.to.re "/smi\x0a")))))
+(check-sat)

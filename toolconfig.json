@@ -1,0 +1,49 @@
+{
+    "Binaries" : {
+	"woorpje" : {
+	    "path" : "/home/mku/tools/woorpje/woorpje"
+	},
+	"woorpjeSMT" : {
+	    "path" : "/home/mku/tools/woorpje/woorpjeSMT"
+	},
+	"woorpjeSMTHack" : {
+            "path" : "/home/mku/tools/woorpje/woorpjeStringFuzzSMT"
+        },
+	"woorpje2SMT" : {
+	    "path" : "/home/mku/tools/woorpje/woorpje2SMT"
+	},
+	"Z3str4" : {
+	   "path" : "/home/mku/tools/z3str4/build/z3"
+	},
+	"Z3" : {
+	    "path" : "/home/mku/tools/z3/z3"
+	},
+	"Z3Port" : {
+	    "path" : "/home/mku/tools/z3_fed/z3"
+	},
+	"Z3PortProbe" : {
+	    "path" : "/home/mku/tools/z3_fed_noprobe/z3"
+        },
+	"Z3PortProbe2" : {
+	   "path" : "/home/mku/tools/z3_fed_noprobe2/z3"
+	},
+	"Z3PortProbe3": {
+           "path" : "/home/mku/tools/z3_fed_length_arrange/z3"
+        },
+        "Z3BV" : {
+            "path" : "/home/mku/tools/z3_bv/z3"
+        },
+	"Z3Overlaps": {
+	    "path" : "/home/mku/tools/z3_overlaps/z3"
+	},
+	"cvc4" : {
+	    "path" : "/home/mku/tools/cvc4/cvc4"
+	},
+	"norn" : {
+	    "path" : "/path/to/norn"
+	},
+	"Trau" : {
+	    "path" : "/home/mku/tools/trau/z3"
+	}
+    }
+}

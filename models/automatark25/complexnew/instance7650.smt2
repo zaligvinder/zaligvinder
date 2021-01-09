@@ -1,0 +1,12 @@
+(declare-const X String)
+; /filename=[^\n]*\x2eqcp/i
+(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".qcp/i\x0a"))))
+; ^([-+]?(\d+\.?\d*|\d*\.?\d+)([Ee][-+]?[0-2]?\d{1,2})?)$
+(assert (str.in.re X (re.++ (str.to.re "\x0a") (re.opt (re.union (str.to.re "-") (str.to.re "+"))) (re.union (re.++ (re.+ (re.range "0" "9")) (re.opt (str.to.re ".")) (re.* (re.range "0" "9"))) (re.++ (re.* (re.range "0" "9")) (re.opt (str.to.re ".")) (re.+ (re.range "0" "9")))) (re.opt (re.++ (re.union (str.to.re "E") (str.to.re "e")) (re.opt (re.union (str.to.re "-") (str.to.re "+"))) (re.opt (re.range "0" "2")) ((_ re.loop 1 2) (re.range "0" "9")))))))
+; Strip-Player.*MyAgent.*\x2Fnewsurfer4\x2F
+(assert (str.in.re X (re.++ (str.to.re "Strip-Player\x1b") (re.* re.allchar) (str.to.re "MyAgent") (re.* re.allchar) (str.to.re "/newsurfer4/\x0a"))))
+; ^([a-z-[dfioquwz]]|[A-Z-[DFIOQUWZ]])\d([a-z-[dfioqu]]|[A-Z-[DFIOQU]])(\s)?\d([a-z-[dfioqu]]|[A-Z-[DFIOQU]])\d$
+(assert (not (str.in.re X (re.++ (re.union (re.++ (re.union (re.range "a" "z") (str.to.re "-") (str.to.re "[") (str.to.re "d") (str.to.re "f") (str.to.re "i") (str.to.re "o") (str.to.re "q") (str.to.re "u") (str.to.re "w") (str.to.re "z")) (str.to.re "]")) (re.++ (re.union (re.range "A" "Z") (str.to.re "-") (str.to.re "[") (str.to.re "D") (str.to.re "F") (str.to.re "I") (str.to.re "O") (str.to.re "Q") (str.to.re "U") (str.to.re "W") (str.to.re "Z")) (str.to.re "]"))) (re.range "0" "9") (re.union (re.++ (re.union (re.range "a" "z") (str.to.re "-") (str.to.re "[") (str.to.re "d") (str.to.re "f") (str.to.re "i") (str.to.re "o") (str.to.re "q") (str.to.re "u")) (str.to.re "]")) (re.++ (re.union (re.range "A" "Z") (str.to.re "-") (str.to.re "[") (str.to.re "D") (str.to.re "F") (str.to.re "I") (str.to.re "O") (str.to.re "Q") (str.to.re "U")) (str.to.re "]"))) (re.opt (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.range "0" "9") (re.union (re.++ (re.union (re.range "a" "z") (str.to.re "-") (str.to.re "[") (str.to.re "d") (str.to.re "f") (str.to.re "i") (str.to.re "o") (str.to.re "q") (str.to.re "u")) (str.to.re "]")) (re.++ (re.union (re.range "A" "Z") (str.to.re "-") (str.to.re "[") (str.to.re "D") (str.to.re "F") (str.to.re "I") (str.to.re "O") (str.to.re "Q") (str.to.re "U")) (str.to.re "]"))) (re.range "0" "9") (str.to.re "\x0a")))))
+; Subject\x3Aas\x2Estarware\x2Ecom\x2Fdp\x2Fsearch\?x=
+(assert (str.in.re X (str.to.re "Subject:as.starware.com/dp/search?x=\x0a")))
+(check-sat)

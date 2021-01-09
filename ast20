@@ -1,0 +1,121 @@
+#!/usr/bin/python
+
+from runners.multi import TheRunner as testrunner
+import utils
+import storage
+import voting.majority as voting
+import tools.z3seq
+import tools.z3str3
+import tools.cvc4
+import tools.woorpjeSMT
+import tools.trau
+import tools.woorpje_heuristics
+import tools.dummy
+
+
+#import models.woorpje.track01
+
+import models.woorpje
+import models.kaluza
+import models.PyEx
+import models.pisa
+import models.nornbenchmarks
+import models.stringfuzz
+import models.z3_regression
+import models.appscan
+import models.slothtests
+import models.light
+import models.Leetcode
+import models.cashewsuite
+import models.joacosuite
+import models.strangersuite
+import models.kauslersuite
+
+
+import models.woorpje.track01
+import models.kaluza.kaluzaWoorpje
+
+import startwebserver
+
+
+
+
+
+
+import summarygenerators
+
+woorpjetracks = models.woorpje.getTrackData ("Woorpje Word Equations") +  models.kaluza.kaluzaWoorpje.getTrackData ("Kaluza Woorpje") 
+
+
+
+tracks = (models.PyEx.getTrackData () +
+          models.pisa.getTrackData ("Pisa") +
+          models.nornbenchmarks.getTrackData ("Norn Benchmarks") +
+          models.light.getTrackData("Trau Light")+
+          models.Leetcode.getTrackData ("Leetcode Strings") + 
+          models.appscan.getTrackData ( "IBM Appscan") + 
+          models.slothtests.getTrackData ("Sloth Tests") +
+          models.stringfuzz.getTrackData ("StringFuzz Tests") +
+          woorpjetracks +
+          models.kaluza.getTrackData("Kaluza") +
+          models.z3_regression.getTrackData("z3Str3 Regression Test")+
+          models.cashewsuite.getTrackData ("Cashew Suite") + 
+          models.joacosuite.getTrackData ("JOACO Suite") +
+          models.strangersuite.getTrackData ("Stranger Benchmarks") +
+          models.kauslersuite.getTrackData ("Kausler Suite") +
+          []
+)
+
+
+solvers = {}
+for s in [tools.z3seq,
+          tools.z3str3,
+          tools.cvc4,
+          tools.trau
+]:
+  s.addRunner (solvers)
+
+# woorpje setup
+
+tracks_woorpje = woorpjetracks
+
+smtsolvers = ["cvc4","z3str3","z3seq"]
+solvers_woorpje = {}
+
+#tools.woorpje_heuristics.addRunners ("variableTermRatio",smtsolvers,3.14,solvers)
+
+tools.woorpje_heuristics.addRunners ("variableTermRatio",smtsolvers,3.14,solvers_woorpje)
+#tools.woorpje_heuristics.addRunners ("variableTermRatio",smtsolvers,0.15,solvers_woorpje)
+#tools.woorpje_heuristics.addRunners ("variableTermRatio",smtsolvers,1.12358,solvers_woorpje)
+
+#tools.woorpje_heuristics.addRunners ("waitingListLimit",smtsolvers,314,solvers_woorpje)
+tools.woorpje_heuristics.addRunners ("waitingListLimit",smtsolvers,15,solvers_woorpje)
+#tools.woorpje_heuristics.addRunners ("waitingListLimit",smtsolvers,1123,solvers_woorpje)
+
+#tools.woorpje_heuristics.addRunners ("equationGrowth",smtsolvers,0.15,solvers_woorpje)
+tools.woorpje_heuristics.addRunners ("equationGrowth",smtsolvers,1.075,solvers_woorpje)
+#tools.woorpje_heuristics.addRunners ("equationGrowth",smtsolvers,2.0,solvers_woorpje)
+
+#tools.woorpje_heuristics.addRunners ("equationLength",smtsolvers,2,solvers_woorpje)
+tools.woorpje_heuristics.addRunners ("equationLength",smtsolvers,20,solvers_woorpje)
+#tools.woorpje_heuristics.addRunners ("equationLength",smtsolvers,400,solvers_woorpje)
+
+tools.woorpje_heuristics.addRunners ("none",smtsolvers,5,solvers_woorpje)
+
+timeout = 30 
+ploc = utils.JSONProgramConfig ()
+
+store = storage.SQLiteDB ("AST")
+summaries = [ summarygenerators.terminalResult, store.postTrackUpdate ]
+# generaral run
+#testrunner().runTestSetup (tracks,solvers,voting.MajorityVoter(),summaries,store,timeout,ploc)
+
+# restricted run for woorpjes feature set
+testrunner().runTestSetup (tracks_woorpje,solvers_woorpje,voting.MajorityVoter(),summaries,store,timeout,ploc)
+
+# generaral run
+testrunner().runTestSetup (tracks,solvers,voting.MajorityVoter(),summaries,store,timeout,ploc)
+
+
+startwebserver.Server (store.getDB ()).startServer ()
+

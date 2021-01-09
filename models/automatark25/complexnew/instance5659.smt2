@@ -1,0 +1,6 @@
+(declare-const X String)
+; (((ht|f)tp(s?))\://)?(\bw{3}[^w]\b)?[^w{4}][^\@]([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(/\S*)?
+(assert (not (str.in.re X (re.++ (re.opt (re.++ (str.to.re "://") (re.union (str.to.re "ht") (str.to.re "f")) (str.to.re "tp") (re.opt (str.to.re "s")))) (re.opt (re.++ ((_ re.loop 3 3) (str.to.re "w")) (re.comp (str.to.re "w")))) (re.union (str.to.re "w") (str.to.re "{") (str.to.re "4") (str.to.re "}")) (re.comp (str.to.re "@")) (re.+ (re.++ (re.+ (re.union (re.range "0" "9") (re.range "a" "z") (re.range "A" "Z") (str.to.re "-"))) (str.to.re "."))) ((_ re.loop 2 6) (re.union (re.range "a" "z") (re.range "A" "Z"))) (re.opt (re.++ (str.to.re ":") (re.+ (re.range "0" "9")))) (re.opt (re.++ (str.to.re "/") (re.* (re.comp (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")))))) (str.to.re "\x0a")))))
+; /\x2eppsx([\?\x5c\x2f]|$)/smiU
+(assert (not (str.in.re X (re.++ (str.to.re "/.ppsx") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+(check-sat)

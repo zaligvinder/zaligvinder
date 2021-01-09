@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.to.int x) 24))
+(assert (str.in.re x (re.+ (str.to.re "RRiiFFss"))))
+(assert (str.in.re x (re.* (str.to.re "__//YY##HHDD"))))
+(check-sat)

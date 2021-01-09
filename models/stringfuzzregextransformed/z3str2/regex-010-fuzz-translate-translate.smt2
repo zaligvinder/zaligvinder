@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "LF}}"))))
+(assert (str.in.re x (re.* (str.to.re "LL92s7"))))
+(assert (str.in.re x (re.* (str.to.re "Ld""__<'\x0c'""aN""<P<""aN""<'\x0c'""M""<0H"))))
+(check-sat)

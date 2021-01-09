@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "'\t':d:dat'\t':d"))
+(assert (str.in.re x (re.* (re.union (str.to.re ":dat") (str.to.re "'\t':d")))))
+(check-sat)

@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "eCQUTaBLnOnFMMmFeKWF?e>9_*C"))
+(assert (str.in.re x (re.+ (str.to.re "NC"))))
+(check-sat)

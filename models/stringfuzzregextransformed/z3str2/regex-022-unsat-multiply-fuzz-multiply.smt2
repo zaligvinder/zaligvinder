@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (re.+ (str.to.re "11")) (str.to.re "")))))
+(assert (= (str.len x) 14))
+(assert (not (= x "``EEPP//bb")))
+(assert (not (= x "MM""""""""aabbbb")))
+(check-sat)

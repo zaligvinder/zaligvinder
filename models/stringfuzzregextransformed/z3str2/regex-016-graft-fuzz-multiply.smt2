@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "mmooff")))
+(assert (= (str.to.int x) 24))
+(assert (not (= x "bbcc&&))||rr--vv112233cc")))
+(assert (not (= x "uu[[::aaUUVV11CCrr9933((!!((//{{PP%%MMddbbcc~~ZZ11")))
+(check-sat)

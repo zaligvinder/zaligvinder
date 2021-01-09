@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "cd")))
+(assert (str.in.re x (re.* (str.to.re "KOnv+?~}_Vdbcd"))))
+(assert (> 17 (str.to.int x)))
+(assert (< (str.to.int x) 46))
+(check-sat)

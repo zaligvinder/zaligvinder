@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "f["))))
+(assert (str.in.re x (re.* (str.to.re "f[f["))))
+(assert (str.in.re x (re.* (str.to.re "H[f[f["))))
+(check-sat)

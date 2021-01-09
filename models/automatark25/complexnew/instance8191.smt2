@@ -1,0 +1,10 @@
+(declare-const X String)
+; /appendChild\x28\s*document\x2ecreateElement\x28\s*[\x22\x27]button[\x22\x27].*?outerText\s*=\s*[\x22\x27]{2}/smi
+(assert (str.in.re X (re.++ (str.to.re "/appendChild(") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "document.createElement(") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.union (str.to.re "\x22") (str.to.re "'")) (str.to.re "button") (re.union (str.to.re "\x22") (str.to.re "'")) (re.* re.allchar) (str.to.re "outerText") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "=") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) ((_ re.loop 2 2) (re.union (str.to.re "\x22") (str.to.re "'"))) (str.to.re "/smi\x0a"))))
+; X-Spam-Level:\s[*]{11}
+(assert (str.in.re X (re.++ (str.to.re "X-Spam-Level:") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) ((_ re.loop 11 11) (str.to.re "*")) (str.to.re "\x0a"))))
+; (^13((\ )?\d){4}$)|(^1[38]00((\ )?\d){6}$)|(^(((\(0[23478]\))|(0[23478]))(\ )?)?\d((\ )?\d){7}$)
+(assert (str.in.re X (re.union (re.++ (str.to.re "13") ((_ re.loop 4 4) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))) (re.++ (str.to.re "1") (re.union (str.to.re "3") (str.to.re "8")) (str.to.re "00") ((_ re.loop 6 6) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))) (re.++ (str.to.re "\x0a") (re.opt (re.++ (re.union (re.++ (str.to.re "(0") (re.union (str.to.re "2") (str.to.re "3") (str.to.re "4") (str.to.re "7") (str.to.re "8")) (str.to.re ")")) (re.++ (str.to.re "0") (re.union (str.to.re "2") (str.to.re "3") (str.to.re "4") (str.to.re "7") (str.to.re "8")))) (re.opt (str.to.re " ")))) (re.range "0" "9") ((_ re.loop 7 7) (re.++ (re.opt (str.to.re " ")) (re.range "0" "9")))))))
+; /\x2easx([\?\x5c\x2f]|$)/smiU
+(assert (not (str.in.re X (re.++ (str.to.re "/.asx") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+(check-sat)

@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "ddGG^^99~~cc{{''ww<<cc''nn\\\\\\\\''hhAAhhaaZZCCPP!!$$ddcc"))
+(assert (str.in.re x (re.+ (re.++ (str.to.re "dd}}") (str.to.re "77xx%%UU;;EETT")))))
+(check-sat)

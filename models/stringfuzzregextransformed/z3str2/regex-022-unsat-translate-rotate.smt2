@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (re.* (str.to.re "h")) (str.to.re "D")))))
+(assert (= (str.len x) 2))
+(assert (not (= x "hh")))
+(assert (not (= x "Dh")))
+(check-sat)

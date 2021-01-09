@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "uu}}zzZZ") (str.to.re "112233")))))
+(assert (= 22 (str.len x)))
+(assert (not (= x "uu}}zzZZ112233uu}}zzZZ")))
+(assert (not (= x "uu}}zzZZuu}}zzZZ112233")))
+(check-sat)

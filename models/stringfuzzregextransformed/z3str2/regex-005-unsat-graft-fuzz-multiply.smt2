@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "aa~~%%OOwwHHpp\\\\\\\\]]//22ttaaDD~~}}IIdd||nn@@PPffeeJJ""""""""<<((ww33"))
+(assert (str.in.re x (re.+ (str.to.re "cc@@##TT"))))
+(check-sat)

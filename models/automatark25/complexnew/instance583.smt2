@@ -1,0 +1,8 @@
+(declare-const X String)
+; StarLoggerCookie\x3aHost\x3APRODUCEDwebsearch\.getmirar\.com
+(assert (not (str.in.re X (str.to.re "StarLoggerCookie:Host:PRODUCEDwebsearch.getmirar.com\x0a"))))
+; about\d+yxegtd\x2fefcwgHost\x3ATPSystemwww\x2Ee-finder\x2Ecc
+(assert (str.in.re X (re.++ (str.to.re "about") (re.+ (re.range "0" "9")) (str.to.re "yxegtd/efcwgHost:TPSystemwww.e-finder.cc\x0a"))))
+; ^(http|https|ftp|ftps)\://([a-zA-Z0-9\-]+)(\.[a-zA-Z0-9\-]+)*(\.[a-zA-Z]{2,3})(:[0-9]*)?(/[a-zA-Z0-9_\-]*)*(\.?[a-zA-Z0-9#]{1,10})?([\?][a-zA-Z0-9\-\._\,\'\+&%\$#\=~]*)?$
+(assert (not (str.in.re X (re.++ (re.union (str.to.re "http") (str.to.re "https") (str.to.re "ftp") (str.to.re "ftps")) (str.to.re "://") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re "-"))) (re.* (re.++ (str.to.re ".") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re "-"))))) (re.opt (re.++ (str.to.re ":") (re.* (re.range "0" "9")))) (re.* (re.++ (str.to.re "/") (re.* (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re "_") (str.to.re "-"))))) (re.opt (re.++ (re.opt (str.to.re ".")) ((_ re.loop 1 10) (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re "#"))))) (re.opt (re.++ (str.to.re "?") (re.* (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to.re "-") (str.to.re ".") (str.to.re "_") (str.to.re ",") (str.to.re "'") (str.to.re "+") (str.to.re "&") (str.to.re "%") (str.to.re "$") (str.to.re "#") (str.to.re "=") (str.to.re "~"))))) (str.to.re "\x0a.") ((_ re.loop 2 3) (re.union (re.range "a" "z") (re.range "A" "Z")))))))
+(check-sat)

@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.len x) 64))
+(assert (str.in.re x (re.* (str.to.re "cccccccceeeeeeeedddddddd"))))
+(assert (str.in.re x (re.* (str.to.re "aaaaaaaabbbbbbbbccccccccdddddddd"))))
+(check-sat)

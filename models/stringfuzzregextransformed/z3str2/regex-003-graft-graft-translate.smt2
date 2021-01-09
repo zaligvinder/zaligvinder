@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "W\\md$W\\W\\m"))
+(assert (str.in.re x (str.to.re "d$W\\")))
+(check-sat)

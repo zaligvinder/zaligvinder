@@ -1,0 +1,4 @@
+Variables {IDA}
+Terminals {dcgfeab}
+Equation: dbebgddbecfcbbAadeeaecAgebegeecafegebdbagddaadbddcaeeebfabfefabfacdgAgaabgegagf = dbebgddbeAfcbbAaIegeeAaDegagf
+SatGlucose(100)

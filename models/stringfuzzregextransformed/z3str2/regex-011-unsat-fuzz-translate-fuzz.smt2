@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "{lk%c2D>P)+(lkW}5>=$RX#,ABc}j^L@"))))
+(assert (str.in.re y (re.+ (str.to.re "'\\ii_MAw6o_0bAc/[8HxCxUlI6A&'\x0b'R.#\\(Wb1\\\\Wu-GTVJ|"))))
+(assert (= (str.to.int x) 11))
+(check-sat)

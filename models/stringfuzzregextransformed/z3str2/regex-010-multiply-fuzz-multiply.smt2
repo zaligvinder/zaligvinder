@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re "ooaannaa||**ddeeoo"))))
+(assert (str.in.re x (re.* (str.to.re "''\\\\nn''ooVV''\\\\xx00bb''WWWWnnllffZZRRPP))''aa~~ssppii[[''\\\\xx00cc''``bb"))))
+(assert (str.in.re x (re.* (str.to.re "zzqq))''\\\\nn''aaCC>>bbbb;;LL''\\\\xx00cc''ddHHbbbbaaaa%%GG"))))
+(check-sat)

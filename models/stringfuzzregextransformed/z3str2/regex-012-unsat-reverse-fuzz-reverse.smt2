@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "a%/O'' ''c") (str.to.re ";F@3")))))
+(assert (= 10 (str.len x)))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "os(w^^"))))
+(assert (str.in.re x (re.* (str.to.re "o' ']iW'\t'yF0s'\t'f' 'qiMER' 'S,j'\t''\x0c'4lJ<=JS""bFYx'\t'yF0|'\t'6c!k'yy0&fvq~X""!8RNR;H0f?T?mw2;g!eMq~KK$0;q=ouFsAfMkZM'\r'Th' '>GI~>'\t'yh'\t''\t'yk'\t'YZh,O'\r'ZFL0@&"))))
+(assert (> (str.to.int x) 38))
+(assert (< (str.to.int x) 2))
+(check-sat)

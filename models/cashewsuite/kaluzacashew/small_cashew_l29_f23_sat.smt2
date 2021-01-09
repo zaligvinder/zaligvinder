@@ -1,0 +1,21 @@
+(set-logic QF_S)
+(set-option :produce-models true)
+
+(declare-fun v6 () String)
+(declare-fun v0 () String)
+(declare-fun v1 () String)
+(declare-fun v2 () String)
+(declare-fun v3 () String)
+(declare-fun v4 () String)
+(declare-fun v5 () String)
+
+(assert (= (str.len v0) 0))
+(assert (not (= (str.len v1) 0)))
+(assert (= v2 (str.++ v3 v4)))
+(assert (= v3 (str.++ v5 v6)))
+(assert (= v1 (str.++ v0 v2)))
+(assert (= v6 (str.++ "A" (str.++ "B" (str.++ "C" (str.++ "D" "E"))))))
+(assert (not (str.in.re v5 (re.++ (str.to.re "A") (re.++ (str.to.re "B") (re.++ (str.to.re "C") (re.++ (str.to.re "D") (str.to.re "E"))))))))
+
+(check-sat)
+(get-model)

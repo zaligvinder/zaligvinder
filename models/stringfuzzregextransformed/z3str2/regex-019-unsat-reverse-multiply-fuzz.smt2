@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re ")t."))))
+(assert (= 10 (str.len x)))
+(assert (not (= x "MEV}~.'\n'W_Q..:qtQ3oQf.")))
+(check-sat)

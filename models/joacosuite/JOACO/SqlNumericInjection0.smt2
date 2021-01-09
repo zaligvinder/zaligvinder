@@ -1,0 +1,23 @@
+(set-logic QF_S)
+(set-option :produce-models true)
+
+(declare-fun var10 () String)
+(declare-fun var9 () String)
+(declare-fun var13 () String)
+(declare-fun var14 () String)
+(declare-fun var15 () String)
+(declare-fun var16 () String)
+(declare-fun var18 () String)
+(declare-fun sv7 () Int)
+(declare-fun sv8 () Int)
+
+(assert (= true (>= sv7 sv8 ) ))
+(assert (= true (str.in.re var16 (re.++ (re.++ (re.++  (re.++ (re.+ (re.range "0" "9") ) (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.+  (str.to.re " ") ))))) (str.to.re (int.to.str sv7 )) )  (re.++ (re.+  (str.to.re " ") ) (re.++  (str.to.re "\x3e") (re.++  (str.to.re "=") (re.+  (str.to.re " ") )))) ) (str.to.re (int.to.str sv8 )) ) ) ))
+(assert (= true (not (= "" var10 )) ))
+(assert (= true (= var14  var13 ) ))
+(assert (= true (= (str.++ var15 var16 ) var14 ) ))
+(assert (= true (= "SELECT \x2a FROM weather_data WHERE station =" var15 ) ))
+(assert (= true (not (= "" var18 )) ))
+
+(check-sat)
+(get-model)

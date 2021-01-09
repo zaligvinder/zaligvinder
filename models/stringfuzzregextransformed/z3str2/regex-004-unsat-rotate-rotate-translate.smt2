@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "$Xi/i/]"))
+(assert (str.in.re x (re.union (str.to.re "i/]") (re.* (re.* (str.to.re "$Xi/"))))))
+(check-sat)

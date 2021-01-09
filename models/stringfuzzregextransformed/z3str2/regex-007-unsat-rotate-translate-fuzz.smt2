@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.to.int x) 5))
+(assert (str.in.re x (re.* (str.to.re "z|bNiCn_TTL_'\r'D!!t'*/B5?h.}"))))
+(assert (str.in.re x (re.+ (str.to.re "\\5'\r''\x0b'Zi<Mz7ZNL&'"))))
+(check-sat)

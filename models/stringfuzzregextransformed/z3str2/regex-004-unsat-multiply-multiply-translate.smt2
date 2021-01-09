@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "ZZZZkkkk)))){{{{)))){{{{dddd"))
+(assert (str.in.re x (re.union (re.* (str.to.re "ZZZZkkkk)))){{{{")) (re.* (str.to.re ")))){{{{dddd")))))
+(check-sat)

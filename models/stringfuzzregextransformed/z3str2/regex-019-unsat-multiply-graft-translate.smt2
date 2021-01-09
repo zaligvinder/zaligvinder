@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "AA")))
+(assert (= (str.len x) 10))
+(assert (not (= x "AAAAAAAAAA")))
+(check-sat)

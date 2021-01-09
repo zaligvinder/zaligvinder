@@ -1,0 +1,6 @@
+(declare-const X String)
+; [0-9]{2}-?[DF][A-Z]{2}-?[0-9]{1}|[DF][A-Z]{1}-?[0-9]{3}-?[A-Z]{1}|[DF]-?[0-9]{3}-?[A-Z]{2}|[DF][A-Z]{2}-?[0-9]{2}-?[A-Z]{1}$
+(assert (not (str.in.re X (re.union (re.++ ((_ re.loop 2 2) (re.range "0" "9")) (re.opt (str.to.re "-")) (re.union (str.to.re "D") (str.to.re "F")) ((_ re.loop 2 2) (re.range "A" "Z")) (re.opt (str.to.re "-")) ((_ re.loop 1 1) (re.range "0" "9"))) (re.++ (re.union (str.to.re "D") (str.to.re "F")) ((_ re.loop 1 1) (re.range "A" "Z")) (re.opt (str.to.re "-")) ((_ re.loop 3 3) (re.range "0" "9")) (re.opt (str.to.re "-")) ((_ re.loop 1 1) (re.range "A" "Z"))) (re.++ (re.union (str.to.re "D") (str.to.re "F")) (re.opt (str.to.re "-")) ((_ re.loop 3 3) (re.range "0" "9")) (re.opt (str.to.re "-")) ((_ re.loop 2 2) (re.range "A" "Z"))) (re.++ (re.union (str.to.re "D") (str.to.re "F")) ((_ re.loop 2 2) (re.range "A" "Z")) (re.opt (str.to.re "-")) ((_ re.loop 2 2) (re.range "0" "9")) (re.opt (str.to.re "-")) ((_ re.loop 1 1) (re.range "A" "Z")) (str.to.re "\x0a"))))))
+; ^((\b[A-Z0-9](\w)*\b)|\s)*$
+(assert (str.in.re X (re.++ (re.* (re.union (re.++ (re.union (re.range "A" "Z") (re.range "0" "9")) (re.* (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_")))) (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x0a"))))
+(check-sat)

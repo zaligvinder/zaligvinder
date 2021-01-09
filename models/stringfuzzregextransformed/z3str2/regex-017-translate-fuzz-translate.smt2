@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.++ (str.to.re "'$AI2_'\n'.") (re.++ (str.to.re "~-0'\x0b'd,c0V") (str.to.re "$GS$g2"))))))
+(assert (= 6 (str.to.int x)))
+(check-sat)

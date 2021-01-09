@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "[[aa"))))
+(assert (str.in.re x (re.* (str.to.re "[[aa[[aa"))))
+(assert (str.in.re x (re.* (str.to.re "]]aa[[aa[[aa"))))
+(assert (> (str.len x) 2))
+(check-sat)

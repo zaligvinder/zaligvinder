@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "SSSS%'\n'GSS^0vG$SSSS%SSSS%'\n'"))
+(assert (str.in.re x (re.* (str.to.re "SSSS%'\n'"))))
+(check-sat)

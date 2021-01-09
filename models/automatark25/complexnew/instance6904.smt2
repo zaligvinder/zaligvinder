@@ -1,0 +1,12 @@
+(declare-const X String)
+; /\/[a-zA-Z_-]+\.ee$/U
+(assert (str.in.re X (re.++ (str.to.re "//") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (str.to.re "_") (str.to.re "-"))) (str.to.re ".ee/U\x0a"))))
+; /\/SUS\d+O\d+\.jsp\?[a-z0-9=\x2b\x2f]{20}/iU
+(assert (not (str.in.re X (re.++ (str.to.re "//SUS") (re.+ (re.range "0" "9")) (str.to.re "O") (re.+ (re.range "0" "9")) (str.to.re ".jsp?") ((_ re.loop 20 20) (re.union (re.range "a" "z") (re.range "0" "9") (str.to.re "=") (str.to.re "+") (str.to.re "/"))) (str.to.re "/iU\x0a")))))
+; /^[oz]/Ri
+(assert (str.in.re X (re.++ (str.to.re "/") (re.union (str.to.re "o") (str.to.re "z")) (str.to.re "/Ri\x0a"))))
+; ^[^']*?\<\s*Assembly\s*:\s*AssemblyVersion\s*\(\s*"(\*|[0-9]+.\*|[0-9]+.[0-9]+.\*|[0-9]+.[0-9]+.[0-9]+.\*|[0-9]+.[0-9]+.[0-9]+.[0-9]+)"\s*\)\s*\>.*$
+(assert (str.in.re X (re.++ (re.* (re.comp (str.to.re "'"))) (str.to.re "<") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Assembly") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ":") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "AssemblyVersion") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x22") (re.union (str.to.re "*") (re.++ (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")))) (str.to.re "\x22") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ")") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ">") (re.* re.allchar) (str.to.re "\x0a"))))
+; /gate\x2ephp\x3freg=[a-z]{10}/U
+(assert (not (str.in.re X (re.++ (str.to.re "/gate.php?reg=") ((_ re.loop 10 10) (re.range "a" "z")) (str.to.re "/U\x0a")))))
+(check-sat)

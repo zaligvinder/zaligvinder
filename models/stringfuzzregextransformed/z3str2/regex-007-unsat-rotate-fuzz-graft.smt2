@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= 9 (str.to.int x)))
+(assert (str.in.re x (str.to.re "q\\\\6<Ty")))
+(assert (str.in.re x (re.* (str.to.re "aQ'\\t'c"))))
+(check-sat)

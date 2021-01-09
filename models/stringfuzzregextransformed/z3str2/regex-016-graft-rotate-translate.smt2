@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "123")))
+(assert (= (str.len x) 11))
+(assert (not (= x "n'\x0c'[P123n'\x0c'[P")))
+(assert (not (= x "n'\x0c'[Pn'\x0c'[P123")))
+(check-sat)

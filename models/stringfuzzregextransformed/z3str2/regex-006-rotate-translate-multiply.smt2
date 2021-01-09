@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "ff''\\\\xx00cc''{{ff''\\\\xx00cc''{{"))
+(assert (str.in.re x (re.* (re.* (str.to.re "ff''\\\\xx00cc''{{")))))
+(check-sat)

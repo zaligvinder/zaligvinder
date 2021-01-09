@@ -1,0 +1,5 @@
+(declare-fun T_1 () Bool)
+(declare-fun var_0xINPUT_104572 () String)
+(assert (= T_1 (= "dPjURQ30tB" var_0xINPUT_104572)))
+(assert T_1)
+(check-sat)

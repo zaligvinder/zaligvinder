@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.+ (str.to.re """/1u"))))
+(assert (= 7 (str.len x)))
+(assert (not (= x "CL'\x0c'4'\x0c'<.R""w*W;?d""(\\Ln<P'\t'Kt'\x0b''\x0b'X+6Ns5bGCtkdHLEjU""""'\r'TCC'\x0c'by'\t'M""""""""""""BgZ@q'qG|YVr:")))
+(check-sat)

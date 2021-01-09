@@ -1,0 +1,8 @@
+;  depth   = 3
+;  nconst  = 6
+;  assertions = 5
+;  timeout = 2500
+;  time    = {'smt_solvers/QF_S/cvc4/': 0.9528112411499023, 'smt_solvers/QF_S/z3str3/': 0.1493673324584961, 'smt_solvers/QF_S/z3seq/': 0.11876344680786133, 'smt_solvers/QF_S/z3str3fed/': 0.10707259178161621}
+;  score   = 0.8034439086914062
+;  stdout  = {'smt_solvers/QF_S/cvc4/': 'unsat', 'smt_solvers/QF_S/z3str3/': 'unsat', 'smt_solvers/QF_S/z3seq/': 'unsat', 'smt_solvers/QF_S/z3str3fed/': 'unsat'}
+(set-logic QF_S)(declare-fun var0 () String)(declare-fun var1 () String)(declare-fun var2 () String)(declare-fun var3 () String)(declare-fun var4 () String)(declare-fun var5 () String)(declare-fun var6 () Int)(declare-fun var7 () Int)(declare-fun var8 () Int)(declare-fun var9 () Int)(declare-fun var10 () Int)(declare-fun var11 () Int)(declare-fun var12 () Bool)(declare-fun var13 () Bool)(declare-fun var14 () Bool)(declare-fun var15 () Bool)(declare-fun var16 () Bool)(declare-fun var17 () Bool)(assert (> var9 var11))(assert (str.suffixof (str.replace var5 var1 "Y|.x?ct2((") (str.substr var5 var11 var7)))(assert (< (str.indexof (str.substr var0 var10 var6) (str.replace var1 var2 var2) (str.len var2)) (str.indexof (str.replace var5 var4 var0) (str.replace var2 var3 "zbQrF8Tfbd") (str.indexof var1 var4 var8))))(assert (<= (str.indexof var1 var2 var6) (str.len (str.at "Hn$4(\\&iS$" var10))))(assert (< (str.len (str.at var5 var7)) (str.indexof (str.replace var4 var1 var5) (str.replace var4 var5 var1) (str.len var5))))(check-sat)

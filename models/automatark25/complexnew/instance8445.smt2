@@ -1,0 +1,10 @@
+(declare-const X String)
+; Host\x3A\dKeylogger.*Onetrustyfiles\x2Ecom
+(assert (str.in.re X (re.++ (str.to.re "Host:") (re.range "0" "9") (str.to.re "Keylogger") (re.* re.allchar) (str.to.re "Onetrustyfiles.com\x0a"))))
+; /filename=[a-z]+\.jat/
+(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.+ (re.range "a" "z")) (str.to.re ".jat/\x0a")))))
+; ^\d{0,2}(\.\d{1,4})? *%?$
+(assert (not (str.in.re X (re.++ ((_ re.loop 0 2) (re.range "0" "9")) (re.opt (re.++ (str.to.re ".") ((_ re.loop 1 4) (re.range "0" "9")))) (re.* (str.to.re " ")) (re.opt (str.to.re "%")) (str.to.re "\x0a")))))
+; /\x2esetTimeOut\s*\x28\s*[\x22\x27][^\x28]+?\x2ecloseDoc\s*\x28[^\x29]*?\x29[^\x28]+?\x2eopenDoc\s*\x28[^\x29]*?\x29[^\x29]*?[\x22\x27]\s*,\s*[^\x29]*?\x29/i
+(assert (not (str.in.re X (re.++ (str.to.re "/.setTimeOut") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.union (str.to.re "\x22") (str.to.re "'")) (re.+ (re.comp (str.to.re "("))) (str.to.re ".closeDoc") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.* (re.comp (str.to.re ")"))) (str.to.re ")") (re.+ (re.comp (str.to.re "("))) (str.to.re ".openDoc") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.* (re.comp (str.to.re ")"))) (str.to.re ")") (re.* (re.comp (str.to.re ")"))) (re.union (str.to.re "\x22") (str.to.re "'")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ",") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.* (re.comp (str.to.re ")"))) (str.to.re ")/i\x0a")))))
+(check-sat)

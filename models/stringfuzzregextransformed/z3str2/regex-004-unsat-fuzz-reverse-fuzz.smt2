@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x "c['\n'eg8Zb$:+270"))
+(assert (str.in.re x (re.++ (re.+ (str.to.re "c:XlLZ6@Ug[w^-TB")) (re.+ (str.to.re "R7")))))
+(check-sat)

@@ -1,0 +1,4 @@
+Variables {DGAJ}
+Terminals {dcfeab}
+Equation: aecaDacdffebcdcbdddfabcecfaacaeebabcaDdeAafcaddfbcaecbbcfeadddacdbceca = aecaDacdffeJacaeebabcaDdefdbdaeeafeGddfbcaecbbcfeadddacdbceca
+SatGlucose(100)

@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= (str.len x) 20))
+(assert (str.in.re x (re.* (str.to.re "xKN7""=*edd"))))
+(assert (str.in.re x (re.* (str.to.re "bbc'\x0b'-v^f'b'\n'"))))
+(check-sat)

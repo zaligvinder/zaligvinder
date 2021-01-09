@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const x String)
+(assert (= x """d|#[tdfi]o"))
+(assert (str.in.re x (re.++ (re.+ (str.to.re "'\r'Nd")) (re.+ (str.to.re ".Vy,")))))
+(check-sat)

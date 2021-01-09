@@ -1,0 +1,10 @@
+(declare-const X String)
+; ^[^']*?\<\s*Assembly\s*:\s*AssemblyVersion\s*\(\s*"(\*|[0-9]+.\*|[0-9]+.[0-9]+.\*|[0-9]+.[0-9]+.[0-9]+.\*|[0-9]+.[0-9]+.[0-9]+.[0-9]+)"\s*\)\s*\>.*$
+(assert (str.in.re X (re.++ (re.* (re.comp (str.to.re "'"))) (str.to.re "<") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Assembly") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ":") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "AssemblyVersion") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "(") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x22") (re.union (str.to.re "*") (re.++ (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (str.to.re "*")) (re.++ (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")) re.allchar (re.+ (re.range "0" "9")))) (str.to.re "\x22") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ")") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ">") (re.* re.allchar) (str.to.re "\x0a"))))
+; linkautomatici\x2EcomAID\x2FYourUser-Agent\x3AtoBasicwww\x2Ewebcruiser\x2Ecc
+(assert (str.in.re X (str.to.re "linkautomatici.comAID/YourUser-Agent:toBasicwww.webcruiser.cc\x0a")))
+; \x28robert\x40blackcastlesoft\x2Ecom\x29
+(assert (not (str.in.re X (str.to.re "(robert@blackcastlesoft.com)\x0a"))))
+; Serverulmxct\x2fmqoycWinSession\x2Fclient\x2F\x2APORT1\x2A
+(assert (str.in.re X (str.to.re "Serverulmxct/mqoycWinSession/client/*PORT1*\x0a")))
+(check-sat)

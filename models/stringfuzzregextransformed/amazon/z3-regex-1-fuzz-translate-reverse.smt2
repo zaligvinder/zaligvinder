@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-const S String)
+(assert (not (str.in.re S (re.++ re.allchar (str.to.re ":.HT!:E[]")))))
+(assert (str.in.re S (re.++ re.allchar (re.union (re.union (str.to.re "|EL") re.allchar) (str.to.re "a:t")))))
+(check-sat)

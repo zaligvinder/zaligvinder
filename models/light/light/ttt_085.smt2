@@ -1,0 +1,8 @@
+(declare-fun g () String)
+(declare-fun a () String)
+(declare-fun d () String)
+(assert (= (str.++ "g" (str.++ g "e")) (str.++ "g" (str.++ "d" "g"))))
+(assert (= (str.++ "e" (str.++ g d)) (str.++ d (str.++ "g" "b"))))
+(assert (= (str.++ a (str.++ "b" "a")) (str.++ "c" (str.++ "d" "g"))))
+(check-sat)
+(get-model)

@@ -1,0 +1,4 @@
+(declare-const X String)
+; ^(([^,\n]+),([^,\n]+),([^@]+)@([^\.]+)\.([^,\n]+)\n)+([^,\n]+),([^,\n]+),([^@]+)@([^\.]+)\.([^,\n]+)\n?$
+(assert (str.in.re X (re.++ (re.+ (re.++ (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (str.to.re ",") (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (str.to.re ",") (re.+ (re.comp (str.to.re "@"))) (str.to.re "@") (re.+ (re.comp (str.to.re "."))) (str.to.re ".") (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (str.to.re "\x0a"))) (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (str.to.re ",") (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (str.to.re ",") (re.+ (re.comp (str.to.re "@"))) (str.to.re "@") (re.+ (re.comp (str.to.re "."))) (str.to.re ".") (re.+ (re.union (str.to.re ",") (str.to.re "\x0a"))) (re.opt (str.to.re "\x0a")) (str.to.re "\x0a"))))
+(check-sat)

@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (re.union (str.to.re "gg''\\\\tt''ZZ??") (str.to.re "332211")))))
+(assert (= 22 (str.len x)))
+(assert (not (= x "gg''\\\\tt''ZZ??332211gg''\\\\tt''ZZ??")))
+(assert (not (= x "332211gg''\\\\tt''ZZ??gg''\\\\tt''ZZ??")))
+(check-sat)

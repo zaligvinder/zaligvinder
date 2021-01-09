@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (str.to.re "WiN9?dX99""A3;n")))
+(assert (= (str.len x) 3))
+(check-sat)

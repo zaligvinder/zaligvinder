@@ -1,0 +1,8 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in.re x (re.* (str.to.re "/^LS+'eU2Rh'\r'g'"))))
+(assert (str.in.re x (str.to.re "/'YZIa&'\t'pMX*>%''")))
+(assert (> 13 (str.len x)))
+(assert (< (str.len x) 16))
+(check-sat)

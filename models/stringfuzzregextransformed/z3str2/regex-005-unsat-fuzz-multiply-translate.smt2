@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-const x String)
+(declare-const y String)
+(assert (= x "NNNNGGJJ[[zzxxNN'\x0b''\x0b''\x0c''\x0c''\x0b''\x0b'--UUUUVV--eeggii--%%eeZZ99$$ddNN"))
+(assert (str.in.re x (re.+ (re.* (str.to.re "..||")))))
+(check-sat)
