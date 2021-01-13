@@ -14,13 +14,15 @@ class Preprocessor:
             raise f"{solverName} not in path!"
         self._parameters = parameters
 
-    def __call__(self,eq,output_file):
+    def __call__(self,eq,output_file,store_instance=False):
         tempd = tempfile.mkdtemp ()
         smtfile = os.path.join (tempd,"out.smt")
         self.prepare_instance(eq,smtfile)
         data = self.runTool(smtfile)
         self.writeFile(data,output_file)
         shutil.rmtree (tempd)
+        if store_instance:
+            self.storeInstance(eq,output_file)
     
     def _translate_smt26_escape_to_smt25(self,text):
         smtLibKeyWords = {"2.6" : ["re.comp","str.from_int", "str.to_int","str.in_re","str.to_re","re.none"],
@@ -71,4 +73,17 @@ class Preprocessor:
         except subprocess.CalledProcessError as e:
             return [f"{s}\n" for s in str(e.output)[2:-1].split("\\n") if not s.startswith("unknown") and not s.startswith("(error") and not s.startswith("(check-sat)") and not s.startswith("(get-model)") and not s.startswith("(set-option")]
         return [f"{s}\n" for s in out.split("\n") if not s.startswith("unknown") and not s.startswith("(error") and not s.startswith("(check-sat)") and not s.startswith("(get-model)") and not s.startswith("(set-option")]
-        
+    
+
+    def storeInstance(self,eq,output_file,prefix="preprocessed"):
+        eq_data = eq.split("/")
+        thisSet = eq_data[-3]
+        thisTrack = eq_data[-2]
+        thisInstance = eq_data[-1]
+        thisModelPath = eq[:-(len(thisSet)+len(thisTrack)+len(thisInstance)+3)]
+        thisPath = thisModelPath+"/"+prefix+"/"+thisSet+"/"+thisTrack
+        try:
+            os.makedirs(thisPath,exist_ok=True)
+        except:
+            pass
+        shutil.copyfile(output_file,thisPath+"/"+thisInstance)
