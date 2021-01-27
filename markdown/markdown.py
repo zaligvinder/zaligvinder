@@ -11,8 +11,9 @@ import ntpath
 
 class MarkdownGenerator:
     base_colours = ["#25333D","#0065AB","#8939AD","#007E7A","#CD3517","#318700","#80746D","#FF9A69","#00D4B8","#85C81A", "#AC75C6","#0F1E82","#A3EDF6","#FFB38F","#49AFD9"]
+    #base_colours = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#f781bf','#999999']
 
-    def __init__(self,result,track,solvers=None,groups=None,timeout=20000):
+    def __init__(self,result,track,solvers=None,groups=None,timeout=21000):
         self._res = result
         self._track  = track
         self._solvers = solvers or self._res.getSolvers ()
@@ -31,6 +32,12 @@ class MarkdownGenerator:
 
         #
         self._calculateSolverColours()
+
+        #
+        self._setTimeout()
+        self._ms = False
+        if self._timeout/1000 > 1:
+            self._ms = True
 
     def _calculateSolverColours(self):
         self._extendColours()
@@ -74,7 +81,7 @@ class MarkdownGenerator:
             _tmp_res = self._res.getResultForSolverGroupNoUnk(solver,g)
             for i,data in enumerate(_tmp_res):
                 if cummulative:
-                    t_time = t_time+data[2].time
+                    t_time = self._addTime(t_time,data[2].time)
                 else:
                     t_time = data[2].time 
                 entries.append ({"x" : i, "instance" : data[1], "time" : data[2].time, "y" : t_time })
@@ -87,7 +94,7 @@ class MarkdownGenerator:
         t_time = 0
         for i,t in enumerate(_tmp_totalData):
             if cummulative:
-                    t_time = t_time+t
+                    t_time = self._addTime(t_time,t)
             else:
                 t_time = t
             self._groupSolverCactusData[solver][self._totalName]+= [{"x" : i, "instance" : "", "time" : t, "y" : t_time }] 
@@ -97,6 +104,17 @@ class MarkdownGenerator:
         for s in self._solvers:
             if self._bestGroup[self._totalName][1] == None or self._bestGroup[self._totalName][1] > self._groupSolverData[s][self._totalName]["par2"]:
                 self._bestGroup[self._totalName] = (s,self._groupSolverData[s][self._totalName]["par2"])
+
+    def _setTimeout(self):
+        to = self._res.getTimeout()
+        if to != None:
+            self._timeout = to
+
+    def _addTime(self,tSum,t):
+        if self._ms:
+            return float(tSum+float(t/1000))
+        else:
+            return tSum+t
 
     def gatherCompleteData(self,cummulative=True):
         for s in self._solvers:
@@ -109,11 +127,13 @@ class MarkdownGenerator:
     def _solverString(self,solver):
         return f'+++<span style="color: {self._solverColour[solver]};font-weight: bold;">{solver}</span>+++'
 
+    def _buildSectionTitle(self,g):
+        return f"== {g}\n"
+
     def _buildGroupTable(self,g):
         output_string = ""
-        output_string += f"== {g}\n"
         output_string += f"|===\n|Tool name |Correctly classified (Time ratio) |Declared satisfiable |Declared unsatisfiable |Declared unknown |Error |Crashes |Timeout |Par2Score |Total instances |Total instances w/o TO | Total time |Total time w/o TO\n"
-        for s in self._solvers:
+        for s in [e[0] for e in sorted({solver : self._groupSolverData[solver][g]["par2"] for solver in self._solvers}.items(), key=lambda x: int(x[1]))]:
             data = self._groupSolverData[s][g]
             output_string += f'|{self._solverString(s)}|{data["classified"]} ({round(data["classified"]/data["time"],2)})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
         output_string += f"|===\n\n"
@@ -124,6 +144,9 @@ class MarkdownGenerator:
 
     def _buildPictureHTML(self,g):
         fileName = g.lower().replace(" ", "")+'.png'
+
+        #fileName = "heu_"+fileName
+
         return f"\n\n[.text-center]\nimage::img/{fileName}[cactus]\n\n"
 
     def _buildHeader(self):
@@ -132,10 +155,13 @@ class MarkdownGenerator:
     def buildMarkDownPage(self):
         self._output.write(self._buildHeader())
         for g in self._groups:
+            self._output.write(self._buildSectionTitle(g))
             self._output.write(self._buildPictureHTML(g))
             self._output.write(self._buildGroupTable(g))
             self._output.write(self._buildBestGroup(g))
 
+
+        self._output.write(self._buildSectionTitle(self._totalName))
         self._output.write(self._buildPictureHTML(self._totalName))
         self._output.write(self._buildGroupTable(self._totalName))
         self._output.write(self._buildBestGroup(self._totalName))
@@ -165,6 +191,9 @@ class MarkdownGenerator:
             # Save it to a temporary buffer.
             buf = BytesIO()
         fileName = g.lower().replace(" ", "")+'.png'
+
+        #fileName = "heu_"+fileName
+
         fig.savefig(f"{path}/img/{fileName}",format="png",dpi=320,prop=fontP,bbox_extra_artists=(lgd,), bbox_inches='tight')
 
     def buildPlots(self,path):

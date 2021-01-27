@@ -5,7 +5,7 @@ class ConfigureTableGeneration:
     def __init__(self,res,track):
         self._res = res
         self._track = track
-        self._techniques = ["LaTeX","Markdown","Cactus"]
+        self._techniques = ["LaTeX - Tables (total)","LaTeX - Tables (benchmark groups)","LaTeX - Cactus Plot (total)","LaTeX - Cactus Plot (benchmark groups)","ASCIIDoctor page"]
     
     def start (self,*args):
         groups = [tup[0] for tup in list(self._track.getAllGroups ())]

@@ -2,14 +2,19 @@ import sys
 import io
 
 class TableGenerator:
-    def __init__(self,result,track,solvers =  None,groups = None):
+    def __init__(self,result,track,solvers,groups,all_instances):
         self._res = result
         self._track  = track
         self._solvers = solvers or self._res.getSolvers ()
+        self._all_instances = all_instances
+
+        #self._solvers = ["Z3str3RE-none","Z3str3RE-li","Z3str3RE-psh","Z3str3RE-ali","Z3str3RE-asi","Z3str3RE-base"]
+
+
         self._groups = groups or [tup[0] for tup in list(self._track.getAllGroups ())]
 
     def _solverNameMap(self,name):
-        solvermapping = dict() # { "cvc4" : "CVC4", "z3str4-overlaps-ds-7" : "Z3hydra-dynamic" , "z3str4-overlaps" : "Z3hydra-static", "z3str3" : "Z3str3", "z3seq" : "Z3Seq"}
+        solvermapping = { "Z3str3RE-base" : "Z3str3RE" , "Z3Trau" : "Z3-Trau", "ostrich" : "OSTRICH", "Z3str3_59e9c87" : "Z3str3", "Z3seq-489" : "Z3Seq"}
         if name in solvermapping:
             return solvermapping[name]
         else:
@@ -18,7 +23,7 @@ class TableGenerator:
     def genTableHeader (self):
             layout = "c |"*(len(self._solvers)+1)
             solverLayout = "".join([ "&"+self._solverNameMap(s)  for s in self._solvers])
-            self._output.write ("\\begin{tabular}{|")
+            self._output.write ("\\resizebox{.95\\textwidth}{!}{\\begin{tabular}{|")
             self._output.write (layout)
             self._output.write ("}\n\\hline\n")
             self._output.write ("" + solverLayout + "\\\\ \n  \\hline\\hline \n")
@@ -36,16 +41,19 @@ class TableGenerator:
             for i in range(0,len(output)):
                 output[i]+= "&"+str(res[key[i]])
 
+            #print(f"'{s}' : {res}")
+
         for l in output:
             self._output.write (l + "\\\\ \n \\hline\n")
             
     def genTableFooter (self):
-        self._output.write ("\\end{tabular}\n\n")
+        self._output.write ("\\end{tabular}}\n\n")
     
     def generateTable (self,output):
-        all = False # True
+        all = self._all_instances
         self._output = output
 
+        self.genLatexDocumentHead()
         if all:
             self.genTableHeader ()
             self.getData ()
@@ -56,6 +64,22 @@ class TableGenerator:
                 self.genTableHeader ()
                 self.getData (all,g)
                 self.genTableFooter ()
+
+        self.genLatexDocumentFoot()        
+        
+    def genLatexDocumentHead(self):
+        self._output.write('''\\documentclass[11pt]{article}
+\\usepackage{color}
+\\usepackage{tikz}
+\\usepackage{pgfplots}
+\\usepgfplotslibrary{fillbetween}
+\\pgfplotsset{compat=1.16}
+\\begin{document}
+''')
+
+    def genLatexDocumentFoot(self):
+        self._output.write('''\\end{document}''')
+
 
 
 if __name__ == "__main__":

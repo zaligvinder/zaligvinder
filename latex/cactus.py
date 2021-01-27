@@ -6,17 +6,21 @@ import random
 
 
 class CactusGenerator:
-    def __init__(self,result,track,solvers =  None,groups = None):
+    def __init__(self,result,track,solvers,groups,all_instances):
         self._res = result
         self._track  = track
         self._solvers = solvers or self._res.getSolvers ()
         self._groups = groups or [tup[0] for tup in list(self._track.getAllGroups ())]
         self._maxPoints = 100
-        self._startPoints = 0 # 13500
+        self._startPoints = 0 #45500 # 13500
+        self._all_instances = all_instances
+
+
+        #self._solvers = ["Z3str3RE-none","Z3str3RE-li","Z3str3RE-psh","Z3str3RE-ali","Z3str3RE-asi","Z3str3RE-base"]
 
 
     def _solverNameMap(self,name):
-        solvermapping = dict() # { "cvc4" : "CVC4", "z3str4-overlaps-ds-7" : "Z3hydra-dynamic" , "z3str4-overlaps" : "Z3hydra-static", "z3str3" : "Z3str3", "z3seq" : "Z3Seq"}
+        solvermapping = { "Z3str3RE-base" : "Z3str3RE" , "Z3Trau" : "Z3-Trau", "ostrich" : "OSTRICH", "Z3str3_59e9c87" : "Z3str3", "Z3seq-489" : "Z3Seq"}
         if name in solvermapping:
             return solvermapping[name]
         else:
@@ -42,6 +46,7 @@ class CactusGenerator:
         it_cols = itertools.cycle(colors)
         solver_colours = dict()
         for s in self._solvers:
+            s = self._solverNameMap(s)
             current_color = next(it_cols)
             solver_colours[s] = """\\definecolor{colour"""+str(s.replace('_','').replace('.',''))+"""}{HTML}{"""+str(current_color[1:])+"""}"""
         return solver_colours
@@ -49,14 +54,14 @@ class CactusGenerator:
     def genTableHeader (self,group):
             #self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]')
         
-            self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xmin=-1000,ylabel=Solved instances,xlabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]')
+            self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]')
         
 
             #[xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]
 
-    def getData (self):
+    def getData (self,all_instances):
         groups = self._groups
-        all_instances = True
+        #all_instances = False #True # True
         cummulative = True #False # sum up the times
         rdata = {}
         woorpjebest = False
@@ -106,6 +111,10 @@ class CactusGenerator:
                                "time" : data[2].time,
                                "y" : s})
             
+
+
+                solv = self._solverNameMap(solv)
+
                 # accumulate points
                 ll = []
                 total_points = len(l)
@@ -135,7 +144,7 @@ class CactusGenerator:
 
                 #output = ('\\addplot[color='+str(colors[solverNo-1])+',mark=x] coordinates {')
                 for (x,y) in ll:
-                    output+="("+str(x)+","+str(y)+")"
+                    output+="("+str(x)+","+str(y/1000)+")"
                 output+= '};\n'
 
                 # collect data to fill between curve and x axis; needs to be placed in the end 
@@ -163,7 +172,22 @@ class CactusGenerator:
     
     def generateTable (self,output):
         self._output = output
-        self.getData ()
+        self.genLatexDocumentHead()
+        self.getData (self._all_instances)
+        self.genLatexDocumentFoot()
+
+    def genLatexDocumentHead(self):
+        self._output.write('''\\documentclass[11pt]{article}
+\\usepackage{color}
+\\usepackage{tikz}
+\\usepackage{pgfplots}
+\\usepgfplotslibrary{fillbetween}
+\\pgfplotsset{compat=1.16}
+\\begin{document}
+''')
+
+    def genLatexDocumentFoot(self):
+        self._output.write('''\\end{document}''')
         
 if __name__ == "__main__":
     import sys

@@ -23,12 +23,16 @@ ui.init (finalui)
 
 print (finalui.groups,finalui.solvers,finalui.loc,finalui.tableStyle)
 
-if finalui.tableStyle == "Markdown":
+if finalui.tableStyle == "ASCIIDoctor page":
 	table = markdown.markdown.MarkdownGenerator (results,track,finalui.solvers,finalui.groups) #markdown.summ_table.TableGenerator (results,track,finalui.solvers,finalui.groups)
-elif finalui.tableStyle == "Cactus":
-	table = latex.cactus.CactusGenerator (results,track,finalui.solvers,finalui.groups)
+elif finalui.tableStyle == "LaTeX - Cactus Plot (total)":
+	table = latex.cactus.CactusGenerator (results,track,finalui.solvers,finalui.groups,True)
+elif finalui.tableStyle == "LaTeX - Cactus Plot (benchmark groups)":
+	table = latex.cactus.CactusGenerator (results,track,finalui.solvers,finalui.groups,False)
+elif finalui.tableStyle == "LaTeX - Tables (total)":
+	table = latex.summ_table_all.TableGenerator (results,track,finalui.solvers,finalui.groups,True)
 else:
-	table = latex.summ_table_all.TableGenerator (results,track,finalui.solvers,finalui.groups)
+	table = latex.summ_table_all.TableGenerator (results,track,finalui.solvers,finalui.groups,False)
 	#table = latex.summ_table_woorpje.TableGenerator (results,track,finalui.solvers,finalui.groups)
 
 # set filename if empty

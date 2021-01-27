@@ -441,7 +441,14 @@ class ResultRepository:
         return keywordDistribution
     ####
 
-
+    def getTimeout(self):
+        query = '''SELECT Result.time FROM Result WHERE Result.timeouted = true ORDER BY Result.time ASC'''
+    
+        rows = self._db.executeRet (query,)
+        if len(rows) > 0:
+            return [(t[0]) for t in rows][0]
+        else: 
+            return None
 
     def getTrackResults (self,trackid):
         query = '''SELECT Result.solver, Result.instanceid, Result.smtcalls, Result.timeouted, Result.result, Result.time FROM Result,Track,TrackInstanceMap WHERE Result.instanceid = TrackInstanceMap.instance AND TrackInstanceMap.track = ? ORDER BY Result.time ASC'''
@@ -621,6 +628,13 @@ class ResultRepository:
         rows = self._db.executeRet (query,(solver,))
         return {t[0] : {"filepath" : t[1]} for t in rows}
 
+
+    # ast 2nd
+    def getVerifiedAndCVC4 (self):
+            query = '''SELECT Instances.result, TrackInstance.* FROM TrackInstance, (SELECT instanceid,result FROM Result WHERE (verified == true and result == true) or (solver == "CVC4" and result == false) GROUP BY instanceid) AS Instances WHERE TrackInstance.id = Instances.instanceid'''# '''
+            rows = self._db.executeRet (query)
+            #print (rows)
+            return {t[1] : {'path' : t[3], 'result' : t[0], 'set' : t[3].split("/")[-3],'track' : t[3].split("/")[-2],'instance' : t[3].split("/")[-1]} for t in rows}
 
     # quick hack...
     def getSummaryForSolverTable(self,solver):
