@@ -9,3 +9,6 @@ class Timer:
 
     def getTime (self):
         return self._l2-self._l1
+
+    def getTime_ms(self):
+        return int(self.getTime() * 1000.0)
