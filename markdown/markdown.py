@@ -176,8 +176,14 @@ class MarkdownGenerator:
         #i = 1 means we're looking at the correctly solved instances
         soundSolvers = set(s for s in self._divisionRankings[g].keys() if self._divisionRankings[g][s][0] == 0)
         totalVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers)
+
+
+        print(g)
+
         for s in soundSolvers:
-           self._largestContribution[g][s] = (1 - (self.virtualBestForGroupSolvers(g,soundSolvers.difference(set({s})))[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s)
+           sVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers.difference(set({s})))
+           self._largestContribution[g][s] = (1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s)
+           print(s,soundSolvers.difference(set({s})),sVirtualBest[i],totalVirtualBest[i],(1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s))
 
     def smtCompTotal(self):
         self._divisionRankings[self._totalName] = {s : (0,0,0.0) for s in self._solvers}
@@ -188,6 +194,7 @@ class MarkdownGenerator:
                 self._divisionRankings[self._totalName][s] = (self._divisionRankings[self._totalName][s][0]+self._divisionRankings[g][s][0],
                                                               self._divisionRankings[self._totalName][s][1]+self._divisionRankings[g][s][1],
                                                               self._divisionRankings[self._totalName][s][2]+self._divisionRankings[g][s][2])
+        self._divisionRankings[self._totalName] = {s: v for s, v in sorted(self._divisionRankings[self._totalName].items(), key=lambda x: (x[1][0],-x[1][1],x[1][2]))}
         self.biggestLeadPerGroup(self._totalName)
         self.largestContribution(self._totalName)
 
