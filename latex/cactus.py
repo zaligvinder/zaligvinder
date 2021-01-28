@@ -52,9 +52,11 @@ class CactusGenerator:
         return solver_colours
         
     def genTableHeader (self,group):
+            if self._all_instances:
+                group = "Total"
             #self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]')
         
-            self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]')
+            self._output.write ('\\resizebox{.95\\textwidth}{!}{\\pgfplotsset{scaled x ticks=false}\\pgfplotsset{scaled y ticks=false}\\begin{tikzpicture}\\begin{axis}[title='+str(group)+',xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]') #,xmin=-1000]')
         
 
             #[xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]
@@ -116,28 +118,31 @@ class CactusGenerator:
                 solv = self._solverNameMap(solv)
 
                 # accumulate points
-                ll = []
-                total_points = len(l)
+                if len(l) < self._maxPoints:
+                    ll = [(i["x"],i["y"]) for i in l]
+                else:
+                    ll = []
+                    total_points = len(l)
 
-                accumulation_count = round((total_points-self._startPoints)/(self._maxPoints-2))
-                i = self._startPoints+1
-                j = 1
-                ll.append((self._startPoints+1,l[self._startPoints]["y"]))
-                while True:
-                    if j*accumulation_count+1 < (total_points-self._startPoints):
-                        x = statistics.mean([value["x"] for value in l[i:self._startPoints+(accumulation_count*j+1)]])
-                        y = statistics.mean([value["y"] for value in l[i:self._startPoints+(accumulation_count*j+1)]])
-                        ll.append((x,y))
-                        i=accumulation_count+i 
-                    else: 
-                        if i < ((total_points-self._startPoints)-1):
-
-                            x = statistics.mean([value["x"] for value in l[i:total_points-1]])
-                            y = statistics.mean([value["y"] for value in l[i:total_points-1]])
+                    accumulation_count = round((total_points-self._startPoints)/(self._maxPoints-2))
+                    i = self._startPoints+1
+                    j = 1
+                    ll.append((self._startPoints+1,l[self._startPoints]["y"]))
+                    while True:
+                        if j*accumulation_count+1 < (total_points-self._startPoints):
+                            x = statistics.mean([value["x"] for value in l[i:self._startPoints+(accumulation_count*j+1)]])
+                            y = statistics.mean([value["y"] for value in l[i:self._startPoints+(accumulation_count*j+1)]])
                             ll.append((x,y))
-                        break
-                    j+=1
-                ll.append((total_points,l[total_points-1]["y"]))
+                            i=accumulation_count+i 
+                        else: 
+                            if i < ((total_points-self._startPoints)-1):
+
+                                x = statistics.mean([value["x"] for value in l[i:total_points-1]])
+                                y = statistics.mean([value["y"] for value in l[i:total_points-1]])
+                                ll.append((x,y))
+                            break
+                        j+=1
+                    ll.append((total_points,l[total_points-1]["y"]))
 
                 # cactus points
                 output = ('\n\\addplot[name path=path'+str(solv.replace('_','').replace('.',''))+' , colour'+str(solv.replace('_','').replace('.',''))+', line width=1.5pt] coordinates {')

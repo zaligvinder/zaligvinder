@@ -39,6 +39,13 @@ class MarkdownGenerator:
         if self._timeout/1000 > 1:
             self._ms = True
 
+        # SMT Comp Score calculation
+        self._divisionRankings = {g : dict() for g in self._groups}
+        self._biggestLead = {g : (None,None) for g in self._groups}
+        self._solverInstanceResults = {s : dict() for s in self._solvers}
+        self._largestContribution = {g : dict() for g in self._groups}
+
+
     def _calculateSolverColours(self):
         self._extendColours()
         it_cols = itertools.cycle(self.base_colours)
@@ -122,6 +129,68 @@ class MarkdownGenerator:
             self._getCactusDataForSolver(s,cummulative)
         self._calculateOverallBest()
 
+        # SMT-Comp data
+        for g in self._groups:
+            self.calculateDivisionRanking(g)
+            self.storeInstanceResultsForGroup(g)
+            self.biggestLeadPerGroup(g)
+            self.largestContribution(g)
+        self.smtCompTotal()
+
+    # SMT Comp Score Calculation
+    def calculateDivisionRanking(self,g):
+        scores = {s : (self._groupSolverData[s][g]["errors"],self._groupSolverData[s][g]["classified"],self._groupSolverData[s][g]["time"])  for s in self._solvers}
+        self._divisionRankings[g] = {s: v for s, v in sorted(scores.items(), key=lambda x: (x[1][0],-x[1][1],x[1][2]))}
+
+    def biggestLeadPerGroup(self,g):
+        ranks = list(self._divisionRankings[g].keys())
+        if len(ranks) > 1:
+            self._biggestLead[g] = (ranks[0],self._divisionRankings[g][ranks[0]][1]/self._divisionRankings[g][ranks[1]][1])
+
+    def storeInstanceResultsForGroup(self,g):
+        for s in self._solvers:
+            self._solverInstanceResults[s][g] = {i[0] : i[1] for i in sorted([r[1:] for r in self._res.getResultForSolverGroup (s,g)], key=lambda x: x[0])}
+
+            # redundant storing, but easier for now
+            if self._totalName not in self._solverInstanceResults[s]:
+                self._solverInstanceResults[s][self._totalName] = self._solverInstanceResults[s][g].copy()
+            else:
+                self._solverInstanceResults[s][self._totalName].update(self._solverInstanceResults[s][g].copy())
+
+    def virtualBestForGroupSolvers(self,g,solvers):
+        virtualBest = dict()
+        # we pass the solvers, 'cause we only want to consider sound solvers
+        for s in solvers:
+            for i in self._solverInstanceResults[s][g].keys():
+                iRes = self._solverInstanceResults[s][g][i]
+                if i not in virtualBest:
+                    virtualBest[i] = iRes
+                elif (virtualBest[i].result == None and iRes.result != None) or (iRes.result != None and iRes.time < virtualBest[i].time):
+                    virtualBest[i] = iRes
+        return (0,sum([1 for r in virtualBest.values() if r.result in [True,False]]),sum([r.time for r in virtualBest.values() if r.result in [True,False]]))
+
+    def _normaliseFactor(self,g,s):
+        return int(self._groupSolverData[s][g]["total"])/len(self._solvers)
+
+    def largestContribution(self,g,i=1):
+        #i = 1 means we're looking at the correctly solved instances
+        soundSolvers = set(s for s in self._divisionRankings[g].keys() if self._divisionRankings[g][s][0] == 0)
+        totalVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers)
+        for s in soundSolvers:
+           self._largestContribution[g][s] = (1 - (self.virtualBestForGroupSolvers(g,soundSolvers.difference(set({s})))[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s)
+
+    def smtCompTotal(self):
+        self._divisionRankings[self._totalName] = {s : (0,0,0.0) for s in self._solvers}
+        self._largestContribution[self._totalName] = dict()
+        for g in self._groups:
+            # division ranks
+            for s in self._divisionRankings[g].keys():
+                self._divisionRankings[self._totalName][s] = (self._divisionRankings[self._totalName][s][0]+self._divisionRankings[g][s][0],
+                                                              self._divisionRankings[self._totalName][s][1]+self._divisionRankings[g][s][1],
+                                                              self._divisionRankings[self._totalName][s][2]+self._divisionRankings[g][s][2])
+        self.biggestLeadPerGroup(self._totalName)
+        self.largestContribution(self._totalName)
+
     #
     # Build Markdown page    
     def _solverString(self,solver):
@@ -130,7 +199,10 @@ class MarkdownGenerator:
     def _buildSectionTitle(self,g):
         return f"== {g}\n"
 
-    def _buildGroupTable(self,g):
+
+    #
+    # par2 sorting
+    def _buildGroupTablePar2(self,g):
         output_string = ""
         output_string += f"|===\n|Tool name |Correctly classified (Time ratio) |Declared satisfiable |Declared unsatisfiable |Declared unknown |Error |Crashes |Timeout |Par2Score |Total instances |Total instances w/o TO | Total time |Total time w/o TO\n"
         for s in [e[0] for e in sorted({solver : self._groupSolverData[solver][g]["par2"] for solver in self._solvers}.items(), key=lambda x: int(x[1]))]:
@@ -139,8 +211,36 @@ class MarkdownGenerator:
         output_string += f"|===\n\n"
         return output_string
 
-    def _buildBestGroup(self,g):
+    def _buildBestGroupPar2(self,g):
         return f"[NOTE]\n====\nBest solver of this run {self._solverString(self._bestGroup[g][0])} got a PAR2 score of {self._bestGroup[g][1]}.\n====\n\n"
+
+    #
+    ## SMT Comp sorting
+    def _buildGroupTable(self,g):
+        output_string = ""
+        output_string += f"|===\n|Tool name |Correctly classified (Contribution) |Declared satisfiable |Declared unsatisfiable |Declared unknown |Error |Crashes |Timeout |Par2Score |Total instances |Total instances w/o TO | Total time |Total time w/o TO\n"
+        for s in self._divisionRankings[g].keys():
+            contribution = "None"
+            if s in self._largestContribution[g]:
+                contribution = round(self._largestContribution[g][s],2)
+            data = self._groupSolverData[s][g]
+            output_string += f'|{self._solverString(s)}|{data["classified"]} ({contribution})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+        output_string += f"|===\n\n"
+        return output_string
+
+    def _buildBestGroup(self,g):
+        largest_con = 'no solver qualified for the largest contribution due to soundness errors.'
+        if len(list(self._largestContribution[g].keys())) > 0:
+            contr = [(s[0],round(s[1],2)) for s in sorted(self._largestContribution[g].items(), key=lambda x : -x[1])]
+            largest_con = f'{self._solverString(contr[0][0])} hat the largest contribution with {contr[0][1]}.'
+
+            if len(contr) > 1:
+                largest_con+=' Other solvers contributed as follows: '
+                for ss in contr[1:]:
+                    largest_con+= f'{self._solverString(ss[0])}: {ss[1]},'
+                largest_con=largest_con[:-1]+"."
+
+        return f"[NOTE]\n====\n{self._solverString(self._biggestLead[g][0])} had the biggest lead with {round(self._biggestLead[g][1],2)} and {largest_con}\n====\n\n"
 
     def _buildPictureHTML(self,g):
         fileName = g.lower().replace(" ", "")+'.png'
@@ -159,8 +259,6 @@ class MarkdownGenerator:
             self._output.write(self._buildPictureHTML(g))
             self._output.write(self._buildGroupTable(g))
             self._output.write(self._buildBestGroup(g))
-
-
         self._output.write(self._buildSectionTitle(self._totalName))
         self._output.write(self._buildPictureHTML(self._totalName))
         self._output.write(self._buildGroupTable(self._totalName))
