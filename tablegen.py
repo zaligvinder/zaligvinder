@@ -4,6 +4,7 @@ import ui
 import latex.summ_table
 import latex.summ_table_woorpje
 import latex.summ_table_all
+import latex.summ_table_all_classic
 import latex.cactus
 import markdown.summ_table
 import markdown.markdown
@@ -31,9 +32,10 @@ elif finalui.tableStyle == "LaTeX - Cactus Plot (benchmark groups)":
 	table = latex.cactus.CactusGenerator (results,track,finalui.solvers,finalui.groups,False)
 elif finalui.tableStyle == "LaTeX - Tables (total)":
 	table = latex.summ_table_all.TableGenerator (results,track,finalui.solvers,finalui.groups,True)
+	#table = latex.summ_table_woorpje.TableGenerator (results,track,finalui.solvers,finalui.groups,True)
 else:
 	table = latex.summ_table_all.TableGenerator (results,track,finalui.solvers,finalui.groups,False)
-	#table = latex.summ_table_woorpje.TableGenerator (results,track,finalui.solvers,finalui.groups)
+	#table = latex.summ_table_woorpje.TableGenerator (results,track,finalui.solvers,finalui.groups,False)
 
 # set filename if empty
 if len(finalui.loc) == 0:

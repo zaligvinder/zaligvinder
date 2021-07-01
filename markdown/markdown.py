@@ -20,13 +20,30 @@ class MarkdownGenerator:
         self._groups = groups or [tup[0] for tup in list(self._track.getAllGroups ())]
         self._solverColour = dict()
         self._timeout = timeout
+
+        # ideal solver
         self._ideal = False
+        self._virtualBestSolver = dict()
+        self._hiddenSolvers = []
+        self._idealName = "virtualBestSolver"
 
         self._totalName = "Total"
+
+
+        # if we don't care about the errors and the following list is not empty it will be used for the smtcomp scores.
+        self._specialSolverList = [] #["Z3str3RE-ali","Z3str3RE-li","Z3str3RE-asi","Z3str3RE-psh","Z3str3RE-none","Z3str3RE-base"] #[]# ['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq']
+
+        if self._ideal:
+            self._hiddenSolvers = [s for s in self._specialSolverList if s not in self._solvers]
+            self._solvers+=self._hiddenSolvers
 
         #
         self._groupSolverData = {s : dict() for s in self._solvers}
         self._groupSolverCactusData = {s : dict() for s in self._solvers}
+
+        if self._ideal:
+            self._groupSolverData[self._idealName] = dict()
+            self._groupSolverCactusData[self._idealName] = dict()
 
         self._bestGroup = {g : (None,None) for g in self._groups}
 
@@ -45,12 +62,23 @@ class MarkdownGenerator:
         self._solverInstanceResults = {s : dict() for s in self._solvers}
         self._largestContribution = {g : dict() for g in self._groups}
 
+        # don't judge errors
+        self._ignoreErrorInstances = True #False
+        self._errorInstances = {g : None for g in self._groups}
+
+        # detailed errors
+        self._calcDetailedErrors = True
+        self._detailedErrors = {s : dict() for s in self._solvers}
+
 
     def _calculateSolverColours(self):
         self._extendColours()
         it_cols = itertools.cycle(self.base_colours)
         for s in self._solvers:
             self._solverColour[s] = next(it_cols)
+
+        if self._ideal:
+            self._solverColour[self._idealName] = next(it_cols)
 
     def _extendColours(self):
         r = lambda: random.randint(0,255)
@@ -68,6 +96,9 @@ class MarkdownGenerator:
         self._groupSolverData[solver][self._totalName] = dict()
         for i,g in enumerate(self._groups):
             solverData[g] = self._res.getSummaryForSolverGroupXP (solver,g)
+            for k in solverData[g].keys():
+                if solverData[g][k] == None:
+                    solverData[g][k] = 0
             solverData[g]["classified"] = solverData[g]["sat"] + solverData[g]["unsat"] - solverData[g]["errors"]
             solverData[g]["par2"] = self._calculatePar2Score(solverData[g]["totalSolvedTime"],solverData[g]["total"]-solverData[g]["classified"],solverData[g]["errors"])
             for k in solverData[g]:
@@ -137,6 +168,15 @@ class MarkdownGenerator:
             self.largestContribution(g)
         self.smtCompTotal()
 
+        # errors
+        if self._calcDetailedErrors:
+            self.calculateDetailedErrors()
+
+        # ideal solver
+        if self._ideal:
+            pass
+
+
     # SMT Comp Score Calculation
     def calculateDivisionRanking(self,g):
         scores = {s : (self._groupSolverData[s][g]["errors"],self._groupSolverData[s][g]["classified"],self._groupSolverData[s][g]["time"])  for s in self._solvers}
@@ -145,11 +185,23 @@ class MarkdownGenerator:
     def biggestLeadPerGroup(self,g):
         ranks = list(self._divisionRankings[g].keys())
         if len(ranks) > 1:
-            self._biggestLead[g] = (ranks[0],self._divisionRankings[g][ranks[0]][1]/self._divisionRankings[g][ranks[1]][1])
+            if self._divisionRankings[g][ranks[1]][1] == 0:
+                self._biggestLead[g] = (ranks[0],0)
+            else:
+                self._biggestLead[g] = (ranks[0],self._divisionRankings[g][ranks[0]][1]/self._divisionRankings[g][ranks[1]][1])
 
     def storeInstanceResultsForGroup(self,g):
         for s in self._solvers:
             self._solverInstanceResults[s][g] = {i[0] : i[1] for i in sorted([r[1:] for r in self._res.getResultForSolverGroup (s,g)], key=lambda x: x[0])}
+
+            if self._ignoreErrorInstances:
+                if self._errorInstances[g] == None:
+                    self._errorInstances[g] = self._res.getErrorsForSolversGroup(self._solvers,g)
+
+                for iid in self._errorInstances[g]:
+                    del self._solverInstanceResults[s][g][iid]
+
+                #self._solverInstanceResults[s][g] = {i[0] : i[1] for i in sorted([r[1:] for r in self._res.getResultForSolverGroupErrorFree (s,g,self._solvers)], key=lambda x: x[0])}
 
             # redundant storing, but easier for now
             if self._totalName not in self._solverInstanceResults[s]:
@@ -157,7 +209,7 @@ class MarkdownGenerator:
             else:
                 self._solverInstanceResults[s][self._totalName].update(self._solverInstanceResults[s][g].copy())
 
-    def virtualBestForGroupSolvers(self,g,solvers):
+    def virtualBestForGroupSolvers(self,g,solvers,dontStore=False): # dontStore is used for the difference run
         virtualBest = dict()
         # we pass the solvers, 'cause we only want to consider sound solvers
         for s in solvers:
@@ -165,25 +217,112 @@ class MarkdownGenerator:
                 iRes = self._solverInstanceResults[s][g][i]
                 if i not in virtualBest:
                     virtualBest[i] = iRes
-                elif (virtualBest[i].result == None and iRes.result != None) or (iRes.result != None and iRes.time < virtualBest[i].time):
+                elif (virtualBest[i].result == None and iRes.result != None) or (iRes.result != None and iRes.time < virtualBest[i].time) or (virtualBest[i].result == None and iRes.result == None and iRes.time < virtualBest[i].time): # last condition prefers unknowns over timeouts
                     virtualBest[i] = iRes
+
+
+        if self._ideal and g not in self._virtualBestSolver and not dontStore:
+            self._virtualBestSolver[g] = virtualBest
+            self._getSummaryDataForIdeal(self._virtualBestSolver,g)
+
+            # all data collected -> build cactus data
+            if len(list(self._virtualBestSolver.keys())) == len(self._groups)+1:
+                self._getCactusDataForIdealSolver()
+
         return (0,sum([1 for r in virtualBest.values() if r.result in [True,False]]),sum([r.time for r in virtualBest.values() if r.result in [True,False]]))
+
+    def _getSummaryDataForIdeal(self,virtualBest,g):
+        solverData = dict()
+        self._groupSolverData[self._idealName][self._totalName] = dict()
+        solverData[g] = {'smtcalls' : 0, 'timeouted' : 0, 'sat' : 0, 'unsat' : 0, 'unknown' : 0, 'verified' : 0, 'errors' : 0, 'crashes' : 0, 'time' : 0, 'timeWO' : 0, 'total' : 0, 'totalWO' : 0, 'totalSolvedTime': 0}
+        for i in virtualBest[g].keys():
+            if virtualBest[g][i].result == True:
+                solverData[g]['sat']+=1
+                solverData[g]['totalWO']+=1
+                solverData[g]['totalSolvedTime']+=virtualBest[g][i].time 
+                solverData[g]['timeWO']+=virtualBest[g][i].time
+            elif virtualBest[g][i].result == False:
+                solverData[g]['unsat']+=1
+                solverData[g]['totalWO']+=1
+                solverData[g]['totalSolvedTime']+=virtualBest[g][i].time
+                solverData[g]['timeWO']+=virtualBest[g][i].time
+            else:
+                if virtualBest[g][i].timeouted == True:
+                    solverData[g]['timeouted']+=1
+                elif virtualBest[g][i].timeouted == False:
+                    solverData[g]['totalWO']+=1
+                    solverData[g]['unknown']+=1
+
+            solverData[g]['time']+=virtualBest[g][i].time
+            solverData[g]['total']+=1
+
+            if virtualBest[g][i].verified == True: 
+                solverData[g]['verified']+=1
+
+        solverData[g]["classified"] = solverData[g]["sat"] + solverData[g]["unsat"] - solverData[g]["errors"]
+        solverData[g]["par2"] = self._calculatePar2Score(solverData[g]["totalSolvedTime"],solverData[g]["total"]-solverData[g]["classified"],solverData[g]["errors"])
+
+        for k in solverData[g]:
+            if k not in self._groupSolverData[self._idealName][self._totalName]:
+                self._groupSolverData[self._idealName][self._totalName][k] = 0
+            self._groupSolverData[self._idealName][self._totalName][k]+=solverData[g][k]
+        self._groupSolverData[self._idealName][g] = solverData[g]
+
+    def _getCactusDataForIdealSolver(self,cummulative=True):
+        _tmp_totalData = []
+        
+        for g in self._groups:
+            entries = []
+            t_time = 0
+            _tmp_res = sorted([(self._idealName,i,iRes) for (i,iRes) in self._virtualBestSolver[g].items() if iRes.result != None] , key=lambda x: x[2].time)
+            for i,data in enumerate(_tmp_res):
+                if cummulative:
+                    t_time = self._addTime(t_time,data[2].time)
+                else:
+                    t_time = data[2].time 
+                entries.append ({"x" : i, "instance" : data[1], "time" : data[2].time, "y" : t_time })
+            _tmp_totalData+=[e["time"] for e in entries]
+            self._groupSolverCactusData[self._idealName][g] = entries
+
+        # build total cactus data
+        self._groupSolverCactusData[self._idealName][self._totalName] = []
+        _tmp_totalData.sort()
+        t_time = 0
+        for i,t in enumerate(_tmp_totalData):
+            if cummulative:
+                    t_time = self._addTime(t_time,t)
+            else:
+                t_time = t
+            self._groupSolverCactusData[self._idealName][self._totalName]+= [{"x" : i, "instance" : "", "time" : t, "y" : t_time }] 
 
     def _normaliseFactor(self,g,s):
         return int(self._groupSolverData[s][g]["total"])/len(self._solvers)
 
     def largestContribution(self,g,i=1):
         #i = 1 means we're looking at the correctly solved instances
-        soundSolvers = set(s for s in self._divisionRankings[g].keys() if self._divisionRankings[g][s][0] == 0)
+        if self._ignoreErrorInstances:
+            soundSolvers = set(self._solvers)
+
+            if len(self._specialSolverList) > 0:
+                soundSolvers = set(self._specialSolverList)
+
+        else:
+            soundSolvers = set(s for s in self._divisionRankings[g].keys() if self._divisionRankings[g][s][0] == 0)
         totalVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers)
 
 
         print(g)
 
         for s in soundSolvers:
-           sVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers.difference(set({s})))
-           self._largestContribution[g][s] = (1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s)
-           print(s,soundSolvers.difference(set({s})),sVirtualBest[i],totalVirtualBest[i],(1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s))
+            sVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers.difference(set({s})),True)
+            self._largestContribution[g][s] = 0
+
+            if totalVirtualBest[i] != 0:
+                self._largestContribution[g][s] = (1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s)
+    
+
+
+            #print(s,soundSolvers.difference(set({s})),sVirtualBest[i],totalVirtualBest[i],(1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s))
 
     def smtCompTotal(self):
         self._divisionRankings[self._totalName] = {s : (0,0,0.0) for s in self._solvers}
@@ -198,6 +337,46 @@ class MarkdownGenerator:
         self.biggestLeadPerGroup(self._totalName)
         self.largestContribution(self._totalName)
 
+    # detailed error calculation
+    def calculateDetailedErrors(self):
+        for s in self._solvers:
+            self._detailedErrors[s] = self.getAllErrorsForSolver(s)
+
+    def getAllErrorsForSolver(self,solver):
+        invalidModel = dict()
+        crash = dict()
+        programError = dict()
+        inputError = dict()
+        wrongUnsat = dict()
+        unverifiedSat = dict()
+        unknown = dict()
+
+        for bgroup in self._groups:
+            results = self._res.getErrosForSolverGroup(solver,bgroup)
+            for (s,g,tname,instance,filepath,t,res,exp,model,verified,output) in results:
+                if verified == False:
+                    invalidModel = invalidModel | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif verified == None and res:
+                    unverifiedSat = unverifiedSat | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif res != exp and res != None:
+                    wrongUnsat = wrongUnsat | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif "died with <Signals." in output:
+                    crash = crash | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif res == None and "returned non-zero exit status" in output:
+                    programError = programError | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif res == None and "b'(error" in output:
+                    inputError = inputError | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                elif res == None:
+                    unknown = unknown | self._errorDictEntry(s,g,tname,instance,filepath,t,res,exp,model,verified,output)
+                else:
+                    pass
+        data = {"invalidModel" : invalidModel,"wrongClassified" : wrongUnsat, "crash" : crash, "programError" : programError, "inputError" : inputError, "unverifiedSat" : unverifiedSat, "unknown" : unknown}
+        return data
+
+    def _errorDictEntry(self,solver,group,track,instance_id,filepath,time,result,exp_res,model,verified,output):
+        return {instance_id : {"solver" : solver, "group" : group, "track" : track, "filepath" : filepath, "result" : result, "expected_result" : exp_res, "model" : model, "verified" : verified, "time" : time, "output" : output}}
+
+
     #
     # Build Markdown page    
     def _solverString(self,solver):
@@ -205,7 +384,7 @@ class MarkdownGenerator:
 
     def _buildSectionTitle(self,g):
         return f"== {g}\n"
-
+ 
 
     #
     # par2 sorting
@@ -215,6 +394,11 @@ class MarkdownGenerator:
         for s in [e[0] for e in sorted({solver : self._groupSolverData[solver][g]["par2"] for solver in self._solvers}.items(), key=lambda x: int(x[1]))]:
             data = self._groupSolverData[s][g]
             output_string += f'|{self._solverString(s)}|{data["classified"]} ({round(data["classified"]/data["time"],2)})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+        
+        if self._ideal:
+            data = self._groupSolverData[self._idealName][g]
+            output_string += f'|{self._solverString(self._idealName)}|{data["classified"]} ({round(data["classified"]/data["time"],2)})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+
         output_string += f"|===\n\n"
         return output_string
 
@@ -225,13 +409,20 @@ class MarkdownGenerator:
     ## SMT Comp sorting
     def _buildGroupTable(self,g):
         output_string = ""
-        output_string += f"|===\n|Tool name |Correctly classified (Contribution) |Declared satisfiable |Declared unsatisfiable |Declared unknown |Error |Crashes |Timeout |Par2Score |Total instances |Total instances w/o TO | Total time |Total time w/o TO\n"
+        #output_string += f"|===\n|Tool name |Correctly classified (Contribution) |Declared satisfiable |Declared unsatisfiable |Declared unknown |Error |Crashes |Timeout |Par2Score |Total instances |Total instances w/o TO | Total time |Total time w/o TO\n"
+        output_string += f"|===\n|Solver |Cor. class. (contr.) |SAT |UNSAT |UNKN |ERR |CRA |TO |Par2 |Tot. inst. |Tot. inst. w/o TO | Tot. time |Tot. time w/o TO\n"
         for s in self._divisionRankings[g].keys():
             contribution = "None"
             if s in self._largestContribution[g]:
                 contribution = round(self._largestContribution[g][s],2)
             data = self._groupSolverData[s][g]
             output_string += f'|{self._solverString(s)}|{data["classified"]} ({contribution})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+        
+        if self._ideal:
+            data = self._groupSolverData[self._idealName][g]
+            output_string += f'|{self._solverString(self._idealName)}|{data["classified"]} ({contribution})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+        
+
         output_string += f"|===\n\n"
         return output_string
 
@@ -259,7 +450,35 @@ class MarkdownGenerator:
     def _buildHeader(self):
         return f"= Benchmark Results\nComparing {' '.join(self._solvers)} on {' '.join(self._groups)} \n:toc: left\n:stem:\n\n"
 
+    # detailed errors
+    def buildErrorTableForSolverKey(self,solver,key):
+        table = f"|===\n|Benchmark |Track |Instance |File path |Result |Expected result |Verified |Time |Model |Output\n"
+        for instance,e in self._detailedErrors[solver][key].items():
+            table+=f"|{e['group']}|{e['track']}|{instance}|{e['filepath']}|{e['result']}|{e['expected_result']}|{e['verified']}|{e['time']}|{e['model']}|{e['output']}\n"
+        table+=f"\n|===\n\n"
+        return table
+
+    def _buildDetailedErrorSection(self):
+        errorKeys = (self._detailedErrors[self._solvers[0]].keys())
+        output_string = self._buildSectionTitle("Detailed Errors")
+
+        for s in self._solvers:
+            if sum(list(len(e) for e in self._detailedErrors[s])) == 0:
+                continue
+
+            output_string+=f"=== {s} \n"
+            for k in errorKeys:
+                if len(self._detailedErrors[s][k]) > 0:
+                    output_string+=f"+++ <details><summary> +++\n{k}+++ </summary><div> +++\n"
+                    output_string+=self.buildErrorTableForSolverKey(s,k)
+                    output_string+=f"\n+++ </div></details> +++\n\n"
+
+        return output_string
+
     def buildMarkDownPage(self):
+        if self._ideal:
+            self._solvers = [s for s in self._solvers if s not in self._hiddenSolvers]
+
         self._output.write(self._buildHeader())
         for g in self._groups:
             self._output.write(self._buildSectionTitle(g))
@@ -271,6 +490,8 @@ class MarkdownGenerator:
         self._output.write(self._buildGroupTable(self._totalName))
         self._output.write(self._buildBestGroup(self._totalName))
 
+        self._output.write(self._buildDetailedErrorSection())
+
 
     #
     # Generate Plots
@@ -280,8 +501,11 @@ class MarkdownGenerator:
         ax = fig.subplots()
         fontP = FontProperties()
         fontP.set_size('small')
+        usedSolvers = self._solvers.copy()
+        if self._ideal:
+            usedSolvers+=[self._idealName]
 
-        for s in self._solvers:
+        for s in usedSolvers:
             sColour = self._solverColour[s]
             data = [i["y"] for i in self._groupSolverCactusData[s][g] if i["x"] >= start_at]
             ax.plot (range(start_at,len(data)+start_at),data,'-',linewidth=2.5,label=s,color=sColour)
@@ -318,6 +542,7 @@ class MarkdownGenerator:
     def generateTable(self,output,cummulative=True):
         self._output = output
         path = self._getWorkingDir(output)
+        print(self._solvers)
         self.gatherCompleteData(cummulative)
         self.buildMarkDownPage()
         self.buildPlots(path)
