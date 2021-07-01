@@ -229,7 +229,11 @@ class ResultRepository:
     def getResultForSolver (self,solver):
         query = '''SELECT * FROM Result WHERE solver = ? ORDER BY time ASC '''
         rows = self._db.executeRet (query,(solver,))
-        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+
+        #  remove t[6] - output again!!!!
+        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2],t[6])) for t in rows]
+        #return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+
 
     def getResultForSolverInstance (self,solver,instanceid):
         query = '''SELECT * FROM Result WHERE solver = ? AND instanceid = ? ORDER BY time ASC '''
@@ -241,6 +245,29 @@ class ResultRepository:
         rows = self._db.executeRet (query,(solver,group,))
         #print(rows)
         return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+
+    def getErrorsForSolversGroup(self,solvers,group):
+        placeholder= '?' # For SQLite. See DBAPI paramstyle.
+        placeholders= ', '.join(placeholder for unused in solvers)
+        querylist = [group]+solvers
+        query = '''SELECT Result.instanceid FROM Result,TrackInstanceMap,Track,TrackInstance WHERE Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = Track.id and Track.bgroup = ? AND TrackInstance.id = Result.instanceid AND (TrackInstance.expected != Result.result OR (TrackInstance.expected = Result.result AND Result.verified = false)) AND Result.solver IN (%s) GROUP BY Result.instanceid ORDER BY time ASC '''% placeholders
+        return set(t[0] for t in self._db.executeRet (query,(querylist)))
+
+    def getResultForSolverGroupErrorFree (self,solver,group,solvers):
+        placeholder= '?' # For SQLite. See DBAPI paramstyle.
+        placeholders= ', '.join(placeholder for unused in solvers)
+        querylist = [solver,group]+solvers
+        query = '''SELECT * FROM Result,TrackInstanceMap,Track WHERE solver = ? and Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = Track.id and Track.bgroup = ? and not EXISTS (SELECT R1.instanceid FROM Result as R1,TrackInstance as TI2 WHERE R1.instanceid = Result.instanceid AND TI2.id = R1.instanceid AND (TI2.expected != R1.result OR (TI2.expected = R1.result AND R1.verified = false)) AND R1.solver IN (%s) GROUP BY R1.instanceid) ORDER BY time ASC '''% placeholders
+        #query = 'SELECT Result.instanceid,Result.Result,MIN(Result.time) FROM Result,TrackInstanceMap,TrackInstance,Track WHERE Result.result IS NOT NULL AND Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = Track.id and TrackInstance.id = Result.instanceid and Track.bgroup = ? AND TrackInstance.expected = Result.result AND Result.verified IS NOT false AND Result.solver IN (%s) GROUP BY Result.instanceid' % placeholders
+        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in self._db.executeRet (query,(querylist))]
+
+
+        """
+        query = '''SELECT * FROM Result,TrackInstanceMap,Track WHERE solver = ? and Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = Track.id and Track.bgroup = ? ORDER BY time ASC '''
+        rows = self._db.executeRet (query,(solver,group,))
+        #print(rows)
+        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+        """
 
     def getResultForSolverGroupAndFilePath (self,solver,group):
         query = '''SELECT Result.*,TrackInstance.filepath FROM Result,TrackInstanceMap,Track,TrackInstance WHERE solver = ? and Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = Track.id and Track.bgroup = ? and TrackInstance.id = TrackInstanceMap.instance ORDER BY time ASC '''
@@ -284,12 +311,26 @@ class ResultRepository:
 
     def getResultForSolverGroupNoUnk (self,solver,group):
         query = '''SELECT * FROM Result,TrackInstanceMap,Track,TrackInstance WHERE solver = ? AND TrackInstance.id = Result.instanceid AND TrackInstance.expected = Result.result AND Result.verified IS NOT false AND Result.result IS NOT NULL and Result.instanceid = TrackInstanceMap.instance  and TrackInstanceMap.track = Track.id and Track.bgroup = ?  ORDER BY time ASC '''
-        
+                
         # ignore verifier
-        #query = '''SELECT * FROM Result,TrackInstanceMap,Track,TrackInstance WHERE solver = ? AND TrackInstance.id = Result.instanceid AND TrackInstance.expected = Result.result AND Result.result IS NOT NULL and Result.instanceid = TrackInstanceMap.instance  and TrackInstanceMap.track = Track.id and Track.bgroup = ?  ORDER BY time ASC '''
+        #query = '''SELECT * FROM Result,TrackInstanceMap,Track,TrackInstance WHERE solver = ? AND TrackInstance.id = Result.instanceid AND Result.result IS NOT NULL and Result.instanceid = TrackInstanceMap.instance  and TrackInstanceMap.track = Track.id and Track.bgroup = ?  ORDER BY time ASC '''
     
         rows = self._db.executeRet (query,(solver,group,))
         return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+
+    # move this to another place 
+    def getVirtualBestSolverFromSolversGroup(self,solvers,group,virtualBestName="virtualBest"):
+        virtualBest = dict()
+        for s in solvers:
+            for _,i,iRes in self.getResultForSolverGroupNoUnk(s,group):
+                if i not in virtualBest:
+                    virtualBest[i] = iRes
+                elif (virtualBest[i].result == None and iRes.result != None) or (iRes.result != None and iRes.time < virtualBest[i].time) or (virtualBest[i].result == None and iRes.result == None and iRes.time < virtualBest[i].time): # last condition prefers unknowns over timeouts
+                    virtualBest[i] = iRes
+        vbl = []
+        for i in virtualBest.keys():
+            vbl+=[(i,virtualBestName,virtualBest[i])]
+        return vbl
 
     def getResultForSolverTrackNoUnk (self,solver,track):
         query = '''SELECT Result.* FROM Result,TrackInstanceMap,TrackInstance WHERE Result.solver = ? AND TrackInstance.id = Result.instanceid AND TrackInstance.expected = Result.result AND Result.verified IS NOT false AND Result.result IS NOT NULL and Result.instanceid = TrackInstanceMap.instance and TrackInstanceMap.track = ? ORDER BY time ASC '''

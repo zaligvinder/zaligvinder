@@ -45,7 +45,7 @@ class TableGenerator:
 
     ### PAR 2 Score
     # The solvers will ranked using the PAR-2 scheme: The score of a solver is defined as the sum of all runtimes for solved instances + 2*timeout for unsolved instances, lowest score wins.
-    def _calculatePar2Score(self,solvedTime,failedCount,errorCount,timeout=20):
+    def _calculatePar2Score(self,solvedTime,failedCount,errorCount,timeout=20000):
         return solvedTime+(failedCount*(timeout*2))+(errorCount*(timeout*5))
 
 
@@ -78,6 +78,14 @@ class TableGenerator:
 
                 classified = data["sat"] + data["unsat"] - data["errors"]
                 total_instances = data["total"]
+
+                # quick hack:
+                for e in data:
+                    if data[e] == None:
+                        data[e] = 0
+
+
+
                 par2score = self._calculatePar2Score(data["totalSolvedTime"],total_instances-classified,data["errors"])
 
                 lines.append ("|{}|{} ({})|{}|{}|{}|{}|{}|{}|{:.2f}|{}|{}|{:.2f}|{:.2f}\n".format(self._solverNameMap(s),classified,round(classified/data["time"],2),data["sat"],data["unsat"],data["unknown"],data["errors"],data["crashes"],data["timeouted"],par2score,data["total"],data["totalWO"],data["time"],data["timeWO"]))
