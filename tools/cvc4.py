@@ -50,7 +50,7 @@ def run (eq,timeout,ploc,wd,solver="1",param="60"):
 
     time = timer.Timer ()
     try:
-        out = subprocess.check_output ([path,"--lang","smtlib2.6","--no-interactive","--no-interactive-prompt","--strings-exp","--dump-models","--tlimit-per",str(timeout)+"000",smtfile],timeout=int(timeout)).decode().strip()
+        out = subprocess.check_output ([path,"--lang","smtlib2.5","--no-interactive","--no-interactive-prompt","--strings-exp","--dump-models","--tlimit-per",str(timeout)+"000",smtfile],timeout=int(timeout)).decode().strip()
     except subprocess.TimeoutExpired:
         return utils.Result(None,timeout*1000,True,1)
     except subprocess.CalledProcessError as e:
