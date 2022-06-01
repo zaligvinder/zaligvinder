@@ -1,4 +1,4 @@
 (declare-const X String)
-; on\dstepwww\x2Ekornputers\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "on") (re.range "0" "9") (str.to.re "stepwww.kornputers.com\x0a")))))
+; on\dstepwww\u{2E}kornputers\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "on") (re.range "0" "9") (str.to_re "stepwww.kornputers.com\u{a}")))))
 (check-sat)

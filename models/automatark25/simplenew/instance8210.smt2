@@ -1,4 +1,4 @@
 (declare-const X String)
-; cyber@yahoo\x2Ecomconfig\x2E180solutions\x2Ecom
-(assert (not (str.in.re X (str.to.re "cyber@yahoo.comconfig.180solutions.com\x0a"))))
+; cyber@yahoo\u{2E}comconfig\u{2E}180solutions\u{2E}com
+(assert (not (str.in_re X (str.to_re "cyber@yahoo.comconfig.180solutions.com\u{a}"))))
 (check-sat)

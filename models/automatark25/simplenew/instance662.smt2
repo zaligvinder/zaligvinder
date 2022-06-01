@@ -1,4 +1,4 @@
 (declare-const X String)
-; TM_SEARCH3Host\x3aUser-Agent\x3Amedia\x2Edxcdirect\x2Ecom
-(assert (not (str.in.re X (str.to.re "TM_SEARCH3Host:User-Agent:media.dxcdirect.com\x0a"))))
+; TM_SEARCH3Host\u{3a}User-Agent\u{3A}media\u{2E}dxcdirect\u{2E}com
+(assert (not (str.in_re X (str.to_re "TM_SEARCH3Host:User-Agent:media.dxcdirect.com\u{a}"))))
 (check-sat)

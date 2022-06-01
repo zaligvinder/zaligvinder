@@ -36,7 +36,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= T_cc (str.++ T0_301 T1_301)))
 (assert (= T1_301 (str.++ T2_301 T3_301)))
 (assert (= T2_301 (str.++ T4_301 T5_301)))
-(assert (not (str.in.re T4_301 (str.to.re "="))))
+(assert (not (str.in_re T4_301 (str.to_re "="))))
 (assert (= T5_301 "="))
 (assert T_cf)
 (assert (= T_cf (not T_ce)))

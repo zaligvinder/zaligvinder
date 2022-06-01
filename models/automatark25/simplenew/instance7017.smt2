@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2APORT1\x2AWarezX-Mailer\x3ASnake\x2Fbonzibuddy\x2F
-(assert (str.in.re X (str.to.re "*PORT1*WarezX-Mailer:\x13Snake/bonzibuddy/\x0a")))
+; \u{2A}PORT1\u{2A}WarezX-Mailer\u{3A}Snake\u{2F}bonzibuddy\u{2F}
+(assert (str.in_re X (str.to_re "*PORT1*WarezX-Mailer:\u{13}Snake/bonzibuddy/\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; subject\x3Anode=LoginNSIS_DOWNLOAD
-(assert (str.in.re X (str.to.re "subject:node=LoginNSIS_DOWNLOAD\x0a")))
+; subject\u{3A}node=LoginNSIS_DOWNLOAD
+(assert (str.in_re X (str.to_re "subject:node=LoginNSIS_DOWNLOAD\u{a}")))
 (check-sat)

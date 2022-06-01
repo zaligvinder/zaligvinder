@@ -1,6 +1,6 @@
 (declare-const X String)
-; are\d+X-Mailer\x3a+Host\x3A\x2Easpx
-(assert (not (str.in.re X (re.++ (str.to.re "are") (re.+ (re.range "0" "9")) (str.to.re "X-Mailer") (re.+ (str.to.re ":")) (str.to.re "Host:.aspx\x0a")))))
-; Windows\x2Fclient\x2FBlackreportc\.goclick\.comX-Sender\x3A
-(assert (str.in.re X (str.to.re "Windows/client/Blackreportc.goclick.comX-Sender:\x13\x0a")))
+; are\d+X-Mailer\u{3a}+Host\u{3A}\u{2E}aspx
+(assert (not (str.in_re X (re.++ (str.to_re "are") (re.+ (re.range "0" "9")) (str.to_re "X-Mailer") (re.+ (str.to_re ":")) (str.to_re "Host:.aspx\u{a}")))))
+; Windows\u{2F}client\u{2F}Blackreportc\.goclick\.comX-Sender\u{3A}
+(assert (str.in_re X (str.to_re "Windows/client/Blackreportc.goclick.comX-Sender:\u{13}\u{a}")))
 (check-sat)

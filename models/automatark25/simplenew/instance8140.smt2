@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fbar_pl\x2Fchk_bar\.fcgi\s+adblock\x2Elinkz\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "/bar_pl/chk_bar.fcgi") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "adblock.linkz.com\x0a"))))
+; \u{2F}bar_pl\u{2F}chk_bar\.fcgi\s+adblock\u{2E}linkz\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "/bar_pl/chk_bar.fcgi") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "adblock.linkz.com\u{a}"))))
 (check-sat)

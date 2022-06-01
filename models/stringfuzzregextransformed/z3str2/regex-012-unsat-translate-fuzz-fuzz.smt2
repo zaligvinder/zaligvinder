@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re ">&FKPJy'\t''[4/>8%$cO~0%*'\n'O") (str.to.re "")))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re ">&FKPJy'\t''[4/>8%$cO~0%*'\n'O") (str.to_re "")))))
 (assert (= 0 (str.len x)))
 (check-sat)

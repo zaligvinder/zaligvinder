@@ -1,4 +1,4 @@
 (declare-const X String)
 ; <img([^>]*[^/])>
-(assert (str.in.re X (re.++ (str.to.re "<img>\x0a") (re.* (re.comp (str.to.re ">"))) (re.comp (str.to.re "/")))))
+(assert (str.in_re X (re.++ (str.to_re "<img>\u{a}") (re.* (re.comp (str.to_re ">"))) (re.comp (str.to_re "/")))))
 (check-sat)

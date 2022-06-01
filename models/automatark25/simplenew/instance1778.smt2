@@ -1,4 +1,4 @@
 (declare-const X String)
-; e2give\.comConnectionSpywww\x2Eslinkyslate
-(assert (not (str.in.re X (str.to.re "e2give.comConnectionSpywww.slinkyslate\x0a"))))
+; e2give\.comConnectionSpywww\u{2E}slinkyslate
+(assert (not (str.in_re X (str.to_re "e2give.comConnectionSpywww.slinkyslate\u{a}"))))
 (check-sat)

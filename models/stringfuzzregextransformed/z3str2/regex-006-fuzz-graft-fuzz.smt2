@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "efM+$!:^FrD8}1o+2(c"))
-(assert (str.in.re x (str.to.re "h%vJ{<Wh")))
+(assert (str.in_re x (str.to_re "h%vJ{<Wh")))
 (check-sat)

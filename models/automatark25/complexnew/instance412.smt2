@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x2eswf([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.swf") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
-; ConectadoHost\x3aas\.cometsystems\.com
-(assert (str.in.re X (str.to.re "ConectadoHost:as.cometsystems.com\x0a")))
+; /\u{2e}swf([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.swf") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
+; ConectadoHost\u{3a}as\.cometsystems\.com
+(assert (str.in_re X (str.to_re "ConectadoHost:as.cometsystems.com\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3APG=SPEEDBARReferer\x3a
-(assert (not (str.in.re X (str.to.re "Host:PG=SPEEDBARReferer:\x0a"))))
+; Host\u{3A}PG=SPEEDBARReferer\u{3a}
+(assert (not (str.in_re X (str.to_re "Host:PG=SPEEDBARReferer:\u{a}"))))
 (check-sat)

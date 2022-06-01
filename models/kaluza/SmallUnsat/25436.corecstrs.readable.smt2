@@ -18,7 +18,7 @@
 (assert (= T_3 (= "" var_0xINPUT_101606)))
 (assert T_3)
 (assert (= T_SELECT_1 (not (= PCTEMP_LHS_1 (- 1)))))
-(assert (ite T_SELECT_1 (and (= PCTEMP_LHS_1 (+ I0_5 0))(= var_0xINPUT_101606 (str.++ T0_5 T1_5))(= I0_5 (str.len T4_5))(= 0 (str.len T0_5))(= T1_5 (str.++ T2_5 T3_5))(= T2_5 (str.++ T4_5 T5_5))(= T5_5 "GASO=")(not (str.in.re T4_5 (re.++   (str.to.re "G" )  (re.++   (str.to.re "A" ) (re.++  (str.to.re "S" ) (re.++  (str.to.re "O" )  (str.to.re "=" )  ) ) ) ) ))) (and (= PCTEMP_LHS_1 (- 1))(= var_0xINPUT_101606 (str.++ T0_5 T1_5))(= 0 (str.len T0_5))(not (str.in.re T1_5 (re.++   (str.to.re "G" )  (re.++   (str.to.re "A" ) (re.++  (str.to.re "S" ) (re.++  (str.to.re "O" )  (str.to.re "=" )  ) ) ) ) )))))
+(assert (ite T_SELECT_1 (and (= PCTEMP_LHS_1 (+ I0_5 0))(= var_0xINPUT_101606 (str.++ T0_5 T1_5))(= I0_5 (str.len T4_5))(= 0 (str.len T0_5))(= T1_5 (str.++ T2_5 T3_5))(= T2_5 (str.++ T4_5 T5_5))(= T5_5 "GASO=")(not (str.in_re T4_5 (re.++   (str.to_re "G" )  (re.++   (str.to_re "A" ) (re.++  (str.to_re "S" ) (re.++  (str.to_re "O" )  (str.to_re "=" )  ) ) ) ) ))) (and (= PCTEMP_LHS_1 (- 1))(= var_0xINPUT_101606 (str.++ T0_5 T1_5))(= 0 (str.len T0_5))(not (str.in_re T1_5 (re.++   (str.to_re "G" )  (re.++   (str.to_re "A" ) (re.++  (str.to_re "S" ) (re.++  (str.to_re "O" )  (str.to_re "=" )  ) ) ) ) )))))
 (assert (= T_5 (< (- 1) PCTEMP_LHS_1)))
 (assert T_5)
 (check-sat)

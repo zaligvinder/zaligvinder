@@ -1,4 +1,4 @@
 (declare-const X String)
-; DesktopBladeclient=wwwHello\x2Exmlns\x3A
-(assert (str.in.re X (str.to.re "DesktopBladeclient=wwwHello.xmlns:\x0a")))
+; DesktopBladeclient=wwwHello\u{2E}xmlns\u{3A}
+(assert (str.in_re X (str.to_re "DesktopBladeclient=wwwHello.xmlns:\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; clvompycem\x2fcen\.vcnHost\x3AUser-Agent\x3A\x0d\x0a
-(assert (str.in.re X (str.to.re "clvompycem/cen.vcnHost:User-Agent:\x0d\x0a\x0a")))
+; clvompycem\u{2f}cen\.vcnHost\u{3A}User-Agent\u{3A}\u{d}\u{a}
+(assert (str.in_re X (str.to_re "clvompycem/cen.vcnHost:User-Agent:\u{d}\u{a}\u{a}")))
 (check-sat)

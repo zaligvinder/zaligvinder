@@ -1,6 +1,6 @@
 (declare-const X String)
-; Host\x3A\s+Boss\s+media\x2Etop-banners\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Boss") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "media.top-banners.com\x0a")))))
-; SpyBuddySubject\x3Astats\x2edrivecleaner\x2ecom
-(assert (not (str.in.re X (str.to.re "SpyBuddySubject:stats.drivecleaner.com\x13\x0a"))))
+; Host\u{3A}\s+Boss\s+media\u{2E}top-banners\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Boss") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "media.top-banners.com\u{a}")))))
+; SpyBuddySubject\u{3A}stats\u{2e}drivecleaner\u{2e}com
+(assert (not (str.in_re X (str.to_re "SpyBuddySubject:stats.drivecleaner.com\u{13}\u{a}"))))
 (check-sat)

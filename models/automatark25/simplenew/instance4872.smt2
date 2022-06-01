@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3aYOUR\x2Fxml\x2Ftoolbar\x2FGREATExplorerSecureNet
-(assert (str.in.re X (str.to.re "Host:YOUR/xml/toolbar/GREATExplorerSecureNet\x0a")))
+; Host\u{3a}YOUR\u{2F}xml\u{2F}toolbar\u{2F}GREATExplorerSecureNet
+(assert (str.in_re X (str.to_re "Host:YOUR/xml/toolbar/GREATExplorerSecureNet\u{a}")))
 (check-sat)

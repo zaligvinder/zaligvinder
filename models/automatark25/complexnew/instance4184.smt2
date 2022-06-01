@@ -1,6 +1,6 @@
 (declare-const X String)
-; HANDY\s+newsSoftActivitypassword\x3B1\x3BOptixtv\x2E180solutions\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "HANDY") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "newsSoftActivity\x13password;1;Optixtv.180solutions.com\x0a"))))
-; /filename=[^\n]*\x2emaplet/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".maplet/i\x0a"))))
+; HANDY\s+newsSoftActivitypassword\u{3B}1\u{3B}Optixtv\u{2E}180solutions\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "HANDY") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "newsSoftActivity\u{13}password;1;Optixtv.180solutions.com\u{a}"))))
+; /filename=[^\n]*\u{2e}maplet/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".maplet/i\u{a}"))))
 (check-sat)

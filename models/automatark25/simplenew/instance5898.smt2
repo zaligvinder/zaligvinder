@@ -1,4 +1,4 @@
 (declare-const X String)
-; securityOmFkbWluADROARad\x2Emokead\x2Ecom\x3C\x2Fchat\x3E
-(assert (str.in.re X (str.to.re "securityOmFkbWluADROARad.mokead.com</chat>\x0a")))
+; securityOmFkbWluADROARad\u{2E}mokead\u{2E}com\u{3C}\u{2F}chat\u{3E}
+(assert (str.in_re X (str.to_re "securityOmFkbWluADROARad.mokead.com</chat>\u{a}")))
 (check-sat)

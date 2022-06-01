@@ -1,6 +1,6 @@
 (declare-const X String)
-; /User-Agent\x3a[^\x0d\x0a]*Java\/1\./H
-(assert (str.in.re X (re.++ (str.to.re "/User-Agent:") (re.* (re.union (str.to.re "\x0d") (str.to.re "\x0a"))) (str.to.re "Java/1./H\x0a"))))
-; SpyBuddyZOMBIES\x5fHTTP\x5fGETearch\x2Eearthlink
-(assert (str.in.re X (str.to.re "SpyBuddyZOMBIES_HTTP_GETearch.earthlink\x0a")))
+; /User-Agent\u{3a}[^\u{d}\u{a}]*Java\/1\./H
+(assert (str.in_re X (re.++ (str.to_re "/User-Agent:") (re.* (re.union (str.to_re "\u{d}") (str.to_re "\u{a}"))) (str.to_re "Java/1./H\u{a}"))))
+; SpyBuddyZOMBIES\u{5f}HTTP\u{5f}GETearch\u{2E}earthlink
+(assert (str.in_re X (str.to_re "SpyBuddyZOMBIES_HTTP_GETearch.earthlink\u{a}")))
 (check-sat)

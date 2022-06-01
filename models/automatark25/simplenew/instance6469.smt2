@@ -1,4 +1,4 @@
 (declare-const X String)
-; aohobygi\x2fzwiwHost\x3a\x7D\x7Crichfind\x2Ecom
-(assert (str.in.re X (str.to.re "aohobygi/zwiwHost:}|richfind.com\x0a")))
+; aohobygi\u{2f}zwiwHost\u{3a}\u{7D}\u{7C}richfind\u{2E}com
+(assert (str.in_re X (str.to_re "aohobygi/zwiwHost:}|richfind.com\u{a}")))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; Toolbar\d+ServerLiteToolbardailywww\x2Ecameup\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Toolbar") (re.+ (re.range "0" "9")) (str.to.re "ServerLiteToolbardailywww.cameup.com\x13\x0a"))))
-; /filename=[^\n]*\x2eplp/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".plp/i\x0a"))))
-; downloads\x2Emorpheus\x2Ecom\x2Frotation
-(assert (not (str.in.re X (str.to.re "downloads.morpheus.com/rotation\x0a"))))
+; Toolbar\d+ServerLiteToolbardailywww\u{2E}cameup\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Toolbar") (re.+ (re.range "0" "9")) (str.to_re "ServerLiteToolbardailywww.cameup.com\u{13}\u{a}"))))
+; /filename=[^\n]*\u{2e}plp/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".plp/i\u{a}"))))
+; downloads\u{2E}morpheus\u{2E}com\u{2F}rotation
+(assert (not (str.in_re X (str.to_re "downloads.morpheus.com/rotation\u{a}"))))
 (check-sat)

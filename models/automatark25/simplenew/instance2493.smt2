@@ -1,4 +1,4 @@
 (declare-const X String)
-; OS\x2F\dSpediacom\x2Findex\.php\?tpid=
-(assert (not (str.in.re X (re.++ (str.to.re "OS/") (re.range "0" "9") (str.to.re "Spediacom/index.php?tpid=\x0a")))))
+; OS\u{2F}\dSpediacom\u{2F}index\.php\?tpid=
+(assert (not (str.in_re X (re.++ (str.to_re "OS/") (re.range "0" "9") (str.to_re "Spediacom/index.php?tpid=\u{a}")))))
 (check-sat)

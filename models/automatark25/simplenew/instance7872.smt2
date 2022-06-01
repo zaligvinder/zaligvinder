@@ -1,4 +1,4 @@
 (declare-const X String)
-; dialup\x5fvpn\x40hermangroup\x2EorgUser-Agent\x3A
-(assert (str.in.re X (str.to.re "dialup_vpn@hermangroup.orgUser-Agent:\x0a")))
+; dialup\u{5f}vpn\u{40}hermangroup\u{2E}orgUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "dialup_vpn@hermangroup.orgUser-Agent:\u{a}")))
 (check-sat)

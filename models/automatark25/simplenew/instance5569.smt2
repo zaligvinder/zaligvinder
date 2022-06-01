@@ -1,4 +1,4 @@
 (declare-const X String)
 ; AgentCSmtpsidebar\.activeshopper\.comTry2Find
-(assert (not (str.in.re X (str.to.re "AgentCSmtpsidebar.activeshopper.comTry2Find\x0a"))))
+(assert (not (str.in_re X (str.to_re "AgentCSmtpsidebar.activeshopper.comTry2Find\u{a}"))))
 (check-sat)

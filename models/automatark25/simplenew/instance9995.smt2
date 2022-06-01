@@ -1,4 +1,4 @@
 (declare-const X String)
-; engineResultUser-Agent\x3A
-(assert (str.in.re X (str.to.re "engineResultUser-Agent:\x0a")))
+; engineResultUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "engineResultUser-Agent:\u{a}")))
 (check-sat)

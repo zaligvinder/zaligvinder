@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun s205 () String)

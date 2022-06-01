@@ -1,10 +1,10 @@
 (declare-const X String)
 ; /new (java|org)/Ui
-(assert (str.in.re X (re.++ (str.to.re "/new ") (re.union (str.to.re "java") (str.to.re "org")) (str.to.re "/Ui\x0a"))))
-; /filename=[^\n]*\x2ef4a/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".f4a/i\x0a"))))
-; trustyfiles\x2EcomBlade\x23\x23\x23\x23\.smx\?
-(assert (not (str.in.re X (str.to.re "trustyfiles.comBlade####.smx?\x0a"))))
-; /filename=[^\n]*\x2ehhk/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".hhk/i\x0a")))))
+(assert (str.in_re X (re.++ (str.to_re "/new ") (re.union (str.to_re "java") (str.to_re "org")) (str.to_re "/Ui\u{a}"))))
+; /filename=[^\n]*\u{2e}f4a/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".f4a/i\u{a}"))))
+; trustyfiles\u{2E}comBlade\u{23}\u{23}\u{23}\u{23}\.smx\?
+(assert (not (str.in_re X (str.to_re "trustyfiles.comBlade####.smx?\u{a}"))))
+; /filename=[^\n]*\u{2e}hhk/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".hhk/i\u{a}")))))
 (check-sat)

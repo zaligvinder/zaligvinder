@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Esogou\x2Ecomix=WebsiteHost\x3aWeb-Mail
-(assert (str.in.re X (str.to.re "www.sogou.comix=WebsiteHost:Web-Mail\x0a")))
+; www\u{2E}sogou\u{2E}comix=WebsiteHost\u{3a}Web-Mail
+(assert (str.in_re X (str.to_re "www.sogou.comix=WebsiteHost:Web-Mail\u{a}")))
 (check-sat)

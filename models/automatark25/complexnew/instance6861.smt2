@@ -1,8 +1,8 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eht3/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".ht3/i\x0a")))))
-; ref\x3D\x25user\x5Fid\s+X-Mailer\x3aSpyBuddyUser-Agent\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "ref=%user_id") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "X-Mailer:\x13SpyBuddyUser-Agent:\x0a")))))
-; www\x2Eonetoolbar\x2Ecomcommunity
-(assert (str.in.re X (str.to.re "www.onetoolbar.comcommunity\x0a")))
+; /filename=[^\n]*\u{2e}ht3/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".ht3/i\u{a}")))))
+; ref\u{3D}\u{25}user\u{5F}id\s+X-Mailer\u{3a}SpyBuddyUser-Agent\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "ref=%user_id") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "X-Mailer:\u{13}SpyBuddyUser-Agent:\u{a}")))))
+; www\u{2E}onetoolbar\u{2E}comcommunity
+(assert (str.in_re X (str.to_re "www.onetoolbar.comcommunity\u{a}")))
 (check-sat)

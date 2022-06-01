@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "So>c,0y>@!^1bwySoS' 'j4RRqu'\x0b'VJpA>cV>>c,0y>PxGqv'f\\fa>c,0S>_1#>cV>Za3o>cW>A3g-WP.*>cW>0u6Q-CH"))
-(assert (str.in.re x (re.* (re.union (str.to.re "yT@#>cV>>$_NMW'\x0b'%*&o") (str.to.re "o:'\x0b']RR'\x0c'fm")))))
+(assert (= x "So>c,0y>@!^1bwySoS' 'j4RRqu'\u{b}'VJpA>cV>>c,0y>PxGqv'f\\fa>c,0S>_1#>cV>Za3o>cW>A3g-WP.*>cW>0u6Q-CH"))
+(assert (str.in_re x (re.* (re.union (str.to_re "yT@#>cV>>$_NMW'\u{b}'%*&o") (str.to_re "o:'\u{b}']RR'\u{c}'fm")))))
 (check-sat)

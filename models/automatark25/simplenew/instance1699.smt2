@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /exploit\/(Exploit(App)?|Loader)\.class/ims
-(assert (str.in.re X (re.++ (str.to.re "/exploit/") (re.union (re.++ (str.to.re "Exploit") (re.opt (str.to.re "App"))) (str.to.re "Loader")) (str.to.re ".class/ims\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/exploit/") (re.union (re.++ (str.to_re "Exploit") (re.opt (str.to_re "App"))) (str.to_re "Loader")) (str.to_re ".class/ims\u{a}"))))
 (check-sat)

@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "aG^9~c{'w<c'n\\\\'hAhaZCP!$aa"))
-(assert (str.in.re x (str.to.re "ET")))
+(assert (str.in_re x (str.to_re "ET")))
 (check-sat)

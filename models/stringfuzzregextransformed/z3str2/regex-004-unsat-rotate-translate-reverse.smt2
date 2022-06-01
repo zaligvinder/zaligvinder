@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "W'n\\'<'n\\'<t;"))
-(assert (str.in.re x (re.union (re.* (re.* (str.to.re "W'n\\'<"))) (str.to.re "'n\\'<t;"))))
+(assert (str.in_re x (re.union (re.* (re.* (str.to_re "W'n\\'<"))) (str.to_re "'n\\'<t;"))))
 (check-sat)

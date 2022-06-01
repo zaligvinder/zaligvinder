@@ -1,4 +1,4 @@
 (declare-const X String)
-; Authorization\x3a\d+lnzzlnbk\x2fpkrm\.fin
-(assert (str.in.re X (re.++ (str.to.re "Authorization:") (re.+ (re.range "0" "9")) (str.to.re "lnzzlnbk/pkrm.fin\x0a"))))
+; Authorization\u{3a}\d+lnzzlnbk\u{2f}pkrm\.fin
+(assert (str.in_re X (re.++ (str.to_re "Authorization:") (re.+ (re.range "0" "9")) (str.to_re "lnzzlnbk/pkrm.fin\u{a}"))))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; Toolbar\x2Fimages\x2Fnocache\x2Ftr\x2Fgca\x2Fm\.gif\?
-(assert (not (str.in.re X (str.to.re "Toolbar/images/nocache/tr/gca/m.gif?\x0a"))))
-; /\x2ewebm([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.webm") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; /filename=[^\n]*\x2ewvx/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wvx/i\x0a"))))
+; Toolbar\u{2F}images\u{2F}nocache\u{2F}tr\u{2F}gca\u{2F}m\.gif\?
+(assert (not (str.in_re X (str.to_re "Toolbar/images/nocache/tr/gca/m.gif?\u{a}"))))
+; /\u{2e}webm([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.webm") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; /filename=[^\n]*\u{2e}wvx/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".wvx/i\u{a}"))))
 (check-sat)

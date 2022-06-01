@@ -1,4 +1,4 @@
 (declare-const X String)
-; RequestWindowszzzvmkituktgr\x2fetieencoder
-(assert (not (str.in.re X (str.to.re "RequestWindowszzzvmkituktgr/etieencoder\x0a"))))
+; RequestWindowszzzvmkituktgr\u{2f}etieencoder
+(assert (not (str.in_re X (str.to_re "RequestWindowszzzvmkituktgr/etieencoder\u{a}"))))
 (check-sat)

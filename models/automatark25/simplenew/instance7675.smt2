@@ -1,4 +1,4 @@
 (declare-const X String)
-; /^\x2frouji.txt$/mU
-(assert (str.in.re X (re.++ (str.to.re "//rouji") re.allchar (str.to.re "txt/mU\x0a"))))
+; /^\u{2f}rouji.txt$/mU
+(assert (str.in_re X (re.++ (str.to_re "//rouji") re.allchar (str.to_re "txt/mU\u{a}"))))
 (check-sat)

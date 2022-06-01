@@ -1,4 +1,4 @@
 (declare-const X String)
-; presentsearch\.netLocalHost\x3APORT\x3DWatchDogHost\x3A
-(assert (str.in.re X (str.to.re "presentsearch.netLocalHost:PORT=WatchDogHost:\x0a")))
+; presentsearch\.netLocalHost\u{3A}PORT\u{3D}WatchDogHost\u{3A}
+(assert (str.in_re X (str.to_re "presentsearch.netLocalHost:PORT=WatchDogHost:\u{a}")))
 (check-sat)

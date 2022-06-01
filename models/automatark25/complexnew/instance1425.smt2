@@ -1,6 +1,6 @@
 (declare-const X String)
 ; ^([1-9]+[0-9]* | [1-9])$
-(assert (not (str.in.re X (re.++ (re.union (re.++ (re.+ (re.range "1" "9")) (re.* (re.range "0" "9")) (str.to.re " ")) (re.++ (str.to.re " ") (re.range "1" "9"))) (str.to.re "\x0a")))))
-; /file=[\x7c\x27]/Ui
-(assert (not (str.in.re X (re.++ (str.to.re "/file=") (re.union (str.to.re "|") (str.to.re "'")) (str.to.re "/Ui\x0a")))))
+(assert (not (str.in_re X (re.++ (re.union (re.++ (re.+ (re.range "1" "9")) (re.* (re.range "0" "9")) (str.to_re " ")) (re.++ (str.to_re " ") (re.range "1" "9"))) (str.to_re "\u{a}")))))
+; /file=[\u{7c}\u{27}]/Ui
+(assert (not (str.in_re X (re.++ (str.to_re "/file=") (re.union (str.to_re "|") (str.to_re "'")) (str.to_re "/Ui\u{a}")))))
 (check-sat)

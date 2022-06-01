@@ -1,4 +1,4 @@
 (declare-const X String)
-; from\x3AUser-Agent\x3AChildWebGuardian
-(assert (str.in.re X (str.to.re "from:User-Agent:ChildWebGuardian\x0a")))
+; from\u{3A}User-Agent\u{3A}ChildWebGuardian
+(assert (str.in_re X (str.to_re "from:User-Agent:ChildWebGuardian\u{a}")))
 (check-sat)

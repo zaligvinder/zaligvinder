@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x2ehlp([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.hlp") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; User-Agent\x3AServerHost\x3A
-(assert (not (str.in.re X (str.to.re "User-Agent:ServerHost:\x0a"))))
+; /\u{2e}hlp([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.hlp") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; User-Agent\u{3A}ServerHost\u{3A}
+(assert (not (str.in_re X (str.to_re "User-Agent:ServerHost:\u{a}"))))
 (check-sat)

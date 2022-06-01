@@ -1,4 +1,4 @@
 (declare-const X String)
-; is\x7D\x7BPort\x3A\x7D\x7BUser\x3A
-(assert (str.in.re X (str.to.re "is}{Port:}{User:\x0a")))
+; is\u{7D}\u{7B}Port\u{3A}\u{7D}\u{7B}User\u{3A}
+(assert (str.in_re X (str.to_re "is}{Port:}{User:\u{a}")))
 (check-sat)

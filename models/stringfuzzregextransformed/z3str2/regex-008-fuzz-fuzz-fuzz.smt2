@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (str.to.re "e_''\x0b'$Z]o")))
+(assert (str.in_re x (str.to_re "e_''\u{b}'$Z]o")))
 (check-sat)

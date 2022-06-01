@@ -1,10 +1,10 @@
 (declare-const X String)
-; \x5D\x2520\x5BPort_\d+TM_SEARCH3engineto=\x2Fezsb\s\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "]%20[Port_") (re.+ (re.range "0" "9")) (str.to.re "TM_SEARCH3engineto=/ezsb") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re ":\x0a")))))
+; \u{5D}\u{25}20\u{5B}Port_\d+TM_SEARCH3engineto=\u{2F}ezsb\s\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "]%20[Port_") (re.+ (re.range "0" "9")) (str.to_re "TM_SEARCH3engineto=/ezsb") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re ":\u{a}")))))
 ; ^\d{3}-\d{2}-\d{4}$
-(assert (str.in.re X (re.++ ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "-") ((_ re.loop 2 2) (re.range "0" "9")) (str.to.re "-") ((_ re.loop 4 4) (re.range "0" "9")) (str.to.re "\x0a"))))
-; URLUBAgent%3fSchwindlerurl=Host\x3ahttpUser-Agent\x3A
-(assert (str.in.re X (str.to.re "URLUBAgent%3fSchwindlerurl=Host:httpUser-Agent:\x0a")))
-; DmInf\x5E\x0D\x0A\x0D\x0AAttached\x2Fbar_pl\x2Fchk\.fcgi
-(assert (not (str.in.re X (str.to.re "DmInf^\x0d\x0a\x0d\x0aAttached/bar_pl/chk.fcgi\x0a"))))
+(assert (str.in_re X (re.++ ((_ re.loop 3 3) (re.range "0" "9")) (str.to_re "-") ((_ re.loop 2 2) (re.range "0" "9")) (str.to_re "-") ((_ re.loop 4 4) (re.range "0" "9")) (str.to_re "\u{a}"))))
+; URLUBAgent%3fSchwindlerurl=Host\u{3a}httpUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "URLUBAgent%3fSchwindlerurl=Host:httpUser-Agent:\u{a}")))
+; DmInf\u{5E}\u{D}\u{A}\u{D}\u{A}Attached\u{2F}bar_pl\u{2F}chk\.fcgi
+(assert (not (str.in_re X (str.to_re "DmInf^\u{d}\u{a}\u{d}\u{a}Attached/bar_pl/chk.fcgi\u{a}"))))
 (check-sat)

@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "S+""916SS>I!f'\t'nf$~I:1f'\t'L0af6Tg"))
-(assert (str.in.re x (re.+ (re.+ (str.to.re "3KFDZf'\t'.f")))))
+(assert (str.in_re x (re.+ (re.+ (str.to_re "3KFDZf'\t'.f")))))
 (check-sat)

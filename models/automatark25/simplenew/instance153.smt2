@@ -1,4 +1,4 @@
 (declare-const X String)
-; Cookie\x3aAppName\x2FGRSI\|Server\|Host\x3Aorigin\x3Dsidefind
-(assert (str.in.re X (str.to.re "Cookie:AppName/GRSI|Server|\x13Host:origin=sidefind\x0a")))
+; Cookie\u{3a}AppName\u{2F}GRSI\|Server\|Host\u{3A}origin\u{3D}sidefind
+(assert (str.in_re X (str.to_re "Cookie:AppName/GRSI|Server|\u{13}Host:origin=sidefind\u{a}")))
 (check-sat)

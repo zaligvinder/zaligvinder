@@ -1,4 +1,4 @@
 (declare-const X String)
-; comLOGUser-Agent\x3Aistsvcwww\x2Eoemji\x2EcomSystemSleuth
-(assert (str.in.re X (str.to.re "comLOGUser-Agent:istsvcwww.oemji.comSystemSleuth\x13\x0a")))
+; comLOGUser-Agent\u{3A}istsvcwww\u{2E}oemji\u{2E}comSystemSleuth
+(assert (str.in_re X (str.to_re "comLOGUser-Agent:istsvcwww.oemji.comSystemSleuth\u{13}\u{a}")))
 (check-sat)

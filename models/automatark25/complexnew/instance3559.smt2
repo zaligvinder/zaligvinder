@@ -1,6 +1,6 @@
 (declare-const X String)
-; BysooTBUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "BysooTBUser-Agent:\x0a"))))
-; User-Agent\x3AChildWebGuardianHXDownloadX-Mailer\x3a
-(assert (str.in.re X (str.to.re "User-Agent:ChildWebGuardianHXDownloadX-Mailer:\x13\x0a")))
+; BysooTBUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "BysooTBUser-Agent:\u{a}"))))
+; User-Agent\u{3A}ChildWebGuardianHXDownloadX-Mailer\u{3a}
+(assert (str.in_re X (str.to_re "User-Agent:ChildWebGuardianHXDownloadX-Mailer:\u{13}\u{a}")))
 (check-sat)

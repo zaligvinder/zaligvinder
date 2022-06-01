@@ -1,4 +1,4 @@
 (declare-const X String)
-; /filename=[^\n]*\x2emny/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".mny/i\x0a"))))
+; /filename=[^\n]*\u{2e}mny/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".mny/i\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
 ; [+-](^0.*)
-(assert (not (str.in.re X (re.++ (re.union (str.to.re "+") (str.to.re "-")) (str.to.re "\x0a0") (re.* re.allchar)))))
+(assert (not (str.in_re X (re.++ (re.union (str.to_re "+") (str.to_re "-")) (str.to_re "\u{a}0") (re.* re.allchar)))))
 (check-sat)

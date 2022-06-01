@@ -1,4 +1,4 @@
 (declare-const X String)
-; Toolbar\d+Host\x3AWelcome\x2FcommunicatortbGateCrasher
-(assert (str.in.re X (re.++ (str.to.re "Toolbar") (re.+ (re.range "0" "9")) (str.to.re "Host:Welcome/communicatortbGateCrasher\x0a"))))
+; Toolbar\d+Host\u{3A}Welcome\u{2F}communicatortbGateCrasher
+(assert (str.in_re X (re.++ (str.to_re "Toolbar") (re.+ (re.range "0" "9")) (str.to_re "Host:Welcome/communicatortbGateCrasher\u{a}"))))
 (check-sat)

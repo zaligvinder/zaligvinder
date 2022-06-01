@@ -1,6 +1,6 @@
 (declare-const X String)
-; corep\x2Edmcast\x2EcomOwner\x3A
-(assert (not (str.in.re X (str.to.re "corep.dmcast.comOwner:\x0a"))))
-; Host\x3A\w+Host\x3AUser-Agent\x3ATPSystemad\x2Esearchsquire\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "Host:User-Agent:TPSystemad.searchsquire.com\x0a"))))
+; corep\u{2E}dmcast\u{2E}comOwner\u{3A}
+(assert (not (str.in_re X (str.to_re "corep.dmcast.comOwner:\u{a}"))))
+; Host\u{3A}\w+Host\u{3A}User-Agent\u{3A}TPSystemad\u{2E}searchsquire\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "Host:User-Agent:TPSystemad.searchsquire.com\u{a}"))))
 (check-sat)

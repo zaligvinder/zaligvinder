@@ -1,10 +1,10 @@
 (declare-const X String)
-; LoginHost\x3a\x2Ffriendship\x2Femail_thank_you\?
-(assert (str.in.re X (str.to.re "LoginHost:/friendship/email_thank_you?\x0a")))
-; metaresults\.copernic\.comServer\x00
-(assert (not (str.in.re X (str.to.re "metaresults.copernic.comServer\x00\x0a"))))
-; /\x2eqt([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.qt") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
-; \x22StarLogger\x22User-Agent\x3AJMailUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "\x22StarLogger\x22User-Agent:JMailUser-Agent:\x0a"))))
+; LoginHost\u{3a}\u{2F}friendship\u{2F}email_thank_you\?
+(assert (str.in_re X (str.to_re "LoginHost:/friendship/email_thank_you?\u{a}")))
+; metaresults\.copernic\.comServer\u{0}
+(assert (not (str.in_re X (str.to_re "metaresults.copernic.comServer\u{0}\u{a}"))))
+; /\u{2e}qt([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.qt") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
+; \u{22}StarLogger\u{22}User-Agent\u{3A}JMailUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "\u{22}StarLogger\u{22}User-Agent:JMailUser-Agent:\u{a}"))))
 (check-sat)

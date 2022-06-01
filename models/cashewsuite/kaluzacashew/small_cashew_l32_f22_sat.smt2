@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun v0 () String)
@@ -12,7 +12,7 @@
 (assert (= v0 v0))
 (assert (= v2 (str.++ v3 v1)))
 (assert (= v3 (str.++ "D" (str.++ "C" (str.++ "E" (str.++ "F" "G"))))))
-(assert (not (str.in.re v0 (str.to.re "H"))))
+(assert (not (str.in_re v0 (str.to_re "H"))))
 
 (check-sat)
 (get-model)

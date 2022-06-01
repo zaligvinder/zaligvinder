@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "E2zxN$x/-1Fh*TCf--m'?'\r'BK3-"))
-(assert (str.in.re x (re.+ (re.* (str.to.re "x'x+0cTAbfZ4#x[m.")))))
+(assert (str.in_re x (re.+ (re.* (str.to_re "x'x+0cTAbfZ4#x[m.")))))
 (check-sat)

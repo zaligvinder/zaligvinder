@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x2emkv([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.mkv") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; Host\x3AUser-Agent\x3Awww\.raxsearch\.com
-(assert (str.in.re X (str.to.re "Host:User-Agent:www.raxsearch.com\x0a")))
+; /\u{2e}mkv([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.mkv") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; Host\u{3A}User-Agent\u{3A}www\.raxsearch\.com
+(assert (str.in_re X (str.to_re "Host:User-Agent:www.raxsearch.com\u{a}")))
 (check-sat)

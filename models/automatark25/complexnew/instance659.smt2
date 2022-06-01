@@ -1,6 +1,6 @@
 (declare-const X String)
 ; (refs|references|re|closes|closed|close|see|fixes|fixed|fix|addresses) #(\d+)(( and |, | & | )#(\d+))*
-(assert (not (str.in.re X (re.++ (re.union (str.to.re "refs") (str.to.re "references") (str.to.re "re") (str.to.re "closes") (str.to.re "closed") (str.to.re "close") (str.to.re "see") (str.to.re "fixes") (str.to.re "fixed") (str.to.re "fix") (str.to.re "addresses")) (str.to.re " #") (re.+ (re.range "0" "9")) (re.* (re.++ (re.union (str.to.re " and ") (str.to.re ", ") (str.to.re " & ") (str.to.re " ")) (str.to.re "#") (re.+ (re.range "0" "9")))) (str.to.re "\x0a")))))
-; Subject\x3AEnTrYExplorer\x2APORT2\x2AHost\x3A
-(assert (not (str.in.re X (str.to.re "Subject:EnTrYExplorer*PORT2*Host:\x0a"))))
+(assert (not (str.in_re X (re.++ (re.union (str.to_re "refs") (str.to_re "references") (str.to_re "re") (str.to_re "closes") (str.to_re "closed") (str.to_re "close") (str.to_re "see") (str.to_re "fixes") (str.to_re "fixed") (str.to_re "fix") (str.to_re "addresses")) (str.to_re " #") (re.+ (re.range "0" "9")) (re.* (re.++ (re.union (str.to_re " and ") (str.to_re ", ") (str.to_re " & ") (str.to_re " ")) (str.to_re "#") (re.+ (re.range "0" "9")))) (str.to_re "\u{a}")))))
+; Subject\u{3A}EnTrYExplorer\u{2A}PORT2\u{2A}Host\u{3A}
+(assert (not (str.in_re X (str.to_re "Subject:EnTrYExplorer*PORT2*Host:\u{a}"))))
 (check-sat)

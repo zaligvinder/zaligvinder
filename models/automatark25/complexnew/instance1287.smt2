@@ -1,10 +1,10 @@
 (declare-const X String)
-; PortaUser-Agent\x3AHost\x3A
-(assert (not (str.in.re X (str.to.re "PortaUser-Agent:Host:\x0a"))))
+; PortaUser-Agent\u{3A}Host\u{3A}
+(assert (not (str.in_re X (str.to_re "PortaUser-Agent:Host:\u{a}"))))
 ; ^((\\){2})(([A-Za-z ',.;]+)(\\?)([A-Za-z ',.;]\\?)*)$
-(assert (not (str.in.re X (re.++ ((_ re.loop 2 2) (str.to.re "\x5c")) (str.to.re "\x0a") (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (str.to.re " ") (str.to.re "'") (str.to.re ",") (str.to.re ".") (str.to.re ";"))) (re.opt (str.to.re "\x5c")) (re.* (re.++ (re.union (re.range "A" "Z") (re.range "a" "z") (str.to.re " ") (str.to.re "'") (str.to.re ",") (str.to.re ".") (str.to.re ";")) (re.opt (str.to.re "\x5c"))))))))
+(assert (not (str.in_re X (re.++ ((_ re.loop 2 2) (str.to_re "\u{5c}")) (str.to_re "\u{a}") (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (str.to_re " ") (str.to_re "'") (str.to_re ",") (str.to_re ".") (str.to_re ";"))) (re.opt (str.to_re "\u{5c}")) (re.* (re.++ (re.union (re.range "A" "Z") (re.range "a" "z") (str.to_re " ") (str.to_re "'") (str.to_re ",") (str.to_re ".") (str.to_re ";")) (re.opt (str.to_re "\u{5c}"))))))))
 ; /\?spl=\d&br=[^&]+&vers=[^&]+&s=/H
-(assert (not (str.in.re X (re.++ (str.to.re "/?spl=") (re.range "0" "9") (str.to.re "&br=") (re.+ (re.comp (str.to.re "&"))) (str.to.re "&vers=") (re.+ (re.comp (str.to.re "&"))) (str.to.re "&s=/H\x0a")))))
-; password\x3B1\x3BOptixOwner\x3ABarwww\x2Eaccoona\x2Ecom
-(assert (str.in.re X (str.to.re "password;1;OptixOwner:Barwww.accoona.com\x0a")))
+(assert (not (str.in_re X (re.++ (str.to_re "/?spl=") (re.range "0" "9") (str.to_re "&br=") (re.+ (re.comp (str.to_re "&"))) (str.to_re "&vers=") (re.+ (re.comp (str.to_re "&"))) (str.to_re "&s=/H\u{a}")))))
+; password\u{3B}1\u{3B}OptixOwner\u{3A}Barwww\u{2E}accoona\u{2E}com
+(assert (str.in_re X (str.to_re "password;1;OptixOwner:Barwww.accoona.com\u{a}")))
 (check-sat)

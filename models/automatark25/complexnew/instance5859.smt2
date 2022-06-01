@@ -1,6 +1,6 @@
 (declare-const X String)
-; MSNLOGOVNUsertooffers\x2Ebullseye-network\x2Ecom
-(assert (not (str.in.re X (str.to.re "MSNLOGOVNUsertooffers.bullseye-network.com\x0a"))))
-; /filename=[^\n]*\x2eurl/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".url/i\x0a")))))
+; MSNLOGOVNUsertooffers\u{2E}bullseye-network\u{2E}com
+(assert (not (str.in_re X (str.to_re "MSNLOGOVNUsertooffers.bullseye-network.com\u{a}"))))
+; /filename=[^\n]*\u{2e}url/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".url/i\u{a}")))))
 (check-sat)

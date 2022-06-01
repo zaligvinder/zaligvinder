@@ -1,8 +1,8 @@
 (declare-const X String)
-; onBetaHost\x3ayouRootReferer\x3A
-(assert (str.in.re X (str.to.re "onBetaHost:youRootReferer:\x0a")))
-; /filename=[^\n]*\x2exwd/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".xwd/i\x0a")))))
+; onBetaHost\u{3a}youRootReferer\u{3A}
+(assert (str.in_re X (str.to_re "onBetaHost:youRootReferer:\u{a}")))
+; /filename=[^\n]*\u{2e}xwd/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".xwd/i\u{a}")))))
 ; ^((0[1-9])|(1[0-2]))$
-(assert (str.in.re X (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.union (re.++ (str.to_re "0") (re.range "1" "9")) (re.++ (str.to_re "1") (re.range "0" "2"))) (str.to_re "\u{a}"))))
 (check-sat)

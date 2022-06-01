@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 (set-info :status sat)
 
@@ -12,9 +12,9 @@
 
 (assert (= selKeyword_value (str.++ p1 p2 p3) ) )
 
-(assert (str.in.re  p1  (re.* (re.union (str.to.re " ") (str.to.re "\t") ) ) ) )
+(assert (str.in_re  p1  (re.* (re.union (str.to_re " ") (str.to_re "\t") ) ) ) )
 
-(assert (str.in.re  p3  (re.* (re.union (str.to.re " ") (str.to.re "\t") ) ) ) )
+(assert (str.in_re  p3  (re.* (re.union (str.to_re " ") (str.to_re "\t") ) ) ) )
 
 (assert (not (str.suffixof " " p2) ) )
 

@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2emet/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".met/i\x0a")))))
-; DigExtNetBus\x5BStatic
-(assert (str.in.re X (str.to.re "DigExtNetBus[Static\x0a")))
+; /filename=[^\n]*\u{2e}met/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".met/i\u{a}")))))
+; DigExtNetBus\u{5B}Static
+(assert (str.in_re X (str.to_re "DigExtNetBus[Static\u{a}")))
 (check-sat)

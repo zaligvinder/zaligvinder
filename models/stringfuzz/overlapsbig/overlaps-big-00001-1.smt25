@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-fun var0 () String)
 (assert (= (str.++ "=MP" var0) (str.++ var0 "4<+")))
 (check-sat)

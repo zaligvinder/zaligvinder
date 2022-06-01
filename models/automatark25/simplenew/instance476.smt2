@@ -1,4 +1,4 @@
 (declare-const X String)
-; Toolbarwww\x2Eonlinecasinoextra\x2Ecom
-(assert (str.in.re X (str.to.re "Toolbarwww.onlinecasinoextra.com\x0a")))
+; Toolbarwww\u{2E}onlinecasinoextra\u{2E}com
+(assert (str.in_re X (str.to_re "Toolbarwww.onlinecasinoextra.com\u{a}")))
 (check-sat)

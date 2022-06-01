@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,11 +14,11 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in.re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (str.to.re "z") (str.to.re "a"))) (str.to.re "b"))))
-(assert (str.in.re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (re.union (str.to.re "z") (str.to.re "a")) (re.++ (str.to.re "b") (re.++ (re.* (str.to.re "b")) (re.union (str.to.re "z") (str.to.re "a")))))) (re.++ (str.to.re "b") (re.* (str.to.re "b"))))))
-(assert (str.in.re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (str.to.re "z") (re.++ (re.union (str.to.re "b") (str.to.re "a")) (re.union (str.to.re "z") (str.to.re "b"))))) (re.union (str.to.re "b") (str.to.re "a")))))
-(assert (str.in.re var_10 (re.* (re.range "a" "u"))))
-(assert (str.in.re var_9 (re.* (re.range "a" "u"))))
-(assert (not (str.in.re (str.++ "b" var_9 "z" "a" var_10 ) (re.++ (re.* (re.union (str.to.re "z") (re.++ (str.to.re "a") (re.++ (re.* (str.to.re "a")) (str.to.re "z"))))) (re.++ (str.to.re "a") (re.* (str.to.re "a")))))))
+(assert (str.in_re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (str.to_re "z") (str.to_re "a"))) (str.to_re "b"))))
+(assert (str.in_re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (re.union (str.to_re "z") (str.to_re "a")) (re.++ (str.to_re "b") (re.++ (re.* (str.to_re "b")) (re.union (str.to_re "z") (str.to_re "a")))))) (re.++ (str.to_re "b") (re.* (str.to_re "b"))))))
+(assert (str.in_re (str.++ var_9 "z" var_10 ) (re.++ (re.* (re.union (str.to_re "z") (re.++ (re.union (str.to_re "b") (str.to_re "a")) (re.union (str.to_re "z") (str.to_re "b"))))) (re.union (str.to_re "b") (str.to_re "a")))))
+(assert (str.in_re var_10 (re.* (re.range "a" "u"))))
+(assert (str.in_re var_9 (re.* (re.range "a" "u"))))
+(assert (not (str.in_re (str.++ "b" var_9 "z" "a" var_10 ) (re.++ (re.* (re.union (str.to_re "z") (re.++ (str.to_re "a") (re.++ (re.* (str.to_re "a")) (str.to_re "z"))))) (re.++ (str.to_re "a") (re.* (str.to_re "a")))))))
 (assert (<= 0  (str.len var_10)))
 (check-sat)

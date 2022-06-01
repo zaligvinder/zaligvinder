@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eppt/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".ppt/i\x0a")))))
-; /filename=[^\n]*\x2emswmm/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".mswmm/i\x0a")))))
+; /filename=[^\n]*\u{2e}ppt/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".ppt/i\u{a}")))))
+; /filename=[^\n]*\u{2e}mswmm/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".mswmm/i\u{a}")))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; HANDYHost\x3aHost\x3aHost\x3Ayddznydqir\x2feviGatornewsSoftActivity
-(assert (str.in.re X (str.to.re "HANDYHost:Host:Host:yddznydqir/eviGatornewsSoftActivity\x13\x0a")))
+; HANDYHost\u{3a}Host\u{3a}Host\u{3A}yddznydqir\u{2f}eviGatornewsSoftActivity
+(assert (str.in_re X (str.to_re "HANDYHost:Host:Host:yddznydqir/eviGatornewsSoftActivity\u{13}\u{a}")))
 (check-sat)

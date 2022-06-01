@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fpagead\x2Fads\?\d+ocllceclbhs\x2fgth
-(assert (str.in.re X (re.++ (str.to.re "/pagead/ads?") (re.+ (re.range "0" "9")) (str.to.re "ocllceclbhs/gth\x0a"))))
+; \u{2F}pagead\u{2F}ads\?\d+ocllceclbhs\u{2f}gth
+(assert (str.in_re X (re.++ (str.to_re "/pagead/ads?") (re.+ (re.range "0" "9")) (str.to_re "ocllceclbhs/gth\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; AgentHWAEUser-Agent\x3A
-(assert (str.in.re X (str.to.re "AgentHWAEUser-Agent:\x0a")))
+; AgentHWAEUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "AgentHWAEUser-Agent:\u{a}")))
 (check-sat)

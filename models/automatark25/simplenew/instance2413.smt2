@@ -1,4 +1,4 @@
 (declare-const X String)
-; Googlelog\=\x7BIP\x3APG=SPEEDBAR
-(assert (str.in.re X (str.to.re "Googlelog={IP:PG=SPEEDBAR\x0a")))
+; Googlelog\=\u{7B}IP\u{3A}PG=SPEEDBAR
+(assert (str.in_re X (str.to_re "Googlelog={IP:PG=SPEEDBAR\u{a}")))
 (check-sat)

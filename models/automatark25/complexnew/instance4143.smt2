@@ -1,10 +1,10 @@
 (declare-const X String)
-; body=\x2521\x2521\x2521Optix\s+Host\x3a
-(assert (str.in.re X (re.++ (str.to.re "body=%21%21%21Optix\x13") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:\x0a"))))
-; User-Agent\x3A\dServer
-(assert (not (str.in.re X (re.++ (str.to.re "User-Agent:") (re.range "0" "9") (str.to.re "Server\x0a")))))
+; body=\u{25}21\u{25}21\u{25}21Optix\s+Host\u{3a}
+(assert (str.in_re X (re.++ (str.to_re "body=%21%21%21Optix\u{13}") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:\u{a}"))))
+; User-Agent\u{3A}\dServer
+(assert (not (str.in_re X (re.++ (str.to_re "User-Agent:") (re.range "0" "9") (str.to_re "Server\u{a}")))))
 ; ^[1-9][0-9]{1,6}\-[0-9]{2}\-[0-9]
-(assert (not (str.in.re X (re.++ (re.range "1" "9") ((_ re.loop 1 6) (re.range "0" "9")) (str.to.re "-") ((_ re.loop 2 2) (re.range "0" "9")) (str.to.re "-") (re.range "0" "9") (str.to.re "\x0a")))))
-; richfind\x2Ecomdcww\x2Edmcast\x2Ecom
-(assert (str.in.re X (str.to.re "richfind.comdcww.dmcast.com\x0a")))
+(assert (not (str.in_re X (re.++ (re.range "1" "9") ((_ re.loop 1 6) (re.range "0" "9")) (str.to_re "-") ((_ re.loop 2 2) (re.range "0" "9")) (str.to_re "-") (re.range "0" "9") (str.to_re "\u{a}")))))
+; richfind\u{2E}comdcww\u{2E}dmcast\u{2E}com
+(assert (str.in_re X (str.to_re "richfind.comdcww.dmcast.com\u{a}")))
 (check-sat)

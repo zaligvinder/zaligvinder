@@ -1,4 +1,4 @@
 (declare-const X String)
-; BysooTBwhenu\x2EcomToolbarWeAgentUser-Agent\x3ahasHost\x3atoWebupdate\.cgithis
-(assert (str.in.re X (str.to.re "BysooTBwhenu.com\x1bToolbarWeAgentUser-Agent:hasHost:toWebupdate.cgithis\x0a")))
+; BysooTBwhenu\u{2E}comToolbarWeAgentUser-Agent\u{3a}hasHost\u{3a}toWebupdate\.cgithis
+(assert (str.in_re X (str.to_re "BysooTBwhenu.com\u{1b}ToolbarWeAgentUser-Agent:hasHost:toWebupdate.cgithis\u{a}")))
 (check-sat)

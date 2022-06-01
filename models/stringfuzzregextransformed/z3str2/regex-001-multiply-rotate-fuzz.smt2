@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x ""))
-(assert (str.in.re x (re.+ (str.to.re "'\n''\x0c'Jed"))))
+(assert (str.in_re x (re.+ (str.to_re "'\n''\u{c}'Jed"))))
 (check-sat)

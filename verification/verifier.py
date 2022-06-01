@@ -19,11 +19,23 @@ class Verifier:
             return s[len("sat("):-1]
         
         else:
-            return s[len("(  "):-1]
+            return s[len("("):-1]
 
     def _translateSMTFile(self,filepath):
         
-        setLogicPresent = False        
+        setLogicPresent = False
+        #set logic present?
+        #with open(filepath) as flc:
+        #    if '(set-logic' in flc.read():
+        #        setLogicPresent = True
+
+        #if not setLogicPresent:
+        #    yield "(set-logic ALL)\n"
+        
+        #with open(filepath) as flc:
+        #    if '(set-logic' in flc.read():
+        #        yield "(set-logic ALL)\n"
+        
         f=open(filepath,"r")
         matchingBraces = 0
         firstMatchFound = False
@@ -102,11 +114,18 @@ class Verifier:
             vRes = None
             foundModel = self._extractAssignment(res.model)#.replace("\\u{9}","\x09")
 
+            ####
             import re
-            if not smtlib26:
-                foundModel = re.sub('u{(.)}', r'x0\1', foundModel)
-                foundModel = re.sub('u{(..)}', r'x\1', foundModel)  
-                
+            #m = re.fullmatch(r,"\\u{(.*?)}",foundModel)
+            #print(m)
+            
+            #print(foundModel)
+            #if not smtlib26:
+            #foundModel = re.sub('u{(.)}', r'x0\1', foundModel)
+            #foundModel = re.sub('u{(..)}', r'x\1', foundModel)  
+            ####
+            #print(foundModel)            
+
             tempd = tempfile.mkdtemp ()
             assertedInputFile = self._modifyInputFile(tempd,foundModel,filepath)
             for vn in verifiers:

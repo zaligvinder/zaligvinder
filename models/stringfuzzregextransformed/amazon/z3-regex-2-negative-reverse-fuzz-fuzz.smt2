@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const S String)
-(assert (str.in.re S (re.union re.allchar (str.to.re "'\x0b'EC<\\R:1=H(+U_`Hs(#s4L+CZ}H$tRGuo"))))
-(assert (not (str.in.re S (re.union re.allchar (re.union (str.to.re "b>y") (re.union re.allchar (str.to.re "QI")))))))
+(assert (str.in_re S (re.union re.allchar (str.to_re "'\u{b}'EC<\\R:1=H(+U_`Hs(#s4L+CZ}H$tRGuo"))))
+(assert (not (str.in_re S (re.union re.allchar (re.union (str.to_re "b>y") (re.union re.allchar (str.to_re "QI")))))))
 (check-sat)

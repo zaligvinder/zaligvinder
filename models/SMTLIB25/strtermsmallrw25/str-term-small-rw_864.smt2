@@ -13,6 +13,6 @@ Publications: "Syntax-Guided Rewrite Rule Enumeration for SMT Solvers" by A. Noe
 (declare-fun x () String)
 (declare-fun y () String)
 (declare-fun z () Int)
-(assert (not (= (str.replace "" (int.to.str z) "A") (str.substr "A" 0 (- 0 z)))))
+(assert (not (= (str.replace "" (str.from_int z) "A") (str.substr "A" 0 (- 0 z)))))
 (check-sat)
 (exit)

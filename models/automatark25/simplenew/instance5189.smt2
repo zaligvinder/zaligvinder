@@ -1,4 +1,4 @@
 (declare-const X String)
-; SpywareinformationToolBarX-Mailer\x3aUser-Agent\x3AMM_RECO\x2EEXE
-(assert (str.in.re X (str.to.re "SpywareinformationToolBarX-Mailer:\x13User-Agent:MM_RECO.EXE\x0a")))
+; SpywareinformationToolBarX-Mailer\u{3a}User-Agent\u{3A}MM_RECO\u{2E}EXE
+(assert (str.in_re X (str.to_re "SpywareinformationToolBarX-Mailer:\u{13}User-Agent:MM_RECO.EXE\u{a}")))
 (check-sat)

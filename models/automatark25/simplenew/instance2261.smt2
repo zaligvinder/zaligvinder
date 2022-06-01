@@ -1,4 +1,4 @@
 (declare-const X String)
-; LogsHXLogOnlytoolbar\x2Ei-lookup\x2Ecom
-(assert (str.in.re X (str.to.re "LogsHXLogOnlytoolbar.i-lookup.com\x0a")))
+; LogsHXLogOnlytoolbar\u{2E}i-lookup\u{2E}com
+(assert (str.in_re X (str.to_re "LogsHXLogOnlytoolbar.i-lookup.com\u{a}")))
 (check-sat)

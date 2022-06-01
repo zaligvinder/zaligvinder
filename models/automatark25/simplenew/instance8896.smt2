@@ -1,4 +1,4 @@
 (declare-const X String)
-; User.*User-Agent\x3A.*ResultATTENTION\x3Ariggiymd\x2fwdhi\.vhi
-(assert (not (str.in.re X (re.++ (str.to.re "User") (re.* re.allchar) (str.to.re "User-Agent:") (re.* re.allchar) (str.to.re "ResultATTENTION:riggiymd/wdhi.vhi\x0a")))))
+; User.*User-Agent\u{3A}.*ResultATTENTION\u{3A}riggiymd\u{2f}wdhi\.vhi
+(assert (not (str.in_re X (re.++ (str.to_re "User") (re.* re.allchar) (str.to_re "User-Agent:") (re.* re.allchar) (str.to_re "ResultATTENTION:riggiymd/wdhi.vhi\u{a}")))))
 (check-sat)

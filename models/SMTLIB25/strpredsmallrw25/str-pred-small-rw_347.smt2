@@ -13,6 +13,6 @@ Publications: "Syntax-Guided Rewrite Rule Enumeration for SMT Solvers" by A. Noe
 (declare-fun x () String)
 (declare-fun y () String)
 (declare-fun z () Int)
-(assert (not (= (str.suffixof "A" (int.to.str z)) false)))
+(assert (not (= (str.suffixof "A" (str.from_int z)) false)))
 (check-sat)
 (exit)

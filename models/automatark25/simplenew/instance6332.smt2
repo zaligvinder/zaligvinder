@@ -1,4 +1,4 @@
 (declare-const X String)
 ; $sPatternTablet = '/(Tablet|iPad|iPod)/';
-(assert (not (str.in.re X (re.++ (str.to.re "sPatternTablet = '/") (re.union (str.to.re "Tablet") (str.to.re "iPad") (str.to.re "iPod")) (str.to.re "/';\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "sPatternTablet = '/") (re.union (str.to_re "Tablet") (str.to_re "iPad") (str.to_re "iPod")) (str.to_re "/';\u{a}")))))
 (check-sat)

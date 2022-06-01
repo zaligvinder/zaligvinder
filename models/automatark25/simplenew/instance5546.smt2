@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3aSoftwareHost\x3AjokeWEBCAM-Server\x3a
-(assert (str.in.re X (str.to.re "Host:SoftwareHost:jokeWEBCAM-Server:\x0a")))
+; Host\u{3a}SoftwareHost\u{3A}jokeWEBCAM-Server\u{3a}
+(assert (str.in_re X (str.to_re "Host:SoftwareHost:jokeWEBCAM-Server:\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eslinkyslate.*Redirector\x22.*Host\x3Atoolbarplace\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "www.slinkyslate") (re.* re.allchar) (str.to.re "Redirector\x22") (re.* re.allchar) (str.to.re "Host:toolbarplace.com\x0a")))))
+; www\u{2E}slinkyslate.*Redirector\u{22}.*Host\u{3A}toolbarplace\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "www.slinkyslate") (re.* re.allchar) (str.to_re "Redirector\u{22}") (re.* re.allchar) (str.to_re "Host:toolbarplace.com\u{a}")))))
 (check-sat)

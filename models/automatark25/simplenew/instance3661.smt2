@@ -1,4 +1,4 @@
 (declare-const X String)
 ; ^[^<^>]*$
-(assert (str.in.re X (re.++ (re.* (re.union (str.to.re "<") (str.to.re "^") (str.to.re ">"))) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.* (re.union (str.to_re "<") (str.to_re "^") (str.to_re ">"))) (str.to_re "\u{a}"))))
 (check-sat)

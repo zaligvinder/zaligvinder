@@ -1,4 +1,4 @@
 (declare-const X String)
 ; name.matches("a-z")
-(assert (not (str.in.re X (re.++ (str.to.re "name") re.allchar (str.to.re "matches\x22a-z\x22\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "name") re.allchar (str.to_re "matches\u{22}a-z\u{22}\u{a}")))))
 (check-sat)

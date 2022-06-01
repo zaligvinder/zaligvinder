@@ -1,4 +1,4 @@
 (declare-const X String)
 ; jquery\-(\d|\.)*\.min\.js
-(assert (not (str.in.re X (re.++ (str.to.re "jquery-") (re.* (re.union (re.range "0" "9") (str.to.re "."))) (str.to.re ".min.js\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "jquery-") (re.* (re.union (re.range "0" "9") (str.to_re "."))) (str.to_re ".min.js\u{a}")))))
 (check-sat)

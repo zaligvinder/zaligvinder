@@ -1,4 +1,4 @@
 (declare-const X String)
-; /\x2exul([\?\x5c\x2f]|$)/Umsi
-(assert (not (str.in.re X (re.++ (str.to.re "/.xul") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/Umsi\x0a")))))
+; /\u{2e}xul([\?\u{5c}\u{2f}]|$)/Umsi
+(assert (not (str.in_re X (re.++ (str.to_re "/.xul") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/Umsi\u{a}")))))
 (check-sat)

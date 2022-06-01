@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x ""))
-(assert (str.in.re x (re.+ (str.to.re "c2$Hz:#?T`'eV""2edd"))))
+(assert (str.in_re x (re.+ (str.to_re "c2$Hz:#?T`'eV""2edd"))))
 (check-sat)

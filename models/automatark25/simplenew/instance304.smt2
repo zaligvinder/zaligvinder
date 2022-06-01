@@ -1,4 +1,4 @@
 (declare-const X String)
-; Onetrustyfiles\x2EcomOverSpyzopabora\x2Einfo
-(assert (str.in.re X (str.to.re "Onetrustyfiles.comOverSpyzopabora.info\x0a")))
+; Onetrustyfiles\u{2E}comOverSpyzopabora\u{2E}info
+(assert (str.in_re X (str.to_re "Onetrustyfiles.comOverSpyzopabora.info\u{a}")))
 (check-sat)

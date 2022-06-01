@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re y (re.* (re.+ (str.to.re "#jm/K""*_'\x0c'-/:wzO")))))
+(assert (str.in_re y (re.* (re.+ (str.to_re "#jm/K""*_'\u{c}'-/:wzO")))))
 (assert (= (str.len y) 5))
 (check-sat)

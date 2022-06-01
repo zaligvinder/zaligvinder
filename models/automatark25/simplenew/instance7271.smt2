@@ -1,4 +1,4 @@
 (declare-const X String)
-; t=ProtoUser-Agent\x3Aquick\x2Eqsrch\x2Ecom
-(assert (str.in.re X (str.to.re "t=ProtoUser-Agent:quick.qsrch.com\x0a")))
+; t=ProtoUser-Agent\u{3A}quick\u{2E}qsrch\u{2E}com
+(assert (str.in_re X (str.to_re "t=ProtoUser-Agent:quick.qsrch.com\u{a}")))
 (check-sat)

@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "wwwwwwwww"))
-(assert (str.in.re x (re.* (str.to.re "rmd"))))
+(assert (str.in_re x (re.* (str.to_re "rmd"))))
 (check-sat)

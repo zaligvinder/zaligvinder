@@ -1,8 +1,8 @@
 (declare-const X String)
-; LIST\]SpamBlockerUtilityTry2FindBasicHost\x3AUser-Agent\x3AAcmeprotocolSpy
-(assert (not (str.in.re X (str.to.re "LIST]SpamBlockerUtilityTry2FindBasicHost:User-Agent:AcmeprotocolSpy\x0a"))))
+; LIST\]SpamBlockerUtilityTry2FindBasicHost\u{3A}User-Agent\u{3A}AcmeprotocolSpy
+(assert (not (str.in_re X (str.to_re "LIST]SpamBlockerUtilityTry2FindBasicHost:User-Agent:AcmeprotocolSpy\u{a}"))))
 ; ^(\-)?\d*(\.\d+)?$
-(assert (not (str.in.re X (re.++ (re.opt (str.to.re "-")) (re.* (re.range "0" "9")) (re.opt (re.++ (str.to.re ".") (re.+ (re.range "0" "9")))) (str.to.re "\x0a")))))
-; Toolbar\dcount\x2Eyok\x2EcomweatherHost\x3AUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "Toolbar") (re.range "0" "9") (str.to.re "count.yok.comweatherHost:User-Agent:\x0a"))))
+(assert (not (str.in_re X (re.++ (re.opt (str.to_re "-")) (re.* (re.range "0" "9")) (re.opt (re.++ (str.to_re ".") (re.+ (re.range "0" "9")))) (str.to_re "\u{a}")))))
+; Toolbar\dcount\u{2E}yok\u{2E}comweatherHost\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "Toolbar") (re.range "0" "9") (str.to_re "count.yok.comweatherHost:User-Agent:\u{a}"))))
 (check-sat)

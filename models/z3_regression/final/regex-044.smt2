@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 
 (declare-const x String)
@@ -8,7 +8,7 @@
 
 
 
-(assert (str.in.re x (re.* (re.range "0" "9") ) ) )
+(assert (str.in_re x (re.* (re.range "0" "9") ) ) )
 
 (assert (= 1 (str.len x) ) )
 

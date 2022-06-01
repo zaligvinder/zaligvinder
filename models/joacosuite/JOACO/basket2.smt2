@@ -13,10 +13,10 @@
 (declare-fun sv2 () String)
 
 (assert (= sv1 sv2 ) )
-(assert (str.in.re var2568 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "\x27") (re.++ (re.+  (str.to.re "\x20") ) (re.++  (re.union  (str.to.re "\x4f")  (str.to.re "\x6f")) (re.++  (re.union  (str.to.re "\x52")  (str.to.re "\x72")) (re.++ (re.+  (str.to.re "\x20") )  (str.to.re "\x27"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "\x27") (re.++ (re.* re.allchar ) (re.++  (str.to.re "\x3d") (re.++ (re.* re.allchar )  (str.to.re "\x27"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "\x27") (re.++ (re.*  (str.to.re "\x20") )  (re.union  (re.++  (str.to.re "\x5c\x2d")  (str.to.re "\x5c\x2d"))  (str.to.re "\x23")))) ) ) )
+(assert (str.in_re var2568 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "\u{27}") (re.++ (re.+  (str.to_re "\u{20}") ) (re.++  (re.union  (str.to_re "\u{4f}")  (str.to_re "\u{6f}")) (re.++  (re.union  (str.to_re "\u{52}")  (str.to_re "\u{72}")) (re.++ (re.+  (str.to_re "\u{20}") )  (str.to_re "\u{27}"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "\u{27}") (re.++ (re.* re.allchar ) (re.++  (str.to_re "\u{3d}") (re.++ (re.* re.allchar )  (str.to_re "\u{27}"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "\u{27}") (re.++ (re.*  (str.to_re "\u{20}") )  (re.union  (re.++  (str.to_re "\u{5c}\u{2d}")  (str.to_re "\u{5c}\u{2d}"))  (str.to_re "\u{23}")))) ) ) )
 (assert (= var2554 var2556 ) )
 (assert (= var2556 (str.++ var2557 var2558 ) ) )
-(assert (= var2557 (str.++ var2559 "SELECT \x2a FROM Baskets WHERE basketid =" ) ) )
+(assert (= var2557 (str.++ var2559 "SELECT \u{2a} FROM Baskets WHERE basketid =" ) ) )
 (assert (not (= var2558 "" )) )
 (assert (or (= var2558 "" ) (= var2558 var2562 ) ) )
 (assert (= var2564 (+ var2563 1 ) ) )

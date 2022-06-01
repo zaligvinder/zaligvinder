@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2FGR.*Report.*Host\x3APopup\.cfg
-(assert (not (str.in.re X (re.++ (str.to.re "/GR") (re.* re.allchar) (str.to.re "Report") (re.* re.allchar) (str.to.re "Host:Popup.cfg\x0a")))))
+; \u{2F}GR.*Report.*Host\u{3A}Popup\.cfg
+(assert (not (str.in_re X (re.++ (str.to_re "/GR") (re.* re.allchar) (str.to_re "Report") (re.* re.allchar) (str.to_re "Host:Popup.cfg\u{a}")))))
 (check-sat)

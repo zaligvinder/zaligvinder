@@ -1,8 +1,8 @@
 (declare-const X String)
-; /\x2efli([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.fli") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
-; HXLogOnlyanHost\x3AspasHost\x3A
-(assert (not (str.in.re X (str.to.re "HXLogOnlyanHost:spasHost:\x0a"))))
+; /\u{2e}fli([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.fli") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
+; HXLogOnlyanHost\u{3A}spasHost\u{3A}
+(assert (not (str.in_re X (str.to_re "HXLogOnlyanHost:spasHost:\u{a}"))))
 ; .*[Oo0][Ee][Mm].*
-(assert (str.in.re X (re.++ (re.* re.allchar) (re.union (str.to.re "O") (str.to.re "o") (str.to.re "0")) (re.union (str.to.re "E") (str.to.re "e")) (re.union (str.to.re "M") (str.to.re "m")) (re.* re.allchar) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.* re.allchar) (re.union (str.to_re "O") (str.to_re "o") (str.to_re "0")) (re.union (str.to_re "E") (str.to_re "e")) (re.union (str.to_re "M") (str.to_re "m")) (re.* re.allchar) (str.to_re "\u{a}"))))
 (check-sat)

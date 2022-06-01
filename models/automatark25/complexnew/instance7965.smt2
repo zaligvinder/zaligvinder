@@ -1,6 +1,6 @@
 (declare-const X String)
-; MicrosoftHost\x3ASubject\x3anamedDownloadUser-Agent\x3a
-(assert (not (str.in.re X (str.to.re "MicrosoftHost:Subject:namedDownloadUser-Agent:\x0a"))))
+; MicrosoftHost\u{3A}Subject\u{3a}namedDownloadUser-Agent\u{3a}
+(assert (not (str.in_re X (str.to_re "MicrosoftHost:Subject:namedDownloadUser-Agent:\u{a}"))))
 ; <[^>]*>
-(assert (str.in.re X (re.++ (str.to.re "<") (re.* (re.comp (str.to.re ">"))) (str.to.re ">\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "<") (re.* (re.comp (str.to_re ">"))) (str.to_re ">\u{a}"))))
 (check-sat)

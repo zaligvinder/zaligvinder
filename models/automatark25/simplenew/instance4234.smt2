@@ -1,4 +1,4 @@
 (declare-const X String)
-; wlpgskmv\x2flwzo\.qv#www\x2Ekliksearch\x2Ecom
-(assert (not (str.in.re X (str.to.re "wlpgskmv/lwzo.qv#www.kliksearch.com\x0a"))))
+; wlpgskmv\u{2f}lwzo\.qv#www\u{2E}kliksearch\u{2E}com
+(assert (not (str.in_re X (str.to_re "wlpgskmv/lwzo.qv#www.kliksearch.com\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Erichfind\x2EcomHost\x3A
-(assert (not (str.in.re X (str.to.re "www.richfind.comHost:\x0a"))))
+; www\u{2E}richfind\u{2E}comHost\u{3A}
+(assert (not (str.in_re X (str.to_re "www.richfind.comHost:\u{a}"))))
 (check-sat)

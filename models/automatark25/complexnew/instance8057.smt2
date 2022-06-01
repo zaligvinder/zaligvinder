@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eexe/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".exe/i\x0a"))))
-; /\x0d\x0aHost\x3a\x20[^\x0d\x0a\x2e]+\x2e[^\x0d\x0a\x2e]+(\x3a\d{1,5})?\x0d\x0a\x0d\x0a$/H
-(assert (not (str.in.re X (re.++ (str.to.re "/\x0d\x0aHost: ") (re.+ (re.union (str.to.re "\x0d") (str.to.re "\x0a") (str.to.re "."))) (str.to.re ".") (re.+ (re.union (str.to.re "\x0d") (str.to.re "\x0a") (str.to.re "."))) (re.opt (re.++ (str.to.re ":") ((_ re.loop 1 5) (re.range "0" "9")))) (str.to.re "\x0d\x0a\x0d\x0a/H\x0a")))))
+; /filename=[^\n]*\u{2e}exe/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".exe/i\u{a}"))))
+; /\u{d}\u{a}Host\u{3a}\u{20}[^\u{d}\u{a}\u{2e}]+\u{2e}[^\u{d}\u{a}\u{2e}]+(\u{3a}\d{1,5})?\u{d}\u{a}\u{d}\u{a}$/H
+(assert (not (str.in_re X (re.++ (str.to_re "/\u{d}\u{a}Host: ") (re.+ (re.union (str.to_re "\u{d}") (str.to_re "\u{a}") (str.to_re "."))) (str.to_re ".") (re.+ (re.union (str.to_re "\u{d}") (str.to_re "\u{a}") (str.to_re "."))) (re.opt (re.++ (str.to_re ":") ((_ re.loop 1 5) (re.range "0" "9")))) (str.to_re "\u{d}\u{a}\u{d}\u{a}/H\u{a}")))))
 (check-sat)

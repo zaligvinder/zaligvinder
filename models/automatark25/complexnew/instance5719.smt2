@@ -1,12 +1,12 @@
 (declare-const X String)
-; /filename=[^\n]*\x2exlw/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".xlw/i\x0a")))))
-; www\x2Ewebcruiser\x2Eccgot
-(assert (not (str.in.re X (str.to.re "www.webcruiser.ccgot\x0a"))))
-; ZC-Bridge\w+USER-AttachedReferer\x3AyouPointsUser-Agent\x3AHost\x3a
-(assert (str.in.re X (re.++ (str.to.re "ZC-Bridge") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "USER-AttachedReferer:youPointsUser-Agent:Host:\x0a"))))
-; YWRtaW46cGFzc3dvcmQ\s+www\x2Ealfacleaner\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "YWRtaW46cGFzc3dvcmQ") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "www.alfacleaner.com\x0a"))))
-; User-Agent\x3A[^\n\r]*quick\x2Eqsrch\x2Ecom.*www\.searchinweb\.com
-(assert (not (str.in.re X (re.++ (str.to.re "User-Agent:") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "quick.qsrch.com") (re.* re.allchar) (str.to.re "www.searchinweb.com\x0a")))))
+; /filename=[^\n]*\u{2e}xlw/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".xlw/i\u{a}")))))
+; www\u{2E}webcruiser\u{2E}ccgot
+(assert (not (str.in_re X (str.to_re "www.webcruiser.ccgot\u{a}"))))
+; ZC-Bridge\w+USER-AttachedReferer\u{3A}youPointsUser-Agent\u{3A}Host\u{3a}
+(assert (str.in_re X (re.++ (str.to_re "ZC-Bridge") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "USER-AttachedReferer:youPointsUser-Agent:Host:\u{a}"))))
+; YWRtaW46cGFzc3dvcmQ\s+www\u{2E}alfacleaner\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "YWRtaW46cGFzc3dvcmQ") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "www.alfacleaner.com\u{a}"))))
+; User-Agent\u{3A}[^\n\r]*quick\u{2E}qsrch\u{2E}com.*www\.searchinweb\.com
+(assert (not (str.in_re X (re.++ (str.to_re "User-Agent:") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "quick.qsrch.com") (re.* re.allchar) (str.to_re "www.searchinweb.com\u{a}")))))
 (check-sat)

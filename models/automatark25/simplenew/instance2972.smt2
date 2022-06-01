@@ -1,4 +1,4 @@
 (declare-const X String)
-; Toolbar\x5Chome\/lordofsearchthis
-(assert (not (str.in.re X (str.to.re "Toolbar\x5chome/lordofsearchthis\x0a"))))
+; Toolbar\u{5C}home\/lordofsearchthis
+(assert (not (str.in_re X (str.to_re "Toolbar\u{5c}home/lordofsearchthis\u{a}"))))
 (check-sat)

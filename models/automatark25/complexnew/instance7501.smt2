@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2equo/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".quo/i\x0a"))))
+; /filename=[^\n]*\u{2e}quo/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".quo/i\u{a}"))))
 ; (\(")([0-9]*)(\")
-(assert (not (str.in.re X (re.++ (str.to.re "(\x22") (re.* (re.range "0" "9")) (str.to.re "\x22\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "(\u{22}") (re.* (re.range "0" "9")) (str.to_re "\u{22}\u{a}")))))
 (check-sat)

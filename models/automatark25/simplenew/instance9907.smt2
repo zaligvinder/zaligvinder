@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A.*c=[^\n\r]*KeyloggerHost\x3Awww\.trackhits\.cc
-(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.* re.allchar) (str.to.re "c=") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "KeyloggerHost:www.trackhits.cc\x0a")))))
+; Host\u{3A}.*c=[^\n\r]*KeyloggerHost\u{3A}www\.trackhits\.cc
+(assert (not (str.in_re X (re.++ (str.to_re "Host:") (re.* re.allchar) (str.to_re "c=") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "KeyloggerHost:www.trackhits.cc\u{a}")))))
 (check-sat)

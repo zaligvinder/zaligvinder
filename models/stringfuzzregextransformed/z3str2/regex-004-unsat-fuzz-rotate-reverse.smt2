@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "dcdP!$ba"))
-(assert (str.in.re x (re.union (re.* (re.+ (str.to.re "dc"))) (str.to.re "9~c:{'hA"))))
+(assert (str.in_re x (re.union (re.* (re.+ (str.to_re "dc"))) (str.to_re "9~c:{'hA"))))
 (check-sat)

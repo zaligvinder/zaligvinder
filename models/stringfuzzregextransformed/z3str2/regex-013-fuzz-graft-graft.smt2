@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re y (str.to.re "ab$!Pd")))
+(assert (str.in_re y (str.to_re "ab$!Pd")))
 (assert (= (str.len y) 6))
 (check-sat)

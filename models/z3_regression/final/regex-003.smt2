@@ -1,10 +1,10 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (declare-const x String)
 
 
 (assert (= x "cdeabcdcde"))
-(assert (str.in.re x (re.* (re.union (str.to.re "abcd") (str.to.re "cde") ) ) ) )
+(assert (str.in_re x (re.* (re.union (str.to_re "abcd") (str.to_re "cde") ) ) ) )
 
 
 

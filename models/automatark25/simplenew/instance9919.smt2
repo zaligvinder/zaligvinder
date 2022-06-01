@@ -1,4 +1,4 @@
 (declare-const X String)
-; PALTALKSubject\x3A\x7D\x7BUser\x3A
-(assert (not (str.in.re X (str.to.re "PALTALKSubject:}{User:\x0a"))))
+; PALTALKSubject\u{3A}\u{7D}\u{7B}User\u{3A}
+(assert (not (str.in_re X (str.to_re "PALTALKSubject:}{User:\u{a}"))))
 (check-sat)

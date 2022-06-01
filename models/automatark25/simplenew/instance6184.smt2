@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fsearchfast\x2FNavhelper
-(assert (not (str.in.re X (str.to.re "/searchfast/Navhelper\x0a"))))
+; \u{2F}searchfast\u{2F}Navhelper
+(assert (not (str.in_re X (str.to_re "/searchfast/Navhelper\u{a}"))))
 (check-sat)

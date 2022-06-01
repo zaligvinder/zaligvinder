@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AFrom\x3aKeylogger
-(assert (str.in.re X (str.to.re "Host:From:Keylogger\x0a")))
+; Host\u{3A}From\u{3a}Keylogger
+(assert (str.in_re X (str.to_re "Host:From:Keylogger\u{a}")))
 (check-sat)

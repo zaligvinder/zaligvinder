@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status unsat)
 (declare-const x String)
 

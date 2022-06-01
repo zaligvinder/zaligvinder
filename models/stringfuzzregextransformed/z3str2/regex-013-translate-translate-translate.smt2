@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re y (re.* (re.* (str.to.re "P'\x0c'|K'\x0c'js'\x0c'|K'\x0c'""u")))))
+(assert (str.in_re y (re.* (re.* (str.to_re "P'\u{c}'|K'\u{c}'js'\u{c}'|K'\u{c}'""u")))))
 (assert (= (str.len y) 8))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; Netspy\s\x3Aauto\x2Eisearch\x2EcomUser-Agent\x3Aaohobygi\x2fzwiwHWAEfhfksjzsfu\x2fahm\.uqs
-(assert (not (str.in.re X (re.++ (str.to.re "Netspy") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re ":auto.isearch.comUser-Agent:aohobygi/zwiwHWAEfhfksjzsfu/ahm.uqs\x0a")))))
+; Netspy\s\u{3A}auto\u{2E}isearch\u{2E}comUser-Agent\u{3A}aohobygi\u{2f}zwiwHWAEfhfksjzsfu\u{2f}ahm\.uqs
+(assert (not (str.in_re X (re.++ (str.to_re "Netspy") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re ":auto.isearch.comUser-Agent:aohobygi/zwiwHWAEfhfksjzsfu/ahm.uqs\u{a}")))))
 (check-sat)

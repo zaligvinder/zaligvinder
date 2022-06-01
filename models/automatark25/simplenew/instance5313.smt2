@@ -1,4 +1,4 @@
 (declare-const X String)
 ; onAlertMGS-Internal-Web-Manager
-(assert (str.in.re X (str.to.re "onAlertMGS-Internal-Web-Manager\x0a")))
+(assert (str.in_re X (str.to_re "onAlertMGS-Internal-Web-Manager\u{a}")))
 (check-sat)

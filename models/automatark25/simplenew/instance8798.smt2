@@ -1,4 +1,4 @@
 (declare-const X String)
 ; (\{\\f\d*)\\([^;]+;)
-(assert (str.in.re X (re.++ (str.to.re "\x5c\x0a{\x5cf") (re.* (re.range "0" "9")) (re.+ (re.comp (str.to.re ";"))) (str.to.re ";"))))
+(assert (str.in_re X (re.++ (str.to_re "\u{5c}\u{a}{\u{5c}f") (re.* (re.range "0" "9")) (re.+ (re.comp (str.to_re ";"))) (str.to_re ";"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; Logger.*aresflashdownloader\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Logger") (re.* re.allchar) (str.to.re "aresflashdownloader.com\x0a")))))
+; Logger.*aresflashdownloader\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Logger") (re.* re.allchar) (str.to_re "aresflashdownloader.com\u{a}")))))
 (check-sat)

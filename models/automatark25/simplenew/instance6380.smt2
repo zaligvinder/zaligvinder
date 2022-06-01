@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A\s+A-311Servert=form-data\x3B\x20name=\x22pid\x22
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "A-311Servert=form-data; name=\x22pid\x22\x0a"))))
+; Host\u{3A}\s+A-311Servert=form-data\u{3B}\u{20}name=\u{22}pid\u{22}
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "A-311Servert=form-data; name=\u{22}pid\u{22}\u{a}"))))
 (check-sat)

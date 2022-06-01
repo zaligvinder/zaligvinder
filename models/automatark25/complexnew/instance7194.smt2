@@ -1,6 +1,6 @@
 (declare-const X String)
-; TROJAN-Owner\x3AUser-Agent\x3a%3fTs2\x2F
-(assert (not (str.in.re X (str.to.re "TROJAN-Owner:User-Agent:%3fTs2/\x0a"))))
-; \.myway\.comToolbarUI2Host\x3ASubject\x3Atoxbqyosoe\x2fcpvm
-(assert (not (str.in.re X (str.to.re ".myway.com\x1bToolbarUI2Host:Subject:toxbqyosoe/cpvm\x0a"))))
+; TROJAN-Owner\u{3A}User-Agent\u{3a}%3fTs2\u{2F}
+(assert (not (str.in_re X (str.to_re "TROJAN-Owner:User-Agent:%3fTs2/\u{a}"))))
+; \.myway\.comToolbarUI2Host\u{3A}Subject\u{3A}toxbqyosoe\u{2f}cpvm
+(assert (not (str.in_re X (str.to_re ".myway.com\u{1b}ToolbarUI2Host:Subject:toxbqyosoe/cpvm\u{a}"))))
 (check-sat)

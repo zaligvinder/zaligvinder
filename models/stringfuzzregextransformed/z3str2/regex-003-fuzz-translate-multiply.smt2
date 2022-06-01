@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "ZZ99RR''\\\\xx00cc''==::__``zz@@OOzzllzz22yy''++zz@@LL00IIzzGGLL11PPIIEE**SS66QQ//TTzz@@''\\\\xx00bb''zz''\\\\xx00cc''__))))WW##>>"))
-(assert (str.in.re x (re.* (re.union (str.to.re "))RR}}") (str.to.re "II::>>")))))
+(assert (= x "ZZ99RR''\\\\u{x0}0cc''==::__``zz@@OOzzllzz22yy''++zz@@LL00IIzzGGLL11PPIIEE**SS66QQ//TTzz@@''\\\\u{x0}0bb''zz''\\\\u{x0}0cc''__))))WW##>>"))
+(assert (str.in_re x (re.* (re.union (str.to_re "))RR}}") (str.to_re "II::>>")))))
 (check-sat)

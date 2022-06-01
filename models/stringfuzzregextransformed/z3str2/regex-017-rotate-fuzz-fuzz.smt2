@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re "4wt>'\x0c',[oj'") (re.++ (str.to.re "A") (str.to.re "B"))))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re "4wt>'\u{c}',[oj'") (re.++ (str.to_re "A") (str.to_re "B"))))))
 (assert (= 0 (str.len x)))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; A-311ServerUser-Agent\x3Ascn\x2emystoretoolbar\x2ecomWindowswww\.trackhits\.ccHost\x3a
-(assert (not (str.in.re X (str.to.re "A-311ServerUser-Agent:scn.mystoretoolbar.com\x13Windowswww.trackhits.ccHost:\x0a"))))
+; A-311ServerUser-Agent\u{3A}scn\u{2e}mystoretoolbar\u{2e}comWindowswww\.trackhits\.ccHost\u{3a}
+(assert (not (str.in_re X (str.to_re "A-311ServerUser-Agent:scn.mystoretoolbar.com\u{13}Windowswww.trackhits.ccHost:\u{a}"))))
 (check-sat)

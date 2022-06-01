@@ -1,10 +1,10 @@
 (declare-const X String)
-; A-311ServerUser-Agent\x3Ascn\x2emystoretoolbar\x2ecomWindowswww\.trackhits\.ccHost\x3a
-(assert (not (str.in.re X (str.to.re "A-311ServerUser-Agent:scn.mystoretoolbar.com\x13Windowswww.trackhits.ccHost:\x0a"))))
-; Stealthwww\x2Emyarmory\x2Ecomresultsmaster\x2Ecom
-(assert (str.in.re X (str.to.re "Stealthwww.myarmory.comresultsmaster.com\x13\x0a")))
-; client\x2Ebaigoo\x2EcomUser\x3A
-(assert (not (str.in.re X (str.to.re "client.baigoo.comUser:\x0a"))))
-; /filename=[^\n]*\x2ewps/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wps/i\x0a"))))
+; A-311ServerUser-Agent\u{3A}scn\u{2e}mystoretoolbar\u{2e}comWindowswww\.trackhits\.ccHost\u{3a}
+(assert (not (str.in_re X (str.to_re "A-311ServerUser-Agent:scn.mystoretoolbar.com\u{13}Windowswww.trackhits.ccHost:\u{a}"))))
+; Stealthwww\u{2E}myarmory\u{2E}comresultsmaster\u{2E}com
+(assert (str.in_re X (str.to_re "Stealthwww.myarmory.comresultsmaster.com\u{13}\u{a}")))
+; client\u{2E}baigoo\u{2E}comUser\u{3A}
+(assert (not (str.in_re X (str.to_re "client.baigoo.comUser:\u{a}"))))
+; /filename=[^\n]*\u{2e}wps/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".wps/i\u{a}"))))
 (check-sat)

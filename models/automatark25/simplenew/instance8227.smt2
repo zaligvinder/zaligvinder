@@ -1,4 +1,4 @@
 (declare-const X String)
-; DmInf\x5E\s+offers\x2Ebullseye-network\x2Ecomlogfile
-(assert (not (str.in.re X (re.++ (str.to.re "DmInf^") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "offers.bullseye-network.comlogfile\x0a")))))
+; DmInf\u{5E}\s+offers\u{2E}bullseye-network\u{2E}comlogfile
+(assert (not (str.in_re X (re.++ (str.to_re "DmInf^") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "offers.bullseye-network.comlogfile\u{a}")))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fdesktop\x2FSystemwwwfromToolbartheServer\x3Awww\x2Esearchreslt\x2Ecom
-(assert (not (str.in.re X (str.to.re "/desktop/SystemwwwfromToolbartheServer:www.searchreslt.com\x0a"))))
+; \u{2F}desktop\u{2F}SystemwwwfromToolbartheServer\u{3A}www\u{2E}searchreslt\u{2E}com
+(assert (not (str.in_re X (str.to_re "/desktop/SystemwwwfromToolbartheServer:www.searchreslt.com\u{a}"))))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
-; e2give\.comConnectionSpywww\x2Eslinkyslate
-(assert (str.in.re X (str.to.re "e2give.comConnectionSpywww.slinkyslate\x0a")))
+; e2give\.comConnectionSpywww\u{2E}slinkyslate
+(assert (str.in_re X (str.to_re "e2give.comConnectionSpywww.slinkyslate\u{a}")))
 ; [+-](^0.*)
-(assert (str.in.re X (re.++ (re.union (str.to.re "+") (str.to.re "-")) (str.to.re "\x0a0") (re.* re.allchar))))
+(assert (str.in_re X (re.++ (re.union (str.to_re "+") (str.to_re "-")) (str.to_re "\u{a}0") (re.* re.allchar))))
 (check-sat)

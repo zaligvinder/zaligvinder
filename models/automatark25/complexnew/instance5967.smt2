@@ -1,8 +1,8 @@
 (declare-const X String)
-; Host\x3A\w+www.*ToolbartheServer\x3Awww\x2Esearchreslt\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "www") (re.* re.allchar) (str.to.re "ToolbartheServer:www.searchreslt.com\x0a"))))
+; Host\u{3A}\w+www.*ToolbartheServer\u{3A}www\u{2E}searchreslt\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "www") (re.* re.allchar) (str.to_re "ToolbartheServer:www.searchreslt.com\u{a}"))))
 ; (href=|url|import).*[\'"]([^(http:)].*css)[\'"]
-(assert (str.in.re X (re.++ (re.union (str.to.re "href=") (str.to.re "url") (str.to.re "import")) (re.* re.allchar) (re.union (str.to.re "'") (str.to.re "\x22")) (re.union (str.to.re "'") (str.to.re "\x22")) (str.to.re "\x0a") (re.union (str.to.re "(") (str.to.re "h") (str.to.re "t") (str.to.re "p") (str.to.re ":") (str.to.re ")")) (re.* re.allchar) (str.to.re "css"))))
+(assert (str.in_re X (re.++ (re.union (str.to_re "href=") (str.to_re "url") (str.to_re "import")) (re.* re.allchar) (re.union (str.to_re "'") (str.to_re "\u{22}")) (re.union (str.to_re "'") (str.to_re "\u{22}")) (str.to_re "\u{a}") (re.union (str.to_re "(") (str.to_re "h") (str.to_re "t") (str.to_re "p") (str.to_re ":") (str.to_re ")")) (re.* re.allchar) (str.to_re "css"))))
 ; [0-1]+
-(assert (str.in.re X (re.++ (re.+ (re.range "0" "1")) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.+ (re.range "0" "1")) (str.to_re "\u{a}"))))
 (check-sat)

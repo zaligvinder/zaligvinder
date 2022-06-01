@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /\&k=\d+($|\&h=)/U
-(assert (str.in.re X (re.++ (str.to.re "/&k=") (re.+ (re.range "0" "9")) (str.to.re "&h=/U\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/&k=") (re.+ (re.range "0" "9")) (str.to_re "&h=/U\u{a}"))))
 (check-sat)

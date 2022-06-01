@@ -1,8 +1,8 @@
 (declare-const X String)
-; trustyfiles\x2EcomBlade\x23\x23\x23\x23\.smx\?
-(assert (not (str.in.re X (str.to.re "trustyfiles.comBlade####.smx?\x0a"))))
-; rprpgbnrppb\x2fci\d\x2ElStopperHost\x3AHost\x3aclvompycem\x2fcen\.vcn
-(assert (not (str.in.re X (re.++ (str.to.re "rprpgbnrppb/ci") (re.range "0" "9") (str.to.re ".lStopperHost:Host:clvompycem/cen.vcn\x0a")))))
-; /filename=[^\n]*\x2ermf/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".rmf/i\x0a"))))
+; trustyfiles\u{2E}comBlade\u{23}\u{23}\u{23}\u{23}\.smx\?
+(assert (not (str.in_re X (str.to_re "trustyfiles.comBlade####.smx?\u{a}"))))
+; rprpgbnrppb\u{2f}ci\d\u{2E}lStopperHost\u{3A}Host\u{3a}clvompycem\u{2f}cen\.vcn
+(assert (not (str.in_re X (re.++ (str.to_re "rprpgbnrppb/ci") (re.range "0" "9") (str.to_re ".lStopperHost:Host:clvompycem/cen.vcn\u{a}")))))
+; /filename=[^\n]*\u{2e}rmf/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".rmf/i\u{a}"))))
 (check-sat)

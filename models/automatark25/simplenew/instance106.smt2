@@ -1,4 +1,4 @@
 (declare-const X String)
-; OSSProxyZC-BridgeHost\x3AReferer\x3aFunWebProducts
-(assert (not (str.in.re X (str.to.re "OSSProxyZC-BridgeHost:Referer:FunWebProducts\x0a"))))
+; OSSProxyZC-BridgeHost\u{3A}Referer\u{3a}FunWebProducts
+(assert (not (str.in_re X (str.to_re "OSSProxyZC-BridgeHost:Referer:FunWebProducts\u{a}"))))
 (check-sat)

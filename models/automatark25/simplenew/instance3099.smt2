@@ -1,4 +1,4 @@
 (declare-const X String)
-; OS\x2F\d+User-Agent\x3AUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "OS/") (re.+ (re.range "0" "9")) (str.to.re "User-Agent:User-Agent:\x0a"))))
+; OS\u{2F}\d+User-Agent\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "OS/") (re.+ (re.range "0" "9")) (str.to_re "User-Agent:User-Agent:\u{a}"))))
 (check-sat)

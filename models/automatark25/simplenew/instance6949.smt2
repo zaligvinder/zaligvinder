@@ -1,4 +1,4 @@
 (declare-const X String)
-; SPY\s\x5BStaticHost\x3AFROM\x3Acs\x2Eshopperreports\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "SPY") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "[StaticHost:FROM:cs.shopperreports.com\x0a")))))
+; SPY\s\u{5B}StaticHost\u{3A}FROM\u{3A}cs\u{2E}shopperreports\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "SPY") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "[StaticHost:FROM:cs.shopperreports.com\u{a}")))))
 (check-sat)

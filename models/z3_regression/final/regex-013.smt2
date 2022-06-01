@@ -1,10 +1,10 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (declare-const x String)
 (declare-const y String)
 
 
-(assert (str.in.re y (re.* (re.* (str.to.re "abcd") ) ) ) )
+(assert (str.in_re y (re.* (re.* (str.to_re "abcd") ) ) ) )
 
 (assert (= (str.len y)  8) )
 

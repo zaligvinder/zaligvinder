@@ -1,4 +1,4 @@
 (declare-const X String)
-; HXDownloadUser-Agent\x3AanswerDeletingCookieReferer\x3A
-(assert (str.in.re X (str.to.re "HXDownloadUser-Agent:answerDeletingCookieReferer:\x0a")))
+; HXDownloadUser-Agent\u{3A}answerDeletingCookieReferer\u{3A}
+(assert (str.in_re X (str.to_re "HXDownloadUser-Agent:answerDeletingCookieReferer:\u{a}")))
 (check-sat)

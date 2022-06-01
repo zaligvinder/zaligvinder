@@ -1,4 +1,4 @@
 (declare-const X String)
-; RXFilteredDmInf\x5EJMailYeah\!Online\x2521\x2521\x2521Reportsversion\x2Etxt
-(assert (not (str.in.re X (str.to.re "RXFilteredDmInf^JMailYeah!Online%21%21%21Reportsversion.txt\x0a"))))
+; RXFilteredDmInf\u{5E}JMailYeah\!Online\u{25}21\u{25}21\u{25}21Reportsversion\u{2E}txt
+(assert (not (str.in_re X (str.to_re "RXFilteredDmInf^JMailYeah!Online%21%21%21Reportsversion.txt\u{a}"))))
 (check-sat)

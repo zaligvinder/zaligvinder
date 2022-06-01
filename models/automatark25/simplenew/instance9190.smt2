@@ -1,4 +1,4 @@
 (declare-const X String)
-; areKeyloggerver=www\x2Esnap\x2Ecom
-(assert (not (str.in.re X (str.to.re "areKeyloggerver=www.snap.com\x0a"))))
+; areKeyloggerver=www\u{2E}snap\u{2E}com
+(assert (not (str.in_re X (str.to_re "areKeyloggerver=www.snap.com\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; Subject\x3aSpywareSpyBuddy
-(assert (str.in.re X (str.to.re "Subject:SpywareSpyBuddy\x0a")))
+; Subject\u{3a}SpywareSpyBuddy
+(assert (str.in_re X (str.to_re "Subject:SpywareSpyBuddy\u{a}")))
 (check-sat)

@@ -33,7 +33,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= var_0xINPUT_16865 (str.++ T0_9 T1_9)))
 (assert (= T1_9 (str.++ T2_9 T3_9)))
 (assert (= T2_9 (str.++ T4_9 T5_9)))
-(assert (not (str.in.re T4_9 (str.to.re "__utmz=169413169."))))
+(assert (not (str.in_re T4_9 (str.to_re "__utmz=169413169."))))
 (assert (= T5_9 "__utmz=169413169."))
 (assert T_8)
 (assert (= T_8 (< (- 1) PCTEMP_LHS_2)))

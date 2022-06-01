@@ -1,8 +1,8 @@
 (declare-const X String)
-; downloadfile\x2eorg\w+com\x3EHost\x3A
-(assert (str.in.re X (re.++ (str.to.re "downloadfile.org") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "com>Host:\x0a"))))
+; downloadfile\u{2e}org\w+com\u{3E}Host\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "downloadfile.org") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "com>Host:\u{a}"))))
 ; ^\d*(\.\d*)$
-(assert (str.in.re X (re.++ (re.* (re.range "0" "9")) (str.to.re "\x0a.") (re.* (re.range "0" "9")))))
-; User-Agent\x3Aetbuviaebe\x2feqv\.bvv
-(assert (not (str.in.re X (str.to.re "User-Agent:etbuviaebe/eqv.bvv\x0a"))))
+(assert (str.in_re X (re.++ (re.* (re.range "0" "9")) (str.to_re "\u{a}.") (re.* (re.range "0" "9")))))
+; User-Agent\u{3A}etbuviaebe\u{2f}eqv\.bvv
+(assert (not (str.in_re X (str.to_re "User-Agent:etbuviaebe/eqv.bvv\u{a}"))))
 (check-sat)

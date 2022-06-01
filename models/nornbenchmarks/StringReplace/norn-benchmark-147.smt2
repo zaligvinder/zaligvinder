@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,9 +14,9 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in.re (str.++ var_7 "z" "b" var_8 ) (re.++ (re.* (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c")))) (re.union (str.to.re "") (re.++ (str.to.re "b") (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))))))))
-(assert (str.in.re var_8 (re.* (re.range "a" "u"))))
-(assert (str.in.re (str.++ "b" var_8 ) (re.* (re.range "a" "u"))))
-(assert (str.in.re var_7 (re.* (re.range "a" "u"))))
-(assert (not (str.in.re (str.++ var_7 "a" ) (re.* (re.range "a" "u")))))
+(assert (str.in_re (str.++ var_7 "z" "b" var_8 ) (re.++ (re.* (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c")))) (re.union (str.to_re "") (re.++ (str.to_re "b") (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))))))))
+(assert (str.in_re var_8 (re.* (re.range "a" "u"))))
+(assert (str.in_re (str.++ "b" var_8 ) (re.* (re.range "a" "u"))))
+(assert (str.in_re var_7 (re.* (re.range "a" "u"))))
+(assert (not (str.in_re (str.++ var_7 "a" ) (re.* (re.range "a" "u")))))
 (check-sat)

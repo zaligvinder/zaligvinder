@@ -1,6 +1,6 @@
 (declare-const X String)
-; \x7D\x7BUser\x3A\x7D\x7BTrojan\x3ASPYSubject\x3A\swww\.fast-finder\.comhostieLogger
-(assert (not (str.in.re X (re.++ (str.to.re "}{User:}{Trojan:SPYSubject:") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "www.fast-finder.comhostieLogger\x0a")))))
-; horoscope2YAHOOwww\x2e2-seek\x2ecom\x2fsearchHost\x3A
-(assert (not (str.in.re X (str.to.re "horoscope2YAHOOwww.2-seek.com/searchHost:\x0a"))))
+; \u{7D}\u{7B}User\u{3A}\u{7D}\u{7B}Trojan\u{3A}SPYSubject\u{3A}\swww\.fast-finder\.comhostieLogger
+(assert (not (str.in_re X (re.++ (str.to_re "}{User:}{Trojan:SPYSubject:") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "www.fast-finder.comhostieLogger\u{a}")))))
+; horoscope2YAHOOwww\u{2e}2-seek\u{2e}com\u{2f}searchHost\u{3A}
+(assert (not (str.in_re X (str.to_re "horoscope2YAHOOwww.2-seek.com/searchHost:\u{a}"))))
 (check-sat)

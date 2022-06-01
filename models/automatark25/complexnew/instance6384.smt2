@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2edbp/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".dbp/i\x0a"))))
-; thesearchresltLoggerHost\x3ABetaHWAEHost\x3Ais
-(assert (str.in.re X (str.to.re "thesearchresltLoggerHost:BetaHWAEHost:is\x0a")))
+; /filename=[^\n]*\u{2e}dbp/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".dbp/i\u{a}"))))
+; thesearchresltLoggerHost\u{3A}BetaHWAEHost\u{3A}is
+(assert (str.in_re X (str.to_re "thesearchresltLoggerHost:BetaHWAEHost:is\u{a}")))
 (check-sat)

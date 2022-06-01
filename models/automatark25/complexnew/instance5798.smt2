@@ -1,6 +1,6 @@
 (declare-const X String)
-; User-Agent\x3AMailerGuarded
-(assert (not (str.in.re X (str.to.re "User-Agent:MailerGuarded\x0a"))))
-; \x2Fdss\x2Fcc\.2_0_0\.GoogleHXDownloadasdbiz\x2Ebiz
-(assert (not (str.in.re X (str.to.re "/dss/cc.2_0_0.GoogleHXDownloadasdbiz.biz\x0a"))))
+; User-Agent\u{3A}MailerGuarded
+(assert (not (str.in_re X (str.to_re "User-Agent:MailerGuarded\u{a}"))))
+; \u{2F}dss\u{2F}cc\.2_0_0\.GoogleHXDownloadasdbiz\u{2E}biz
+(assert (not (str.in_re X (str.to_re "/dss/cc.2_0_0.GoogleHXDownloadasdbiz.biz\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x7croogoo\x7cTestiufilfwulmfi\x2friuf\.lioHeaders
-(assert (not (str.in.re X (str.to.re "|roogoo|Testiufilfwulmfi/riuf.lioHeaders\x0a"))))
+; \u{7c}roogoo\u{7c}Testiufilfwulmfi\u{2f}riuf\.lioHeaders
+(assert (not (str.in_re X (str.to_re "|roogoo|Testiufilfwulmfi/riuf.lioHeaders\u{a}"))))
 (check-sat)

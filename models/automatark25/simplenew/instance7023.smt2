@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Easpxdata\.warezclient\.comWinCrashrunningUser-Agent\x3Awowokay
-(assert (str.in.re X (str.to.re ".aspxdata.warezclient.comWinCrashrunningUser-Agent:wowokay\x0a")))
+; \u{2E}aspxdata\.warezclient\.comWinCrashrunningUser-Agent\u{3A}wowokay
+(assert (str.in_re X (str.to_re ".aspxdata.warezclient.comWinCrashrunningUser-Agent:wowokay\u{a}")))
 (check-sat)

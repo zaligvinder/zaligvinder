@@ -1,4 +1,4 @@
 (declare-const X String)
-; /filename=[^\n]*\x2epptx/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".pptx/i\x0a")))))
+; /filename=[^\n]*\u{2e}pptx/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".pptx/i\u{a}")))))
 (check-sat)

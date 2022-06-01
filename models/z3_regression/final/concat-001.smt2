@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (declare-const x String)
 (declare-const y1 String)

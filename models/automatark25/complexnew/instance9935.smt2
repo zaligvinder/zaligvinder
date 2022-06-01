@@ -1,10 +1,10 @@
 (declare-const X String)
-; /\x26uid\x3d[a-f0-9]{16}($|\x26)/U
-(assert (str.in.re X (re.++ (str.to.re "/&uid=") ((_ re.loop 16 16) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to.re "&/U\x0a"))))
-; /filename=[^\n]*\x2em3u/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".m3u/i\x0a")))))
-; User-Agent\x3Aetbuviaebe\x2feqv\.bvv
-(assert (not (str.in.re X (str.to.re "User-Agent:etbuviaebe/eqv.bvv\x0a"))))
-; /filename=[^\n]*\x2eabc/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".abc/i\x0a"))))
+; /\u{26}uid\u{3d}[a-f0-9]{16}($|\u{26})/U
+(assert (str.in_re X (re.++ (str.to_re "/&uid=") ((_ re.loop 16 16) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to_re "&/U\u{a}"))))
+; /filename=[^\n]*\u{2e}m3u/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".m3u/i\u{a}")))))
+; User-Agent\u{3A}etbuviaebe\u{2f}eqv\.bvv
+(assert (not (str.in_re X (str.to_re "User-Agent:etbuviaebe/eqv.bvv\u{a}"))))
+; /filename=[^\n]*\u{2e}abc/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".abc/i\u{a}"))))
 (check-sat)

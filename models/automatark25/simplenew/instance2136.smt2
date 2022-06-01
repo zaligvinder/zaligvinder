@@ -1,4 +1,4 @@
 (declare-const X String)
-; doarauzeraqf\x2fvvv\.ul
-(assert (not (str.in.re X (str.to.re "doarauzeraqf/vvv.ul\x0a"))))
+; doarauzeraqf\u{2f}vvv\.ul
+(assert (not (str.in_re X (str.to_re "doarauzeraqf/vvv.ul\u{a}"))))
 (check-sat)

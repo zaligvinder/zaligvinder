@@ -1,4 +1,4 @@
 (declare-const X String)
-; zmnjgmomgbdz\x2fzzmw\.gztwww3\.addfreestats\.comKeylogger
-(assert (str.in.re X (str.to.re "zmnjgmomgbdz/zzmw.gztwww3.addfreestats.comKeylogger\x0a")))
+; zmnjgmomgbdz\u{2f}zzmw\.gztwww3\.addfreestats\.comKeylogger
+(assert (str.in_re X (str.to_re "zmnjgmomgbdz/zzmw.gztwww3.addfreestats.comKeylogger\u{a}")))
 (check-sat)

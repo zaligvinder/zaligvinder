@@ -1,4 +1,4 @@
 (declare-const X String)
 ; attachedEverywareHELOBasic
-(assert (str.in.re X (str.to.re "attachedEverywareHELOBasic\x0a")))
+(assert (str.in_re X (str.to_re "attachedEverywareHELOBasic\u{a}")))
 (check-sat)

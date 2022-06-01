@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (str.to.re "322'r\\'&")))
+(assert (str.in_re x (str.to_re "322'r\\'&")))
 (assert (= (str.len x) 2))
 (check-sat)

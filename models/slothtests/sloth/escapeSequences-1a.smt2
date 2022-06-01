@@ -1,13 +1,13 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 
 (declare-fun x () String)
 (declare-fun y () String)
 
-(assert (= x "\x48\145\x6cl\o"))
+(assert (= x "\u{48}\145\u{6c}l\o"))
 
 ;unsat
-(assert (str.in.re x (re.* (re.range "a" "u"))))
+(assert (str.in_re x (re.* (re.range "a" "u"))))
 (check-sat)
 
 (check-sat)

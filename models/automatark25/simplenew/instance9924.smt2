@@ -1,4 +1,4 @@
 (declare-const X String)
-; http\x3A\x2F\x2Fmysearch\.dropspam\.com\x2Findex\.php\?tpid=
-(assert (not (str.in.re X (str.to.re "http://mysearch.dropspam.com/index.php?tpid=\x13\x0a"))))
+; http\u{3A}\u{2F}\u{2F}mysearch\.dropspam\.com\u{2F}index\.php\?tpid=
+(assert (not (str.in_re X (str.to_re "http://mysearch.dropspam.com/index.php?tpid=\u{13}\u{a}"))))
 (check-sat)

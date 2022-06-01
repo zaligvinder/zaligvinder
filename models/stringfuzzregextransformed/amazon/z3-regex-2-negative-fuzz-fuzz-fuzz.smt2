@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const S String)
-(assert (str.in.re S (re.union (str.to.re "{mN^1+RRa0sGAjQ&c&9=Y$'\n'/' '' ']vTMX!E;snQ*_jh&bK<M6EV") re.allchar)))
-(assert (not (str.in.re S (re.union (re.++ (re.++ (str.to.re "hZ{MG@0}vrUYk0'\n'izMt(:yH51Ll{v\\]$8Pr'''\r'AI!'\r'VRQMGY.]dpfz&Q'\t'0r#{^0vKseQPx*ZQ^+>'b(IP|Szs1fW;fLV5Q' ':wvG/'\x0c'4EQi'\x0c'OT&3p""xP|_Iru'\t'LX;:0%T8(") re.allchar) (str.to.re "y")) re.allchar))))
+(assert (str.in_re S (re.union (str.to_re "{mN^1+RRa0sGAjQ&c&9=Y$'\n'/' '' ']vTMX!E;snQ*_jh&bK<M6EV") re.allchar)))
+(assert (not (str.in_re S (re.union (re.++ (re.++ (str.to_re "hZ{MG@0}vrUYk0'\n'izMt(:yH51Ll{v\\]$8Pr'''\r'AI!'\r'VRQMGY.]dpfz&Q'\t'0r#{^0vKseQPx*ZQ^+>'b(IP|Szs1fW;fLV5Q' ':wvG/'\u{c}'4EQi'\u{c}'OT&3p""xP|_Iru'\t'LX;:0%T8(") re.allchar) (str.to_re "y")) re.allchar))))
 (check-sat)

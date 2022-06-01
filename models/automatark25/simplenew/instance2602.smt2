@@ -1,4 +1,4 @@
 (declare-const X String)
-; mPOPUser-Agent\x3AgotS\x3aUsers\x5cPORT\x3DHXLogOnlyMGS-Internal-Web-Manager
-(assert (str.in.re X (str.to.re "mPOPUser-Agent:gotS:Users\x5cPORT=HXLogOnlyMGS-Internal-Web-Manager\x0a")))
+; mPOPUser-Agent\u{3A}gotS\u{3a}Users\u{5c}PORT\u{3D}HXLogOnlyMGS-Internal-Web-Manager
+(assert (str.in_re X (str.to_re "mPOPUser-Agent:gotS:Users\u{5c}PORT=HXLogOnlyMGS-Internal-Web-Manager\u{a}")))
 (check-sat)

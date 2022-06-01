@@ -1,4 +1,4 @@
 (declare-const X String)
 ; ~[A-Z][a-z]+(b|ch|d|g|j|k|l|m|n|p|r|s|t|v|z)(ian)$
-(assert (not (str.in.re X (re.++ (str.to.re "~") (re.range "A" "Z") (re.+ (re.range "a" "z")) (re.union (str.to.re "b") (str.to.re "ch") (str.to.re "d") (str.to.re "g") (str.to.re "j") (str.to.re "k") (str.to.re "l") (str.to.re "m") (str.to.re "n") (str.to.re "p") (str.to.re "r") (str.to.re "s") (str.to.re "t") (str.to.re "v") (str.to.re "z")) (str.to.re "ian\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "~") (re.range "A" "Z") (re.+ (re.range "a" "z")) (re.union (str.to_re "b") (str.to_re "ch") (str.to_re "d") (str.to_re "g") (str.to_re "j") (str.to_re "k") (str.to_re "l") (str.to_re "m") (str.to_re "n") (str.to_re "p") (str.to_re "r") (str.to_re "s") (str.to_re "t") (str.to_re "v") (str.to_re "z")) (str.to_re "ian\u{a}")))))
 (check-sat)

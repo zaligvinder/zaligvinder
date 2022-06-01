@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re "JB") (re.++ (str.to.re "S|%{__'\x0c'JG<JYJw9c-wSgrLLb~-w5e") (str.to.re "%$x\\j}t{'\r'U~/""qE\\U7~ht'\x0c'.VE05'' '8kB%d<h-qN(Up6M{zq9'\t'X!J-p)'/A=(|oMM6mX}cR^r%4-6&)t`7xnD5Hs=D(Z(Bj}6>sZ7~}BGR-U<:&&.zQ~,&W\\ZV<1z{I''W)%c""^'\t',{N%'\r'xlv/Y=\\xr@'' 'HIr@\\0c$+"))))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re "JB") (re.++ (str.to_re "S|%{__'\u{c}'JG<JYJw9c-wSgrLLb~-w5e") (str.to_re "%$x\\j}t{'\r'U~/""qE\\U7~ht'\u{c}'.VE05'' '8kB%d<h-qN(Up6M{zq9'\t'X!J-p)'/A=(|oMM6mX}cR^r%4-6&)t`7xnD5Hs=D(Z(Bj}6>sZ7~}BGR-U<:&&.zQ~,&W\\ZV<1z{I''W)%c""^'\t',{N%'\r'xlv/Y=\\u{r@}'' 'HIr@\\0c$+"))))))
 (assert (= 9 (str.len x)))
 (check-sat)

@@ -10,7 +10,7 @@
 (declare-fun T_SELECT_1 () Bool)
 (declare-fun var_0xINPUT_15317 () String)
 (assert (= T_SELECT_1 (not (= PCTEMP_LHS_1 (- 1)))))
-(assert (ite T_SELECT_1 (and (= PCTEMP_LHS_1 (+ I0_2 0))(= var_0xINPUT_15317 (str.++ T0_2 T1_2))(= I0_2 (str.len T4_2))(= 0 (str.len T0_2))(= T1_2 (str.++ T2_2 T3_2))(= T2_2 (str.++ T4_2 T5_2))(= T5_2 "__gads=")(not (str.in.re T4_2 (re.++   (str.to.re "_" )  (re.++   (str.to.re "_" ) (re.++  (str.to.re "g" ) (re.++  (str.to.re "a" ) (re.++  (str.to.re "d" ) (re.++  (str.to.re "s" )  (str.to.re "=" )  ) ) ) ) ) ) ))) (and (= PCTEMP_LHS_1 (- 1))(= var_0xINPUT_15317 (str.++ T0_2 T1_2))(= 0 (str.len T0_2))(not (str.in.re T1_2 (re.++   (str.to.re "_" )  (re.++   (str.to.re "_" ) (re.++  (str.to.re "g" ) (re.++  (str.to.re "a" ) (re.++  (str.to.re "d" ) (re.++  (str.to.re "s" )  (str.to.re "=" )  ) ) ) ) ) ) )))))
+(assert (ite T_SELECT_1 (and (= PCTEMP_LHS_1 (+ I0_2 0))(= var_0xINPUT_15317 (str.++ T0_2 T1_2))(= I0_2 (str.len T4_2))(= 0 (str.len T0_2))(= T1_2 (str.++ T2_2 T3_2))(= T2_2 (str.++ T4_2 T5_2))(= T5_2 "__gads=")(not (str.in_re T4_2 (re.++   (str.to_re "_" )  (re.++   (str.to_re "_" ) (re.++  (str.to_re "g" ) (re.++  (str.to_re "a" ) (re.++  (str.to_re "d" ) (re.++  (str.to_re "s" )  (str.to_re "=" )  ) ) ) ) ) ) ))) (and (= PCTEMP_LHS_1 (- 1))(= var_0xINPUT_15317 (str.++ T0_2 T1_2))(= 0 (str.len T0_2))(not (str.in_re T1_2 (re.++   (str.to_re "_" )  (re.++   (str.to_re "_" ) (re.++  (str.to_re "g" ) (re.++  (str.to_re "a" ) (re.++  (str.to_re "d" ) (re.++  (str.to_re "s" )  (str.to_re "=" )  ) ) ) ) ) ) )))))
 (assert (= T_2 (not (= PCTEMP_LHS_1 (- 1)))))
 (assert T_2)
 (check-sat)

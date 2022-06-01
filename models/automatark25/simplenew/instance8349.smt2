@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AYOURcache\x2Eeverer\x2Ecomwww\x2Epurityscan\x2Ecom
-(assert (str.in.re X (str.to.re "Host:YOURcache.everer.comwww.purityscan.com\x0a")))
+; Host\u{3A}YOURcache\u{2E}everer\u{2E}comwww\u{2E}purityscan\u{2E}com
+(assert (str.in_re X (str.to_re "Host:YOURcache.everer.comwww.purityscan.com\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; Toolbar\d+ServerLiteToolbardailywww\x2Ecameup\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Toolbar") (re.+ (re.range "0" "9")) (str.to.re "ServerLiteToolbardailywww.cameup.com\x13\x0a")))))
+; Toolbar\d+ServerLiteToolbardailywww\u{2E}cameup\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Toolbar") (re.+ (re.range "0" "9")) (str.to_re "ServerLiteToolbardailywww.cameup.com\u{13}\u{a}")))))
 (check-sat)

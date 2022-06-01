@@ -1,4 +1,4 @@
 (declare-const X String)
-; Login\d+dll\x3FHOST\x3Acontains
-(assert (str.in.re X (re.++ (str.to.re "Login") (re.+ (re.range "0" "9")) (str.to.re "dll?HOST:contains\x0a"))))
+; Login\d+dll\u{3F}HOST\u{3A}contains
+(assert (str.in_re X (re.++ (str.to_re "Login") (re.+ (re.range "0" "9")) (str.to_re "dll?HOST:contains\u{a}"))))
 (check-sat)

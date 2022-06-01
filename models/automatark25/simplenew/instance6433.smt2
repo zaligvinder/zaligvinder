@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x28\x29url=http\x3A1\x2E0b3\x2EaspxWatchDogupwww\.klikvipsearch\.comNetspyt=WeHost\x3A\x2Fcgi\x2Flogurl\.cgi
-(assert (str.in.re X (str.to.re "()url=http:\x1b1.0b3.aspxWatchDogupwww.klikvipsearch.comNetspyt=WeHost:/cgi/logurl.cgi\x0a")))
+; \u{28}\u{29}url=http\u{3A}1\u{2E}0b3\u{2E}aspxWatchDogupwww\.klikvipsearch\.comNetspyt=WeHost\u{3A}\u{2F}cgi\u{2F}logurl\.cgi
+(assert (str.in_re X (str.to_re "()url=http:\u{1b}1.0b3.aspxWatchDogupwww.klikvipsearch.comNetspyt=WeHost:/cgi/logurl.cgi\u{a}")))
 (check-sat)

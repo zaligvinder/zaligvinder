@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x ">.B.BNA"))
-(assert (str.in.re x (str.to.re ".BNA")))
+(assert (str.in_re x (str.to_re ".BNA")))
 (check-sat)

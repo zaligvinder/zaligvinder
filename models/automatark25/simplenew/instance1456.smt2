@@ -1,4 +1,4 @@
 (declare-const X String)
-; Download\d+ocllceclbhs\x2fgth
-(assert (str.in.re X (re.++ (str.to.re "Download") (re.+ (re.range "0" "9")) (str.to.re "ocllceclbhs/gth\x0a"))))
+; Download\d+ocllceclbhs\u{2f}gth
+(assert (str.in_re X (re.++ (str.to_re "Download") (re.+ (re.range "0" "9")) (str.to_re "ocllceclbhs/gth\u{a}"))))
 (check-sat)

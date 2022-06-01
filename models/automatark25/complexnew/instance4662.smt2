@@ -1,6 +1,6 @@
 (declare-const X String)
-; FTPHost\x3AUser-Agent\x3aUser\x3AdistID=deskwizz\x2Ecom
-(assert (not (str.in.re X (str.to.re "FTPHost:User-Agent:User:distID=deskwizz.com\x0a"))))
+; FTPHost\u{3A}User-Agent\u{3a}User\u{3A}distID=deskwizz\u{2E}com
+(assert (not (str.in_re X (str.to_re "FTPHost:User-Agent:User:distID=deskwizz.com\u{a}"))))
 ; ^(.*)
-(assert (str.in.re X (re.++ (re.* re.allchar) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.* re.allchar) (str.to_re "\u{a}"))))
 (check-sat)

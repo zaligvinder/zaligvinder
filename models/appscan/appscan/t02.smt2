@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 (set-info :status sat)
 
@@ -11,9 +11,9 @@
 
 (assert (= cookie  (str.++ cookie_part1 cookie_part2 cookie_part3) ) ) 
 
-(assert (str.in.re cookie_part2 (re.++ (re.union (str.to.re "?") (str.to.re ";") ) 
-                                       (str.to.re "searchLang=")
-                                       (re.* (re.union (str.to.re "a") (str.to.re "b") (str.to.re "c") (str.to.re "d") (str.to.re "e") (str.to.re "f") (str.to.re "g") (str.to.re "h") (str.to.re "i") (str.to.re "j") (str.to.re "k") (str.to.re "l") (str.to.re "m") (str.to.re "n") ) )
+(assert (str.in_re cookie_part2 (re.++ (re.union (str.to_re "?") (str.to_re ";") ) 
+                                       (str.to_re "searchLang=")
+                                       (re.* (re.union (str.to_re "a") (str.to_re "b") (str.to_re "c") (str.to_re "d") (str.to_re "e") (str.to_re "f") (str.to_re "g") (str.to_re "h") (str.to_re "i") (str.to_re "j") (str.to_re "k") (str.to_re "l") (str.to_re "m") (str.to_re "n") ) )
                                 )
         )
 )

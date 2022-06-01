@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "aU-%my{y"))
-(assert (str.in.re x (re.union (re.* (re.+ (str.to.re "{y"))) (str.to.re "j}?'\x0c'H{N9"))))
+(assert (str.in_re x (re.union (re.* (re.+ (str.to_re "{y"))) (str.to_re "j}?'\u{c}'H{N9"))))
 (check-sat)

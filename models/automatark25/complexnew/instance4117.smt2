@@ -1,6 +1,6 @@
 (declare-const X String)
-; www\x2Emyarmory\x2EcomHost\x3aHost\x3amessagessearch\x2eimesh\x2ecom
-(assert (str.in.re X (str.to.re "www.myarmory.comHost:Host:messagessearch.imesh.com\x0a")))
-; ActMonHost\x3ABossUser-Agent\x3A
-(assert (str.in.re X (str.to.re "ActMonHost:BossUser-Agent:\x0a")))
+; www\u{2E}myarmory\u{2E}comHost\u{3a}Host\u{3a}messagessearch\u{2e}imesh\u{2e}com
+(assert (str.in_re X (str.to_re "www.myarmory.comHost:Host:messagessearch.imesh.com\u{a}")))
+; ActMonHost\u{3A}BossUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "ActMonHost:BossUser-Agent:\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var536 () String)
@@ -35,7 +35,7 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var578 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var578 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= var538 var536 ) ))
 (assert (= true (= (str.++ var539 "' ORDER BY c_first ASC" ) var538 ) ))
 (assert (= true (= (str.++ var541 var542 ) var539 ) ))
@@ -56,7 +56,7 @@
 (assert (= true (= (str.++ var569 var550 ) var568 ) ))
 (assert (= true (= (str.++ var570 "WHERE c_last = '" ) var569 ) ))
 (assert (= true (= (str.++ var571 "FROM tpcc_customer" ) var570 ) ))
-(assert (= true (= (str.++ var572 "SELECT count\x28c_id\x29 AS namecnt" ) var571 ) ))
+(assert (= true (= (str.++ var572 "SELECT count\u{28}c_id\u{29} AS namecnt" ) var571 ) ))
 (assert (= true (not (= 0 var574 )) ))
 (assert (= true (= var546 var577 ) ))
 (assert (= true (= var542 var576 ) ))

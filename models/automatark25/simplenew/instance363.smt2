@@ -1,4 +1,4 @@
 (declare-const X String)
-; Subject\x3ALOGX-Mailer\x3a
-(assert (not (str.in.re X (str.to.re "Subject:LOGX-Mailer:\x13\x0a"))))
+; Subject\u{3A}LOGX-Mailer\u{3a}
+(assert (not (str.in_re X (str.to_re "Subject:LOGX-Mailer:\u{13}\u{a}"))))
 (check-sat)

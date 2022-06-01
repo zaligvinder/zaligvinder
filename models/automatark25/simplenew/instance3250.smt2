@@ -1,4 +1,4 @@
 (declare-const X String)
-; Uin=encodernotification\x2Ftoolbar\x2FHost\x3AUser-Agent\x3A
-(assert (str.in.re X (str.to.re "Uin=encodernotification\x13/toolbar/Host:User-Agent:\x0a")))
+; Uin=encodernotification\u{2F}toolbar\u{2F}Host\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "Uin=encodernotification\u{13}/toolbar/Host:User-Agent:\u{a}")))
 (check-sat)

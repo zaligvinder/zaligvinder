@@ -1,8 +1,8 @@
 (declare-const X String)
-; ToolbarUser-Agent\x3Awww\x2Ewebcruiser\x2EccDaemonUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "ToolbarUser-Agent:www.webcruiser.ccDaemonUser-Agent:\x0a"))))
+; ToolbarUser-Agent\u{3A}www\u{2E}webcruiser\u{2E}ccDaemonUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "ToolbarUser-Agent:www.webcruiser.ccDaemonUser-Agent:\u{a}"))))
 ; /[a-z]=[a-f0-9]{98}/P
-(assert (str.in.re X (re.++ (str.to.re "/") (re.range "a" "z") (str.to.re "=") ((_ re.loop 98 98) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to.re "/P\x0a"))))
-; xbqyosoe\x2fcpvmdll\x3F
-(assert (not (str.in.re X (str.to.re "xbqyosoe/cpvmdll?\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/") (re.range "a" "z") (str.to_re "=") ((_ re.loop 98 98) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to_re "/P\u{a}"))))
+; xbqyosoe\u{2f}cpvmdll\u{3F}
+(assert (not (str.in_re X (str.to_re "xbqyosoe/cpvmdll?\u{a}"))))
 (check-sat)

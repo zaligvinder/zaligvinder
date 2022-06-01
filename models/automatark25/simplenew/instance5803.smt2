@@ -1,4 +1,4 @@
 (declare-const X String)
-; dist\x2Eatlas\x2Dia\x2EcomSpy\-LockedOnlineconnection
-(assert (not (str.in.re X (str.to.re "dist.atlas-ia.comSpy-LockedOnlineconnection\x0a"))))
+; dist\u{2E}atlas\u{2D}ia\u{2E}comSpy\-LockedOnlineconnection
+(assert (not (str.in_re X (str.to_re "dist.atlas-ia.comSpy-LockedOnlineconnection\u{a}"))))
 (check-sat)

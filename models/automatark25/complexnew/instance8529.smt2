@@ -1,12 +1,12 @@
 (declare-const X String)
-; /filename=[^\n]*\x2ewmx/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wmx/i\x0a"))))
-; password\x3B1\x3BOptixOwner\x3ABarwww\x2Eaccoona\x2Ecom
-(assert (not (str.in.re X (str.to.re "password;1;OptixOwner:Barwww.accoona.com\x0a"))))
+; /filename=[^\n]*\u{2e}wmx/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".wmx/i\u{a}"))))
+; password\u{3B}1\u{3B}OptixOwner\u{3A}Barwww\u{2E}accoona\u{2E}com
+(assert (not (str.in_re X (str.to_re "password;1;OptixOwner:Barwww.accoona.com\u{a}"))))
 ; onAlertMGS-Internal-Web-Manager
-(assert (not (str.in.re X (str.to.re "onAlertMGS-Internal-Web-Manager\x0a"))))
-; cyber@yahoo\x2Ecomconfig\x2E180solutions\x2Ecom
-(assert (not (str.in.re X (str.to.re "cyber@yahoo.comconfig.180solutions.com\x0a"))))
-; /\x2ewax([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.wax") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+(assert (not (str.in_re X (str.to_re "onAlertMGS-Internal-Web-Manager\u{a}"))))
+; cyber@yahoo\u{2E}comconfig\u{2E}180solutions\u{2E}com
+(assert (not (str.in_re X (str.to_re "cyber@yahoo.comconfig.180solutions.com\u{a}"))))
+; /\u{2e}wax([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.wax") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
 (check-sat)

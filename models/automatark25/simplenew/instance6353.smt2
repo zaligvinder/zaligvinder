@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3Ahjhgquqssq\x2fpjmonHost\x3AHost\x3AA-311byName=Your\+Host\+is\x3A
-(assert (str.in.re X (str.to.re "Host:hjhgquqssq/pjmonHost:Host:A-311byName=Your+Host+is:\x0a")))
+; Host\u{3A}hjhgquqssq\u{2f}pjmonHost\u{3A}Host\u{3A}A-311byName=Your\+Host\+is\u{3A}
+(assert (str.in_re X (str.to_re "Host:hjhgquqssq/pjmonHost:Host:A-311byName=Your+Host+is:\u{a}")))
 (check-sat)

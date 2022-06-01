@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AHost\x3Abody=\x2521\x2521\x2521Optix
-(assert (str.in.re X (str.to.re "Host:Host:body=%21%21%21Optix\x13\x0a")))
+; Host\u{3A}Host\u{3A}body=\u{25}21\u{25}21\u{25}21Optix
+(assert (str.in_re X (str.to_re "Host:Host:body=%21%21%21Optix\u{13}\u{a}")))
 (check-sat)

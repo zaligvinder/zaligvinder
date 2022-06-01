@@ -1,6 +1,6 @@
 (declare-const X String)
 ; [()+-.0-9]*
-(assert (not (str.in.re X (re.++ (re.* (re.union (str.to.re "(") (str.to.re ")") (re.range "+" ".") (re.range "0" "9"))) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.* (re.union (str.to_re "(") (str.to_re ")") (re.range "+" ".") (re.range "0" "9"))) (str.to_re "\u{a}")))))
 ; this\w+c\.goclick\.com\d
-(assert (str.in.re X (re.++ (str.to.re "this") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "c.goclick.com") (re.range "0" "9") (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "this") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "c.goclick.com") (re.range "0" "9") (str.to_re "\u{a}"))))
 (check-sat)

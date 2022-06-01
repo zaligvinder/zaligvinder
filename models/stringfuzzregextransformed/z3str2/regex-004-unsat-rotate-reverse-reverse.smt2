@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "abcdcde"))
-(assert (str.in.re x (re.union (re.* (re.* (str.to.re "cde"))) (str.to.re "abcd"))))
+(assert (str.in_re x (re.union (re.* (re.* (str.to_re "cde"))) (str.to_re "abcd"))))
 (check-sat)

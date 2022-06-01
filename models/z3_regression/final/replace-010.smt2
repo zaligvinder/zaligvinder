@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 
 (declare-const x String)
@@ -8,9 +8,9 @@
 (declare-const z String)
 
 
-(assert (= y (str.replace x "'" "\\'")) )  ;replacing ‘ with \\' 
+(assert (= y (str.replace x "'" "\\'")) ) 
 
-(assert (= z (str.replace x "p" "_p")) ) ; replacing the letter p with _p 
+(assert (= z (str.replace x "p" "_p")) ) 
 
 
 (check-sat) 

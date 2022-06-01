@@ -1,4 +1,4 @@
 (declare-const X String)
-; pass=Referer\x3ASurveillance
-(assert (str.in.re X (str.to.re "pass=Referer:Surveillance\x13\x0a")))
+; pass=Referer\u{3A}Surveillance
+(assert (str.in_re X (str.to_re "pass=Referer:Surveillance\u{13}\u{a}")))
 (check-sat)

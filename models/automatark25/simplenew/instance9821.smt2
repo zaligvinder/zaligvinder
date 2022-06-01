@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /\.php\?action=jv\&h=\d+/Ui
-(assert (not (str.in.re X (re.++ (str.to.re "/.php?action=jv&h=") (re.+ (re.range "0" "9")) (str.to.re "/Ui\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "/.php?action=jv&h=") (re.+ (re.range "0" "9")) (str.to_re "/Ui\u{a}")))))
 (check-sat)

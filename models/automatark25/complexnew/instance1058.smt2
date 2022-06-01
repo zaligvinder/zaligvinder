@@ -1,8 +1,8 @@
 (declare-const X String)
-; cyber@yahoo\x2Ecomconfig\x2E180solutions\x2Ecom
-(assert (str.in.re X (str.to.re "cyber@yahoo.comconfig.180solutions.com\x0a")))
-; SurveillanceacezHost\x3Acouponbar\.coupons\.comLOG
-(assert (str.in.re X (str.to.re "Surveillance\x13acezHost:couponbar.coupons.comLOG\x0a")))
-; upgrade\x2Eqsrch\x2Einfo.*report.*Host\x3A.*Host\x3Akwd-i%3fUser-Agent\x3Awww\x2eproventactics\x2ecom
-(assert (str.in.re X (re.++ (str.to.re "upgrade.qsrch.info") (re.* re.allchar) (str.to.re "report") (re.* re.allchar) (str.to.re "Host:") (re.* re.allchar) (str.to.re "Host:kwd-i%3fUser-Agent:www.proventactics.com\x0a"))))
+; cyber@yahoo\u{2E}comconfig\u{2E}180solutions\u{2E}com
+(assert (str.in_re X (str.to_re "cyber@yahoo.comconfig.180solutions.com\u{a}")))
+; SurveillanceacezHost\u{3A}couponbar\.coupons\.comLOG
+(assert (str.in_re X (str.to_re "Surveillance\u{13}acezHost:couponbar.coupons.comLOG\u{a}")))
+; upgrade\u{2E}qsrch\u{2E}info.*report.*Host\u{3A}.*Host\u{3A}kwd-i%3fUser-Agent\u{3A}www\u{2e}proventactics\u{2e}com
+(assert (str.in_re X (re.++ (str.to_re "upgrade.qsrch.info") (re.* re.allchar) (str.to_re "report") (re.* re.allchar) (str.to_re "Host:") (re.* re.allchar) (str.to_re "Host:kwd-i%3fUser-Agent:www.proventactics.com\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; EIcdpnode=reportUID\x2FServertoX-Mailer\x3a
-(assert (str.in.re X (str.to.re "EIcdpnode=reportUID/ServertoX-Mailer:\x13\x0a")))
+; EIcdpnode=reportUID\u{2F}ServertoX-Mailer\u{3a}
+(assert (str.in_re X (str.to_re "EIcdpnode=reportUID/ServertoX-Mailer:\u{13}\u{a}")))
 (check-sat)

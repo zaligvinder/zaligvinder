@@ -1,8 +1,8 @@
 (declare-const X String)
-; /\x28\x3f\x3d[^)]{300}/
-(assert (str.in.re X (re.++ (str.to.re "/(?=") ((_ re.loop 300 300) (re.comp (str.to.re ")"))) (str.to.re "/\x0a"))))
-; CommonName.*st=\s+Contactfrom=GhostVoiceServerUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "CommonName") (re.* re.allchar) (str.to.re "st=") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Contactfrom=GhostVoiceServerUser-Agent:\x0a"))))
-; /filename=[^\n]*\x2esln/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".sln/i\x0a")))))
+; /\u{28}\u{3f}\u{3d}[^)]{300}/
+(assert (str.in_re X (re.++ (str.to_re "/(?=") ((_ re.loop 300 300) (re.comp (str.to_re ")"))) (str.to_re "/\u{a}"))))
+; CommonName.*st=\s+Contactfrom=GhostVoiceServerUser-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "CommonName") (re.* re.allchar) (str.to_re "st=") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Contactfrom=GhostVoiceServerUser-Agent:\u{a}"))))
+; /filename=[^\n]*\u{2e}sln/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".sln/i\u{a}")))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3Auuid=aadserverfowclxccdxn\x2fuxwn\.ddy
-(assert (not (str.in.re X (str.to.re "User-Agent:uuid=aadserverfowclxccdxn/uxwn.ddy\x0a"))))
+; User-Agent\u{3A}uuid=aadserverfowclxccdxn\u{2f}uxwn\.ddy
+(assert (not (str.in_re X (str.to_re "User-Agent:uuid=aadserverfowclxccdxn/uxwn.ddy\u{a}"))))
 (check-sat)

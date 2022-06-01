@@ -1,4 +1,4 @@
 (declare-const X String)
-; YAHOODesktopHost\x3aLOGHost\x3AtvshowticketsResultsFROM\x3A
-(assert (not (str.in.re X (str.to.re "YAHOODesktopHost:LOGHost:tvshowticketsResultsFROM:\x0a"))))
+; YAHOODesktopHost\u{3a}LOGHost\u{3A}tvshowticketsResultsFROM\u{3A}
+(assert (not (str.in_re X (str.to_re "YAHOODesktopHost:LOGHost:tvshowticketsResultsFROM:\u{a}"))))
 (check-sat)

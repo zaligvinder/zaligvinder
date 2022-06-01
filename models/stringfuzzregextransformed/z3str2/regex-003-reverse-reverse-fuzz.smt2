@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "deabw^dde"))
-(assert (str.in.re x (re.* (re.++ (str.to.re "h{Mc^-=G") (str.to.re "]+")))))
+(assert (str.in_re x (re.* (re.++ (str.to_re "h{Mc^-=G") (str.to_re "]+")))))
 (check-sat)

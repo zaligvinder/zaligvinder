@@ -31,8 +31,8 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun atk_sink () String)
 (declare-fun X () String)
 
-(assert (and b_literal_5 (= literal_5 "\x2e\x70\x68\x70")))
-(assert (str.in.re atkPtn (str.to.re "/evil")))
+(assert (and b_literal_5 (= literal_5 "\u{2e}\u{70}\u{68}\u{70}")))
+(assert (str.in_re atkPtn (str.to_re "/evil")))
 (assert (= atk_sink (str.++ atk_sigmaStar_1 (str.++ atkPtn atk_sigmaStar_2))))
 (assert (= b_x_4 (and (= x_4 (str.replace sigmaStar_048 X "") ) b_sigmaStar_048) ))
 (assert (= b_x_6 (and (= x_6 (str.++ x_4 literal_5) ) b_x_4 b_literal_5) ))

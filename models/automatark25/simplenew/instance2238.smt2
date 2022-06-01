@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /setup=[a-z]$/Ui
-(assert (str.in.re X (re.++ (str.to.re "/setup=") (re.range "a" "z") (str.to.re "/Ui\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/setup=") (re.range "a" "z") (str.to_re "/Ui\u{a}"))))
 (check-sat)

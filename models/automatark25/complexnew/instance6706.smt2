@@ -1,8 +1,8 @@
 (declare-const X String)
-; sponsor2\.ucmore\.com\s+informationHost\x3A\x2Fezsb
-(assert (str.in.re X (re.++ (str.to.re "sponsor2.ucmore.com") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "informationHost:/ezsb\x0a"))))
-; /[a-z]\x3d[a-f\d]{126}/P
-(assert (str.in.re X (re.++ (str.to.re "/") (re.range "a" "z") (str.to.re "=") ((_ re.loop 126 126) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to.re "/P\x0a"))))
-; KeyloggerFSWcmdldap\x3A\x2F\x2FExploiterconnection\x2Ewww\x2Eoemji\x2Ecomzopabora\x2EinfoConnection
-(assert (str.in.re X (str.to.re "KeyloggerFSWcmdldap://Exploiterconnection.www.oemji.comzopabora.infoConnection\x0a")))
+; sponsor2\.ucmore\.com\s+informationHost\u{3A}\u{2F}ezsb
+(assert (str.in_re X (re.++ (str.to_re "sponsor2.ucmore.com") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "informationHost:/ezsb\u{a}"))))
+; /[a-z]\u{3d}[a-f\d]{126}/P
+(assert (str.in_re X (re.++ (str.to_re "/") (re.range "a" "z") (str.to_re "=") ((_ re.loop 126 126) (re.union (re.range "a" "f") (re.range "0" "9"))) (str.to_re "/P\u{a}"))))
+; KeyloggerFSWcmdldap\u{3A}\u{2F}\u{2F}Exploiterconnection\u{2E}www\u{2E}oemji\u{2E}comzopabora\u{2E}infoConnection
+(assert (str.in_re X (str.to_re "KeyloggerFSWcmdldap://Exploiterconnection.www.oemji.comzopabora.infoConnection\u{a}")))
 (check-sat)

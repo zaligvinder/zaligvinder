@@ -1,4 +1,4 @@
 (declare-const X String)
-; media\x2Etop-banners\x2Ecom
-(assert (str.in.re X (str.to.re "media.top-banners.com\x0a")))
+; media\u{2E}top-banners\u{2E}com
+(assert (str.in_re X (str.to_re "media.top-banners.com\u{a}")))
 (check-sat)

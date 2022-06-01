@@ -1,10 +1,10 @@
 (declare-const X String)
-; /\x2easx([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.asx") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; User-Agent\x3a\x2Fnewsurfer4\x2F
-(assert (not (str.in.re X (str.to.re "User-Agent:/newsurfer4/\x0a"))))
-; Host\x3A\dKeylogger.*Onetrustyfiles\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.range "0" "9") (str.to.re "Keylogger") (re.* re.allchar) (str.to.re "Onetrustyfiles.com\x0a")))))
-; User-Agent\x3AChildWebGuardianHXDownloadX-Mailer\x3a
-(assert (not (str.in.re X (str.to.re "User-Agent:ChildWebGuardianHXDownloadX-Mailer:\x13\x0a"))))
+; /\u{2e}asx([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.asx") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; User-Agent\u{3a}\u{2F}newsurfer4\u{2F}
+(assert (not (str.in_re X (str.to_re "User-Agent:/newsurfer4/\u{a}"))))
+; Host\u{3A}\dKeylogger.*Onetrustyfiles\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Host:") (re.range "0" "9") (str.to_re "Keylogger") (re.* re.allchar) (str.to_re "Onetrustyfiles.com\u{a}")))))
+; User-Agent\u{3A}ChildWebGuardianHXDownloadX-Mailer\u{3a}
+(assert (not (str.in_re X (str.to_re "User-Agent:ChildWebGuardianHXDownloadX-Mailer:\u{13}\u{a}"))))
 (check-sat)

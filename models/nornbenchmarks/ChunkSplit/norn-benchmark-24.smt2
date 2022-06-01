@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,6 +14,6 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (not (str.in.re (str.++ var_2 var_3 ) (re.* (re.range "a" "u")))))
+(assert (not (str.in_re (str.++ var_2 var_3 ) (re.* (re.range "a" "u")))))
 (assert (and (and (and (and (and (<= (+ (str.len var_3) (- 8) ) 0 ) (<= 0  (+ (str.len var_3) (- 8) ))) (and (<= (+ (+ (+ (str.len var_4) (str.len var_2)) (* (- 1)  (str.len var_0))) 8 ) 0 ) (<= 0  (+ (+ (+ (str.len var_4) (str.len var_2)) (* (- 1)  (str.len var_0))) 8 )))) (and (<= (+ (+ (str.len var_1) (* (- 1)  (str.len var_2))) (- 8) ) 0 ) (<= 0  (+ (+ (str.len var_1) (* (- 1)  (str.len var_2))) (- 8) )))) (<= 0  (+ (+ (* (- 1)  (str.len var_2)) (str.len var_0)) (- 8) ))) (<= 0  (str.len var_2))))
 (check-sat)

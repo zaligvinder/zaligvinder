@@ -1,4 +1,4 @@
 (declare-const X String)
-; client\x2Ebaigoo\x2EcomUser\x3A
-(assert (str.in.re X (str.to.re "client.baigoo.comUser:\x0a")))
+; client\u{2E}baigoo\u{2E}comUser\u{3A}
+(assert (str.in_re X (str.to_re "client.baigoo.comUser:\u{a}")))
 (check-sat)

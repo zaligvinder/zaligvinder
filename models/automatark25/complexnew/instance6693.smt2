@@ -1,10 +1,10 @@
 (declare-const X String)
-; www\x2Eonlinecasinoextra\x2Ecomsearchreslt\x7D\x7BSysuptime\x3A
-(assert (str.in.re X (str.to.re "www.onlinecasinoextra.comsearchreslt}{Sysuptime:\x0a")))
-; /\/\?id=\d+\x26AnSSip=/Ui
-(assert (str.in.re X (re.++ (str.to.re "//?id=") (re.+ (re.range "0" "9")) (str.to.re "&AnSSip=/Ui\x0a"))))
+; www\u{2E}onlinecasinoextra\u{2E}comsearchreslt\u{7D}\u{7B}Sysuptime\u{3A}
+(assert (str.in_re X (str.to_re "www.onlinecasinoextra.comsearchreslt}{Sysuptime:\u{a}")))
+; /\/\?id=\d+\u{26}AnSSip=/Ui
+(assert (str.in_re X (re.++ (str.to_re "//?id=") (re.+ (re.range "0" "9")) (str.to_re "&AnSSip=/Ui\u{a}"))))
 ; ^([0][1-9]|[1][0-2]):[0-5][0-9] {1}(AM|PM|am|pm)$
-(assert (str.in.re X (re.++ (re.union (re.++ (str.to.re "0") (re.range "1" "9")) (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re ":") (re.range "0" "5") (re.range "0" "9") ((_ re.loop 1 1) (str.to.re " ")) (re.union (str.to.re "AM") (str.to.re "PM") (str.to.re "am") (str.to.re "pm")) (str.to.re "\x0a"))))
-; serverUSER-AttachedReferer\x3AyouPointsUser-Agent\x3AHost\x3a
-(assert (not (str.in.re X (str.to.re "serverUSER-AttachedReferer:youPointsUser-Agent:Host:\x0a"))))
+(assert (str.in_re X (re.++ (re.union (re.++ (str.to_re "0") (re.range "1" "9")) (re.++ (str.to_re "1") (re.range "0" "2"))) (str.to_re ":") (re.range "0" "5") (re.range "0" "9") ((_ re.loop 1 1) (str.to_re " ")) (re.union (str.to_re "AM") (str.to_re "PM") (str.to_re "am") (str.to_re "pm")) (str.to_re "\u{a}"))))
+; serverUSER-AttachedReferer\u{3A}youPointsUser-Agent\u{3A}Host\u{3a}
+(assert (not (str.in_re X (str.to_re "serverUSER-AttachedReferer:youPointsUser-Agent:Host:\u{a}"))))
 (check-sat)

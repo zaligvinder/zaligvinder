@@ -1,6 +1,6 @@
 (declare-const X String)
-; LOGNetBusCookie\x3aToolbar
-(assert (str.in.re X (str.to.re "LOGNetBusCookie:Toolbar\x0a")))
-; /\x2fib2\x2f$/U
-(assert (not (str.in.re X (str.to.re "//ib2//U\x0a"))))
+; LOGNetBusCookie\u{3a}Toolbar
+(assert (str.in_re X (str.to_re "LOGNetBusCookie:Toolbar\u{a}")))
+; /\u{2f}ib2\u{2f}$/U
+(assert (not (str.in_re X (str.to_re "//ib2//U\u{a}"))))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; Current[^\n\r]*server[^\n\r]*Host\x3Aocllceclbhs\x2fgth
-(assert (str.in.re X (re.++ (str.to.re "Current") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "server") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "Host:ocllceclbhs/gth\x0a"))))
-; /filename=[^\n]*\x2em4r/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".m4r/i\x0a"))))
-; /filename=[^\n]*\x2ehlp/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".hlp/i\x0a"))))
+; Current[^\n\r]*server[^\n\r]*Host\u{3A}ocllceclbhs\u{2f}gth
+(assert (str.in_re X (re.++ (str.to_re "Current") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "server") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "Host:ocllceclbhs/gth\u{a}"))))
+; /filename=[^\n]*\u{2e}m4r/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".m4r/i\u{a}"))))
+; /filename=[^\n]*\u{2e}hlp/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".hlp/i\u{a}"))))
 (check-sat)

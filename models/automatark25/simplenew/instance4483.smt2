@@ -1,4 +1,4 @@
 (declare-const X String)
-; show\x2Eroogoo\x2Ecom\s+report\<\x2Ftitle\>Host\x3a\.fcgi
-(assert (str.in.re X (re.++ (str.to.re "show.roogoo.com") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "report</title>Host:.fcgi\x0a"))))
+; show\u{2E}roogoo\u{2E}com\s+report\<\u{2F}title\>Host\u{3a}\.fcgi
+(assert (str.in_re X (re.++ (str.to_re "show.roogoo.com") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "report</title>Host:.fcgi\u{a}"))))
 (check-sat)

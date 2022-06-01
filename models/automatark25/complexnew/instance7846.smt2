@@ -1,10 +1,10 @@
 (declare-const X String)
-; /filename=[^\n]*\x2elnk/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".lnk/i\x0a")))))
-; \.icosearch\x2econduit\x2ecom\x3Clogs\x40logs\x2Ecom\x3E
-(assert (not (str.in.re X (str.to.re ".icosearch.conduit.com<logs@logs.com>\x0a"))))
-; /filename=[^\n]*\x2eaddin/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".addin/i\x0a")))))
-; /filename=[^\n]*\x2esmi/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".smi/i\x0a")))))
+; /filename=[^\n]*\u{2e}lnk/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".lnk/i\u{a}")))))
+; \.icosearch\u{2e}conduit\u{2e}com\u{3C}logs\u{40}logs\u{2E}com\u{3E}
+(assert (not (str.in_re X (str.to_re ".icosearch.conduit.com<logs@logs.com>\u{a}"))))
+; /filename=[^\n]*\u{2e}addin/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".addin/i\u{a}")))))
+; /filename=[^\n]*\u{2e}smi/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".smi/i\u{a}")))))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
-; TPSystemad\x2Esearchsquire\x2Ecomv\x2EHost\x3Ahotbar
-(assert (str.in.re X (str.to.re "TPSystemad.searchsquire.comv.Host:hotbar\x0a")))
-; Spyware\s+ToolBar\s+User-Agent\x3AMM_RECO\x2EEXEToClientonAlert
-(assert (str.in.re X (re.++ (str.to.re "Spyware") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "ToolBar") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "User-Agent:MM_RECO.EXEToClientonAlert\x0a"))))
+; TPSystemad\u{2E}searchsquire\u{2E}comv\u{2E}Host\u{3A}hotbar
+(assert (str.in_re X (str.to_re "TPSystemad.searchsquire.comv.Host:hotbar\u{a}")))
+; Spyware\s+ToolBar\s+User-Agent\u{3A}MM_RECO\u{2E}EXEToClientonAlert
+(assert (str.in_re X (re.++ (str.to_re "Spyware") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "ToolBar") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:MM_RECO.EXEToClientonAlert\u{a}"))))
 (check-sat)

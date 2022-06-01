@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3Aregister\.aspUser-Agent\x3AHost\x3AcdpView
-(assert (str.in.re X (str.to.re "User-Agent:register.aspUser-Agent:Host:cdpView\x0a")))
+; User-Agent\u{3A}register\.aspUser-Agent\u{3A}Host\u{3A}cdpView
+(assert (str.in_re X (str.to_re "User-Agent:register.aspUser-Agent:Host:cdpView\u{a}")))
 (check-sat)

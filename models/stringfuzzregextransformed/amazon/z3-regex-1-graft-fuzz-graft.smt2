@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const S String)
-(assert (not (str.in.re S (re.++ (re.union (str.to.re "ab'\\n'") re.allchar) re.allchar))))
-(assert (str.in.re S (str.to.re "aK>e\\\\ZBAm")))
+(assert (not (str.in_re S (re.++ (re.union (str.to_re "ab'\\n'") re.allchar) re.allchar))))
+(assert (str.in_re S (str.to_re "aK>e\\\\ZBAm")))
 (check-sat)

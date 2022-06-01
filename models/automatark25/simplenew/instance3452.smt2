@@ -1,4 +1,4 @@
 (declare-const X String)
-; UBAgentwhenu\x2Ecomwp-includes\x2Ffeed\x2Ephp\x3F
-(assert (str.in.re X (str.to.re "UBAgentwhenu.com\x13wp-includes/feed.php?\x0a")))
+; UBAgentwhenu\u{2E}comwp-includes\u{2F}feed\u{2E}php\u{3F}
+(assert (str.in_re X (str.to_re "UBAgentwhenu.com\u{13}wp-includes/feed.php?\u{a}")))
 (check-sat)

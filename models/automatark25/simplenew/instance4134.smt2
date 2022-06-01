@@ -1,4 +1,4 @@
 (declare-const X String)
-; InformationAgentReferer\x3AClient
-(assert (str.in.re X (str.to.re "InformationAgentReferer:Client\x0a")))
+; InformationAgentReferer\u{3A}Client
+(assert (str.in_re X (str.to_re "InformationAgentReferer:Client\u{a}")))
 (check-sat)

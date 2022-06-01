@@ -1,4 +1,4 @@
 (declare-const X String)
-; versionIDENTIFYstarted\x2EUser-Agent\x3A
-(assert (str.in.re X (str.to.re "versionIDENTIFYstarted.User-Agent:\x0a")))
+; versionIDENTIFYstarted\u{2E}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "versionIDENTIFYstarted.User-Agent:\u{a}")))
 (check-sat)

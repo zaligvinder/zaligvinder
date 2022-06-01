@@ -1,4 +1,4 @@
 (declare-const X String)
-; Explorer\x2Fsto=notificationfind
-(assert (not (str.in.re X (str.to.re "Explorer/sto=notification\x13find\x0a"))))
+; Explorer\u{2F}sto=notificationfind
+(assert (not (str.in_re X (str.to_re "Explorer/sto=notification\u{13}find\u{a}"))))
 (check-sat)

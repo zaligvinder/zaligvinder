@@ -1,8 +1,8 @@
 (declare-const X String)
-; Subject\x3Aas\x2Estarware\x2Ecom\x2Fdp\x2Fsearch\?x=
-(assert (str.in.re X (str.to.re "Subject:as.starware.com/dp/search?x=\x0a")))
-; Stealthwww\x2Emyarmory\x2Ecomresultsmaster\x2Ecom
-(assert (str.in.re X (str.to.re "Stealthwww.myarmory.comresultsmaster.com\x13\x0a")))
-; sponsor2\.ucmore\.com\s+informationHost\x3A\x2Fezsb
-(assert (str.in.re X (re.++ (str.to.re "sponsor2.ucmore.com") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "informationHost:/ezsb\x0a"))))
+; Subject\u{3A}as\u{2E}starware\u{2E}com\u{2F}dp\u{2F}search\?x=
+(assert (str.in_re X (str.to_re "Subject:as.starware.com/dp/search?x=\u{a}")))
+; Stealthwww\u{2E}myarmory\u{2E}comresultsmaster\u{2E}com
+(assert (str.in_re X (str.to_re "Stealthwww.myarmory.comresultsmaster.com\u{13}\u{a}")))
+; sponsor2\.ucmore\.com\s+informationHost\u{3A}\u{2F}ezsb
+(assert (str.in_re X (re.++ (str.to_re "sponsor2.ucmore.com") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "informationHost:/ezsb\u{a}"))))
 (check-sat)

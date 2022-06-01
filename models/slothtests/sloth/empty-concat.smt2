@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun sigmaStar_0 () String)
 (declare-fun literal_1 () String)

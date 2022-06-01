@@ -1,8 +1,8 @@
 (declare-const X String)
-; EFError.*\x2Fcs\x2Fpop4\x2F[^\n\r]*
-(assert (str.in.re X (re.++ (str.to.re "EFError") (re.* re.allchar) (str.to.re "/cs/pop4/") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "\x0a"))))
-; tv\x2E180solutions\x2EcomGirlFriendHost\x3A
-(assert (str.in.re X (str.to.re "tv.180solutions.comGirlFriendHost:\x0a")))
-; ShadowNet\s+AID\x2FUser-Agent\x3AFen\xeatreEye\x2Fdss\x2Fcc\.2_0_0\.
-(assert (not (str.in.re X (re.++ (str.to.re "ShadowNet") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "AID/User-Agent:Fen\xeatreEye/dss/cc.2_0_0.\x0a")))))
+; EFError.*\u{2F}cs\u{2F}pop4\u{2F}[^\n\r]*
+(assert (str.in_re X (re.++ (str.to_re "EFError") (re.* re.allchar) (str.to_re "/cs/pop4/") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "\u{a}"))))
+; tv\u{2E}180solutions\u{2E}comGirlFriendHost\u{3A}
+(assert (str.in_re X (str.to_re "tv.180solutions.comGirlFriendHost:\u{a}")))
+; ShadowNet\s+AID\u{2F}User-Agent\u{3A}Fen\u{ea}treEye\u{2F}dss\u{2F}cc\.2_0_0\.
+(assert (not (str.in_re X (re.++ (str.to_re "ShadowNet") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "AID/User-Agent:Fen\u{ea}treEye/dss/cc.2_0_0.\u{a}")))))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; Host\x3A[^\n\r]*\x2Fbar_pl\x2Fshdoclc\.fcgi
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "/bar_pl/shdoclc.fcgi\x0a"))))
-; TM_SEARCH3SearchUser-Agent\x3Aas\x2Estarware\x2EcomM\x2EzipCasinoResults_sq=aolsnssignin
-(assert (not (str.in.re X (str.to.re "TM_SEARCH3SearchUser-Agent:as.starware.comM.zipCasinoResults_sq=aolsnssignin\x0a"))))
+; Host\u{3A}[^\n\r]*\u{2F}bar_pl\u{2F}shdoclc\.fcgi
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "/bar_pl/shdoclc.fcgi\u{a}"))))
+; TM_SEARCH3SearchUser-Agent\u{3A}as\u{2E}starware\u{2E}comM\u{2E}zipCasinoResults_sq=aolsnssignin
+(assert (not (str.in_re X (str.to_re "TM_SEARCH3SearchUser-Agent:as.starware.comM.zipCasinoResults_sq=aolsnssignin\u{a}"))))
 ; (AUX|PRN|NUL|COM\d|LPT\d)+\s*$
-(assert (not (str.in.re X (re.++ (re.+ (re.union (str.to.re "AUX") (str.to.re "PRN") (str.to.re "NUL") (re.++ (str.to.re "COM") (re.range "0" "9")) (re.++ (str.to.re "LPT") (re.range "0" "9")))) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.+ (re.union (str.to_re "AUX") (str.to_re "PRN") (str.to_re "NUL") (re.++ (str.to_re "COM") (re.range "0" "9")) (re.++ (str.to_re "LPT") (re.range "0" "9")))) (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "\u{a}")))))
 (check-sat)

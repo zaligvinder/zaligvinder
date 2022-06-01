@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "n!wwIo(`j3/B)>}"))
-(assert (str.in.re x (str.to.re "rd")))
+(assert (str.in_re x (str.to_re "rd")))
 (check-sat)

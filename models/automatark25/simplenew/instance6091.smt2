@@ -1,4 +1,4 @@
 (declare-const X String)
-; LOGNetBusCookie\x3aToolbar
-(assert (not (str.in.re X (str.to.re "LOGNetBusCookie:Toolbar\x0a"))))
+; LOGNetBusCookie\u{3a}Toolbar
+(assert (not (str.in_re X (str.to_re "LOGNetBusCookie:Toolbar\u{a}"))))
 (check-sat)

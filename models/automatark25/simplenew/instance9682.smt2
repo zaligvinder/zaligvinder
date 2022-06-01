@@ -1,4 +1,4 @@
 (declare-const X String)
-; Server\x2Fdownload\x2Ftoolbar\x2Flocatorstoolbar\x2Ehtml%3fSubject\x3AEveryware
-(assert (str.in.re X (str.to.re "Server/download/toolbar/locatorstoolbar.html%3fSubject:Everyware\x0a")))
+; Server\u{2F}download\u{2F}toolbar\u{2F}locatorstoolbar\u{2E}html%3fSubject\u{3A}Everyware
+(assert (str.in_re X (str.to_re "Server/download/toolbar/locatorstoolbar.html%3fSubject:Everyware\u{a}")))
 (check-sat)

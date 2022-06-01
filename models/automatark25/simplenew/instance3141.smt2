@@ -1,4 +1,4 @@
 (declare-const X String)
 ; [$][0 -9]+
-(assert (str.in.re X (re.++ (str.to.re "$") (re.+ (re.union (str.to.re "0") (re.range " " "9"))) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "$") (re.+ (re.union (str.to_re "0") (re.range " " "9"))) (str.to_re "\u{a}"))))
 (check-sat)

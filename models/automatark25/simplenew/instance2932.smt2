@@ -1,4 +1,4 @@
 (declare-const X String)
-; /\x253D$/Im
-(assert (str.in.re X (str.to.re "/%3D/Im\x0a")))
+; /\u{25}3D$/Im
+(assert (str.in_re X (str.to_re "/%3D/Im\u{a}")))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
-; BasicPointsHost\x3Anews
-(assert (str.in.re X (str.to.re "BasicPointsHost:news\x0a")))
-; Fen\xeatreEye\x2Fdss\x2Fcc\.2_0_0\.TROJAN-
-(assert (str.in.re X (str.to.re "Fen\xeatreEye/dss/cc.2_0_0.TROJAN-\x0a")))
+; BasicPointsHost\u{3A}news
+(assert (str.in_re X (str.to_re "BasicPointsHost:news\u{a}")))
+; Fen\u{ea}treEye\u{2F}dss\u{2F}cc\.2_0_0\.TROJAN-
+(assert (str.in_re X (str.to_re "Fen\u{ea}treEye/dss/cc.2_0_0.TROJAN-\u{a}")))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; gpstool\x2eglobaladserver\x2ecom\daction\x2E\w+data2\.activshopper\.com
-(assert (str.in.re X (re.++ (str.to.re "gpstool.globaladserver.com") (re.range "0" "9") (str.to.re "action.") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "data2.activshopper.com\x0a"))))
+; gpstool\u{2e}globaladserver\u{2e}com\daction\u{2E}\w+data2\.activshopper\.com
+(assert (str.in_re X (re.++ (str.to_re "gpstool.globaladserver.com") (re.range "0" "9") (str.to_re "action.") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "data2.activshopper.com\u{a}"))))
 ; /exploit\/(Exploit(App)?|Loader)\.class/ims
-(assert (str.in.re X (re.++ (str.to.re "/exploit/") (re.union (re.++ (str.to.re "Exploit") (re.opt (str.to.re "App"))) (str.to.re "Loader")) (str.to.re ".class/ims\x0a"))))
-; \x2APORT2\x2A\w+Host\x3a\s+jspIDENTIFYserverHOST\x3ASubject\x3Ai\-femdom\x2EcomUser-Agent\x3Alog\=\x7BIP\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "*PORT2*") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "jspIDENTIFYserverHOST:Subject:i-femdom.comUser-Agent:log={IP:\x0a")))))
+(assert (str.in_re X (re.++ (str.to_re "/exploit/") (re.union (re.++ (str.to_re "Exploit") (re.opt (str.to_re "App"))) (str.to_re "Loader")) (str.to_re ".class/ims\u{a}"))))
+; \u{2A}PORT2\u{2A}\w+Host\u{3a}\s+jspIDENTIFYserverHOST\u{3A}Subject\u{3A}i\-femdom\u{2E}comUser-Agent\u{3A}log\=\u{7B}IP\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "*PORT2*") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "jspIDENTIFYserverHOST:Subject:i-femdom.comUser-Agent:log={IP:\u{a}")))))
 (check-sat)

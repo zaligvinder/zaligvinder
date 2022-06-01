@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-fun var0 () String)
-(assert (str.in.re var0 (re.++ (re.+ (re.union (str.to.re "000") (str.to.re "11"))) (re.++ (re.* (re.+ (str.to.re "22"))) (re.++ (re.union (re.+ (str.to.re "3")) (re.+ (str.to.re "444"))) (re.++ (re.* (re.union (str.to.re "5") (str.to.re "66"))) (re.++ (re.union (re.union (str.to.re "7") (str.to.re "8")) (re.union (str.to.re "999") (str.to.re "aaa"))) (re.* (re.* (str.to.re "b"))))))))))
-(assert (not (str.in.re var0 (re.++ (re.* (re.* (str.to.re "0"))) (re.++ (re.union (re.* (str.to.re "11")) (re.union (str.to.re "222") (str.to.re "333"))) (re.++ (re.+ (re.* (str.to.re "4"))) (re.++ (re.union (re.* (str.to.re "55")) (re.union (str.to.re "6") (str.to.re "7"))) (re.++ (re.* (re.* (str.to.re "888"))) (re.union (re.union (str.to.re "9") (str.to.re "a")) (re.* (str.to.re "b")))))))))))
+(assert (str.in_re var0 (re.++ (re.+ (re.union (str.to_re "000") (str.to_re "11"))) (re.++ (re.* (re.+ (str.to_re "22"))) (re.++ (re.union (re.+ (str.to_re "3")) (re.+ (str.to_re "444"))) (re.++ (re.* (re.union (str.to_re "5") (str.to_re "66"))) (re.++ (re.union (re.union (str.to_re "7") (str.to_re "8")) (re.union (str.to_re "999") (str.to_re "aaa"))) (re.* (re.* (str.to_re "b"))))))))))
+(assert (not (str.in_re var0 (re.++ (re.* (re.* (str.to_re "0"))) (re.++ (re.union (re.* (str.to_re "11")) (re.union (str.to_re "222") (str.to_re "333"))) (re.++ (re.+ (re.* (str.to_re "4"))) (re.++ (re.union (re.* (str.to_re "55")) (re.union (str.to_re "6") (str.to_re "7"))) (re.++ (re.* (re.* (str.to_re "888"))) (re.union (re.union (str.to_re "9") (str.to_re "a")) (re.* (str.to_re "b")))))))))))
 (check-sat)

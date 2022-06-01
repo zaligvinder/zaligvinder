@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "\\\\\\\\\\\\\\\\((NN''\\\\\\\\xx00bb'']]\\\\\\\\\\\\\\\\((\\\\\\\\\\\\\\\\((NN"))
-(assert (str.in.re x (re.* (str.to.re "''\\\\\\\\xx00bb'']]\\\\\\\\\\\\\\\\(("))))
+(assert (= x "\\\\\\\\\\\\\\\\((NN''\\\\\\\\u{x0}0bb'']]\\\\\\\\\\\\\\\\((\\\\\\\\\\\\\\\\((NN"))
+(assert (str.in_re x (re.* (str.to_re "''\\\\\\\\u{x0}0bb'']]\\\\\\\\\\\\\\\\(("))))
 (check-sat)

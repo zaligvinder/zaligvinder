@@ -28,7 +28,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= T_7 (str.++ T0_12 T1_12)))
 (assert (= T1_12 (str.++ T2_12 T3_12)))
 (assert (= T2_12 (str.++ T4_12 T5_12)))
-(assert (not (str.in.re T4_12 (str.to.re "utm_id="))))
+(assert (not (str.in_re T4_12 (str.to_re "utm_id="))))
 (assert (= T5_12 "utm_id="))
 (assert T_9)
 (assert (= T_9 (< (- 1) PCTEMP_LHS_1)))

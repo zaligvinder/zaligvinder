@@ -12,7 +12,7 @@
 (assert (= T_3 (not T_2)))
 (assert T_3)
 (assert (= PCTEMP_LHS_1 var_0xINPUT_479903))
-(assert (not (str.in.re PCTEMP_LHS_1 (str.to.re "%" ))))
+(assert (not (str.in_re PCTEMP_LHS_1 (str.to_re "%" ))))
 (assert (= T_5 (str.++ T1_8 T2_8)))
 (assert (= T2_8 PCTEMP_LHS_1))
 (assert (= T1_8 "subtype="))

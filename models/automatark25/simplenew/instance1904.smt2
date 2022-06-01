@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Frss\d+Host\x3aTCP\x2FAD\x2FULOGNetBusCookie\x3a
-(assert (not (str.in.re X (re.++ (str.to.re "/rss") (re.+ (re.range "0" "9")) (str.to.re "Host:TCP/AD/ULOGNetBusCookie:\x0a")))))
+; \u{2F}rss\d+Host\u{3a}TCP\u{2F}AD\u{2F}ULOGNetBusCookie\u{3a}
+(assert (not (str.in_re X (re.++ (str.to_re "/rss") (re.+ (re.range "0" "9")) (str.to_re "Host:TCP/AD/ULOGNetBusCookie:\u{a}")))))
 (check-sat)

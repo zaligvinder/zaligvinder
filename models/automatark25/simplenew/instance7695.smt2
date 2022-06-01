@@ -1,4 +1,4 @@
 (declare-const X String)
 ; (\n\r)   replacement string---->\n
-(assert (str.in.re X (str.to.re "\x0a\x0d   replacement string---->\x0a\x0a")))
+(assert (str.in_re X (str.to_re "\u{a}\u{d}   replacement string---->\u{a}\u{a}")))
 (check-sat)

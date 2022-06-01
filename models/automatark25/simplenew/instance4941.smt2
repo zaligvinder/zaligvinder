@@ -1,4 +1,4 @@
 (declare-const X String)
-; -i%3fUser-Agent\x3Awww\x2eproventactics\x2ecom
-(assert (not (str.in.re X (str.to.re "-i%3fUser-Agent:www.proventactics.com\x0a"))))
+; -i%3fUser-Agent\u{3A}www\u{2e}proventactics\u{2e}com
+(assert (not (str.in_re X (str.to_re "-i%3fUser-Agent:www.proventactics.com\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x5BStaticHost\x3AFROM\x3Acs\x2Eshopperreports\x2Ecommedia\x2Etop-banners\x2Ecom\x2Fbar_pl\x2Fb\.fcgi
-(assert (str.in.re X (str.to.re "[StaticHost:FROM:cs.shopperreports.commedia.top-banners.com/bar_pl/b.fcgi\x0a")))
+; \u{5B}StaticHost\u{3A}FROM\u{3A}cs\u{2E}shopperreports\u{2E}commedia\u{2E}top-banners\u{2E}com\u{2F}bar_pl\u{2F}b\.fcgi
+(assert (str.in_re X (str.to_re "[StaticHost:FROM:cs.shopperreports.commedia.top-banners.com/bar_pl/b.fcgi\u{a}")))
 (check-sat)

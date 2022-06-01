@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\.thecommunicator\.net[^\n\r]*iufilfwulmfi\x2friuf\.lio
-(assert (not (str.in.re X (re.++ (str.to.re "www.thecommunicator.net") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "iufilfwulmfi/riuf.lio\x0a")))))
+; www\.thecommunicator\.net[^\n\r]*iufilfwulmfi\u{2f}riuf\.lio
+(assert (not (str.in_re X (re.++ (str.to_re "www.thecommunicator.net") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "iufilfwulmfi/riuf.lio\u{a}")))))
 (check-sat)

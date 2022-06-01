@@ -1,8 +1,8 @@
 (declare-const X String)
-; Toolbarwww\x2Eonlinecasinoextra\x2Ecom
-(assert (not (str.in.re X (str.to.re "Toolbarwww.onlinecasinoextra.com\x0a"))))
-; Host\x3A\s+Host\x3A\x7croogoo\x7cTestiufilfwulmfi\x2friuf\.lio
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:|roogoo|Testiufilfwulmfi/riuf.lio\x0a"))))
-; Informationurl=Host\x3Aaction\x2Eforhttp\x3A\x2F\x2Fwww\.searchinweb\.com\x2Fsearch\.php\?said=bar
-(assert (str.in.re X (str.to.re "Informationurl=Host:action.forhttp://www.searchinweb.com/search.php?said=bar\x0a")))
+; Toolbarwww\u{2E}onlinecasinoextra\u{2E}com
+(assert (not (str.in_re X (str.to_re "Toolbarwww.onlinecasinoextra.com\u{a}"))))
+; Host\u{3A}\s+Host\u{3A}\u{7c}roogoo\u{7c}Testiufilfwulmfi\u{2f}riuf\.lio
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:|roogoo|Testiufilfwulmfi/riuf.lio\u{a}"))))
+; Informationurl=Host\u{3A}action\u{2E}forhttp\u{3A}\u{2F}\u{2F}www\.searchinweb\.com\u{2F}search\.php\?said=bar
+(assert (str.in_re X (str.to_re "Informationurl=Host:action.forhttp://www.searchinweb.com/search.php?said=bar\u{a}")))
 (check-sat)

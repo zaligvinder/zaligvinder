@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "ATe$(jTPh'\x0b'u73' '^VJ{P6mYX"))
-(assert (str.in.re x (re.union (re.* (str.to.re "A^yB")) (re.* (str.to.re "#1n^w'\n'ow'\n'")))))
+(assert (= x "ATe$(jTPh'\u{b}'u73' '^VJ{P6mYX"))
+(assert (str.in_re x (re.union (re.* (str.to_re "A^yB")) (re.* (str.to_re "#1n^w'\n'ow'\n'")))))
 (check-sat)

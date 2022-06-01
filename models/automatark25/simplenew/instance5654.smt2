@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Ephp\s+www\x2Ewebfringe\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re ".php") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "www.webfringe.com\x0a"))))
+; \u{2E}php\s+www\u{2E}webfringe\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re ".php") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "www.webfringe.com\u{a}"))))
 (check-sat)

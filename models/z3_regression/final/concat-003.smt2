@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (set-option :auto-config true)
 (set-option :produce-models true)

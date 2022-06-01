@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re "=HNu[[MK!Ro7KfH") (str.to.re "r<&r")))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re "=HNu[[MK!Ro7KfH") (str.to_re "r<&r")))))
 (assert (= 4 (str.len x)))
 (check-sat)

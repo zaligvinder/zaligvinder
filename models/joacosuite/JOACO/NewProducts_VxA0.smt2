@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var1 () String)
@@ -16,14 +16,14 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var16 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var16 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= var2 var1 ) ))
 (assert (= true (= (str.++ var3 "order by i_pub_date desc, i_title asc" ) var2 ) ))
 (assert (= true (= (str.++ var5 "and i_a_id = a_id" ) var3 ) ))
-(assert (= true (= (str.++ var7 "', 'YYYY\x2dMM\x2dDD HH24:MI:SS'\x29" ) var5 ) ))
+(assert (= true (= (str.++ var7 "', 'YYYY\u{2d}MM\u{2d}DD HH24:MI:SS'\u{29}" ) var5 ) ))
 (assert (= true (= (str.++ var9 var10 ) var7 ) ))
-(assert (= true (= (str.++ var11 "and i_pub_date \x3e to_timestamp\x28'" ) var9 ) ))
-(assert (= true (= (str.++ var13 "'\x29" ) var11 ) ))
+(assert (= true (= (str.++ var11 "and i_pub_date \u{3e} to_timestamp\u{28}'" ) var9 ) ))
+(assert (= true (= (str.++ var13 "'\u{29}" ) var11 ) ))
 (assert (= true (= (str.++ var15 var16 ) var13 ) ))
 
 (check-sat)

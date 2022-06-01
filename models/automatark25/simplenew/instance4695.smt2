@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Emyarmory\x2EcomHost\x3aHost\x3amessagessearch\x2eimesh\x2ecom
-(assert (not (str.in.re X (str.to.re "www.myarmory.comHost:Host:messagessearch.imesh.com\x0a"))))
+; www\u{2E}myarmory\u{2E}comHost\u{3a}Host\u{3a}messagessearch\u{2e}imesh\u{2e}com
+(assert (not (str.in_re X (str.to_re "www.myarmory.comHost:Host:messagessearch.imesh.com\u{a}"))))
 (check-sat)

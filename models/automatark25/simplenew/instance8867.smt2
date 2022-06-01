@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A\s+cyber@yahoo\x2Ecom\sWordSpy\-LockedURLBlaze
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "cyber@yahoo.com") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "WordSpy-LockedURLBlaze\x0a"))))
+; Host\u{3A}\s+cyber@yahoo\u{2E}com\sWordSpy\-LockedURLBlaze
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "cyber@yahoo.com") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "WordSpy-LockedURLBlaze\u{a}"))))
 (check-sat)

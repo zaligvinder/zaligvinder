@@ -1,6 +1,6 @@
 (declare-const X String)
-; www\x2Ecameup\x2Ecom\s+spyblini\x2Eini
-(assert (str.in.re X (re.++ (str.to.re "www.cameup.com\x13") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "spyblini.ini\x0a"))))
-; presentsearch\.netLocalHost\x3APORT\x3DWatchDogHost\x3A
-(assert (str.in.re X (str.to.re "presentsearch.netLocalHost:PORT=WatchDogHost:\x0a")))
+; www\u{2E}cameup\u{2E}com\s+spyblini\u{2E}ini
+(assert (str.in_re X (re.++ (str.to_re "www.cameup.com\u{13}") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "spyblini.ini\u{a}"))))
+; presentsearch\.netLocalHost\u{3A}PORT\u{3D}WatchDogHost\u{3A}
+(assert (str.in_re X (str.to_re "presentsearch.netLocalHost:PORT=WatchDogHost:\u{a}")))
 (check-sat)

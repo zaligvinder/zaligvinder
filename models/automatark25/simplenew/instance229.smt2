@@ -1,4 +1,4 @@
 (declare-const X String)
 ; (antifraud\.ref\.num)[0-9]*(@citibank\.com)
-(assert (str.in.re X (re.++ (str.to.re "antifraud.ref.num") (re.* (re.range "0" "9")) (str.to.re "@citibank.com\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "antifraud.ref.num") (re.* (re.range "0" "9")) (str.to_re "@citibank.com\u{a}"))))
 (check-sat)

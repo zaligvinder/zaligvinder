@@ -1,4 +1,4 @@
 (declare-const X String)
-; ookflolfctm\x2fnmot\.fmu
-(assert (str.in.re X (str.to.re "ookflolfctm/nmot.fmu\x0a")))
+; ookflolfctm\u{2f}nmot\.fmu
+(assert (str.in_re X (str.to_re "ookflolfctm/nmot.fmu\u{a}")))
 (check-sat)

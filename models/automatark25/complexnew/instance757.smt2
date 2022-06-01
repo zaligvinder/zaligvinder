@@ -1,8 +1,8 @@
 (declare-const X String)
-; HXLogOnlyDaemonactivityIterenetFrom\x3AClass
-(assert (str.in.re X (str.to.re "HXLogOnlyDaemonactivityIterenetFrom:Class\x0a")))
+; HXLogOnlyDaemonactivityIterenetFrom\u{3A}Class
+(assert (str.in_re X (str.to_re "HXLogOnlyDaemonactivityIterenetFrom:Class\u{a}")))
 ; ((<body)|(<BODY))([^>]*)>
-(assert (not (str.in.re X (re.++ (re.union (str.to.re "<body") (str.to.re "<BODY")) (re.* (re.comp (str.to.re ">"))) (str.to.re ">\x0a")))))
+(assert (not (str.in_re X (re.++ (re.union (str.to_re "<body") (str.to_re "<BODY")) (re.* (re.comp (str.to_re ">"))) (str.to_re ">\u{a}")))))
 ; Mirar_KeywordContent
-(assert (not (str.in.re X (str.to.re "Mirar_KeywordContent\x13\x0a"))))
+(assert (not (str.in_re X (str.to_re "Mirar_KeywordContent\u{13}\u{a}"))))
 (check-sat)

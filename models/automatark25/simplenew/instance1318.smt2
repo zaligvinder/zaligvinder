@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3a\dOVNUsertooffers\x2Ebullseye-network\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.range "0" "9") (str.to.re "OVNUsertooffers.bullseye-network.com\x0a")))))
+; Host\u{3a}\dOVNUsertooffers\u{2E}bullseye-network\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Host:") (re.range "0" "9") (str.to_re "OVNUsertooffers.bullseye-network.com\u{a}")))))
 (check-sat)

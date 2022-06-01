@@ -1,6 +1,6 @@
 (declare-const X String)
-; Desktop.*Hello\x2E.*Referer\x3AToolbar
-(assert (not (str.in.re X (re.++ (str.to.re "Desktop") (re.* re.allchar) (str.to.re "Hello.") (re.* re.allchar) (str.to.re "Referer:Toolbar\x0a")))))
-; FTP.*www\x2Ewordiq\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "FTP") (re.* re.allchar) (str.to.re "www.wordiq.com\x1b\x0a"))))
+; Desktop.*Hello\u{2E}.*Referer\u{3A}Toolbar
+(assert (not (str.in_re X (re.++ (str.to_re "Desktop") (re.* re.allchar) (str.to_re "Hello.") (re.* re.allchar) (str.to_re "Referer:Toolbar\u{a}")))))
+; FTP.*www\u{2E}wordiq\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "FTP") (re.* re.allchar) (str.to_re "www.wordiq.com\u{1b}\u{a}"))))
 (check-sat)

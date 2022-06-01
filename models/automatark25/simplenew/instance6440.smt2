@@ -1,4 +1,4 @@
 (declare-const X String)
-; are\d+X-Mailer\x3a+Host\x3A\x2Easpx
-(assert (str.in.re X (re.++ (str.to.re "are") (re.+ (re.range "0" "9")) (str.to.re "X-Mailer") (re.+ (str.to.re ":")) (str.to.re "Host:.aspx\x0a"))))
+; are\d+X-Mailer\u{3a}+Host\u{3A}\u{2E}aspx
+(assert (str.in_re X (re.++ (str.to_re "are") (re.+ (re.range "0" "9")) (str.to_re "X-Mailer") (re.+ (str.to_re ":")) (str.to_re "Host:.aspx\u{a}"))))
 (check-sat)

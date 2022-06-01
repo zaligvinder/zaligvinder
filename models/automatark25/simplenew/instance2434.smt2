@@ -1,4 +1,4 @@
 (declare-const X String)
-; to\s+User-Agent\x3Acid=tb\x2eCookie\x3A\x2Fimages\x2Fnocache\x2Ftr\x2Fgca\x2Fm\.gif\?
-(assert (str.in.re X (re.++ (str.to.re "to") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "User-Agent:cid=tb.Cookie:/images/nocache/tr/gca/m.gif?\x0a"))))
+; to\s+User-Agent\u{3A}cid=tb\u{2e}Cookie\u{3A}\u{2F}images\u{2F}nocache\u{2F}tr\u{2F}gca\u{2F}m\.gif\?
+(assert (str.in_re X (re.++ (str.to_re "to") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:cid=tb.Cookie:/images/nocache/tr/gca/m.gif?\u{a}"))))
 (check-sat)

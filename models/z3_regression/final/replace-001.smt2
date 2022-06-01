@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (declare-const some_condition Bool)
 (declare-const t String)

@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "aa^^bbccaaaahhccccdd==bbEEOO>>cc==vv33bb>>bbKK,,]]ss77++"))
-(assert (str.in.re x (re.* (re.+ (str.to.re "TTBBrrll77''\\\\rr''GGOOmmQQ&&BB7711]]ZZrrPPUUUUDDUUssBB")))))
+(assert (str.in_re x (re.* (re.+ (str.to_re "TTBBrrll77''\\\\rr''GGOOmmQQ&&BB7711]]ZZrrPPUUUUDDUUssBB")))))
 (check-sat)

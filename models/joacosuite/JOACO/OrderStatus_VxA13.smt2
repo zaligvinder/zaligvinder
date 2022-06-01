@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var816 () String)
@@ -39,9 +39,9 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var867 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var867 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= var818 var816 ) ))
-(assert (= true (= (str.++ var819 "\x29 WHERE rownum = 1" ) var818 ) ))
+(assert (= true (= (str.++ var819 "\u{29} WHERE rownum = 1" ) var818 ) ))
 (assert (= true (= (str.++ var821 "' ORDER BY o_id DESC" ) var819 ) ))
 (assert (= true (= (str.++ var823 var824 ) var821 ) ))
 (assert (= true (= (str.++ var825 "' AND o_c_id = '" ) var823 ) ))
@@ -51,7 +51,7 @@
 (assert (= true (= (str.++ var833 "WHERE o_w_id = '" ) var831 ) ))
 (assert (= true (= (str.++ var835 "FROM tpcc_orderr" ) var833 ) ))
 (assert (= true (= (str.++ var837 "SELECT o_id, o_carrier_id, o_entry_d" ) var835 ) ))
-(assert (= true (= (str.++ var839 "SELECT \x2a FROM \x28" ) var837 ) ))
+(assert (= true (= (str.++ var839 "SELECT \u{2a} FROM \u{28}" ) var837 ) ))
 (assert (= true (or (= var824 var842 ) (= var824 var841 ) ) ))
 (assert (= true (not (= 0 var843 )) ))
 (assert (= true (= var848 var847 ) ))

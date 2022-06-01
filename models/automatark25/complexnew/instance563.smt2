@@ -1,8 +1,8 @@
 (declare-const X String)
-; freeIPaddrsRunner\+The\+password\+is\x3A
-(assert (not (str.in.re X (str.to.re "freeIPaddrsRunner+The+password+is:\x0a"))))
-; /outerhtml\s*?\+\=\s*?\x22/i
-(assert (not (str.in.re X (re.++ (str.to.re "/outerhtml") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "+=") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x22/i\x0a")))))
+; freeIPaddrsRunner\+The\+password\+is\u{3A}
+(assert (not (str.in_re X (str.to_re "freeIPaddrsRunner+The+password+is:\u{a}"))))
+; /outerhtml\s*?\+\=\s*?\u{22}/i
+(assert (not (str.in_re X (re.++ (str.to_re "/outerhtml") (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "+=") (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "\u{22}/i\u{a}")))))
 ; ^\\w*$
-(assert (not (str.in.re X (re.++ (str.to.re "\x5c") (re.* (str.to.re "w")) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "\u{5c}") (re.* (str.to_re "w")) (str.to_re "\u{a}")))))
 (check-sat)

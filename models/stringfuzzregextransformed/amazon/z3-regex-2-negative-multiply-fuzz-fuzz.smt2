@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const S String)
-(assert (str.in.re S (re.union (str.to.re "aPIP:=<0*`*Qm[lbHCs5q;Yc'\n':Z-T8Xg'\x0c'X^]7=n,W*Zt=B:koCO'\x0c'""8-'\r'-K[m=Hg%L1>,'\r'5b)3$B.c[#q5)k&xJ'\t'+S9xe.k+v'\r'#;~*^''\r'xW*Sw7NqJulf!Q_uYWF(2u+ZTW,8'\x0b'uIjcrI9z&H~tRmo^6Hm`{,'\n'-7YPh*N:i*^Is'\x0c''\n'Uv4a7>1i(|$Q^=79`)YN,JIR7#^nT9HtN' 'D/)$hfavLWY8`[%]fMi4") re.allchar)))
-(assert (not (str.in.re S (re.union (re.++ (re.++ (str.to.re "'\r'/6G8%<") re.allchar) (str.to.re "8MI=bb")) re.allchar))))
+(assert (str.in_re S (re.union (str.to_re "aPIP:=<0*`*Qm[lbHCs5q;Yc'\n':Z-T8Xg'\u{c}'X^]7=n,W*Zt=B:koCO'\u{c}'""8-'\r'-K[m=Hg%L1>,'\r'5b)3$B.c[#q5)k&xJ'\t'+S9xe.k+v'\r'#;~*^''\r'xW*Sw7NqJulf!Q_uYWF(2u+ZTW,8'\u{b}'uIjcrI9z&H~tRmo^6Hm`{,'\n'-7YPh*N:i*^Is'\u{c}''\n'Uv4a7>1i(|$Q^=79`)YN,JIR7#^nT9HtN' 'D/)$hfavLWY8`[%]fMi4") re.allchar)))
+(assert (not (str.in_re S (re.union (re.++ (re.++ (str.to_re "'\r'/6G8%<") re.allchar) (str.to_re "8MI=bb")) re.allchar))))
 (check-sat)

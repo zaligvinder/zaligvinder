@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\.php\x3fw\x3d\d+\x26n\x3d\d+/U
-(assert (not (str.in.re X (re.++ (str.to.re "/.php?w=") (re.+ (re.range "0" "9")) (str.to.re "&n=") (re.+ (re.range "0" "9")) (str.to.re "/U\x0a")))))
-; Host\x3A.*rt[^\n\r]*Host\x3AUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.* re.allchar) (str.to.re "rt") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "Host:User-Agent:\x0a"))))
+; /\.php\u{3f}w\u{3d}\d+\u{26}n\u{3d}\d+/U
+(assert (not (str.in_re X (re.++ (str.to_re "/.php?w=") (re.+ (re.range "0" "9")) (str.to_re "&n=") (re.+ (re.range "0" "9")) (str.to_re "/U\u{a}")))))
+; Host\u{3A}.*rt[^\n\r]*Host\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.* re.allchar) (str.to_re "rt") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "Host:User-Agent:\u{a}"))))
 (check-sat)

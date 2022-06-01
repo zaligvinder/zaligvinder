@@ -1,4 +1,4 @@
 (declare-const X String)
-; sponsor2\.ucmore\.comUser-Agent\x3AUser-Agent\x3A
-(assert (str.in.re X (str.to.re "sponsor2.ucmore.comUser-Agent:User-Agent:\x0a")))
+; sponsor2\.ucmore\.comUser-Agent\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "sponsor2.ucmore.comUser-Agent:User-Agent:\u{a}")))
 (check-sat)

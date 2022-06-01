@@ -1,6 +1,6 @@
 (declare-const X String)
-; TPSystemad\x2Esearchsquire\x2Ecomv\x2EHost\x3Ahotbar
-(assert (not (str.in.re X (str.to.re "TPSystemad.searchsquire.comv.Host:hotbar\x0a"))))
-; /\x2emswmm([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.mswmm") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+; TPSystemad\u{2E}searchsquire\u{2E}comv\u{2E}Host\u{3A}hotbar
+(assert (not (str.in_re X (str.to_re "TPSystemad.searchsquire.comv.Host:hotbar\u{a}"))))
+; /\u{2e}mswmm([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.mswmm") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
 (check-sat)

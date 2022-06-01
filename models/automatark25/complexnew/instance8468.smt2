@@ -1,12 +1,12 @@
 (declare-const X String)
-; Subject\x3a\d+rprpgbnrppb\x2fci
-(assert (str.in.re X (re.++ (str.to.re "Subject:") (re.+ (re.range "0" "9")) (str.to.re "rprpgbnrppb/ci\x0a"))))
-; shprrprt-cs-Pre\x2Fta\x2FNEWS\x2F
-(assert (str.in.re X (str.to.re "shprrprt-cs-\x13Pre/ta/NEWS/\x0a")))
-; Host\x3A\s+\.ico\s+Host\x3Aorigin\x3Dsidefind
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re ".ico") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:origin=sidefind\x0a"))))
-; Cookie\x3a.*Host\x3A.*ldap\x3A\x2F\x2F
-(assert (str.in.re X (re.++ (str.to.re "Cookie:") (re.* re.allchar) (str.to.re "Host:") (re.* re.allchar) (str.to.re "ldap://\x0a"))))
-; spas\d+media\x2Edxcdirect\x2Ecom\.smx\?PASSW=
-(assert (not (str.in.re X (re.++ (str.to.re "spas") (re.+ (re.range "0" "9")) (str.to.re "media.dxcdirect.com.smx?PASSW=\x0a")))))
+; Subject\u{3a}\d+rprpgbnrppb\u{2f}ci
+(assert (str.in_re X (re.++ (str.to_re "Subject:") (re.+ (re.range "0" "9")) (str.to_re "rprpgbnrppb/ci\u{a}"))))
+; shprrprt-cs-Pre\u{2F}ta\u{2F}NEWS\u{2F}
+(assert (str.in_re X (str.to_re "shprrprt-cs-\u{13}Pre/ta/NEWS/\u{a}")))
+; Host\u{3A}\s+\.ico\s+Host\u{3A}origin\u{3D}sidefind
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re ".ico") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:origin=sidefind\u{a}"))))
+; Cookie\u{3a}.*Host\u{3A}.*ldap\u{3A}\u{2F}\u{2F}
+(assert (str.in_re X (re.++ (str.to_re "Cookie:") (re.* re.allchar) (str.to_re "Host:") (re.* re.allchar) (str.to_re "ldap://\u{a}"))))
+; spas\d+media\u{2E}dxcdirect\u{2E}com\.smx\?PASSW=
+(assert (not (str.in_re X (re.++ (str.to_re "spas") (re.+ (re.range "0" "9")) (str.to_re "media.dxcdirect.com.smx?PASSW=\u{a}")))))
 (check-sat)

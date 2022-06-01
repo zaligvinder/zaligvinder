@@ -1,4 +1,4 @@
 (declare-const X String)
 ; $(\n|\r\n)
-(assert (not (str.in.re X (re.++ (re.union (str.to.re "\x0a") (str.to.re "\x0d\x0a")) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.union (str.to_re "\u{a}") (str.to_re "\u{d}\u{a}")) (str.to_re "\u{a}")))))
 (check-sat)

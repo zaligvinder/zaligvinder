@@ -1,4 +1,4 @@
 (declare-const X String)
-; HXLogOnlyanHost\x3AspasHost\x3A
-(assert (str.in.re X (str.to.re "HXLogOnlyanHost:spasHost:\x0a")))
+; HXLogOnlyanHost\u{3A}spasHost\u{3A}
+(assert (str.in_re X (str.to_re "HXLogOnlyanHost:spasHost:\u{a}")))
 (check-sat)

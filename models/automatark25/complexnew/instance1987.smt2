@@ -1,8 +1,8 @@
 (declare-const X String)
-; /\x2fb\x2fshoe\x2f[0-9]{3,5}$/U
-(assert (str.in.re X (re.++ (str.to.re "//b/shoe/") ((_ re.loop 3 5) (re.range "0" "9")) (str.to.re "/U\x0a"))))
-; ProjectMyWebSearchSearchAssistantfast-look\x2EcomOneReporter
-(assert (str.in.re X (str.to.re "ProjectMyWebSearchSearchAssistantfast-look.comOneReporter\x0a")))
+; /\u{2f}b\u{2f}shoe\u{2f}[0-9]{3,5}$/U
+(assert (str.in_re X (re.++ (str.to_re "//b/shoe/") ((_ re.loop 3 5) (re.range "0" "9")) (str.to_re "/U\u{a}"))))
+; ProjectMyWebSearchSearchAssistantfast-look\u{2E}comOneReporter
+(assert (str.in_re X (str.to_re "ProjectMyWebSearchSearchAssistantfast-look.comOneReporter\u{a}")))
 ; /\/\d+\.mp3$/U
-(assert (not (str.in.re X (re.++ (str.to.re "//") (re.+ (re.range "0" "9")) (str.to.re ".mp3/U\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "//") (re.+ (re.range "0" "9")) (str.to_re ".mp3/U\u{a}")))))
 (check-sat)

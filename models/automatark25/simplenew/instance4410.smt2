@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eonlinecasinoextra\x2Ecomsearchreslt\x7D\x7BSysuptime\x3A
-(assert (not (str.in.re X (str.to.re "www.onlinecasinoextra.comsearchreslt}{Sysuptime:\x0a"))))
+; www\u{2E}onlinecasinoextra\u{2E}comsearchreslt\u{7D}\u{7B}Sysuptime\u{3A}
+(assert (not (str.in_re X (str.to_re "www.onlinecasinoextra.comsearchreslt}{Sysuptime:\u{a}"))))
 (check-sat)

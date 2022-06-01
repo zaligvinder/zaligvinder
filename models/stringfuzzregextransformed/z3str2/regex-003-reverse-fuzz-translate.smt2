@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "MKu^*'\n'6K&k'\x0b'_y`#i~)n-&:/"))
-(assert (str.in.re x (re.* (re.union (str.to.re "[=F") (str.to.re "Ml")))))
+(assert (= x "MKu^*'\n'6K&k'\u{b}'_y`#i~)n-&:/"))
+(assert (str.in_re x (re.* (re.union (str.to_re "[=F") (str.to_re "Ml")))))
 (check-sat)

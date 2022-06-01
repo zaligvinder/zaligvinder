@@ -1,4 +1,4 @@
 (declare-const X String)
-; Fictionaliufilfwulmfi\x2friuf\.lio
-(assert (str.in.re X (str.to.re "Fictionaliufilfwulmfi/riuf.lio\x0a")))
+; Fictionaliufilfwulmfi\u{2f}riuf\.lio
+(assert (str.in_re X (str.to_re "Fictionaliufilfwulmfi/riuf.lio\u{a}")))
 (check-sat)

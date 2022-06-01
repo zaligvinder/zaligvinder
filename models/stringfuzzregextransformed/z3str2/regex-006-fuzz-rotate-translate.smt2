@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "OCAPnOCo"))
-(assert (str.in.re x (re.+ (re.* (str.to.re "D{D;X'\t'")))))
+(assert (str.in_re x (re.+ (re.* (str.to_re "D{D;X'\t'")))))
 (check-sat)

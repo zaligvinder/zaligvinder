@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re "8d.[{") (str.to.re "aGerZ")))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re "8d.[{") (str.to_re "aGerZ")))))
 (assert (= 9 (str.len x)))
 (check-sat)

@@ -1,9 +1,9 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status unsat)
 
 (declare-const x String)
 
-(assert (str.in.re x (re.+ (str.to.re "a") ) ) )
+(assert (str.in_re x (re.+ (str.to_re "a") ) ) )
 
 (assert (> 1 (str.len x) ) )
 

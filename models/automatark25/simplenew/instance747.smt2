@@ -1,4 +1,4 @@
 (declare-const X String)
-; tv\x2E180solutions\x2EcomGirlFriendHost\x3A
-(assert (str.in.re X (str.to.re "tv.180solutions.comGirlFriendHost:\x0a")))
+; tv\u{2E}180solutions\u{2E}comGirlFriendHost\u{3A}
+(assert (str.in_re X (str.to_re "tv.180solutions.comGirlFriendHost:\u{a}")))
 (check-sat)

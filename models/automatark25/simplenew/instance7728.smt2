@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AconfigINTERNAL\.iniUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "Host:configINTERNAL.iniUser-Agent:\x0a"))))
+; Host\u{3A}configINTERNAL\.iniUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "Host:configINTERNAL.iniUser-Agent:\u{a}"))))
 (check-sat)

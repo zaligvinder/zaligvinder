@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var1 () String)
@@ -14,10 +14,10 @@
 (declare-fun sv8 () Int)
 
 (assert (= true (>= sv7 sv8 ) ))
-(assert (= true (str.in.re var4 (re.++ (re.++ (re.++  (re.++ (re.+ (re.range "0" "9") ) (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.+  (str.to.re " ") ))))) (str.to.re (int.to.str sv7 )) )  (re.++ (re.+  (str.to.re " ") ) (re.++  (str.to.re "\x3e") (re.++  (str.to.re "=") (re.+  (str.to.re " ") )))) ) (str.to.re (int.to.str sv8 )) ) ) ))
+(assert (= true (str.in_re var4 (re.++ (re.++ (re.++  (re.++ (re.+ (re.range "0" "9") ) (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.+  (str.to_re " ") ))))) (str.to_re (str.from_int sv7 )) )  (re.++ (re.+  (str.to_re " ") ) (re.++  (str.to_re "\u{3e}") (re.++  (str.to_re "=") (re.+  (str.to_re " ") )))) ) (str.to_re (str.from_int sv8 )) ) ) ))
 (assert (= true (= var2  var1 ) ))
 (assert (= true (= (str.++ var3 var4 ) var2 ) ))
-(assert (= true (= "SELECT \x2a FROM user_data WHERE userid =" var3 ) ))
+(assert (= true (= "SELECT \u{2a} FROM user_data WHERE userid =" var3 ) ))
 (assert (= true (>= var8 var7 ) ))
 (assert (= true (= (str.len var9 ) var8 ) ))
 (assert (= true (or (= var7 var11 ) (= var7 0 ) ) ))

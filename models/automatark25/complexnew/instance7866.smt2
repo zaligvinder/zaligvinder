@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eses/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".ses/i\x0a")))))
-; YOURHost\x3Awww\x2Ealfacleaner\x2Ecom
-(assert (not (str.in.re X (str.to.re "YOURHost:www.alfacleaner.com\x0a"))))
+; /filename=[^\n]*\u{2e}ses/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".ses/i\u{a}")))))
+; YOURHost\u{3A}www\u{2E}alfacleaner\u{2E}com
+(assert (not (str.in_re X (str.to_re "YOURHost:www.alfacleaner.com\u{a}"))))
 (check-sat)

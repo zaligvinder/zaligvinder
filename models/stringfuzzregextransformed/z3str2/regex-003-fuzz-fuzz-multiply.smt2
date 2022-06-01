@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "cc,,''\\\\tt''<<::EEQQ==nn88DD..ss--]]hh,,88$$!!PPCCZZQQXXrrLLQQnnooii}}$$HHII,,EE``ttjj{{<<..mm,,zzZZ''$$bbUU''\\\\tt''AA\\\\\\\\??ccII;;@@??PP88CC__qqXX,,~~ss__nnKK''\\\\xx00bb''VVEEOOPP||~~55kk''\\\\tt''SSvv99mmpp??XXff))xx//""""""""cc''\\\\nn''66gg\\\\\\\\aaHHKK88GGWWaa44YY>>::@@6600##99LLZZ??[[//AAvvMMuuyy,,kk22HH''\\\\tt''ff55DD88==''\\\\tt''33ss"))
-(assert (str.in.re x (re.* (re.union (str.to.re "rr44''MM88\\\\\\\\kkUUBBkk..CCmmoo))KK@@IIDD&&llKKFFSS//") (str.to.re "{{11ll")))))
+(assert (= x "cc,,''\\\\tt''<<::EEQQ==nn88DD..ss--]]hh,,88$$!!PPCCZZQQXXrrLLQQnnooii}}$$HHII,,EE``ttjj{{<<..mm,,zzZZ''$$bbUU''\\\\tt''AA\\\\\\\\??ccII;;@@??PP88CC__qqXX,,~~ss__nnKK''\\\\u{x0}0bb''VVEEOOPP||~~55kk''\\\\tt''SSvv99mmpp??XXff))xx//""""""""cc''\\\\nn''66gg\\\\\\\\aaHHKK88GGWWaa44YY>>::@@6600##99LLZZ??[[//AAvvMMuuyy,,kk22HH''\\\\tt''ff55DD88==''\\\\tt''33ss"))
+(assert (str.in_re x (re.* (re.union (str.to_re "rr44''MM88\\\\\\\\kkUUBBkk..CCmmoo))KK@@IIDD&&llKKFFSS//") (str.to_re "{{11ll")))))
 (check-sat)

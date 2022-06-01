@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "a_i2acPS'\x0c'>c/\\Gv;A6"))
-(assert (str.in.re x (str.to.re "'\x0b'KF%J")))
+(assert (= x "a_i2acPS'\u{c}'>c/\\Gv;A6"))
+(assert (str.in_re x (str.to_re "'\u{b}'KF%J")))
 (check-sat)

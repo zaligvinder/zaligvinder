@@ -1,4 +1,4 @@
 (declare-const X String)
-; /\x3d\x3d$/P
-(assert (str.in.re X (str.to.re "/==/P\x0a")))
+; /\u{3d}\u{3d}$/P
+(assert (str.in_re X (str.to_re "/==/P\u{a}")))
 (check-sat)

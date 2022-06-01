@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "\\' 'vpvp~"))
-(assert (str.in.re x (str.to.re "\\' 'vp")))
+(assert (str.in_re x (str.to_re "\\' 'vp")))
 (check-sat)

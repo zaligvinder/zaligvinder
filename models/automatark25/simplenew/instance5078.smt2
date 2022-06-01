@@ -1,4 +1,4 @@
 (declare-const X String)
-; eveocczmthmmq\x2fomzlHello\x2E\x2Fasp\x2Foffers\.asp\?
-(assert (not (str.in.re X (str.to.re "eveocczmthmmq/omzlHello./asp/offers.asp?\x0a"))))
+; eveocczmthmmq\u{2f}omzlHello\u{2E}\u{2F}asp\u{2F}offers\.asp\?
+(assert (not (str.in_re X (str.to_re "eveocczmthmmq/omzlHello./asp/offers.asp?\u{a}"))))
 (check-sat)

@@ -34,9 +34,9 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun atk_sigmaStar_2 () String)
 (declare-fun atk_sink () String)
 
-(assert (and b_literal_9 (= literal_9 "\x53\x45\x4c\x45\x43\x54\x20\x69\x64\x2c\x75\x73\x65\x72\x6e\x61\x6d\x65\x2c\x72\x65\x61\x6c\x6e\x61\x6d\x65\x2c\x70\x61\x73\x73\x77\x64\x20\x46\x52\x4f\x4d\x20\x75\x73\x65\x72\x73\x20\x57\x48\x45\x52\x45\x20\x75\x73\x65\x72\x6e\x61\x6d\x65\x3d\x27")))
-(assert (and b_literal_11 (= literal_11 "\x27")))
-(assert (str.in.re atkPtn (str.to.re "' or 1=1 '")))
+(assert (and b_literal_9 (= literal_9 "\u{53}\u{45}\u{4c}\u{45}\u{43}\u{54}\u{20}\u{69}\u{64}\u{2c}\u{75}\u{73}\u{65}\u{72}\u{6e}\u{61}\u{6d}\u{65}\u{2c}\u{72}\u{65}\u{61}\u{6c}\u{6e}\u{61}\u{6d}\u{65}\u{2c}\u{70}\u{61}\u{73}\u{73}\u{77}\u{64}\u{20}\u{46}\u{52}\u{4f}\u{4d}\u{20}\u{75}\u{73}\u{65}\u{72}\u{73}\u{20}\u{57}\u{48}\u{45}\u{52}\u{45}\u{20}\u{75}\u{73}\u{65}\u{72}\u{6e}\u{61}\u{6d}\u{65}\u{3d}\u{27}")))
+(assert (and b_literal_11 (= literal_11 "\u{27}")))
+(assert (str.in_re atkPtn (str.to_re "' or 1=1 '")))
 (assert (= atk_sink (str.++ atk_sigmaStar_1 (str.++ atkPtn atk_sigmaStar_2))))
 (assert (= b_x_7 (and (= x_7 (str.replace sigmaStar_048 "W" "") ) b_sigmaStar_048) ))
 (assert (= b_x_10 (and (= x_10 (str.++ literal_9 x_7) ) b_literal_9 b_x_7) ))

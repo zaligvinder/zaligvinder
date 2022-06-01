@@ -1,10 +1,10 @@
 (declare-const X String)
-; /\x2ejar([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.jar") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
-; Subject\x3A\swww\x2Esearchwords\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Subject:") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "www.searchwords.com\x0a")))))
-; shprrprt-cs-Pre\x2Fta\x2FNEWS\x2F
-(assert (not (str.in.re X (str.to.re "shprrprt-cs-\x13Pre/ta/NEWS/\x0a"))))
-; Spy\dccecaedbebfcaf\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "Spy") (re.range "0" "9") (str.to.re "ccecaedbebfcaf.com\x0a")))))
+; /\u{2e}jar([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.jar") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
+; Subject\u{3A}\swww\u{2E}searchwords\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Subject:") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "www.searchwords.com\u{a}")))))
+; shprrprt-cs-Pre\u{2F}ta\u{2F}NEWS\u{2F}
+(assert (not (str.in_re X (str.to_re "shprrprt-cs-\u{13}Pre/ta/NEWS/\u{a}"))))
+; Spy\dccecaedbebfcaf\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "Spy") (re.range "0" "9") (str.to_re "ccecaedbebfcaf.com\u{a}")))))
 (check-sat)

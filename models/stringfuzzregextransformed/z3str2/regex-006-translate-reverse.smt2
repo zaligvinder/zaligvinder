@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "'c0x\\'{-'c0x\\'{-"))
-(assert (str.in.re x (re.* (re.* (str.to.re "'c0x\\'{-")))))
+(assert (str.in_re x (re.* (re.* (str.to_re "'c0x\\'{-")))))
 (check-sat)

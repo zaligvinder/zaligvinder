@@ -1,4 +1,4 @@
 (declare-const X String)
-; 3AFrom\x3Adddrep\x2Edudu\x2Ecomform-data\x3B\x20name=\x22pid\x22
-(assert (str.in.re X (str.to.re "3AFrom:dddrep.dudu.comform-data; name=\x22pid\x22\x0a")))
+; 3AFrom\u{3A}dddrep\u{2E}dudu\u{2E}comform-data\u{3B}\u{20}name=\u{22}pid\u{22}
+(assert (str.in_re X (str.to_re "3AFrom:dddrep.dudu.comform-data; name=\u{22}pid\u{22}\u{a}")))
 (check-sat)

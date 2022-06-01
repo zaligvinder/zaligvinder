@@ -1,4 +1,4 @@
 (declare-const X String)
-; /\x2fib2\x2f$/U
-(assert (str.in.re X (str.to.re "//ib2//U\x0a")))
+; /\u{2f}ib2\u{2f}$/U
+(assert (str.in_re X (str.to_re "//ib2//U\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; asdbiz\x2Ebiz\dATTENTION\x3Aemail
-(assert (str.in.re X (re.++ (str.to.re "asdbiz.biz") (re.range "0" "9") (str.to.re "ATTENTION:email\x0a"))))
+; asdbiz\u{2E}biz\dATTENTION\u{3A}email
+(assert (str.in_re X (re.++ (str.to_re "asdbiz.biz") (re.range "0" "9") (str.to_re "ATTENTION:email\u{a}"))))
 (check-sat)

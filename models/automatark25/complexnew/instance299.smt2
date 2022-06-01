@@ -1,8 +1,8 @@
 (declare-const X String)
-; ad\x2Esearchsquire\x2Ecom[^\n\r]*User-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "ad.searchsquire.com") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "User-Agent:\x0a"))))
-; e2give\.comConnectionSpywww\x2Eslinkyslate
-(assert (not (str.in.re X (str.to.re "e2give.comConnectionSpywww.slinkyslate\x0a"))))
+; ad\u{2E}searchsquire\u{2E}com[^\n\r]*User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "ad.searchsquire.com") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:\u{a}"))))
+; e2give\.comConnectionSpywww\u{2E}slinkyslate
+(assert (not (str.in_re X (str.to_re "e2give.comConnectionSpywww.slinkyslate\u{a}"))))
 ; ^[1-9][0-9][0-9][0-9]$
-(assert (str.in.re X (re.++ (re.range "1" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.range "1" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (str.to_re "\u{a}"))))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
 ; ^\d*$
-(assert (not (str.in.re X (re.++ (re.* (re.range "0" "9")) (str.to.re "\x0a")))))
-; shprrprt-cs-Pre\x2Fta\x2FNEWS\x2F
-(assert (str.in.re X (str.to.re "shprrprt-cs-\x13Pre/ta/NEWS/\x0a")))
+(assert (not (str.in_re X (re.++ (re.* (re.range "0" "9")) (str.to_re "\u{a}")))))
+; shprrprt-cs-Pre\u{2F}ta\u{2F}NEWS\u{2F}
+(assert (str.in_re X (str.to_re "shprrprt-cs-\u{13}Pre/ta/NEWS/\u{a}")))
 (check-sat)

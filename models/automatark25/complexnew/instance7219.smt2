@@ -1,12 +1,12 @@
 (declare-const X String)
-; s_sq=aolsnssigninUser-Agent\x3A
-(assert (str.in.re X (str.to.re "s_sq=aolsnssigninUser-Agent:\x0a")))
-; ProxyDownCurrentUser-Agent\x3AHost\x3Acom\x2Findex\.php\?tpid=
-(assert (not (str.in.re X (str.to.re "ProxyDownCurrentUser-Agent:Host:com/index.php?tpid=\x0a"))))
-; /filename=[^\n]*\x2erat/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".rat/i\x0a"))))
-; to\d+User-Agent\x3AFiltered
-(assert (not (str.in.re X (re.++ (str.to.re "to") (re.+ (re.range "0" "9")) (str.to.re "User-Agent:Filtered\x0a")))))
+; s_sq=aolsnssigninUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "s_sq=aolsnssigninUser-Agent:\u{a}")))
+; ProxyDownCurrentUser-Agent\u{3A}Host\u{3A}com\u{2F}index\.php\?tpid=
+(assert (not (str.in_re X (str.to_re "ProxyDownCurrentUser-Agent:Host:com/index.php?tpid=\u{a}"))))
+; /filename=[^\n]*\u{2e}rat/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".rat/i\u{a}"))))
+; to\d+User-Agent\u{3A}Filtered
+(assert (not (str.in_re X (re.++ (str.to_re "to") (re.+ (re.range "0" "9")) (str.to_re "User-Agent:Filtered\u{a}")))))
 ; [0][^0]|([^0]{1}(.){1})|[^0]*
-(assert (str.in.re X (re.union (re.++ (str.to.re "0") (re.comp (str.to.re "0"))) (re.++ ((_ re.loop 1 1) (re.comp (str.to.re "0"))) ((_ re.loop 1 1) re.allchar)) (re.++ (re.* (re.comp (str.to.re "0"))) (str.to.re "\x0a")))))
+(assert (str.in_re X (re.union (re.++ (str.to_re "0") (re.comp (str.to_re "0"))) (re.++ ((_ re.loop 1 1) (re.comp (str.to_re "0"))) ((_ re.loop 1 1) re.allchar)) (re.++ (re.* (re.comp (str.to_re "0"))) (str.to_re "\u{a}")))))
 (check-sat)

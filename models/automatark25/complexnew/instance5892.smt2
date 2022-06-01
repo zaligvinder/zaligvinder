@@ -1,8 +1,8 @@
 (declare-const X String)
-; \x2Fbonzibuddy\x2Forigin\x3DsidefindApofisUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "/bonzibuddy/origin=sidefindApofisUser-Agent:\x0a"))))
-; BasicYWRtaW46cGFzc3dvcmQeAnthMngrLOGsearches\x2Eworldtostart\x2Ecom
-(assert (str.in.re X (str.to.re "BasicYWRtaW46cGFzc3dvcmQeAnthMngrLOGsearches.worldtostart.com\x0a")))
-; OS\x2F\d+User-Agent\x3AUser-Agent\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "OS/") (re.+ (re.range "0" "9")) (str.to.re "User-Agent:User-Agent:\x0a")))))
+; \u{2F}bonzibuddy\u{2F}origin\u{3D}sidefindApofisUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "/bonzibuddy/origin=sidefindApofisUser-Agent:\u{a}"))))
+; BasicYWRtaW46cGFzc3dvcmQeAnthMngrLOGsearches\u{2E}worldtostart\u{2E}com
+(assert (str.in_re X (str.to_re "BasicYWRtaW46cGFzc3dvcmQeAnthMngrLOGsearches.worldtostart.com\u{a}")))
+; OS\u{2F}\d+User-Agent\u{3A}User-Agent\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "OS/") (re.+ (re.range "0" "9")) (str.to_re "User-Agent:User-Agent:\u{a}")))))
 (check-sat)

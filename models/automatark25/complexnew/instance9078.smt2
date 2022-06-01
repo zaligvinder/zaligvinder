@@ -1,6 +1,6 @@
 (declare-const X String)
-; Fictional[^\n\r]*v\x3B[^\n\r]*\x22Stealth\d+moreKontikiHost\x3aAcmeEvilFTPHost\x3ATOOLBARSupremePort\x2E
-(assert (not (str.in.re X (re.++ (str.to.re "Fictional") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "v;") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "\x22Stealth") (re.+ (re.range "0" "9")) (str.to.re "moreKontikiHost:AcmeEvilFTPHost:TOOLBARSupremePort.\x0a")))))
-; trustyfiles\x2EcomBlade\x23\x23\x23\x23\.smx\?
-(assert (str.in.re X (str.to.re "trustyfiles.comBlade####.smx?\x0a")))
+; Fictional[^\n\r]*v\u{3B}[^\n\r]*\u{22}Stealth\d+moreKontikiHost\u{3a}AcmeEvilFTPHost\u{3A}TOOLBARSupremePort\u{2E}
+(assert (not (str.in_re X (re.++ (str.to_re "Fictional") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "v;") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "\u{22}Stealth") (re.+ (re.range "0" "9")) (str.to_re "moreKontikiHost:AcmeEvilFTPHost:TOOLBARSupremePort.\u{a}")))))
+; trustyfiles\u{2E}comBlade\u{23}\u{23}\u{23}\u{23}\.smx\?
+(assert (str.in_re X (str.to_re "trustyfiles.comBlade####.smx?\u{a}")))
 (check-sat)

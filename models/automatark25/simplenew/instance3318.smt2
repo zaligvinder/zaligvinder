@@ -1,4 +1,4 @@
 (declare-const X String)
-; twfofrfzlugq\x2feve\.qdSeconds\-
-(assert (str.in.re X (str.to.re "twfofrfzlugq/eve.qdSeconds-\x0a")))
+; twfofrfzlugq\u{2f}eve\.qdSeconds\-
+(assert (str.in_re X (str.to_re "twfofrfzlugq/eve.qdSeconds-\u{a}")))
 (check-sat)

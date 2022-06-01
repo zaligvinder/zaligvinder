@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eyoogee\x2EcomserverHost\x3Aref\x3D\x25user\x5Fid
-(assert (str.in.re X (str.to.re "www.yoogee.com\x13serverHost:ref=%user_id\x0a")))
+; www\u{2E}yoogee\u{2E}comserverHost\u{3A}ref\u{3D}\u{25}user\u{5F}id
+(assert (str.in_re X (str.to_re "www.yoogee.com\u{13}serverHost:ref=%user_id\u{a}")))
 (check-sat)

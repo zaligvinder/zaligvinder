@@ -1,8 +1,8 @@
 (declare-const X String)
-; www\.thecommunicator\.net\sHost\x3A\dhoroscope2
-(assert (str.in.re X (re.++ (str.to.re "www.thecommunicator.net") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "Host:") (re.range "0" "9") (str.to.re "horoscope2\x0a"))))
-; /filename=[^\n]*\x2exm/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".xm/i\x0a")))))
+; www\.thecommunicator\.net\sHost\u{3A}\dhoroscope2
+(assert (str.in_re X (re.++ (str.to_re "www.thecommunicator.net") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "Host:") (re.range "0" "9") (str.to_re "horoscope2\u{a}"))))
+; /filename=[^\n]*\u{2e}xm/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".xm/i\u{a}")))))
 ; ^[0-9]+[NnSs] [0-9]+[WwEe]$
-(assert (not (str.in.re X (re.++ (re.+ (re.range "0" "9")) (re.union (str.to.re "N") (str.to.re "n") (str.to.re "S") (str.to.re "s")) (str.to.re " ") (re.+ (re.range "0" "9")) (re.union (str.to.re "W") (str.to.re "w") (str.to.re "E") (str.to.re "e")) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.+ (re.range "0" "9")) (re.union (str.to_re "N") (str.to_re "n") (str.to_re "S") (str.to_re "s")) (str.to_re " ") (re.+ (re.range "0" "9")) (re.union (str.to_re "W") (str.to_re "w") (str.to_re "E") (str.to_re "e")) (str.to_re "\u{a}")))))
 (check-sat)

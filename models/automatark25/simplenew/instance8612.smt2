@@ -1,4 +1,4 @@
 (declare-const X String)
-; fsbuffshprrprt-cs-Host\x3A
-(assert (not (str.in.re X (str.to.re "fsbuffshprrprt-cs-\x13Host:\x0a"))))
+; fsbuffshprrprt-cs-Host\u{3A}
+(assert (not (str.in_re X (str.to_re "fsbuffshprrprt-cs-\u{13}Host:\u{a}"))))
 (check-sat)

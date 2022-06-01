@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var497 () String)
@@ -23,11 +23,11 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var507 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var507 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= (str.++ var496 var497 ) var494 ) ))
 (assert (= true (= (str.++ var498 "WHERE c_last = '" ) var496 ) ))
 (assert (= true (= (str.++ var500 "FROM tpcc_customer" ) var498 ) ))
-(assert (= true (= (str.++ var502 "SELECT count\x28c_id\x29 AS namecnt" ) var500 ) ))
+(assert (= true (= (str.++ var502 "SELECT count\u{28}c_id\u{29} AS namecnt" ) var500 ) ))
 (assert (= true (not (= 0 var504 )) ))
 (assert (= true (= var493 var507 ) ))
 (assert (= true (= var489 var506 ) ))

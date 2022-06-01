@@ -38,8 +38,8 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun sigmaStar_n0 () String)
 (declare-fun b_sigmaStar_n0 () Bool)
 
-(assert (and b_literal_1 (= literal_1 "\x53\x45\x43\x55\x52\x49\x54\x59\x20\x57\x41\x52\x4e\x49\x4e\x47\x3a\x20\x6c\x6f\x67\x67\x65\x64\x20\x69\x6e\x74\x72\x75\x73\x69\x6f\x6e\x20\x61\x74\x74\x65\x6d\x70\x74\x20\x61\x67\x61\x69\x6e\x73\x74\x20\x6c\x69\x62\x2f\x61\x64\x6f\x64\x62\x2f\x74\x65\x73\x74\x73\x2f\x74\x6d\x73\x73\x71\x6c\x2e\x70\x68\x70")))
-(assert (str.in.re atkPtn (str.to.re "vbscript:")))
+(assert (and b_literal_1 (= literal_1 "\u{53}\u{45}\u{43}\u{55}\u{52}\u{49}\u{54}\u{59}\u{20}\u{57}\u{41}\u{52}\u{4e}\u{49}\u{4e}\u{47}\u{3a}\u{20}\u{6c}\u{6f}\u{67}\u{67}\u{65}\u{64}\u{20}\u{69}\u{6e}\u{74}\u{72}\u{75}\u{73}\u{69}\u{6f}\u{6e}\u{20}\u{61}\u{74}\u{74}\u{65}\u{6d}\u{70}\u{74}\u{20}\u{61}\u{67}\u{61}\u{69}\u{6e}\u{73}\u{74}\u{20}\u{6c}\u{69}\u{62}\u{2f}\u{61}\u{64}\u{6f}\u{64}\u{62}\u{2f}\u{74}\u{65}\u{73}\u{74}\u{73}\u{2f}\u{74}\u{6d}\u{73}\u{73}\u{71}\u{6c}\u{2e}\u{70}\u{68}\u{70}")))
+(assert (str.in_re atkPtn (str.to_re "vbscript:")))
 (assert (= atk_sink (str.++ atk_sigmaStar_1 (str.++ atkPtn atk_sigmaStar_2))))
 (assert (= b_x_23 (or (and (= x_23 literal_1) b_literal_1) (and (= x_23 sigmaStar_2256) b_sigmaStar_2256) ) ))
 (assert (= b_x_27 (and (= x_27 (str.replace x_23 "\\'" "\'") ) b_x_23) ))

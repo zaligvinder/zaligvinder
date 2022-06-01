@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "ab$!Pabc"))
-(assert (str.in.re x (str.to.re "hAhw'{")))
+(assert (str.in_re x (str.to_re "hAhw'{")))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; /\x3Fp\x3D[0-9]{1,10}\x26d\x3D/U
-(assert (str.in.re X (re.++ (str.to.re "/?p=") ((_ re.loop 1 10) (re.range "0" "9")) (str.to.re "&d=/U\x0a"))))
-; zzzvmkituktgr\x2fetie\sHost\x3ASoftActivityYeah\!whenu\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "zzzvmkituktgr/etie") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "Host:SoftActivity\x13Yeah!whenu.com\x1b\x0a"))))
-; ad\x2Esearchsquire\x2Ecom[^\n\r]*User-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "ad.searchsquire.com") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "User-Agent:\x0a"))))
+; /\u{3F}p\u{3D}[0-9]{1,10}\u{26}d\u{3D}/U
+(assert (str.in_re X (re.++ (str.to_re "/?p=") ((_ re.loop 1 10) (re.range "0" "9")) (str.to_re "&d=/U\u{a}"))))
+; zzzvmkituktgr\u{2f}etie\sHost\u{3A}SoftActivityYeah\!whenu\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "zzzvmkituktgr/etie") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "Host:SoftActivity\u{13}Yeah!whenu.com\u{1b}\u{a}"))))
+; ad\u{2E}searchsquire\u{2E}com[^\n\r]*User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "ad.searchsquire.com") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:\u{a}"))))
 (check-sat)

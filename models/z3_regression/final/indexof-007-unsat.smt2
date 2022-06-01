@@ -1,9 +1,9 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status unsat)
 (declare-const i Int)
 (declare-const X String)
 
-(assert (= i (str.indexof X "ab") ) )
+(assert (= i (str.indexof X "ab" 0) ) )
 (assert (= i 0 ) )
 (assert (= (str.len X) 0 ) )
 

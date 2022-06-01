@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /^\/jhan.jar?r=\d+/Ui
-(assert (not (str.in.re X (re.++ (str.to.re "//jhan") re.allchar (str.to.re "ja") (re.opt (str.to.re "r")) (str.to.re "r=") (re.+ (re.range "0" "9")) (str.to.re "/Ui\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "//jhan") re.allchar (str.to_re "ja") (re.opt (str.to_re "r")) (str.to_re "r=") (re.+ (re.range "0" "9")) (str.to_re "/Ui\u{a}")))))
 (check-sat)

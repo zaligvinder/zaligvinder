@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x28robert\x40blackcastlesoft\x2Ecom\x29
-(assert (not (str.in.re X (str.to.re "(robert@blackcastlesoft.com)\x0a"))))
+; \u{28}robert\u{40}blackcastlesoft\u{2E}com\u{29}
+(assert (not (str.in_re X (str.to_re "(robert@blackcastlesoft.com)\u{a}"))))
 (check-sat)

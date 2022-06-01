@@ -1,6 +1,6 @@
 (declare-const X String)
-; GREATDriplineisUser-Agent\x3Alogs===========\x3E
-(assert (str.in.re X (str.to.re "GREATDriplineisUser-Agent:logs===========>\x0a")))
-; Minutes\s+\x2Fcgi\x2Flogurl\.cgi\s+e2give\.com
-(assert (str.in.re X (re.++ (str.to.re "Minutes") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "/cgi/logurl.cgi") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "e2give.com\x0a"))))
+; GREATDriplineisUser-Agent\u{3A}logs===========\u{3E}
+(assert (str.in_re X (str.to_re "GREATDriplineisUser-Agent:logs===========>\u{a}")))
+; Minutes\s+\u{2F}cgi\u{2F}logurl\.cgi\s+e2give\.com
+(assert (str.in_re X (re.++ (str.to_re "Minutes") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "/cgi/logurl.cgi") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "e2give.com\u{a}"))))
 (check-sat)

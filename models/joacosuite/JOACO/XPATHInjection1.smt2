@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var21 () String)
@@ -14,14 +14,14 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var26 (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) ) ) ))
+(assert (= true (str.in_re var26 (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) ) ) ))
 (assert (= true (not (= "" var26 )) ))
 (assert (= true (= var22  var21 ) ))
-(assert (= true (= (str.++ var23 "'\x5d" ) var22 ) ))
+(assert (= true (= (str.++ var23 "'\u{5d}" ) var22 ) ))
 (assert (= true (= (str.++ var25 var26 ) var23 ) ))
-(assert (= true (= (str.++ var27 "' and passwd/text\x28\x29='" ) var25 ) ))
+(assert (= true (= (str.++ var27 "' and passwd/text\u{28}\u{29}='" ) var25 ) ))
 (assert (= true (= (str.++ var29 var30 ) var27 ) ))
-(assert (= true (= "/employees/employee\x5bloginID/text\x28\x29='" var29 ) ))
+(assert (= true (= "/employees/employee\u{5b}loginID/text\u{28}\u{29}='" var29 ) ))
 (assert (= true (not (= 0 var32 )) ))
 (assert (= true (= (str.len var26 ) var32 ) ))
 

@@ -1,4 +1,4 @@
 (declare-const X String)
-; adfsgecoiwnf\d+Host\x3aTCP\x2FAD\x2FULOGNetBus
-(assert (not (str.in.re X (re.++ (str.to.re "adfsgecoiwnf\x1b") (re.+ (re.range "0" "9")) (str.to.re "Host:TCP/AD/ULOGNetBus\x0a")))))
+; adfsgecoiwnf\d+Host\u{3a}TCP\u{2F}AD\u{2F}ULOGNetBus
+(assert (not (str.in_re X (re.++ (str.to_re "adfsgecoiwnf\u{1b}") (re.+ (re.range "0" "9")) (str.to_re "Host:TCP/AD/ULOGNetBus\u{a}")))))
 (check-sat)

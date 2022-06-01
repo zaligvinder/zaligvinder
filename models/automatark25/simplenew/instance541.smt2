@@ -1,4 +1,4 @@
 (declare-const X String)
-; Subject\x3aFTPdistdcww\x2Edmcast\x2Ecom
-(assert (str.in.re X (str.to.re "Subject:FTPdistdcww.dmcast.com\x0a")))
+; Subject\u{3a}FTPdistdcww\u{2E}dmcast\u{2E}com
+(assert (str.in_re X (str.to_re "Subject:FTPdistdcww.dmcast.com\u{a}")))
 (check-sat)

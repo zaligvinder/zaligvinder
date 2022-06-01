@@ -1,8 +1,8 @@
 (declare-const X String)
-; /filename=[^\n]*\x2easx/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".asx/i\x0a"))))
-; Handyst=ClassStopperHost\x3ASpamBlockerUtility
-(assert (not (str.in.re X (str.to.re "Handyst=ClassStopperHost:SpamBlockerUtility\x0a"))))
-; \r\nSTATUS\x3A\dHost\x3aReferer\x3AServerSubject\x3a
-(assert (not (str.in.re X (re.++ (str.to.re "\x0d\x0aSTATUS:") (re.range "0" "9") (str.to.re "Host:Referer:ServerSubject:\x0a")))))
+; /filename=[^\n]*\u{2e}asx/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".asx/i\u{a}"))))
+; Handyst=ClassStopperHost\u{3A}SpamBlockerUtility
+(assert (not (str.in_re X (str.to_re "Handyst=ClassStopperHost:SpamBlockerUtility\u{a}"))))
+; \r\nSTATUS\u{3A}\dHost\u{3a}Referer\u{3A}ServerSubject\u{3a}
+(assert (not (str.in_re X (re.++ (str.to_re "\u{d}\u{a}STATUS:") (re.range "0" "9") (str.to_re "Host:Referer:ServerSubject:\u{a}")))))
 (check-sat)

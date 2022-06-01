@@ -1,4 +1,4 @@
 (declare-const X String)
-; Computer\x7D\x7BSysuptime\x3Awww\x2Eezula\x2EcomanswerServerHost\x3Aserveradfsgecoiwnf
-(assert (str.in.re X (str.to.re "Computer}{Sysuptime:www.ezula.comanswerServerHost:serveradfsgecoiwnf\x1b\x0a")))
+; Computer\u{7D}\u{7B}Sysuptime\u{3A}www\u{2E}ezula\u{2E}comanswerServerHost\u{3A}serveradfsgecoiwnf
+(assert (str.in_re X (str.to_re "Computer}{Sysuptime:www.ezula.comanswerServerHost:serveradfsgecoiwnf\u{1b}\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; GREAT\d+X-Mailer\x3a\d+url=enews\x2Eearthlink\x2Enet
-(assert (str.in.re X (re.++ (str.to.re "GREAT") (re.+ (re.range "0" "9")) (str.to.re "X-Mailer:\x13") (re.+ (re.range "0" "9")) (str.to.re "url=enews.earthlink.net\x0a"))))
+; GREAT\d+X-Mailer\u{3a}\d+url=enews\u{2E}earthlink\u{2E}net
+(assert (str.in_re X (re.++ (str.to_re "GREAT") (re.+ (re.range "0" "9")) (str.to_re "X-Mailer:\u{13}") (re.+ (re.range "0" "9")) (str.to_re "url=enews.earthlink.net\u{a}"))))
 (check-sat)

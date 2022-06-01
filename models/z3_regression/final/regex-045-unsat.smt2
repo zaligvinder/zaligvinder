@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status unsat)
 (declare-const x String)
 (declare-const y String)
@@ -7,7 +7,7 @@
 
 
 
-(assert (not (str.in.re x (re.* (str.to.re "abc") ) ) ) )
+(assert (not (str.in_re x (re.* (str.to_re "abc") ) ) ) )
 (assert (= x "abc") )
 
 

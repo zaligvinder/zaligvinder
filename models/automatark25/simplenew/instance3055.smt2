@@ -1,4 +1,4 @@
 (declare-const X String)
-; hjhgquqssq\x2fpjm[^\n\r]*User-Agent\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "hjhgquqssq/pjm") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "User-Agent:\x0a")))))
+; hjhgquqssq\u{2f}pjm[^\n\r]*User-Agent\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "hjhgquqssq/pjm") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:\u{a}")))))
 (check-sat)

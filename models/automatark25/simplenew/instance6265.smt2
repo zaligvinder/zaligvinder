@@ -1,4 +1,4 @@
 (declare-const X String)
-; httphost\dActivityfilename=\x22
-(assert (str.in.re X (re.++ (str.to.re "httphost") (re.range "0" "9") (str.to.re "Activityfilename=\x22\x0a"))))
+; httphost\dActivityfilename=\u{22}
+(assert (str.in_re X (re.++ (str.to_re "httphost") (re.range "0" "9") (str.to_re "Activityfilename=\u{22}\u{a}"))))
 (check-sat)

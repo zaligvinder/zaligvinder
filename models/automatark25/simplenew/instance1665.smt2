@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3Aupgrade\x2Eqsrch\x2Einfo
-(assert (str.in.re X (str.to.re "User-Agent:upgrade.qsrch.info\x0a")))
+; User-Agent\u{3A}upgrade\u{2E}qsrch\u{2E}info
+(assert (str.in_re X (str.to_re "User-Agent:upgrade.qsrch.info\u{a}")))
 (check-sat)

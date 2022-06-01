@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A.*www\x2e2-seek\x2ecom\x2fsearch
-(assert (not (str.in.re X (re.++ (str.to.re "Host:") (re.* re.allchar) (str.to.re "www.2-seek.com/search\x0a")))))
+; Host\u{3A}.*www\u{2e}2-seek\u{2e}com\u{2f}search
+(assert (not (str.in_re X (re.++ (str.to_re "Host:") (re.* re.allchar) (str.to_re "www.2-seek.com/search\u{a}")))))
 (check-sat)

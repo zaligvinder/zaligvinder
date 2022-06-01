@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3ADirectory
-(assert (str.in.re X (str.to.re "User-Agent:Directory\x0a")))
+; User-Agent\u{3A}Directory
+(assert (str.in_re X (str.to_re "User-Agent:Directory\u{a}")))
 (check-sat)

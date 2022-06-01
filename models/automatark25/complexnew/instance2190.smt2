@@ -1,10 +1,10 @@
 (declare-const X String)
-; vbwwwc\.goclick\.compassword\x3B0\x3BIncorrect
-(assert (str.in.re X (str.to.re "vbwwwc.goclick.compassword;0;Incorrect\x0a")))
-; securityon\x3AHost\x3ARedirector\x22ServerHost\x3A
-(assert (not (str.in.re X (str.to.re "securityon:Host:Redirector\x22ServerHost:\x0a"))))
-; /\x2efli([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.fli") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; /\x2eram?([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.ra") (re.opt (str.to.re "m")) (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
+; vbwwwc\.goclick\.compassword\u{3B}0\u{3B}Incorrect
+(assert (str.in_re X (str.to_re "vbwwwc.goclick.compassword;0;Incorrect\u{a}")))
+; securityon\u{3A}Host\u{3A}Redirector\u{22}ServerHost\u{3A}
+(assert (not (str.in_re X (str.to_re "securityon:Host:Redirector\u{22}ServerHost:\u{a}"))))
+; /\u{2e}fli([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.fli") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; /\u{2e}ram?([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.ra") (re.opt (str.to_re "m")) (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
 (check-sat)

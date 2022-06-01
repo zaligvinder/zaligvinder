@@ -1,6 +1,6 @@
 (declare-const X String)
-; GamespyAttachedIndyReferer\x3AToolbarCurrent\x3BCIA
-(assert (str.in.re X (str.to.re "GamespyAttachedIndyReferer:ToolbarCurrent;CIA\x0a")))
-; /\x2fb\x2fshoe\x2f[0-9]{3,5}$/U
-(assert (str.in.re X (re.++ (str.to.re "//b/shoe/") ((_ re.loop 3 5) (re.range "0" "9")) (str.to.re "/U\x0a"))))
+; GamespyAttachedIndyReferer\u{3A}ToolbarCurrent\u{3B}CIA
+(assert (str.in_re X (str.to_re "GamespyAttachedIndyReferer:ToolbarCurrent;CIA\u{a}")))
+; /\u{2f}b\u{2f}shoe\u{2f}[0-9]{3,5}$/U
+(assert (str.in_re X (re.++ (str.to_re "//b/shoe/") ((_ re.loop 3 5) (re.range "0" "9")) (str.to_re "/U\u{a}"))))
 (check-sat)

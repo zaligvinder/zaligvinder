@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.* (str.to.re "o_B7)K'\\x0c'0Tf:Co3c'hcDBw+"))))
+(assert (str.in_re x (re.* (str.to_re "o_B7)K'\\u{c}'0Tf:Co3c'hcDBw+"))))
 (assert (= (str.len x) 1))
 (check-sat)

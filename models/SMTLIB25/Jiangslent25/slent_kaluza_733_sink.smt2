@@ -45,7 +45,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= NEW_DGNode_6 ""))
 (assert (= NEW_DGNode_9 (str.++ T1_18 T2_18)))
 (assert (= T2_18 (str.++ PCTEMP_LHS_4 T3_18)))
-(assert (not (str.in.re PCTEMP_LHS_4 (str.to.re "-"))))
+(assert (not (str.in_re PCTEMP_LHS_4 (str.to_re "-"))))
 (assert (= T_SELECT_2 (not (= PCTEMP_LHS_2 (- 1)))))
 (assert T_8)
 (assert (= T_8 (< (- 1) PCTEMP_LHS_2)))

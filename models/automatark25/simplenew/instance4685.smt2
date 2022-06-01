@@ -1,4 +1,4 @@
 (declare-const X String)
-; BasicPointsHost\x3Anews
-(assert (not (str.in.re X (str.to.re "BasicPointsHost:news\x0a"))))
+; BasicPointsHost\u{3A}news
+(assert (not (str.in_re X (str.to_re "BasicPointsHost:news\u{a}"))))
 (check-sat)

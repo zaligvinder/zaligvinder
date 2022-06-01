@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "M'\x0c'<'+M'\x0c'M'\x0c'<"))
-(assert (str.in.re x (str.to.re "'+M'\x0c'")))
+(assert (= x "M'\u{c}'<'+M'\u{c}'M'\u{c}'<"))
+(assert (str.in_re x (str.to_re "'+M'\u{c}'")))
 (check-sat)

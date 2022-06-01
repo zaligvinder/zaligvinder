@@ -1,6 +1,6 @@
 (declare-const X String)
-; User-Agent\x3AX-Mailer\x3aHost\x3Adcww\x2Edmcast\x2Ecom
-(assert (str.in.re X (str.to.re "User-Agent:X-Mailer:\x13Host:dcww.dmcast.com\x0a")))
+; User-Agent\u{3A}X-Mailer\u{3a}Host\u{3A}dcww\u{2E}dmcast\u{2E}com
+(assert (str.in_re X (str.to_re "User-Agent:X-Mailer:\u{13}Host:dcww.dmcast.com\u{a}")))
 ; ^\d{1,2}\/\d{2,4}$
-(assert (str.in.re X (re.++ ((_ re.loop 1 2) (re.range "0" "9")) (str.to.re "/") ((_ re.loop 2 4) (re.range "0" "9")) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ ((_ re.loop 1 2) (re.range "0" "9")) (str.to_re "/") ((_ re.loop 2 4) (re.range "0" "9")) (str.to_re "\u{a}"))))
 (check-sat)

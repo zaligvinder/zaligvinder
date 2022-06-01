@@ -1,10 +1,10 @@
 (declare-const X String)
-; NavExcel\s+dist\x2Eatlas\x2Dia\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "NavExcel") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "dist.atlas-ia.com\x0a")))))
-; /\x2f\x24\{\x23[^\x2f{}]+?\}(\.action)?\x2f?$/miU
-(assert (str.in.re X (re.++ (str.to.re "//${#") (re.+ (re.union (str.to.re "/") (str.to.re "{") (str.to.re "}"))) (str.to.re "}") (re.opt (str.to.re ".action")) (re.opt (str.to.re "/")) (str.to.re "/miU\x0a"))))
-; User-Agent\x3A\s+GET\d+\x2Fcommunicatortb
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "GET") (re.+ (re.range "0" "9")) (str.to.re "/communicatortb\x0a"))))
-; Server\x3AWordTheHost\x3afrom
-(assert (str.in.re X (str.to.re "Server:WordTheHost:from\x0a")))
+; NavExcel\s+dist\u{2E}atlas\u{2D}ia\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "NavExcel") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "dist.atlas-ia.com\u{a}")))))
+; /\u{2f}\u{24}\{\u{23}[^\u{2f}{}]+?\}(\.action)?\u{2f}?$/miU
+(assert (str.in_re X (re.++ (str.to_re "//${#") (re.+ (re.union (str.to_re "/") (str.to_re "{") (str.to_re "}"))) (str.to_re "}") (re.opt (str.to_re ".action")) (re.opt (str.to_re "/")) (str.to_re "/miU\u{a}"))))
+; User-Agent\u{3A}\s+GET\d+\u{2F}communicatortb
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "GET") (re.+ (re.range "0" "9")) (str.to_re "/communicatortb\u{a}"))))
+; Server\u{3A}WordTheHost\u{3a}from
+(assert (str.in_re X (str.to_re "Server:WordTheHost:from\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Erichfind\x2Ecom\d+UI2
-(assert (str.in.re X (re.++ (str.to.re "www.richfind.com") (re.+ (re.range "0" "9")) (str.to.re "UI2\x0a"))))
+; www\u{2E}richfind\u{2E}com\d+UI2
+(assert (str.in_re X (re.++ (str.to_re "www.richfind.com") (re.+ (re.range "0" "9")) (str.to_re "UI2\u{a}"))))
 (check-sat)

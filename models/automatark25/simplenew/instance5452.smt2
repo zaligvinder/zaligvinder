@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3a.*\x2Frss.*Desktopcargo=report\<\x2Ftitle\>
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.* re.allchar) (str.to.re "/rss") (re.* re.allchar) (str.to.re "Desktopcargo=report</title>\x0a"))))
+; Host\u{3a}.*\u{2F}rss.*Desktopcargo=report\<\u{2F}title\>
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.* re.allchar) (str.to_re "/rss") (re.* re.allchar) (str.to_re "Desktopcargo=report</title>\u{a}"))))
 (check-sat)

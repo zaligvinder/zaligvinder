@@ -1,4 +1,4 @@
 (declare-const X String)
-; Pleasetvshowticketsmedia\x2Edxcdirect\x2Ecom\x2Fbar_pl\x2Fchk\.fcgi
-(assert (str.in.re X (str.to.re "Pleasetvshowticketsmedia.dxcdirect.com/bar_pl/chk.fcgi\x0a")))
+; Pleasetvshowticketsmedia\u{2E}dxcdirect\u{2E}com\u{2F}bar_pl\u{2F}chk\.fcgi
+(assert (str.in_re X (str.to_re "Pleasetvshowticketsmedia.dxcdirect.com/bar_pl/chk.fcgi\u{a}")))
 (check-sat)

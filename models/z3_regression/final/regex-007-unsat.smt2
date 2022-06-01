@@ -1,11 +1,11 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status unsat)
 (declare-const x String)
 
 
 (assert (= (str.len x) 8))
-(assert (str.in.re x (re.* (str.to.re "ced") ) ) ) 
-(assert (str.in.re x (re.* (str.to.re "abcd") ) ) ) 
+(assert (str.in_re x (re.* (str.to_re "ced") ) ) ) 
+(assert (str.in_re x (re.* (str.to_re "abcd") ) ) ) 
 
 
 (check-sat)

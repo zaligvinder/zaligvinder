@@ -1,6 +1,6 @@
 (declare-const X String)
 ; /filename=[a-z]+\.jat/
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.+ (re.range "a" "z")) (str.to.re ".jat/\x0a"))))
-; hjhgquqssq\x2fpjm[^\n\r]*User-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "hjhgquqssq/pjm") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "User-Agent:\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.+ (re.range "a" "z")) (str.to_re ".jat/\u{a}"))))
+; hjhgquqssq\u{2f}pjm[^\n\r]*User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "hjhgquqssq/pjm") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "User-Agent:\u{a}"))))
 (check-sat)

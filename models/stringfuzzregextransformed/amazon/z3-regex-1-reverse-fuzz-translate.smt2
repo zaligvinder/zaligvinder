@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const S String)
-(assert (not (str.in.re S (re.++ re.allchar (str.to.re "'\x0c'7}A'\n'ggC0}s")))))
-(assert (str.in.re S (re.++ re.allchar (re.++ (str.to.re "") (re.++ re.allchar (str.to.re "$' 'e"))))))
+(assert (not (str.in_re S (re.++ re.allchar (str.to_re "'\u{c}'7}A'\n'ggC0}s")))))
+(assert (str.in_re S (re.++ re.allchar (re.++ (str.to_re "") (re.++ re.allchar (str.to_re "$' 'e"))))))
 (check-sat)

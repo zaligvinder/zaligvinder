@@ -1,6 +1,6 @@
 (declare-const X String)
 ; /\/stat_svc\/$/U
-(assert (str.in.re X (str.to.re "//stat_svc//U\x0a")))
-; %3fc=UI2GmbHbacktrust\x2EcomSpediaReferer\x3ASubject\x3aHost\x3apasscorrect\x3B
-(assert (not (str.in.re X (str.to.re "%3fc=UI2GmbHbacktrust.comSpediaReferer:Subject:Host:passcorrect;\x0a"))))
+(assert (str.in_re X (str.to_re "//stat_svc//U\u{a}")))
+; %3fc=UI2GmbHbacktrust\u{2E}comSpediaReferer\u{3A}Subject\u{3a}Host\u{3a}passcorrect\u{3B}
+(assert (not (str.in_re X (str.to_re "%3fc=UI2GmbHbacktrust.comSpediaReferer:Subject:Host:passcorrect;\u{a}"))))
 (check-sat)

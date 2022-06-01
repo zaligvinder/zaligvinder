@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Ewebcruiser\x2Eccgot
-(assert (not (str.in.re X (str.to.re "www.webcruiser.ccgot\x0a"))))
+; www\u{2E}webcruiser\u{2E}ccgot
+(assert (not (str.in_re X (str.to_re "www.webcruiser.ccgot\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3A\d+Host\x3AconfigINTERNAL\.iniFictionaljspv\x3B
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.+ (re.range "0" "9")) (str.to.re "Host:configINTERNAL.iniFictionaljspv;\x0a"))))
+; User-Agent\u{3A}\d+Host\u{3A}configINTERNAL\.iniFictionaljspv\u{3B}
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.range "0" "9")) (str.to_re "Host:configINTERNAL.iniFictionaljspv;\u{a}"))))
 (check-sat)

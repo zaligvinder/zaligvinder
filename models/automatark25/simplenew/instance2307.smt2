@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fbar_pl\x2Fchk_bar\.fcgiUser-Agent\x3A
-(assert (str.in.re X (str.to.re "/bar_pl/chk_bar.fcgiUser-Agent:\x0a")))
+; \u{2F}bar_pl\u{2F}chk_bar\.fcgiUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "/bar_pl/chk_bar.fcgiUser-Agent:\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; isiz=Xtrastepwebhancer\x2EcomStubbyOnever\x3aGhost
-(assert (str.in.re X (str.to.re "isiz=Xtrastepwebhancer.comStubbyOnever:Ghost\x13\x0a")))
+; isiz=Xtrastepwebhancer\u{2E}comStubbyOnever\u{3a}Ghost
+(assert (str.in_re X (str.to_re "isiz=Xtrastepwebhancer.comStubbyOnever:Ghost\u{13}\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; throughpjpoptwql\x2frlnjPOSTwebsearch\.getmirar\.comHost\x3Awww\x2EZSearchResults\x2EcomX-Mailer\x3A
-(assert (not (str.in.re X (str.to.re "throughpjpoptwql/rlnjPOSTwebsearch.getmirar.comHost:www.ZSearchResults.com\x13X-Mailer:\x13\x0a"))))
+; throughpjpoptwql\u{2f}rlnjPOSTwebsearch\.getmirar\.comHost\u{3A}www\u{2E}ZSearchResults\u{2E}comX-Mailer\u{3A}
+(assert (not (str.in_re X (str.to_re "throughpjpoptwql/rlnjPOSTwebsearch.getmirar.comHost:www.ZSearchResults.com\u{13}X-Mailer:\u{13}\u{a}"))))
 (check-sat)

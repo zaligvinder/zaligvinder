@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A.*client\x2Ebaigoo\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.* re.allchar) (str.to.re "client.baigoo.com\x0a"))))
+; Host\u{3A}.*client\u{2E}baigoo\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.* re.allchar) (str.to_re "client.baigoo.com\u{a}"))))
 (check-sat)

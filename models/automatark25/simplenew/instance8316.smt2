@@ -1,4 +1,4 @@
 (declare-const X String)
-; OSSProxy\d+X-Mailer\x3Abacktrust\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "OSSProxy") (re.+ (re.range "0" "9")) (str.to.re "X-Mailer:\x13backtrust.com\x0a")))))
+; OSSProxy\d+X-Mailer\u{3A}backtrust\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "OSSProxy") (re.+ (re.range "0" "9")) (str.to_re "X-Mailer:\u{13}backtrust.com\u{a}")))))
 (check-sat)

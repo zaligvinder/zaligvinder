@@ -1,6 +1,6 @@
 (declare-const X String)
 ; /\/modules\/(n?\d|nu)\.swf$/U
-(assert (not (str.in.re X (re.++ (str.to.re "//modules/") (re.union (re.++ (re.opt (str.to.re "n")) (re.range "0" "9")) (str.to.re "nu")) (str.to.re ".swf/U\x0a")))))
-; User-Agent\x3aHost\x3AHost\x3ASpyBuddy
-(assert (not (str.in.re X (str.to.re "User-Agent:Host:Host:SpyBuddy\x0a"))))
+(assert (not (str.in_re X (re.++ (str.to_re "//modules/") (re.union (re.++ (re.opt (str.to_re "n")) (re.range "0" "9")) (str.to_re "nu")) (str.to_re ".swf/U\u{a}")))))
+; User-Agent\u{3a}Host\u{3A}Host\u{3A}SpyBuddy
+(assert (not (str.in_re X (str.to_re "User-Agent:Host:Host:SpyBuddy\u{a}"))))
 (check-sat)

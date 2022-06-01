@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "ccdd$$!!PPCCZZaahhAAhh''\\\\\\\\nn''cc<<ww''{{cc~~99^^GGdd"))
-(assert (str.in.re x (re.+ (str.to.re "}}dd"))))
+(assert (str.in_re x (re.+ (str.to_re "}}dd"))))
 (check-sat)

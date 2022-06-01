@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fpagead\x2Fads\?search2\.ad\.shopnav\.com\x2F9899\x2Fsearch\x2Fresults\.php
-(assert (str.in.re X (str.to.re "/pagead/ads?search2.ad.shopnav.com/9899/search/results.php\x0a")))
+; \u{2F}pagead\u{2F}ads\?search2\.ad\.shopnav\.com\u{2F}9899\u{2F}search\u{2F}results\.php
+(assert (str.in_re X (str.to_re "/pagead/ads?search2.ad.shopnav.com/9899/search/results.php\u{a}")))
 (check-sat)

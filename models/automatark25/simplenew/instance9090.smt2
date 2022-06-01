@@ -1,4 +1,4 @@
 (declare-const X String)
-; Project\x2Eearthlinkshprrprt-cs-
-(assert (not (str.in.re X (str.to.re "Project.earthlinkshprrprt-cs-\x13\x0a"))))
+; Project\u{2E}earthlinkshprrprt-cs-
+(assert (not (str.in_re X (str.to_re "Project.earthlinkshprrprt-cs-\u{13}\u{a}"))))
 (check-sat)

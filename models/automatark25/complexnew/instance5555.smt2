@@ -1,8 +1,8 @@
 (declare-const X String)
-; sbRedirectionsHost\x3AHost\x3AUser-Agent\x3Ahotbar%3fwww\x2Einternetadvertisingcompany\x2Ebiz
-(assert (str.in.re X (str.to.re "sbRedirections\x1bHost:Host:User-Agent:hotbar%3fwww.internetadvertisingcompany.biz\x0a")))
-; LOG\s+spyblini\x2EiniUpdateUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "LOG") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "spyblini.iniUpdateUser-Agent:\x0a"))))
-; Toolbarverpop\x2Epopuptoast\x2Ecomtvshowticketscount\x2Eyok\x2Ecom
-(assert (str.in.re X (str.to.re "Toolbarverpop.popuptoast.comtvshowticketscount.yok.com\x0a")))
+; sbRedirectionsHost\u{3A}Host\u{3A}User-Agent\u{3A}hotbar%3fwww\u{2E}internetadvertisingcompany\u{2E}biz
+(assert (str.in_re X (str.to_re "sbRedirections\u{1b}Host:Host:User-Agent:hotbar%3fwww.internetadvertisingcompany.biz\u{a}")))
+; LOG\s+spyblini\u{2E}iniUpdateUser-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "LOG") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "spyblini.iniUpdateUser-Agent:\u{a}"))))
+; Toolbarverpop\u{2E}popuptoast\u{2E}comtvshowticketscount\u{2E}yok\u{2E}com
+(assert (str.in_re X (str.to_re "Toolbarverpop.popuptoast.comtvshowticketscount.yok.com\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
 ; username=(.*)&password=(.*)
-(assert (not (str.in.re X (re.++ (str.to.re "username=") (re.* re.allchar) (str.to.re "&password=") (re.* re.allchar) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "username=") (re.* re.allchar) (str.to_re "&password=") (re.* re.allchar) (str.to_re "\u{a}")))))
 (check-sat)

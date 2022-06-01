@@ -1,4 +1,4 @@
 (declare-const X String)
-; PcastPORT-config\x2E180solutions\x2Ecom
-(assert (str.in.re X (str.to.re "PcastPORT-config.180solutions.com\x0a")))
+; PcastPORT-config\u{2E}180solutions\u{2E}com
+(assert (str.in_re X (str.to_re "PcastPORT-config.180solutions.com\u{a}")))
 (check-sat)

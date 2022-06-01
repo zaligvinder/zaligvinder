@@ -1,4 +1,4 @@
 (declare-const X String)
-; portSpediaYourtraffbest\x2EbizUser-Agent\x3ACSmtpMonsterixqshv\x2fqzccsHost\x3A
-(assert (str.in.re X (str.to.re "portSpediaYourtraffbest.bizUser-Agent:CSmtpMonsterixqshv/qzccsHost:\x0a")))
+; portSpediaYourtraffbest\u{2E}bizUser-Agent\u{3A}CSmtpMonsterixqshv\u{2f}qzccsHost\u{3A}
+(assert (str.in_re X (str.to_re "portSpediaYourtraffbest.bizUser-Agent:CSmtpMonsterixqshv/qzccsHost:\u{a}")))
 (check-sat)

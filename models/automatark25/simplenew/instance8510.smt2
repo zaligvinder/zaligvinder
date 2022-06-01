@@ -1,4 +1,4 @@
 (declare-const X String)
-; Informationsearchnuggetspastb\x2Efreeprod\x2EcomOnlineWeb\.fcgi
-(assert (str.in.re X (str.to.re "Informationsearchnugget\x13spastb.freeprod.comOnlineWeb.fcgi\x0a")))
+; Informationsearchnuggetspastb\u{2E}freeprod\u{2E}comOnlineWeb\.fcgi
+(assert (str.in_re X (str.to_re "Informationsearchnugget\u{13}spastb.freeprod.comOnlineWeb.fcgi\u{a}")))
 (check-sat)

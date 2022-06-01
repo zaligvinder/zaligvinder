@@ -1,4 +1,4 @@
 (declare-const X String)
-; Prodaosearch\x2EcomReferer\x3A007User-Agent\x3A
-(assert (str.in.re X (str.to.re "Prodaosearch.comReferer:007User-Agent:\x0a")))
+; Prodaosearch\u{2E}comReferer\u{3A}007User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "Prodaosearch.comReferer:007User-Agent:\u{a}")))
 (check-sat)

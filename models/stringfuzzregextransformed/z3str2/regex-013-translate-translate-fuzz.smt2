@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re y (re.* (re.* (str.to.re "aDq=_aJ$%l'\n'txk4{K&[(XtG;/skX$N]+(")))))
+(assert (str.in_re y (re.* (re.* (str.to_re "aDq=_aJ$%l'\n'txk4{K&[(XtG;/skX$N]+(")))))
 (assert (= (str.len y) 10))
 (check-sat)

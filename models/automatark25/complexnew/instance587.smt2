@@ -1,6 +1,6 @@
 (declare-const X String)
-; ok\*\-\*PasswordAgent\x3Cchat\x3E
-(assert (str.in.re X (str.to.re "ok*-*PasswordAgent<chat>\x1b\x0a")))
+; ok\*\-\*PasswordAgent\u{3C}chat\u{3E}
+(assert (str.in_re X (str.to_re "ok*-*PasswordAgent<chat>\u{1b}\u{a}")))
 ; ('{2})*([^'\r\n]*)('{2})*([^'\r\n]*)('{2})*
-(assert (not (str.in.re X (re.++ (re.* ((_ re.loop 2 2) (str.to.re "'"))) (re.* (re.union (str.to.re "'") (str.to.re "\x0d") (str.to.re "\x0a"))) (re.* ((_ re.loop 2 2) (str.to.re "'"))) (re.* (re.union (str.to.re "'") (str.to.re "\x0d") (str.to.re "\x0a"))) (re.* ((_ re.loop 2 2) (str.to.re "'"))) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.* ((_ re.loop 2 2) (str.to_re "'"))) (re.* (re.union (str.to_re "'") (str.to_re "\u{d}") (str.to_re "\u{a}"))) (re.* ((_ re.loop 2 2) (str.to_re "'"))) (re.* (re.union (str.to_re "'") (str.to_re "\u{d}") (str.to_re "\u{a}"))) (re.* ((_ re.loop 2 2) (str.to_re "'"))) (str.to_re "\u{a}")))))
 (check-sat)

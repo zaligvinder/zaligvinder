@@ -1,4 +1,4 @@
 (declare-const X String)
-; /filename=[^\n]*\x2exlw/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".xlw/i\x0a"))))
+; /filename=[^\n]*\u{2e}xlw/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".xlw/i\u{a}"))))
 (check-sat)

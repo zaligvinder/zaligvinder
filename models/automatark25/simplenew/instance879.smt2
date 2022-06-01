@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fbar_pl\x2Fb\.fcgiHost\x3AHost\x3AClass\x2Ftoolbar\x2Fico\x2FGoogleLogsencoderserver
-(assert (not (str.in.re X (str.to.re "/bar_pl/b.fcgiHost:Host:Class/toolbar/ico/GoogleLogsencoderserver\x0a"))))
+; \u{2F}bar_pl\u{2F}b\.fcgiHost\u{3A}Host\u{3A}Class\u{2F}toolbar\u{2F}ico\u{2F}GoogleLogsencoderserver
+(assert (not (str.in_re X (str.to_re "/bar_pl/b.fcgiHost:Host:Class/toolbar/ico/GoogleLogsencoderserver\u{a}"))))
 (check-sat)

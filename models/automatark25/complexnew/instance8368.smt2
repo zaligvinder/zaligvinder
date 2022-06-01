@@ -1,6 +1,6 @@
 (declare-const X String)
-; RootviewNetControl\x2EServerdata2\.activshopper\.com
-(assert (str.in.re X (str.to.re "RootviewNetControl.Server\x13data2.activshopper.com\x0a")))
-; User-Agent\x3ASurveillancecomOnline
-(assert (not (str.in.re X (str.to.re "User-Agent:Surveillance\x13comOnline\x0a"))))
+; RootviewNetControl\u{2E}Serverdata2\.activshopper\.com
+(assert (str.in_re X (str.to_re "RootviewNetControl.Server\u{13}data2.activshopper.com\u{a}")))
+; User-Agent\u{3A}SurveillancecomOnline
+(assert (not (str.in_re X (str.to_re "User-Agent:Surveillance\u{13}comOnline\u{a}"))))
 (check-sat)

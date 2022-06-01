@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x2egif([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.gif") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
-; InformationAgentReferer\x3AClient
-(assert (str.in.re X (str.to.re "InformationAgentReferer:Client\x0a")))
+; /\u{2e}gif([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.gif") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
+; InformationAgentReferer\u{3A}Client
+(assert (str.in_re X (str.to_re "InformationAgentReferer:Client\u{a}")))
 (check-sat)

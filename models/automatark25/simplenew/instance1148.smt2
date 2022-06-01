@@ -1,4 +1,4 @@
 (declare-const X String)
-; dl\x2Eweb-nexus\x2Enet\d+www\x2Eonlinecasinoextra\x2Ecomsqlads\.grokads\.com
-(assert (str.in.re X (re.++ (str.to.re "dl.web-nexus.net") (re.+ (re.range "0" "9")) (str.to.re "www.onlinecasinoextra.comsqlads.grokads.com\x0a"))))
+; dl\u{2E}web-nexus\u{2E}net\d+www\u{2E}onlinecasinoextra\u{2E}comsqlads\.grokads\.com
+(assert (str.in_re X (re.++ (str.to_re "dl.web-nexus.net") (re.+ (re.range "0" "9")) (str.to_re "www.onlinecasinoextra.comsqlads.grokads.com\u{a}"))))
 (check-sat)

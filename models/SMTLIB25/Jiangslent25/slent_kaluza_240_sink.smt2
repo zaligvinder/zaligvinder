@@ -29,7 +29,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun T1_187 () String)
 (declare-fun T_7e () String)
 (assert (= T_7e (str.++ T0_187 T1_187)))
-(assert (not (str.in.re T1_187 (str.to.re "="))))
+(assert (not (str.in_re T1_187 (str.to_re "="))))
 (assert T_81)
 (assert (= T_81 (not T_80)))
 (assert (= T_80 (= PCTEMP_LHS_50 (- 1))))

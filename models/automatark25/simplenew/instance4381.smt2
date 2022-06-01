@@ -1,4 +1,4 @@
 (declare-const X String)
-; WinCrashcomHost\x3Atid\x3D\x25toolbar\x5Fid4\x2e8\x2e4
-(assert (not (str.in.re X (str.to.re "WinCrashcomHost:tid=%toolbar_id4.8.4\x0a"))))
+; WinCrashcomHost\u{3A}tid\u{3D}\u{25}toolbar\u{5F}id4\u{2e}8\u{2e}4
+(assert (not (str.in_re X (str.to_re "WinCrashcomHost:tid=%toolbar_id4.8.4\u{a}"))))
 (check-sat)

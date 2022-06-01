@@ -16,15 +16,15 @@
 (declare-fun sv2 () String)
 
 (assert (= sv1 sv2 ) )
-(assert (str.in.re var1684 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "\x27") (re.++ (re.+  (str.to.re "\x20") ) (re.++  (re.union  (str.to.re "\x4f")  (str.to.re "\x6f")) (re.++  (re.union  (str.to.re "\x52")  (str.to.re "\x72")) (re.++ (re.+  (str.to.re "\x20") )  (str.to.re "\x27"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "\x27") (re.++ (re.* re.allchar ) (re.++  (str.to.re "\x3d") (re.++ (re.* re.allchar )  (str.to.re "\x27"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "\x27") (re.++ (re.*  (str.to.re "\x20") )  (re.union  (re.++  (str.to.re "\x5c\x2d")  (str.to.re "\x5c\x2d"))  (str.to.re "\x23")))) ) ) )
+(assert (str.in_re var1684 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "\u{27}") (re.++ (re.+  (str.to_re "\u{20}") ) (re.++  (re.union  (str.to_re "\u{4f}")  (str.to_re "\u{6f}")) (re.++  (re.union  (str.to_re "\u{52}")  (str.to_re "\u{72}")) (re.++ (re.+  (str.to_re "\u{20}") )  (str.to_re "\u{27}"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "\u{27}") (re.++ (re.* re.allchar ) (re.++  (str.to_re "\u{3d}") (re.++ (re.* re.allchar )  (str.to_re "\u{27}"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "\u{27}") (re.++ (re.*  (str.to_re "\u{20}") )  (re.union  (re.++  (str.to_re "\u{5c}\u{2d}")  (str.to_re "\u{5c}\u{2d}"))  (str.to_re "\u{23}")))) ) ) )
 (assert (= var1679 (+ var1680 var1681 ) ) )
-(assert (= var1680 (str.to.int var1684 ) ) )
+(assert (= var1680 (str.to_int var1684 ) ) )
 (assert (not (= var1685 0 )) )
 (assert (= var1689 var1690 ) )
 (assert (= var1690 (str.++ var1691 var1692 ) ) )
 (assert (= var1691 (str.++ var1693 "AND productid =" ) ) )
 (assert (= var1693 (str.++ var1695 var1696 ) ) )
-(assert (= var1695 (str.++ var1697 "SELECT \x2a FROM BasketContents WHERE basketid=" ) ) )
+(assert (= var1695 (str.++ var1697 "SELECT \u{2a} FROM BasketContents WHERE basketid=" ) ) )
 
 (check-sat)
 (get-model)

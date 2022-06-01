@@ -1,4 +1,4 @@
 (declare-const X String)
-; FTPHost\x3AUser-Agent\x3aUser\x3AdistID=deskwizz\x2Ecom
-(assert (str.in.re X (str.to.re "FTPHost:User-Agent:User:distID=deskwizz.com\x0a")))
+; FTPHost\u{3A}User-Agent\u{3a}User\u{3A}distID=deskwizz\u{2E}com
+(assert (str.in_re X (str.to_re "FTPHost:User-Agent:User:distID=deskwizz.com\u{a}")))
 (check-sat)

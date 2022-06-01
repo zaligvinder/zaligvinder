@@ -1,4 +1,4 @@
 (declare-const X String)
-; ads\.grokads\.com\s+deskwizz\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "ads.grokads.com") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "deskwizz.com\x0a"))))
+; ads\.grokads\.com\s+deskwizz\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "ads.grokads.com") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "deskwizz.com\u{a}"))))
 (check-sat)

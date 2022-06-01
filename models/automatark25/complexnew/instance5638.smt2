@@ -1,8 +1,8 @@
 (declare-const X String)
-; /^[^\s]*\x0D\x0A$/P
-(assert (not (str.in.re X (re.++ (str.to.re "/") (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "\x0d\x0a/P\x0a")))))
-; \x22reaction\x2Etxt\x22.*Cookie\x3a[^\n\r]*richfind\x2EcomSimpsonFrom\x3A
-(assert (str.in.re X (re.++ (str.to.re "\x22reaction.txt\x22") (re.* re.allchar) (str.to.re "Cookie:") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "richfind.comSimpsonFrom:\x0a"))))
-; Toolbar\x5Chome\/lordofsearchthis
-(assert (str.in.re X (str.to.re "Toolbar\x5chome/lordofsearchthis\x0a")))
+; /^[^\s]*\u{D}\u{A}$/P
+(assert (not (str.in_re X (re.++ (str.to_re "/") (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "\u{d}\u{a}/P\u{a}")))))
+; \u{22}reaction\u{2E}txt\u{22}.*Cookie\u{3a}[^\n\r]*richfind\u{2E}comSimpsonFrom\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "\u{22}reaction.txt\u{22}") (re.* re.allchar) (str.to_re "Cookie:") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "richfind.comSimpsonFrom:\u{a}"))))
+; Toolbar\u{5C}home\/lordofsearchthis
+(assert (str.in_re X (str.to_re "Toolbar\u{5c}home/lordofsearchthis\u{a}")))
 (check-sat)

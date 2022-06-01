@@ -1,4 +1,4 @@
 (declare-const X String)
-; IndyHost\x3AGirlFriendReferer\x3A
-(assert (not (str.in.re X (str.to.re "IndyHost:GirlFriendReferer:\x0a"))))
+; IndyHost\u{3A}GirlFriendReferer\u{3A}
+(assert (not (str.in_re X (str.to_re "IndyHost:GirlFriendReferer:\u{a}"))))
 (check-sat)

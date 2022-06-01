@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3A\dBarwww\x2Eaccoona\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "User-Agent:") (re.range "0" "9") (str.to.re "Barwww.accoona.com\x0a")))))
+; User-Agent\u{3A}\dBarwww\u{2E}accoona\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "User-Agent:") (re.range "0" "9") (str.to_re "Barwww.accoona.com\u{a}")))))
 (check-sat)

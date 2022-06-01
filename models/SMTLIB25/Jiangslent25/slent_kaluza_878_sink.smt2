@@ -29,7 +29,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= T_93 (str.++ T0_256 T1_256)))
 (assert (= T1_256 (str.++ T2_256 T3_256)))
 (assert (= T2_256 (str.++ T4_256 T5_256)))
-(assert (not (str.in.re T4_256 (str.to.re "__utmx=169413169"))))
+(assert (not (str.in_re T4_256 (str.to_re "__utmx=169413169"))))
 (assert (= T5_256 "__utmx=169413169"))
 (assert T_96)
 (assert (= T_96 (not T_95)))

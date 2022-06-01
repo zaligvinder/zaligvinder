@@ -1,4 +1,4 @@
 (declare-const X String)
-; Handyst=ClassStopperHost\x3ASpamBlockerUtility
-(assert (not (str.in.re X (str.to.re "Handyst=ClassStopperHost:SpamBlockerUtility\x0a"))))
+; Handyst=ClassStopperHost\u{3A}SpamBlockerUtility
+(assert (not (str.in_re X (str.to_re "Handyst=ClassStopperHost:SpamBlockerUtility\u{a}"))))
 (check-sat)

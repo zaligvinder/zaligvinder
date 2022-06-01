@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-info :status sat)
 (declare-const aPosition Int)
 (declare-const secondPos Int)
@@ -10,7 +10,7 @@
 ; var secondPos = aURL.indexOf("www", aPosition + 1);
 
 (assert (= "http://www.tizag.com/www.html" aURL) )
-(assert (= aPosition (str.indexof  aURL  "www") ) )
+(assert (= aPosition (str.indexof  aURL  "www" 0) ) )
 (assert (= secondPos (str.indexof  aURL  "www" (+ aPosition 1) ) ) )
 
 

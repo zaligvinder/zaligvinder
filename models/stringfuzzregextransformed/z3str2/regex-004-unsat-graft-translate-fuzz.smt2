@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "gg_gKO]n*\\K'\t'V-p$"))
-(assert (str.in.re x (str.to.re "i85")))
+(assert (str.in_re x (str.to_re "i85")))
 (check-sat)

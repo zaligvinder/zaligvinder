@@ -1,4 +1,4 @@
 (declare-const X String)
-; /PRIVMSG #new :\x02\x5b(GOOGLE|SCAN)\x5d\x02\x20Scanning/
-(assert (not (str.in.re X (re.++ (str.to.re "/PRIVMSG #new :\x02[") (re.union (str.to.re "GOOGLE") (str.to.re "SCAN")) (str.to.re "]\x02 Scanning/\x0a")))))
+; /PRIVMSG #new :\u{2}\u{5b}(GOOGLE|SCAN)\u{5d}\u{2}\u{20}Scanning/
+(assert (not (str.in_re X (re.++ (str.to_re "/PRIVMSG #new :\u{2}[") (re.union (str.to_re "GOOGLE") (str.to_re "SCAN")) (str.to_re "]\u{2} Scanning/\u{a}")))))
 (check-sat)

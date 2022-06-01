@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "{-uVuVoks0$o"))
-(assert (str.in.re x (str.to.re "{-uV")))
+(assert (str.in_re x (str.to_re "{-uV")))
 (check-sat)

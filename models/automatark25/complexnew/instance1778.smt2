@@ -1,8 +1,8 @@
 (declare-const X String)
-; Ready\s+Client\s+MyBrowserHost\x3asecurityon\x3AHost\x3ARedirector\x22ServerHost\x3AX-Mailer\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "Ready") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Client") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "MyBrowserHost:securityon:Host:Redirector\x22ServerHost:X-Mailer:\x13\x0a")))))
-; Explorer\x2Fsto=notificationfind
-(assert (str.in.re X (str.to.re "Explorer/sto=notification\x13find\x0a")))
-; /^(\x00\x00\x00\x00|.{4}(\x00\x00\x00\x00|.{12}))/s
-(assert (str.in.re X (re.++ (str.to.re "/") (re.union (str.to.re "\x00\x00\x00\x00") (re.++ ((_ re.loop 4 4) re.allchar) (re.union (str.to.re "\x00\x00\x00\x00") ((_ re.loop 12 12) re.allchar)))) (str.to.re "/s\x0a"))))
+; Ready\s+Client\s+MyBrowserHost\u{3a}securityon\u{3A}Host\u{3A}Redirector\u{22}ServerHost\u{3A}X-Mailer\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "Ready") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Client") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "MyBrowserHost:securityon:Host:Redirector\u{22}ServerHost:X-Mailer:\u{13}\u{a}")))))
+; Explorer\u{2F}sto=notificationfind
+(assert (str.in_re X (str.to_re "Explorer/sto=notification\u{13}find\u{a}")))
+; /^(\u{0}\u{0}\u{0}\u{0}|.{4}(\u{0}\u{0}\u{0}\u{0}|.{12}))/s
+(assert (str.in_re X (re.++ (str.to_re "/") (re.union (str.to_re "\u{0}\u{0}\u{0}\u{0}") (re.++ ((_ re.loop 4 4) re.allchar) (re.union (str.to_re "\u{0}\u{0}\u{0}\u{0}") ((_ re.loop 12 12) re.allchar)))) (str.to_re "/s\u{a}"))))
 (check-sat)

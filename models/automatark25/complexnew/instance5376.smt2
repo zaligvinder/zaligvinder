@@ -1,8 +1,8 @@
 (declare-const X String)
-; /\x2ewk4([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.wk4") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
-; media\x2Edxcdirect\x2Ecom\.smx\?PASSW=SAHHost\x3AProAgentIDENTIFY
-(assert (str.in.re X (str.to.re "media.dxcdirect.com.smx?PASSW=SAHHost:ProAgentIDENTIFY\x0a")))
-; Host\x3AHANDYwww\x2Epurityscan\x2Ecom
-(assert (not (str.in.re X (str.to.re "Host:HANDYwww.purityscan.com\x0a"))))
+; /\u{2e}wk4([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.wk4") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
+; media\u{2E}dxcdirect\u{2E}com\.smx\?PASSW=SAHHost\u{3A}ProAgentIDENTIFY
+(assert (str.in_re X (str.to_re "media.dxcdirect.com.smx?PASSW=SAHHost:ProAgentIDENTIFY\u{a}")))
+; Host\u{3A}HANDYwww\u{2E}purityscan\u{2E}com
+(assert (not (str.in_re X (str.to_re "Host:HANDYwww.purityscan.com\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; xbqyosoe\x2fcpvmviewComponentisrelated\x2Eyok\x2Ecom
-(assert (not (str.in.re X (str.to.re "xbqyosoe/cpvmviewComponentisrelated.yok.com\x0a"))))
+; xbqyosoe\u{2f}cpvmviewComponentisrelated\u{2E}yok\u{2E}com
+(assert (not (str.in_re X (str.to_re "xbqyosoe/cpvmviewComponentisrelated.yok.com\u{a}"))))
 (check-sat)

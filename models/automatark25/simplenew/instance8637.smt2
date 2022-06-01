@@ -1,4 +1,4 @@
 (declare-const X String)
-; \xA9
-(assert (str.in.re X (str.to.re "\xa9\x0a")))
+; \u{A9}
+(assert (str.in_re X (str.to_re "\u{a9}\u{a}")))
 (check-sat)

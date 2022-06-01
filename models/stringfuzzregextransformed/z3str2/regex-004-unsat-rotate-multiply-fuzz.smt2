@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "~1'!_2-;GbcydE'\t'EclHwc\\!'\x0c'Gd'\x0c'P:Ge"))
-(assert (str.in.re x (re.++ (re.* (re.+ (str.to.re "cU'hdeCx2l"))) (str.to.re "abb'\x0c'vZ>$cU9O!"))))
+(assert (= x "~1'!_2-;GbcydE'\t'EclHwc\\!'\u{c}'Gd'\u{c}'P:Ge"))
+(assert (str.in_re x (re.++ (re.* (re.+ (str.to_re "cU'hdeCx2l"))) (str.to_re "abb'\u{c}'vZ>$cU9O!"))))
 (check-sat)

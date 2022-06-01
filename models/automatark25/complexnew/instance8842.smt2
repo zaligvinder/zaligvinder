@@ -1,8 +1,8 @@
 (declare-const X String)
-; Server\.exeHWPEServer\x3aHost\x3A
-(assert (not (str.in.re X (str.to.re "Server.exeHWPEServer:Host:\x0a"))))
-; User-Agent\x3a\stoWebupdate\.cgi
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "toWebupdate.cgi\x0a"))))
-; /\x2ejpx([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.jpx") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+; Server\.exeHWPEServer\u{3a}Host\u{3A}
+(assert (not (str.in_re X (str.to_re "Server.exeHWPEServer:Host:\u{a}"))))
+; User-Agent\u{3a}\stoWebupdate\.cgi
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "toWebupdate.cgi\u{a}"))))
+; /\u{2e}jpx([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.jpx") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
 (check-sat)

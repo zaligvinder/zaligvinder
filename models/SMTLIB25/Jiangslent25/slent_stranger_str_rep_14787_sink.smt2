@@ -39,9 +39,9 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun atk_sink () String)
 
 (assert (and b_literal_29 (= literal_29 "")))
-(assert (and b_literal_37 (= literal_37 "\x27")))
-(assert (and b_literal_39 (= literal_39 "\x27")))
-(assert (str.in.re atkPtn (str.to.re "\\0075\\0072\\006C\\0028'\\006a\\0061\\0076\\0061\\0073\\0063\\0072\\0069\\0070\\0074\\003a\\0061\\006c\\0065\\0072\\0074\\0028.1027\\0058.1053\\0053\\0027\\0029'\\0029")))
+(assert (and b_literal_37 (= literal_37 "\u{27}")))
+(assert (and b_literal_39 (= literal_39 "\u{27}")))
+(assert (str.in_re atkPtn (str.to_re "\\0075\\0072\\006C\\0028'\\006a\\0061\\0076\\0061\\0073\\0063\\0072\\0069\\0070\\0074\\003a\\0061\\006c\\0065\\0072\\0074\\0028.1027\\0058.1053\\0053\\0027\\0029'\\0029")))
 (assert (= atk_sink (str.++ atk_sigmaStar_1 (str.++ atkPtn atk_sigmaStar_2))))
 (assert (= b_x_31 (or (and (= x_31 sigmaStar_3060) b_sigmaStar_3060) (and (= x_31 literal_29) b_literal_29) ) ))
 (assert (= b_x_36 (and (= x_36 (str.replace x_31 "'" "\\'") ) b_x_31) ))

@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eonetoolbar\x2Ecomcommunity
-(assert (str.in.re X (str.to.re "www.onetoolbar.comcommunity\x0a")))
+; www\u{2E}onetoolbar\u{2E}comcommunity
+(assert (str.in_re X (str.to_re "www.onetoolbar.comcommunity\u{a}")))
 (check-sat)

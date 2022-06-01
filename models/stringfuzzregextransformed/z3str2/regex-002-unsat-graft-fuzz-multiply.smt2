@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "aa||ZZ}}``<<99--TT22::EEvvMMee11aaaaaa"))
-(assert (str.in.re x (str.to.re "VV]]")))
+(assert (str.in_re x (str.to_re "VV]]")))
 (check-sat)

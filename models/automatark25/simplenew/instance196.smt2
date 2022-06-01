@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AfromZC-Bridgev\x2Exml\x2FNFO\x2CRegistered
-(assert (str.in.re X (str.to.re "Host:fromZC-Bridgev.xml/NFO,Registered\x0a")))
+; Host\u{3A}fromZC-Bridgev\u{2E}xml\u{2F}NFO\u{2C}Registered
+(assert (str.in_re X (str.to_re "Host:fromZC-Bridgev.xml/NFO,Registered\u{a}")))
 (check-sat)

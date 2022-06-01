@@ -1,10 +1,10 @@
 (declare-const X String)
-; /filename=[^\n]*\x2ewmv/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wmv/i\x0a"))))
-; User-Agent\x3AreadyHost\x3AHost\x3ASubject\x3Awininetproducts
-(assert (str.in.re X (str.to.re "User-Agent:readyHost:Host:Subject:wininetproducts\x0a")))
-; Subject\x3Aas\x2Estarware\x2Ecom\x2Fdp\x2Fsearch\?x=
-(assert (str.in.re X (str.to.re "Subject:as.starware.com/dp/search?x=\x0a")))
-; ProSpywww\x2Eemp3finder\x2Ecomwww
-(assert (not (str.in.re X (str.to.re "ProSpywww.emp3finder.comwww\x0a"))))
+; /filename=[^\n]*\u{2e}wmv/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".wmv/i\u{a}"))))
+; User-Agent\u{3A}readyHost\u{3A}Host\u{3A}Subject\u{3A}wininetproducts
+(assert (str.in_re X (str.to_re "User-Agent:readyHost:Host:Subject:wininetproducts\u{a}")))
+; Subject\u{3A}as\u{2E}starware\u{2E}com\u{2F}dp\u{2F}search\?x=
+(assert (str.in_re X (str.to_re "Subject:as.starware.com/dp/search?x=\u{a}")))
+; ProSpywww\u{2E}emp3finder\u{2E}comwww
+(assert (not (str.in_re X (str.to_re "ProSpywww.emp3finder.comwww\u{a}"))))
 (check-sat)

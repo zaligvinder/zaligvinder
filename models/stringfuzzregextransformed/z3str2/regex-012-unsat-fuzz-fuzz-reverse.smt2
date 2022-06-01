@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.+ (re.++ (str.to.re "r&<r") (str.to.re "HfK7oR!KM[[uNH=")))))
+(assert (str.in_re x (re.+ (re.++ (str.to_re "r&<r") (str.to_re "HfK7oR!KM[[uNH=")))))
 (assert (= 4 (str.len x)))
 (check-sat)

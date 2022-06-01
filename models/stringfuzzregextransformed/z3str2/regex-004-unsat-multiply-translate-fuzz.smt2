@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "E2>1]&<W'ltjsA2z<X2X[c<7>~'HU6h{pSgP;r'rXS<@&Nx'\x0c'vOCn|DznnJ<d9YbnCR'\t'' '9Uxm?(r2E,r>]:+a/FrF{-+&$QV&p''Qc)_Ufj5\\7>'\r'3gaj~wj}Oe\\b'\\x'"))
-(assert (str.in.re x (re.union (re.* (str.to.re "{""mL~bYbA/'r")) (re.+ (str.to.re "z^LgD""c?h_ZlBLK8JGRUj,)' '3W{''r'>.08'\n'ZeNh~`tU<sKO@'\x0c'*HIpX<>b\\x0YK}@%$QPHRsm'\r''\x0b'V83j'")))))
+(assert (= x "E2>1]&<W'ltjsA2z<X2X[c<7>~'HU6h{pSgP;r'rXS<@&Nx'\u{c}'vOCn|DznnJ<d9YbnCR'\t'' '9Uxm?(r2E,r>]:+a/FrF{-+&$QV&p''Qc)_Ufj5\\7>'\r'3gaj~wj}Oe\\b'\\u{'}"))
+(assert (str.in_re x (re.union (re.* (str.to_re "{""mL~bYbA/'r")) (re.+ (str.to_re "z^LgD""c?h_ZlBLK8JGRUj,)' '3W{''r'>.08'\n'ZeNh~`tU<sKO@'\u{c}'*HIpX<>b\\u{Y}K}@%$QPHRsm'\r''\u{b}'V83j'")))))
 (check-sat)

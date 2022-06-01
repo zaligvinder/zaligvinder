@@ -1,4 +1,4 @@
 (declare-const X String)
-; thereHost\x3Aselect\x2FGetwww\x2e2-seek\x2ecom\x2fsearch
-(assert (not (str.in.re X (str.to.re "thereHost:select/Getwww.2-seek.com/search\x0a"))))
+; thereHost\u{3A}select\u{2F}Getwww\u{2e}2-seek\u{2e}com\u{2f}search
+(assert (not (str.in_re X (str.to_re "thereHost:select/Getwww.2-seek.com/search\u{a}"))))
 (check-sat)

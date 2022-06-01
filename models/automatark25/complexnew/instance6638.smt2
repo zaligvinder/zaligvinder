@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x3fsv\x3d\d{1,3}\x26tq\x3d/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/?sv=") ((_ re.loop 1 3) (re.range "0" "9")) (str.to.re "&tq=/smiU\x0a")))))
-; /^\x2fnosignal\.jpg\?\d\.\d+$/U
-(assert (str.in.re X (re.++ (str.to.re "//nosignal.jpg?") (re.range "0" "9") (str.to.re ".") (re.+ (re.range "0" "9")) (str.to.re "/U\x0a"))))
+; /\u{3f}sv\u{3d}\d{1,3}\u{26}tq\u{3d}/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/?sv=") ((_ re.loop 1 3) (re.range "0" "9")) (str.to_re "&tq=/smiU\u{a}")))))
+; /^\u{2f}nosignal\.jpg\?\d\.\d+$/U
+(assert (str.in_re X (re.++ (str.to_re "//nosignal.jpg?") (re.range "0" "9") (str.to_re ".") (re.+ (re.range "0" "9")) (str.to_re "/U\u{a}"))))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eogx/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".ogx/i\x0a"))))
-; /\x00\.\x00\.\x00[\x2f\x5c]/R
-(assert (str.in.re X (re.++ (str.to.re "/\x00.\x00.\x00") (re.union (str.to.re "/") (str.to.re "\x5c")) (str.to.re "/R\x0a"))))
-; \x2APORT1\x2AWarezX-Mailer\x3ASnake\x2Fbonzibuddy\x2F
-(assert (str.in.re X (str.to.re "*PORT1*WarezX-Mailer:\x13Snake/bonzibuddy/\x0a")))
+; /filename=[^\n]*\u{2e}ogx/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".ogx/i\u{a}"))))
+; /\u{0}\.\u{0}\.\u{0}[\u{2f}\u{5c}]/R
+(assert (str.in_re X (re.++ (str.to_re "/\u{0}.\u{0}.\u{0}") (re.union (str.to_re "/") (str.to_re "\u{5c}")) (str.to_re "/R\u{a}"))))
+; \u{2A}PORT1\u{2A}WarezX-Mailer\u{3A}Snake\u{2F}bonzibuddy\u{2F}
+(assert (str.in_re X (str.to_re "*PORT1*WarezX-Mailer:\u{13}Snake/bonzibuddy/\u{a}")))
 (check-sat)

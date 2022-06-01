@@ -1,4 +1,4 @@
 (declare-const X String)
-; HXLogOnlyDaemonactivityIterenetFrom\x3AClass
-(assert (not (str.in.re X (str.to.re "HXLogOnlyDaemonactivityIterenetFrom:Class\x0a"))))
+; HXLogOnlyDaemonactivityIterenetFrom\u{3A}Class
+(assert (not (str.in_re X (str.to_re "HXLogOnlyDaemonactivityIterenetFrom:Class\u{a}"))))
 (check-sat)

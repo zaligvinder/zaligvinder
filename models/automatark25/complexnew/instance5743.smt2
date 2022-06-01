@@ -1,10 +1,10 @@
 (declare-const X String)
-; Toolbar\d+ServerLiteToolbardailywww\x2Ecameup\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Toolbar") (re.+ (re.range "0" "9")) (str.to.re "ServerLiteToolbardailywww.cameup.com\x13\x0a"))))
-; config\x2E180solutions\x2Ecom\dStableWeb-MailUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "config.180solutions.com") (re.range "0" "9") (str.to.re "StableWeb-MailUser-Agent:\x0a"))))
-; /filename=[^\n]*\x2ette/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".tte/i\x0a"))))
-; Keylogger-Pro\s+isUser-Agent\x3A
-(assert (not (str.in.re X (re.++ (str.to.re "Keylogger-Pro") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "isUser-Agent:\x0a")))))
+; Toolbar\d+ServerLiteToolbardailywww\u{2E}cameup\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Toolbar") (re.+ (re.range "0" "9")) (str.to_re "ServerLiteToolbardailywww.cameup.com\u{13}\u{a}"))))
+; config\u{2E}180solutions\u{2E}com\dStableWeb-MailUser-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "config.180solutions.com") (re.range "0" "9") (str.to_re "StableWeb-MailUser-Agent:\u{a}"))))
+; /filename=[^\n]*\u{2e}tte/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".tte/i\u{a}"))))
+; Keylogger-Pro\s+isUser-Agent\u{3A}
+(assert (not (str.in_re X (re.++ (str.to_re "Keylogger-Pro") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "isUser-Agent:\u{a}")))))
 (check-sat)

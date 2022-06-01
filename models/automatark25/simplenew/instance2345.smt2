@@ -1,4 +1,4 @@
 (declare-const X String)
-; horoscope2Cookie\x3adatATTENTION\x3AKontiki
-(assert (str.in.re X (str.to.re "horoscope2Cookie:datATTENTION:Kontiki\x0a")))
+; horoscope2Cookie\u{3a}datATTENTION\u{3A}Kontiki
+(assert (str.in_re X (str.to_re "horoscope2Cookie:datATTENTION:Kontiki\u{a}")))
 (check-sat)

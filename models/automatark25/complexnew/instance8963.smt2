@@ -1,12 +1,12 @@
 (declare-const X String)
-; \x2FrssaboutinformationHost\x3A\x2Fezsbu=DISKHost\x3Aad\x2Emokead\x2Ecom
-(assert (not (str.in.re X (str.to.re "/rssaboutinformationHost:/ezsbu=DISKHost:ad.mokead.com\x0a"))))
-; /\x2Faws\d{1,5}\.jsp\x3F/i
-(assert (str.in.re X (re.++ (str.to.re "//aws") ((_ re.loop 1 5) (re.range "0" "9")) (str.to.re ".jsp?/i\x0a"))))
-; \x2Fcommunicatortb[^\n\r]*\x2FGR.*Reportinfowhenu\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "/communicatortb") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "/GR") (re.* re.allchar) (str.to.re "Reportinfowhenu.com\x13\x0a")))))
+; \u{2F}rssaboutinformationHost\u{3A}\u{2F}ezsbu=DISKHost\u{3A}ad\u{2E}mokead\u{2E}com
+(assert (not (str.in_re X (str.to_re "/rssaboutinformationHost:/ezsbu=DISKHost:ad.mokead.com\u{a}"))))
+; /\u{2F}aws\d{1,5}\.jsp\u{3F}/i
+(assert (str.in_re X (re.++ (str.to_re "//aws") ((_ re.loop 1 5) (re.range "0" "9")) (str.to_re ".jsp?/i\u{a}"))))
+; \u{2F}communicatortb[^\n\r]*\u{2F}GR.*Reportinfowhenu\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "/communicatortb") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "/GR") (re.* re.allchar) (str.to_re "Reportinfowhenu.com\u{13}\u{a}")))))
 ; ^(\+97[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$
-(assert (not (str.in.re X (re.++ (re.union (re.++ (str.to.re "+97") (re.opt (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (str.to.re "-")) (re.opt (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "1")) (str.to.re "0")) (str.to.re "50") (re.opt (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (str.to.re "-")) (re.opt (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) ((_ re.loop 1 1) (re.range "1" "9")) ((_ re.loop 6 6) (re.range "0" "9")) (str.to.re "\x0a")))))
-; t=[^\n\r]*Host\x3A\s+Basicaohobygi\x2fzwiw
-(assert (not (str.in.re X (re.++ (str.to.re "t=") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Basicaohobygi/zwiw\x0a")))))
+(assert (not (str.in_re X (re.++ (re.union (re.++ (str.to_re "+97") (re.opt (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.opt (str.to_re "-")) (re.opt (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "1")) (str.to_re "0")) (str.to_re "50") (re.opt (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.opt (str.to_re "-")) (re.opt (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) ((_ re.loop 1 1) (re.range "1" "9")) ((_ re.loop 6 6) (re.range "0" "9")) (str.to_re "\u{a}")))))
+; t=[^\n\r]*Host\u{3A}\s+Basicaohobygi\u{2f}zwiw
+(assert (not (str.in_re X (re.++ (str.to_re "t=") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Basicaohobygi/zwiw\u{a}")))))
 (check-sat)

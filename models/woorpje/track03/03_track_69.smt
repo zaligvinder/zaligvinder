@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-fun S () String)
 (declare-fun Y () String)
 (declare-fun T () String)

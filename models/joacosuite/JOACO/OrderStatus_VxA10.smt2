@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var598 () String)
@@ -35,7 +35,7 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var619 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var619 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= (str.++ var596 "FROM tpcc_customer" ) var594 ) ))
 (assert (= true (= (str.++ var598 "SELECT c_balance, c_first, c_middle, c_id" ) var596 ) ))
 (assert (= true (not (= 0 var600 )) ))
@@ -48,7 +48,7 @@
 (assert (= true (= (str.++ var612 var593 ) var611 ) ))
 (assert (= true (= (str.++ var613 "WHERE c_last = '" ) var612 ) ))
 (assert (= true (= (str.++ var614 "FROM tpcc_customer" ) var613 ) ))
-(assert (= true (= (str.++ var615 "SELECT count\x28c_id\x29 AS namecnt" ) var614 ) ))
+(assert (= true (= (str.++ var615 "SELECT count\u{28}c_id\u{29} AS namecnt" ) var614 ) ))
 (assert (= true (not (= 0 var617 )) ))
 (assert (= true (= var589 var620 ) ))
 (assert (= true (= var585 var619 ) ))

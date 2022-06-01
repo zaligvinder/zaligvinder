@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "aacc"))
-(assert (str.in.re x (re.+ (re.* (str.to.re "((''\\\\xx00cc''{{")))))
+(assert (str.in_re x (re.+ (re.* (str.to_re "((''\\\\u{x0}0cc''{{")))))
 (check-sat)

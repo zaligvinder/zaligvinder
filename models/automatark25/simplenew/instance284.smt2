@@ -1,4 +1,4 @@
 (declare-const X String)
-; ServerHost\x3Atid\x3D\x25toolbar\x5Fidcomtrustyfiles\x2Ecom
-(assert (not (str.in.re X (str.to.re "ServerHost:tid=%toolbar_idcomtrustyfiles.com\x0a"))))
+; ServerHost\u{3A}tid\u{3D}\u{25}toolbar\u{5F}idcomtrustyfiles\u{2E}com
+(assert (not (str.in_re X (str.to_re "ServerHost:tid=%toolbar_idcomtrustyfiles.com\u{a}"))))
 (check-sat)

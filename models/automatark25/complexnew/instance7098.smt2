@@ -1,12 +1,12 @@
 (declare-const X String)
-; User-Agent\x3a\s+sErver\s+-~-GREATHost\x3a
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "sErver") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "-~-GREATHost:\x0a"))))
+; User-Agent\u{3a}\s+sErver\s+-~-GREATHost\u{3a}
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "sErver") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "-~-GREATHost:\u{a}"))))
 ; ^([0-9][0-9])[.]([0-9][0-9])[.]([0-9][0-9])$
-(assert (str.in.re X (re.++ (str.to.re "..\x0a") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9"))))
-; Host\x3AHost\x3Aalertseqepagqfphv\x2fsfd
-(assert (not (str.in.re X (str.to.re "Host:Host:alertseqepagqfphv/sfd\x0a"))))
-; Web-Mail\dHost\x3AHost\x3ALOG
-(assert (str.in.re X (re.++ (str.to.re "Web-Mail") (re.range "0" "9") (str.to.re "Host:Host:LOG\x0a"))))
-; IndyHost\x3AGirlFriendReferer\x3A
-(assert (str.in.re X (str.to.re "IndyHost:GirlFriendReferer:\x0a")))
+(assert (str.in_re X (re.++ (str.to_re "..\u{a}") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9"))))
+; Host\u{3A}Host\u{3A}alertseqepagqfphv\u{2f}sfd
+(assert (not (str.in_re X (str.to_re "Host:Host:alertseqepagqfphv/sfd\u{a}"))))
+; Web-Mail\dHost\u{3A}Host\u{3A}LOG
+(assert (str.in_re X (re.++ (str.to_re "Web-Mail") (re.range "0" "9") (str.to_re "Host:Host:LOG\u{a}"))))
+; IndyHost\u{3A}GirlFriendReferer\u{3A}
+(assert (str.in_re X (str.to_re "IndyHost:GirlFriendReferer:\u{a}")))
 (check-sat)

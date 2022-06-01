@@ -1,12 +1,12 @@
 (declare-const X String)
-; Host\x3APortawww\.thecommunicator\.net
-(assert (not (str.in.re X (str.to.re "Host:Portawww.thecommunicator.net\x0a"))))
-; /filename=[^\n]*\x2ejfif/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".jfif/i\x0a"))))
-; ConnectionUser-Agent\x3A\swww\.fast-finder\.com
-(assert (not (str.in.re X (re.++ (str.to.re "ConnectionUser-Agent:") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "www.fast-finder.com\x0a")))))
-; www\.trackhits\.ccUser-Agent\x3Aiz=LOGSupremeResult
-(assert (str.in.re X (str.to.re "www.trackhits.ccUser-Agent:iz=LOGSupremeResult\x0a")))
-; WebConnLibNETObserveUser-Agent\x3Ahave100013Agentsvr\x5E\x5EMerlin
-(assert (not (str.in.re X (str.to.re "WebConnLibNETObserveUser-Agent:have100013Agentsvr^^Merlin\x13\x0a"))))
+; Host\u{3A}Portawww\.thecommunicator\.net
+(assert (not (str.in_re X (str.to_re "Host:Portawww.thecommunicator.net\u{a}"))))
+; /filename=[^\n]*\u{2e}jfif/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".jfif/i\u{a}"))))
+; ConnectionUser-Agent\u{3A}\swww\.fast-finder\.com
+(assert (not (str.in_re X (re.++ (str.to_re "ConnectionUser-Agent:") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "www.fast-finder.com\u{a}")))))
+; www\.trackhits\.ccUser-Agent\u{3A}iz=LOGSupremeResult
+(assert (str.in_re X (str.to_re "www.trackhits.ccUser-Agent:iz=LOGSupremeResult\u{a}")))
+; WebConnLibNETObserveUser-Agent\u{3A}have100013Agentsvr\u{5E}\u{5E}Merlin
+(assert (not (str.in_re X (str.to_re "WebConnLibNETObserveUser-Agent:have100013Agentsvr^^Merlin\u{13}\u{a}"))))
 (check-sat)

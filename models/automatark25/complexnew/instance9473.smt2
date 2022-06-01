@@ -1,6 +1,6 @@
 (declare-const X String)
-; /\x2eswf([\x3f\x2f]|$)/Uim
-(assert (str.in.re X (re.++ (str.to.re "/.swf") (re.union (str.to.re "?") (str.to.re "/")) (str.to.re "/Uim\x0a"))))
-; iebar\s+Referer\x3aThis
-(assert (not (str.in.re X (re.++ (str.to.re "iebar") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Referer:This\x0a")))))
+; /\u{2e}swf([\u{3f}\u{2f}]|$)/Uim
+(assert (str.in_re X (re.++ (str.to_re "/.swf") (re.union (str.to_re "?") (str.to_re "/")) (str.to_re "/Uim\u{a}"))))
+; iebar\s+Referer\u{3a}This
+(assert (not (str.in_re X (re.++ (str.to_re "iebar") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Referer:This\u{a}")))))
 (check-sat)

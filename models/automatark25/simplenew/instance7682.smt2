@@ -1,4 +1,4 @@
 (declare-const X String)
-; IPOblivionhoroscopefowclxccdxn\x2fuxwn\.ddy
-(assert (str.in.re X (str.to.re "IPOblivionhoroscopefowclxccdxn/uxwn.ddy\x0a")))
+; IPOblivionhoroscopefowclxccdxn\u{2f}uxwn\.ddy
+(assert (str.in_re X (str.to_re "IPOblivionhoroscopefowclxccdxn/uxwn.ddy\u{a}")))
 (check-sat)

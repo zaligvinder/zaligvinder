@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun v6 () String)
@@ -14,7 +14,7 @@
 (assert (= v2 (str.++ v4 v5)))
 (assert (= v6 (str.++ v0 v1)))
 (assert (= v5 (str.++ "A" (str.++ "A" (str.++ "B" (str.++ "C" (str.++ "D" (str.++ "E" "F"))))))))
-(assert (not (str.in.re v4 (re.++ (str.to.re "A") (re.++ (str.to.re "A") (re.++ (str.to.re "B") (re.++ (str.to.re "C") (re.++ (str.to.re "D") (re.++ (str.to.re "E") (str.to.re "F"))))))))))
+(assert (not (str.in_re v4 (re.++ (str.to_re "A") (re.++ (str.to_re "A") (re.++ (str.to_re "B") (re.++ (str.to_re "C") (re.++ (str.to_re "D") (re.++ (str.to_re "E") (str.to_re "F"))))))))))
 
 (check-sat)
 (get-model)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; ApofisAgentFunWebProductsUser-Agent\x3A
-(assert (str.in.re X (str.to.re "ApofisAgentFunWebProductsUser-Agent:\x0a")))
+; ApofisAgentFunWebProductsUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "ApofisAgentFunWebProductsUser-Agent:\u{a}")))
 (check-sat)

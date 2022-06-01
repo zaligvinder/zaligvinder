@@ -1,6 +1,6 @@
 (declare-const X String)
-; media\x2Edxcdirect\x2Ecom
-(assert (not (str.in.re X (str.to.re "media.dxcdirect.com\x0a"))))
-; Uin=encodernotification\x2Ftoolbar\x2FHost\x3AUser-Agent\x3A
-(assert (str.in.re X (str.to.re "Uin=encodernotification\x13/toolbar/Host:User-Agent:\x0a")))
+; media\u{2E}dxcdirect\u{2E}com
+(assert (not (str.in_re X (str.to_re "media.dxcdirect.com\u{a}"))))
+; Uin=encodernotification\u{2F}toolbar\u{2F}Host\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "Uin=encodernotification\u{13}/toolbar/Host:User-Agent:\u{a}")))
 (check-sat)

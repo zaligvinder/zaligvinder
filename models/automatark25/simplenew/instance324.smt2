@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /[^imsxeADSUXu]([imsxeADSUXu]*)$/
-(assert (str.in.re X (re.++ (str.to.re "/") (re.union (str.to.re "i") (str.to.re "m") (str.to.re "s") (str.to.re "x") (str.to.re "e") (str.to.re "A") (str.to.re "D") (str.to.re "S") (str.to.re "U") (str.to.re "X") (str.to.re "u")) (re.* (re.union (str.to.re "i") (str.to.re "m") (str.to.re "s") (str.to.re "x") (str.to.re "e") (str.to.re "A") (str.to.re "D") (str.to.re "S") (str.to.re "U") (str.to.re "X") (str.to.re "u"))) (str.to.re "/\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/") (re.union (str.to_re "i") (str.to_re "m") (str.to_re "s") (str.to_re "x") (str.to_re "e") (str.to_re "A") (str.to_re "D") (str.to_re "S") (str.to_re "U") (str.to_re "X") (str.to_re "u")) (re.* (re.union (str.to_re "i") (str.to_re "m") (str.to_re "s") (str.to_re "x") (str.to_re "e") (str.to_re "A") (str.to_re "D") (str.to_re "S") (str.to_re "U") (str.to_re "X") (str.to_re "u"))) (str.to_re "/\u{a}"))))
 (check-sat)

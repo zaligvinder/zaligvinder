@@ -1,4 +1,4 @@
 (declare-const X String)
-; actualnames\.comclient\x2Ebaigoo\x2Ecomzzzvmkituktgr\x2fetiexpsp2-InformationHost\x3A
-(assert (str.in.re X (str.to.re "actualnames.comclient.baigoo.comzzzvmkituktgr/etiexpsp2-InformationHost:\x0a")))
+; actualnames\.comclient\u{2E}baigoo\u{2E}comzzzvmkituktgr\u{2f}etiexpsp2-InformationHost\u{3A}
+(assert (str.in_re X (str.to_re "actualnames.comclient.baigoo.comzzzvmkituktgr/etiexpsp2-InformationHost:\u{a}")))
 (check-sat)

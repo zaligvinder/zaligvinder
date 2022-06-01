@@ -1,4 +1,4 @@
 (declare-const X String)
-; ProPOWRSTRPquick\x2Eqsrch\x2EcomReferer\x3A
-(assert (str.in.re X (str.to.re "ProPOWRSTRPquick.qsrch.comReferer:\x0a")))
+; ProPOWRSTRPquick\u{2E}qsrch\u{2E}comReferer\u{3A}
+(assert (str.in_re X (str.to_re "ProPOWRSTRPquick.qsrch.comReferer:\u{a}")))
 (check-sat)

@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "b$!j=^s*dQZH;t4!o"))
-(assert (str.in.re x (re.++ (re.* (re.+ (str.to.re "cd"))) (str.to.re "O:v/K?cuV!bJ'\r'-="))))
+(assert (str.in_re x (re.++ (re.* (re.+ (str.to_re "cd"))) (str.to_re "O:v/K?cuV!bJ'\r'-="))))
 (check-sat)

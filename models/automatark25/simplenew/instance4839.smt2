@@ -1,4 +1,4 @@
 (declare-const X String)
-; metaresults\.copernic\.comServer\x00
-(assert (not (str.in.re X (str.to.re "metaresults.copernic.comServer\x00\x0a"))))
+; metaresults\.copernic\.comServer\u{0}
+(assert (not (str.in_re X (str.to_re "metaresults.copernic.comServer\u{0}\u{a}"))))
 (check-sat)

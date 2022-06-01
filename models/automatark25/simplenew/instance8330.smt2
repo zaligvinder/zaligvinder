@@ -1,4 +1,4 @@
 (declare-const X String)
-; thesearchresltLoggerHost\x3ABetaHWAEHost\x3Ais
-(assert (str.in.re X (str.to.re "thesearchresltLoggerHost:BetaHWAEHost:is\x0a")))
+; thesearchresltLoggerHost\u{3A}BetaHWAEHost\u{3A}is
+(assert (str.in_re X (str.to_re "thesearchresltLoggerHost:BetaHWAEHost:is\u{a}")))
 (check-sat)

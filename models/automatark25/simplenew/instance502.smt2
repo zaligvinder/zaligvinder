@@ -1,4 +1,4 @@
 (declare-const X String)
-; news\s+Host\x3A.*Peerwww\x2Elocators\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "news") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:") (re.* re.allchar) (str.to.re "Peerwww.locators.com\x0a"))))
+; news\s+Host\u{3A}.*Peerwww\u{2E}locators\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "news") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:") (re.* re.allchar) (str.to_re "Peerwww.locators.com\u{a}"))))
 (check-sat)

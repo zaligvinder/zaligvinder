@@ -1,4 +1,4 @@
 (declare-const X String)
-; DesktopHost\x3Aact=Microsoft
-(assert (not (str.in.re X (str.to.re "DesktopHost:act=Microsoft\x0a"))))
+; DesktopHost\u{3A}act=Microsoft
+(assert (not (str.in_re X (str.to_re "DesktopHost:act=Microsoft\u{a}"))))
 (check-sat)

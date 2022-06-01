@@ -1,12 +1,12 @@
 (declare-const X String)
-; SecureNet\sHost\x3AX-Mailer\x3Aas\x2Estarware\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "SecureNet") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "Host:X-Mailer:\x13as.starware.com\x0a"))))
+; SecureNet\sHost\u{3A}X-Mailer\u{3A}as\u{2E}starware\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "SecureNet") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "Host:X-Mailer:\u{13}as.starware.com\u{a}"))))
 ; (^[a-zA-Z0-9]+://)
-(assert (not (str.in.re X (re.++ (str.to.re "\x0a") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9"))) (str.to.re "://")))))
-; Subject\x3ALOGX-Mailer\x3a
-(assert (str.in.re X (str.to.re "Subject:LOGX-Mailer:\x13\x0a")))
+(assert (not (str.in_re X (re.++ (str.to_re "\u{a}") (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9"))) (str.to_re "://")))))
+; Subject\u{3A}LOGX-Mailer\u{3a}
+(assert (str.in_re X (str.to_re "Subject:LOGX-Mailer:\u{13}\u{a}")))
 ; ((079)|(078)|(077)){1}[0-9]{7}
-(assert (not (str.in.re X (re.++ ((_ re.loop 1 1) (re.union (str.to.re "079") (str.to.re "078") (str.to.re "077"))) ((_ re.loop 7 7) (re.range "0" "9")) (str.to.re "\x0a")))))
-; wjpropqmlpohj\x2flo\d+Host\x3AUser-Agent\x3A
-(assert (str.in.re X (re.++ (str.to.re "wjpropqmlpohj/lo") (re.+ (re.range "0" "9")) (str.to.re "Host:User-Agent:\x0a"))))
+(assert (not (str.in_re X (re.++ ((_ re.loop 1 1) (re.union (str.to_re "079") (str.to_re "078") (str.to_re "077"))) ((_ re.loop 7 7) (re.range "0" "9")) (str.to_re "\u{a}")))))
+; wjpropqmlpohj\u{2f}lo\d+Host\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "wjpropqmlpohj/lo") (re.+ (re.range "0" "9")) (str.to_re "Host:User-Agent:\u{a}"))))
 (check-sat)

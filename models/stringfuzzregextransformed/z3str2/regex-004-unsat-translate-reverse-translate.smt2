@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x ")(T(Tn["))
-(assert (str.in.re x (re.union (re.* (str.to.re "(Tn[")) (re.* (str.to.re ")(T")))))
+(assert (str.in_re x (re.union (re.* (str.to_re "(Tn[")) (re.* (str.to_re ")(T")))))
 (check-sat)

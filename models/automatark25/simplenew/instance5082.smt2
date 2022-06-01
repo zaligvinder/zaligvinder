@@ -1,4 +1,4 @@
 (declare-const X String)
-; ProAgentHost\x3ALOGSeconds\-
-(assert (not (str.in.re X (str.to.re "ProAgentHost:LOGSeconds-\x0a"))))
+; ProAgentHost\u{3A}LOGSeconds\-
+(assert (not (str.in_re X (str.to_re "ProAgentHost:LOGSeconds-\u{a}"))))
 (check-sat)

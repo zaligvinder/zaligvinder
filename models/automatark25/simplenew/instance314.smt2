@@ -1,4 +1,4 @@
 (declare-const X String)
-; snprtz\x7Cdialnoref\x3D\x25user\x5FidPG=SPEEDBAR
-(assert (not (str.in.re X (str.to.re "snprtz|dialnoref=%user_idPG=SPEEDBAR\x0a"))))
+; snprtz\u{7C}dialnoref\u{3D}\u{25}user\u{5F}idPG=SPEEDBAR
+(assert (not (str.in_re X (str.to_re "snprtz|dialnoref=%user_idPG=SPEEDBAR\u{a}"))))
 (check-sat)

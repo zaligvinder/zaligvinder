@@ -1,4 +1,4 @@
 (declare-const X String)
-; httphostHost\x3aAgent\x22
-(assert (not (str.in.re X (str.to.re "httphostHost:Agent\x22\x0a"))))
+; httphostHost\u{3a}Agent\u{22}
+(assert (not (str.in_re X (str.to_re "httphostHost:Agent\u{22}\u{a}"))))
 (check-sat)

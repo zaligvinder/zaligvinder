@@ -1,6 +1,6 @@
 (declare-const X String)
-; \x5Chome\/lordofsearchToolbar\x22StarLogger\x22
-(assert (str.in.re X (str.to.re "\x5chome/lordofsearchToolbar\x22StarLogger\x22\x0a")))
-; XPPreUser-Agent\x3ARemoteYOURsqlStarLoggerclvompycem\x2fcen\.vcn
-(assert (str.in.re X (str.to.re "XPPreUser-Agent:RemoteYOURsqlStarLoggerclvompycem/cen.vcn\x0a")))
+; \u{5C}home\/lordofsearchToolbar\u{22}StarLogger\u{22}
+(assert (str.in_re X (str.to_re "\u{5c}home/lordofsearchToolbar\u{22}StarLogger\u{22}\u{a}")))
+; XPPreUser-Agent\u{3A}RemoteYOURsqlStarLoggerclvompycem\u{2f}cen\.vcn
+(assert (str.in_re X (str.to_re "XPPreUser-Agent:RemoteYOURsqlStarLoggerclvompycem/cen.vcn\u{a}")))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; /^User-Agent\x3A[^\r\n]*malware/miH
-(assert (str.in.re X (re.++ (str.to.re "/User-Agent:") (re.* (re.union (str.to.re "\x0d") (str.to.re "\x0a"))) (str.to.re "malware/miH\x0a"))))
+; /^User-Agent\u{3A}[^\r\n]*malware/miH
+(assert (str.in_re X (re.++ (str.to_re "/User-Agent:") (re.* (re.union (str.to_re "\u{d}") (str.to_re "\u{a}"))) (str.to_re "malware/miH\u{a}"))))
 (check-sat)

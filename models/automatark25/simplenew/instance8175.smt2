@@ -1,4 +1,4 @@
 (declare-const X String)
-; ixqshv\x2fqzccsMM_RECO\x2EEXE%3fwwwwp-includes\x2Ftheme\x2Ephp\x3F
-(assert (not (str.in.re X (str.to.re "ixqshv/qzccsMM_RECO.EXE%3fwwwwp-includes/theme.php?\x0a"))))
+; ixqshv\u{2f}qzccsMM_RECO\u{2E}EXE%3fwwwwp-includes\u{2F}theme\u{2E}php\u{3F}
+(assert (not (str.in_re X (str.to_re "ixqshv/qzccsMM_RECO.EXE%3fwwwwp-includes/theme.php?\u{a}"))))
 (check-sat)

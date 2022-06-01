@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Ealtnet\x2EcomHost\x3ANSIS_DOWNLOADSubject\x3AUser-Agent\x3Awww\x2Esearchingall\x2Ecom
-(assert (not (str.in.re X (str.to.re "www.altnet.com\x1bHost:NSIS_DOWNLOADSubject:User-Agent:www.searchingall.com\x0a"))))
+; www\u{2E}altnet\u{2E}comHost\u{3A}NSIS_DOWNLOADSubject\u{3A}User-Agent\u{3A}www\u{2E}searchingall\u{2E}com
+(assert (not (str.in_re X (str.to_re "www.altnet.com\u{1b}Host:NSIS_DOWNLOADSubject:User-Agent:www.searchingall.com\u{a}"))))
 (check-sat)

@@ -26,8 +26,8 @@ A symbolic model checking approach to the analysis of string and length constrai
 (declare-fun atk_sigmaStar_2 () String)
 (declare-fun atk_sink () String)
 
-(assert (= b_sigmaStar_safe_48 (str.in.re sigmaStar_safe_48 (re.* (re.union (re.range "0" "9") (re.union (re.range "a" "z") (re.range "A" "Z")))))))
-(assert (str.in.re atkPtn (str.to.re "/evil")))
+(assert (= b_sigmaStar_safe_48 (str.in_re sigmaStar_safe_48 (re.* (re.union (re.range "0" "9") (re.union (re.range "a" "z") (re.range "A" "Z")))))))
+(assert (str.in_re atkPtn (str.to_re "/evil")))
 (assert (= atk_sink (str.++ atk_sigmaStar_1 (str.++ atkPtn atk_sigmaStar_2))))
 (assert (= b_x_3 (and (= x_3 (str.replace sigmaStar_safe_48 "http://" "https://") ) b_sigmaStar_safe_48) ))
 (assert (and (= sink x_3) (= sink atk_sink) b_x_3))

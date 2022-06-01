@@ -1,4 +1,4 @@
 (declare-const X String)
-; toolsbar\x2Ekuaiso\x2Ecom\d\x2Fbar_pl\x2Fchk_bar\.fcgi
-(assert (not (str.in.re X (re.++ (str.to.re "toolsbar.kuaiso.com") (re.range "0" "9") (str.to.re "/bar_pl/chk_bar.fcgi\x0a")))))
+; toolsbar\u{2E}kuaiso\u{2E}com\d\u{2F}bar_pl\u{2F}chk_bar\.fcgi
+(assert (not (str.in_re X (re.++ (str.to_re "toolsbar.kuaiso.com") (re.range "0" "9") (str.to_re "/bar_pl/chk_bar.fcgi\u{a}")))))
 (check-sat)

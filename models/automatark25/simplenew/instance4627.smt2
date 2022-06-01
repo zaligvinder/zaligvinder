@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eezula\x2Ecom.*FTP.*User-Agent\x3Acontainsw3whoreport
-(assert (not (str.in.re X (re.++ (str.to.re "www.ezula.com") (re.* re.allchar) (str.to.re "FTP") (re.* re.allchar) (str.to.re "User-Agent:containsw3whoreport\x0a")))))
+; www\u{2E}ezula\u{2E}com.*FTP.*User-Agent\u{3A}containsw3whoreport
+(assert (not (str.in_re X (re.++ (str.to_re "www.ezula.com") (re.* re.allchar) (str.to_re "FTP") (re.* re.allchar) (str.to_re "User-Agent:containsw3whoreport\u{a}")))))
 (check-sat)

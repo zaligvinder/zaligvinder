@@ -1,4 +1,4 @@
 (declare-const X String)
-; forum=From\x3acomTencentTravelerBackAtTaCkExplorer
-(assert (str.in.re X (str.to.re "forum=From:comTencentTravelerBackAtTaCkExplorer\x0a")))
+; forum=From\u{3a}comTencentTravelerBackAtTaCkExplorer
+(assert (str.in_re X (str.to_re "forum=From:comTencentTravelerBackAtTaCkExplorer\u{a}")))
 (check-sat)

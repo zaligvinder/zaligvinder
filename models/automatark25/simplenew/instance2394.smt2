@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Epcsentinelsoftware\x2Ecom
-(assert (not (str.in.re X (str.to.re "www.pcsentinelsoftware.com\x0a"))))
+; www\u{2E}pcsentinelsoftware\u{2E}com
+(assert (not (str.in_re X (str.to_re "www.pcsentinelsoftware.com\u{a}"))))
 (check-sat)

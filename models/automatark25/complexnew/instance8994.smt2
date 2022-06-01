@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2edvr-ms/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".dvr-ms/i\x0a")))))
-; SbAts\d+dcww\x2Edmcast\x2EcomdistID=
-(assert (str.in.re X (re.++ (str.to.re "SbAts") (re.+ (re.range "0" "9")) (str.to.re "dcww.dmcast.comdistID=\x0a"))))
+; /filename=[^\n]*\u{2e}dvr-ms/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".dvr-ms/i\u{a}")))))
+; SbAts\d+dcww\u{2E}dmcast\u{2E}comdistID=
+(assert (str.in_re X (re.++ (str.to_re "SbAts") (re.+ (re.range "0" "9")) (str.to_re "dcww.dmcast.comdistID=\u{a}"))))
 (check-sat)

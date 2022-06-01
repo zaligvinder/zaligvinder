@@ -1,4 +1,4 @@
 (declare-const X String)
-; /\xb6\xb6\xff\xff\xff\xff$/
-(assert (not (str.in.re X (str.to.re "/\xb6\xb6\xff\xff\xff\xff/\x0a"))))
+; /\u{b6}\u{b6}\u{ff}\u{ff}\u{ff}\u{ff}$/
+(assert (not (str.in_re X (str.to_re "/\u{b6}\u{b6}\u{ff}\u{ff}\u{ff}\u{ff}/\u{a}"))))
 (check-sat)

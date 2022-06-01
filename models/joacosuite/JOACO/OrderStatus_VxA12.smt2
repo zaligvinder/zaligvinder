@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (set-option :produce-models true)
 
 (declare-fun var795 () String)
@@ -39,7 +39,7 @@
 (declare-fun sv2 () String)
 
 (assert (= true (= sv1 sv2 ) ))
-(assert (= true (str.in.re var813 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to.re "'") (re.++ (re.+  (str.to.re " ") ) (re.++  (re.union  (str.to.re "O")  (str.to.re "o")) (re.++  (re.union  (str.to.re "R")  (str.to.re "r")) (re.++ (re.+  (str.to.re " ") )  (str.to.re "'"))))))) (str.to.re sv1) ) (re.++  (re.++  (str.to.re "'") (re.++ (re.* re.allchar ) (re.++  (str.to.re "=") (re.++ (re.* re.allchar )  (str.to.re "'"))))) (str.to.re sv2) ) )  (re.++  (str.to.re "'") (re.++ (re.*  (str.to.re " ") )  (re.union  (re.++  (str.to.re "\x2d")  (str.to.re "\x2d"))  (str.to.re "\x23")))) ) ) ))
+(assert (= true (str.in_re var813 (re.++ (re.++ (re.++  (re.++ (re.* re.allchar ) (re.++  (str.to_re "'") (re.++ (re.+  (str.to_re " ") ) (re.++  (re.union  (str.to_re "O")  (str.to_re "o")) (re.++  (re.union  (str.to_re "R")  (str.to_re "r")) (re.++ (re.+  (str.to_re " ") )  (str.to_re "'"))))))) (str.to_re sv1) ) (re.++  (re.++  (str.to_re "'") (re.++ (re.* re.allchar ) (re.++  (str.to_re "=") (re.++ (re.* re.allchar )  (str.to_re "'"))))) (str.to_re sv2) ) )  (re.++  (str.to_re "'") (re.++ (re.*  (str.to_re " ") )  (re.union  (re.++  (str.to_re "\u{2d}")  (str.to_re "\u{2d}"))  (str.to_re "\u{23}")))) ) ) ))
 (assert (= true (= var795 var794 ) ))
 (assert (= true (= (str.++ var796 "'" ) var795 ) ))
 (assert (= true (= (str.++ var798 var779 ) var796 ) ))
@@ -55,7 +55,7 @@
 (assert (= true (= var779 var813 ) ))
 (assert (= true (= var789 var815 ) ))
 (assert (= true (= var765 var763 ) ))
-(assert (= true (= (str.++ var766 "\x29 WHERE rownum = 1" ) var765 ) ))
+(assert (= true (= (str.++ var766 "\u{29} WHERE rownum = 1" ) var765 ) ))
 (assert (= true (= (str.++ var768 "' ORDER BY o_id DESC" ) var766 ) ))
 (assert (= true (= (str.++ var770 var771 ) var768 ) ))
 (assert (= true (= (str.++ var772 "' AND o_c_id = '" ) var770 ) ))
@@ -65,7 +65,7 @@
 (assert (= true (= (str.++ var780 "WHERE o_w_id = '" ) var778 ) ))
 (assert (= true (= (str.++ var782 "FROM tpcc_orderr" ) var780 ) ))
 (assert (= true (= (str.++ var784 "SELECT o_id, o_carrier_id, o_entry_d" ) var782 ) ))
-(assert (= true (= (str.++ var786 "SELECT \x2a FROM \x28" ) var784 ) ))
+(assert (= true (= (str.++ var786 "SELECT \u{2a} FROM \u{28}" ) var784 ) ))
 (assert (= true (or (= var771 var789 ) (= var771 var788 ) ) ))
 (assert (= true (not (= 0 var790 )) ))
 

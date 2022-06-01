@@ -1,6 +1,6 @@
 (declare-const X String)
-; DigExt.*\x23\x23\x23\x23
-(assert (str.in.re X (re.++ (str.to.re "DigExt") (re.* re.allchar) (str.to.re "####\x0a"))))
-; /filename=[^\n]*\x2ewma/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".wma/i\x0a")))))
+; DigExt.*\u{23}\u{23}\u{23}\u{23}
+(assert (str.in_re X (re.++ (str.to_re "DigExt") (re.* re.allchar) (str.to_re "####\u{a}"))))
+; /filename=[^\n]*\u{2e}wma/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".wma/i\u{a}")))))
 (check-sat)

@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (= x "%%'\x0b''\x0b'MMooMMoo<<"))
-(assert (str.in.re x (re.union (re.* (re.* (str.to.re "MMoo<<"))) (str.to.re "%%'\x0b''\x0b'MMoo"))))
+(assert (= x "%%'\u{b}''\u{b}'MMooMMoo<<"))
+(assert (str.in_re x (re.union (re.* (re.* (str.to_re "MMoo<<"))) (str.to_re "%%'\u{b}''\u{b}'MMoo"))))
 (check-sat)

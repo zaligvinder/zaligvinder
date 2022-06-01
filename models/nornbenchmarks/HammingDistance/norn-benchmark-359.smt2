@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,11 +14,11 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in.re (str.++ var_3 "z" var_4 ) (re.++ (re.* (re.++ (str.to.re "a") (re.++ (re.* (re.union (str.to.re "b") (str.to.re "a"))) (str.to.re "z")))) (re.++ (str.to.re "a") (re.* (re.union (str.to.re "b") (str.to.re "a")))))))
-(assert (str.in.re (str.++ var_3 "z" var_4 ) (re.++ (re.* (re.union (str.to.re "z") (re.++ (str.to.re "a") (re.++ (re.* (str.to.re "a")) (str.to.re "z"))))) (re.++ (str.to.re "a") (re.* (str.to.re "a"))))))
-(assert (str.in.re var_4 (re.* (re.range "a" "u"))))
-(assert (str.in.re var_4 (re.* (str.to.re "b"))))
-(assert (str.in.re var_3 (re.* (re.range "a" "u"))))
-(assert (str.in.re var_3 (re.* (str.to.re "a"))))
+(assert (str.in_re (str.++ var_3 "z" var_4 ) (re.++ (re.* (re.++ (str.to_re "a") (re.++ (re.* (re.union (str.to_re "b") (str.to_re "a"))) (str.to_re "z")))) (re.++ (str.to_re "a") (re.* (re.union (str.to_re "b") (str.to_re "a")))))))
+(assert (str.in_re (str.++ var_3 "z" var_4 ) (re.++ (re.* (re.union (str.to_re "z") (re.++ (str.to_re "a") (re.++ (re.* (str.to_re "a")) (str.to_re "z"))))) (re.++ (str.to_re "a") (re.* (str.to_re "a"))))))
+(assert (str.in_re var_4 (re.* (re.range "a" "u"))))
+(assert (str.in_re var_4 (re.* (str.to_re "b"))))
+(assert (str.in_re var_3 (re.* (re.range "a" "u"))))
+(assert (str.in_re var_3 (re.* (str.to_re "a"))))
 (assert (<= 0  (str.len var_4)))
 (check-sat)

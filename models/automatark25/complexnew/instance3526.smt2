@@ -1,8 +1,8 @@
 (declare-const X String)
-; mywayUser-Agent\x3AHost\x3ARedirector\x22body=FeaR\x25200\x2E2\x2E0\x2520Online\x3A\x2520\x5BIP_
-(assert (not (str.in.re X (str.to.re "mywayUser-Agent:Host:Redirector\x22body=FeaR%200.2.0%20Online:%20[IP_\x0a"))))
+; mywayUser-Agent\u{3A}Host\u{3A}Redirector\u{22}body=FeaR\u{25}200\u{2E}2\u{2E}0\u{25}20Online\u{3A}\u{25}20\u{5B}IP_
+(assert (not (str.in_re X (str.to_re "mywayUser-Agent:Host:Redirector\u{22}body=FeaR%200.2.0%20Online:%20[IP_\u{a}"))))
 ; ^[0-9](\.[0-9]+)?$
-(assert (not (str.in.re X (re.++ (re.range "0" "9") (re.opt (re.++ (str.to.re ".") (re.+ (re.range "0" "9")))) (str.to.re "\x0a")))))
-; e2give\.comConnectionSpywww\x2Eslinkyslate
-(assert (str.in.re X (str.to.re "e2give.comConnectionSpywww.slinkyslate\x0a")))
+(assert (not (str.in_re X (re.++ (re.range "0" "9") (re.opt (re.++ (str.to_re ".") (re.+ (re.range "0" "9")))) (str.to_re "\u{a}")))))
+; e2give\.comConnectionSpywww\u{2E}slinkyslate
+(assert (str.in_re X (str.to_re "e2give.comConnectionSpywww.slinkyslate\u{a}")))
 (check-sat)

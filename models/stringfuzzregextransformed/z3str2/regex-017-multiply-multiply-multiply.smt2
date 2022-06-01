@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.* (re.union (str.to.re "AAAAAAAABBBBBBBB") (re.union (str.to.re "aaaaaaaabbbbbbbbccccccccdddddddd") (str.to.re "111111112222222233333333"))))))
+(assert (str.in_re x (re.* (re.union (str.to_re "AAAAAAAABBBBBBBB") (re.union (str.to_re "aaaaaaaabbbbbbbbccccccccdddddddd") (str.to_re "111111112222222233333333"))))))
 (assert (= 40 (str.len x)))
 (check-sat)

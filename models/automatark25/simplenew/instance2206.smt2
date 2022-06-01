@@ -1,4 +1,4 @@
 (declare-const X String)
 ; http://[^/]*/
-(assert (str.in.re X (re.++ (str.to.re "http://") (re.* (re.comp (str.to.re "/"))) (str.to.re "/\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "http://") (re.* (re.comp (str.to_re "/"))) (str.to_re "/\u{a}"))))
 (check-sat)

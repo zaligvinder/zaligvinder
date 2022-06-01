@@ -1,4 +1,4 @@
 (declare-const X String)
-; MailerHost\x3AUser-Agent\x3A
-(assert (str.in.re X (str.to.re "MailerHost:User-Agent:\x0a")))
+; MailerHost\u{3A}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "MailerHost:User-Agent:\u{a}")))
 (check-sat)

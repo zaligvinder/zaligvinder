@@ -1,4 +1,4 @@
 (declare-const X String)
-; Subject\x3AEnTrYExplorer\x2APORT2\x2AHost\x3A
-(assert (str.in.re X (str.to.re "Subject:EnTrYExplorer*PORT2*Host:\x0a")))
+; Subject\u{3A}EnTrYExplorer\u{2A}PORT2\u{2A}Host\u{3A}
+(assert (str.in_re X (str.to_re "Subject:EnTrYExplorer*PORT2*Host:\u{a}")))
 (check-sat)

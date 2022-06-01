@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x7D\x7BPassword\x3ADesktopDownloadfowclxccdxn\x2fuxwn\.ddy
-(assert (not (str.in.re X (str.to.re "}{Password:\x1bDesktopDownloadfowclxccdxn/uxwn.ddy\x0a"))))
+; \u{7D}\u{7B}Password\u{3A}DesktopDownloadfowclxccdxn\u{2f}uxwn\.ddy
+(assert (not (str.in_re X (str.to_re "}{Password:\u{1b}DesktopDownloadfowclxccdxn/uxwn.ddy\u{a}"))))
 (check-sat)

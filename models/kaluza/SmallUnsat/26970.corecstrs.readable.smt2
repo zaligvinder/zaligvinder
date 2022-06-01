@@ -8,5 +8,5 @@
 (assert (= T2_3 var_0xINPUT_24193))
 (assert (= T1_3 "/signin"))
 (assert (= PCTEMP_LHS_2 PCTEMP_LHS_1))
-(assert (not (str.in.re PCTEMP_LHS_2 (str.to.re "%" ))))
+(assert (not (str.in_re PCTEMP_LHS_2 (str.to_re "%" ))))
 (check-sat)

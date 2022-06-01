@@ -1,8 +1,8 @@
 (declare-const X String)
-; clvompycem\x2fcen\.vcn.*Host\x3A\s+toolbar_domain_redirectHost\x3a
-(assert (str.in.re X (re.++ (str.to.re "clvompycem/cen.vcn") (re.* re.allchar) (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "toolbar_domain_redirectHost:\x0a"))))
-; Fictionaliufilfwulmfi\x2friuf\.lio
-(assert (str.in.re X (str.to.re "Fictionaliufilfwulmfi/riuf.lio\x0a")))
+; clvompycem\u{2f}cen\.vcn.*Host\u{3A}\s+toolbar_domain_redirectHost\u{3a}
+(assert (str.in_re X (re.++ (str.to_re "clvompycem/cen.vcn") (re.* re.allchar) (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "toolbar_domain_redirectHost:\u{a}"))))
+; Fictionaliufilfwulmfi\u{2f}riuf\.lio
+(assert (str.in_re X (str.to_re "Fictionaliufilfwulmfi/riuf.lio\u{a}")))
 ; ^[1]$|^[3]$|^[4]$|^[6]$|^[1]0$
-(assert (str.in.re X (re.union (str.to.re "1") (str.to.re "3") (str.to.re "4") (str.to.re "6") (str.to.re "10\x0a"))))
+(assert (str.in_re X (re.union (str.to_re "1") (str.to_re "3") (str.to_re "4") (str.to_re "6") (str.to_re "10\u{a}"))))
 (check-sat)

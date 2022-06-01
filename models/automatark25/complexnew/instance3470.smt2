@@ -1,8 +1,8 @@
 (declare-const X String)
-; User-Agent\x3Agpstool\x2eglobaladserver\x2ecom
-(assert (not (str.in.re X (str.to.re "User-Agent:gpstool.globaladserver.com\x0a"))))
-; adblock\x2Elinkz\x2Ecomwww\.iggsey\.comHost\x3A
-(assert (str.in.re X (str.to.re "adblock.linkz.comwww.iggsey.comHost:\x0a")))
+; User-Agent\u{3A}gpstool\u{2e}globaladserver\u{2e}com
+(assert (not (str.in_re X (str.to_re "User-Agent:gpstool.globaladserver.com\u{a}"))))
+; adblock\u{2E}linkz\u{2E}comwww\.iggsey\.comHost\u{3A}
+(assert (str.in_re X (str.to_re "adblock.linkz.comwww.iggsey.comHost:\u{a}")))
 ; <script[\\.|\\W|\\w]*?</script>
-(assert (str.in.re X (re.++ (str.to.re "<script") (re.* (re.union (str.to.re "\x5c") (str.to.re ".") (str.to.re "|") (str.to.re "W") (str.to.re "w"))) (str.to.re "</script>\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "<script") (re.* (re.union (str.to_re "\u{5c}") (str.to_re ".") (str.to_re "|") (str.to_re "W") (str.to_re "w"))) (str.to_re "</script>\u{a}"))))
 (check-sat)

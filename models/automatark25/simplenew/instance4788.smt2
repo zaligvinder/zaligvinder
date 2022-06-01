@@ -1,4 +1,4 @@
 (declare-const X String)
-; stats\x2edrivecleaner\x2ecomExciteasdbiz\x2Ebiz
-(assert (not (str.in.re X (str.to.re "stats.drivecleaner.com\x13Exciteasdbiz.biz\x0a"))))
+; stats\u{2e}drivecleaner\u{2e}comExciteasdbiz\u{2E}biz
+(assert (not (str.in_re X (str.to_re "stats.drivecleaner.com\u{13}Exciteasdbiz.biz\u{a}"))))
 (check-sat)

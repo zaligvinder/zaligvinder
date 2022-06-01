@@ -1,4 +1,4 @@
 (declare-const X String)
-; Computeron\x3Acom\x3E2\x2E41
-(assert (str.in.re X (str.to.re "Computeron:com>2.41\x0a")))
+; Computeron\u{3A}com\u{3E}2\u{2E}41
+(assert (str.in_re X (str.to_re "Computeron:com>2.41\u{a}")))
 (check-sat)

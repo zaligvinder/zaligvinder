@@ -1,12 +1,12 @@
 (declare-const X String)
 ; ^[0-9]+(,[0-9]+)*$
-(assert (str.in.re X (re.++ (re.+ (re.range "0" "9")) (re.* (re.++ (str.to.re ",") (re.+ (re.range "0" "9")))) (str.to.re "\x0a"))))
-; http\x3A\x2F\x2Fmysearch\.dropspam\.com\x2Findex\.php\?tpid=
-(assert (str.in.re X (str.to.re "http://mysearch.dropspam.com/index.php?tpid=\x13\x0a")))
-; DigExtNetBus\x5BStatic
-(assert (not (str.in.re X (str.to.re "DigExtNetBus[Static\x0a"))))
+(assert (str.in_re X (re.++ (re.+ (re.range "0" "9")) (re.* (re.++ (str.to_re ",") (re.+ (re.range "0" "9")))) (str.to_re "\u{a}"))))
+; http\u{3A}\u{2F}\u{2F}mysearch\.dropspam\.com\u{2F}index\.php\?tpid=
+(assert (str.in_re X (str.to_re "http://mysearch.dropspam.com/index.php?tpid=\u{13}\u{a}")))
+; DigExtNetBus\u{5B}Static
+(assert (not (str.in_re X (str.to_re "DigExtNetBus[Static\u{a}"))))
 ; /\/jorg\.html$/U
-(assert (not (str.in.re X (str.to.re "//jorg.html/U\x0a"))))
-; /\x2eflv([\?\x5c\x2f]|$)/Umsi
-(assert (not (str.in.re X (re.++ (str.to.re "/.flv") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/Umsi\x0a")))))
+(assert (not (str.in_re X (str.to_re "//jorg.html/U\u{a}"))))
+; /\u{2e}flv([\?\u{5c}\u{2f}]|$)/Umsi
+(assert (not (str.in_re X (re.++ (str.to_re "/.flv") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/Umsi\u{a}")))))
 (check-sat)

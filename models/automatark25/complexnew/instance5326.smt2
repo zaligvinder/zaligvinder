@@ -1,6 +1,6 @@
 (declare-const X String)
-; zmnjgmomgbdz\x2fzzmw\.gztwww3\.addfreestats\.comKeylogger
-(assert (str.in.re X (str.to.re "zmnjgmomgbdz/zzmw.gztwww3.addfreestats.comKeylogger\x0a")))
-; clvompycem\x2fcen\.vcnHost\x3AUser-Agent\x3A\x0d\x0a
-(assert (str.in.re X (str.to.re "clvompycem/cen.vcnHost:User-Agent:\x0d\x0a\x0a")))
+; zmnjgmomgbdz\u{2f}zzmw\.gztwww3\.addfreestats\.comKeylogger
+(assert (str.in_re X (str.to_re "zmnjgmomgbdz/zzmw.gztwww3.addfreestats.comKeylogger\u{a}")))
+; clvompycem\u{2f}cen\.vcnHost\u{3A}User-Agent\u{3A}\u{d}\u{a}
+(assert (str.in_re X (str.to_re "clvompycem/cen.vcnHost:User-Agent:\u{d}\u{a}\u{a}")))
 (check-sat)

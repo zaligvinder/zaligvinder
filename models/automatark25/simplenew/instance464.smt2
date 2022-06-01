@@ -1,4 +1,4 @@
 (declare-const X String)
-; User-Agent\x3Aetbuviaebe\x2feqv\.bvv
-(assert (str.in.re X (str.to.re "User-Agent:etbuviaebe/eqv.bvv\x0a")))
+; User-Agent\u{3A}etbuviaebe\u{2f}eqv\.bvv
+(assert (str.in_re X (str.to_re "User-Agent:etbuviaebe/eqv.bvv\u{a}")))
 (check-sat)

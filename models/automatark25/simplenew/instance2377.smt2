@@ -1,4 +1,4 @@
 (declare-const X String)
-; hirmvtg\x2fggqh\.kqhSurveillanceHost\x3A
-(assert (str.in.re X (str.to.re "hirmvtg/ggqh.kqh\x1bSurveillance\x13Host:\x0a")))
+; hirmvtg\u{2f}ggqh\.kqhSurveillanceHost\u{3A}
+(assert (str.in_re X (str.to_re "hirmvtg/ggqh.kqh\u{1b}Surveillance\u{13}Host:\u{a}")))
 (check-sat)

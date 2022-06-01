@@ -1,8 +1,8 @@
 (declare-const X String)
-; ookflolfctm\x2fnmot\.fmu
-(assert (str.in.re X (str.to.re "ookflolfctm/nmot.fmu\x0a")))
-; User-Agent\x3A\w+Minutes\sHost\x3Awww\x2Eeblocs\x2EcomHost\x3ARunnerHost\x3a\x2Ehtml
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "Minutes") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "Host:www.eblocs.com\x1bHost:RunnerHost:.html\x0a"))))
-; From\x3A.*Host\x3A\s+Downloadfowclxccdxn\x2fuxwn\.ddy
-(assert (str.in.re X (re.++ (str.to.re "From:") (re.* re.allchar) (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Downloadfowclxccdxn/uxwn.ddy\x0a"))))
+; ookflolfctm\u{2f}nmot\.fmu
+(assert (str.in_re X (str.to_re "ookflolfctm/nmot.fmu\u{a}")))
+; User-Agent\u{3A}\w+Minutes\sHost\u{3A}www\u{2E}eblocs\u{2E}comHost\u{3A}RunnerHost\u{3a}\u{2E}html
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "Minutes") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "Host:www.eblocs.com\u{1b}Host:RunnerHost:.html\u{a}"))))
+; From\u{3A}.*Host\u{3A}\s+Downloadfowclxccdxn\u{2f}uxwn\.ddy
+(assert (str.in_re X (re.++ (str.to_re "From:") (re.* re.allchar) (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Downloadfowclxccdxn/uxwn.ddy\u{a}"))))
 (check-sat)

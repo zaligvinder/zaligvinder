@@ -1,6 +1,6 @@
 (declare-const X String)
-; Subject\x3a\d+zmnjgmomgbdz\x2fzzmw\.gzt
-(assert (not (str.in.re X (re.++ (str.to.re "Subject:") (re.+ (re.range "0" "9")) (str.to.re "zmnjgmomgbdz/zzmw.gzt\x0a")))))
+; Subject\u{3a}\d+zmnjgmomgbdz\u{2f}zzmw\.gzt
+(assert (not (str.in_re X (re.++ (str.to_re "Subject:") (re.+ (re.range "0" "9")) (str.to_re "zmnjgmomgbdz/zzmw.gzt\u{a}")))))
 ; (^\b\d+-\d+$\b)|(^\b\d+$\b)
-(assert (str.in.re X (re.union (re.++ (re.+ (re.range "0" "9")) (str.to.re "-") (re.+ (re.range "0" "9"))) (re.++ (re.+ (re.range "0" "9")) (str.to.re "\x0a")))))
+(assert (str.in_re X (re.union (re.++ (re.+ (re.range "0" "9")) (str.to_re "-") (re.+ (re.range "0" "9"))) (re.++ (re.+ (re.range "0" "9")) (str.to_re "\u{a}")))))
 (check-sat)

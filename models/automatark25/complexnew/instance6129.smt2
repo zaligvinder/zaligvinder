@@ -1,10 +1,10 @@
 (declare-const X String)
-; /filename=[^\n]*\x2empg/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".mpg/i\x0a"))))
-; /\x2F[a-z]+\x2epng/Ui
-(assert (not (str.in.re X (re.++ (str.to.re "//") (re.+ (re.range "a" "z")) (str.to.re ".png/Ui\x0a")))))
+; /filename=[^\n]*\u{2e}mpg/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".mpg/i\u{a}"))))
+; /\u{2F}[a-z]+\u{2e}png/Ui
+(assert (not (str.in_re X (re.++ (str.to_re "//") (re.+ (re.range "a" "z")) (str.to_re ".png/Ui\u{a}")))))
 ; ^([1-9]|1[0-2])$
-(assert (not (str.in.re X (re.++ (re.union (re.range "1" "9") (re.++ (str.to.re "1") (re.range "0" "2"))) (str.to.re "\x0a")))))
-; Subject\x3aFTPdistdcww\x2Edmcast\x2Ecom
-(assert (not (str.in.re X (str.to.re "Subject:FTPdistdcww.dmcast.com\x0a"))))
+(assert (not (str.in_re X (re.++ (re.union (re.range "1" "9") (re.++ (str.to_re "1") (re.range "0" "2"))) (str.to_re "\u{a}")))))
+; Subject\u{3a}FTPdistdcww\u{2E}dmcast\u{2E}com
+(assert (not (str.in_re X (str.to_re "Subject:FTPdistdcww.dmcast.com\u{a}"))))
 (check-sat)

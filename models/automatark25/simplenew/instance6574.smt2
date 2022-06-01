@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2FrssScaneradfsgecoiwnf\x7D\x7BTrojan\x3AlogsHost\x3a
-(assert (not (str.in.re X (str.to.re "/rssScaneradfsgecoiwnf\x1b}{Trojan:logsHost:\x0a"))))
+; \u{2F}rssScaneradfsgecoiwnf\u{7D}\u{7B}Trojan\u{3A}logsHost\u{3a}
+(assert (not (str.in_re X (str.to_re "/rssScaneradfsgecoiwnf\u{1b}}{Trojan:logsHost:\u{a}"))))
 (check-sat)

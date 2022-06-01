@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3A\d+zmnjgmomgbdz\x2fzzmw\.gzt%3ftoolbar\x2Ei-lookup\x2Ecom
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.range "0" "9")) (str.to.re "zmnjgmomgbdz/zzmw.gzt%3ftoolbar.i-lookup.com\x0a"))))
+; Host\u{3A}\d+zmnjgmomgbdz\u{2f}zzmw\.gzt%3ftoolbar\u{2E}i-lookup\u{2E}com
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.range "0" "9")) (str.to_re "zmnjgmomgbdz/zzmw.gzt%3ftoolbar.i-lookup.com\u{a}"))))
 (check-sat)

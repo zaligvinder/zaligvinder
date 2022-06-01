@@ -1,12 +1,12 @@
 (declare-const X String)
 ; AgentCSmtpsidebar\.activeshopper\.comTry2Find
-(assert (str.in.re X (str.to.re "AgentCSmtpsidebar.activeshopper.comTry2Find\x0a")))
-; tv\x2E180solutions\x2Ecom\s+have\s+Dayspassword\x3B0\x3BIncorrect
-(assert (str.in.re X (re.++ (str.to.re "tv.180solutions.com") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "have") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Dayspassword;0;Incorrect\x0a"))))
-; HXLogOnlyanHost\x3AspasHost\x3A
-(assert (str.in.re X (str.to.re "HXLogOnlyanHost:spasHost:\x0a")))
+(assert (str.in_re X (str.to_re "AgentCSmtpsidebar.activeshopper.comTry2Find\u{a}")))
+; tv\u{2E}180solutions\u{2E}com\s+have\s+Dayspassword\u{3B}0\u{3B}Incorrect
+(assert (str.in_re X (re.++ (str.to_re "tv.180solutions.com") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "have") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Dayspassword;0;Incorrect\u{a}"))))
+; HXLogOnlyanHost\u{3A}spasHost\u{3A}
+(assert (str.in_re X (str.to_re "HXLogOnlyanHost:spasHost:\u{a}")))
 ; (http://|)(www\.)?([^\.]+)\.(\w{2}|(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum))$
-(assert (str.in.re X (re.++ (str.to.re "http://") (re.opt (str.to.re "www.")) (re.+ (re.comp (str.to.re "."))) (str.to.re ".") (re.union ((_ re.loop 2 2) (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to.re "_"))) (str.to.re "com") (str.to.re "net") (str.to.re "org") (str.to.re "edu") (str.to.re "int") (str.to.re "mil") (str.to.re "gov") (str.to.re "arpa") (str.to.re "biz") (str.to.re "aero") (str.to.re "name") (str.to.re "coop") (str.to.re "info") (str.to.re "pro") (str.to.re "museum")) (str.to.re "\x0a"))))
-; /\x2exfdl([\?\x5c\x2f]|$)/miU
-(assert (not (str.in.re X (re.++ (str.to.re "/.xfdl") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/miU\x0a")))))
+(assert (str.in_re X (re.++ (str.to_re "http://") (re.opt (str.to_re "www.")) (re.+ (re.comp (str.to_re "."))) (str.to_re ".") (re.union ((_ re.loop 2 2) (re.union (re.range "0" "9") (re.range "A" "Z") (re.range "a" "z") (str.to_re "_"))) (str.to_re "com") (str.to_re "net") (str.to_re "org") (str.to_re "edu") (str.to_re "int") (str.to_re "mil") (str.to_re "gov") (str.to_re "arpa") (str.to_re "biz") (str.to_re "aero") (str.to_re "name") (str.to_re "coop") (str.to_re "info") (str.to_re "pro") (str.to_re "museum")) (str.to_re "\u{a}"))))
+; /\u{2e}xfdl([\?\u{5c}\u{2f}]|$)/miU
+(assert (not (str.in_re X (re.++ (str.to_re "/.xfdl") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/miU\u{a}")))))
 (check-sat)

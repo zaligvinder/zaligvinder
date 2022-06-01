@@ -1,4 +1,4 @@
 (declare-const X String)
-; Shell\x2FFileage\x7D\x7BPort\x3Aupd\x2Elop\x2Ecom
-(assert (str.in.re X (str.to.re "Shell/Fileage}{Port:upd.lop.com\x0a")))
+; Shell\u{2F}Fileage\u{7D}\u{7B}Port\u{3A}upd\u{2E}lop\u{2E}com
+(assert (str.in_re X (str.to_re "Shell/Fileage}{Port:upd.lop.com\u{a}")))
 (check-sat)

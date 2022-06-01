@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Etxt\stoolbar\.anwb\.nlHost\x3AiOpusA-311Servert=form-data\x3B\x20name=\x22pid\x22
-(assert (str.in.re X (re.++ (str.to.re ".txt") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "toolbar.anwb.nlHost:iOpusA-311Servert=form-data; name=\x22pid\x22\x0a"))))
+; \u{2E}txt\stoolbar\.anwb\.nlHost\u{3A}iOpusA-311Servert=form-data\u{3B}\u{20}name=\u{22}pid\u{22}
+(assert (str.in_re X (re.++ (str.to_re ".txt") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "toolbar.anwb.nlHost:iOpusA-311Servert=form-data; name=\u{22}pid\u{22}\u{a}"))))
 (check-sat)

@@ -1,8 +1,8 @@
 (declare-const X String)
-; www\x2Ealfacleaner\x2EcomHost\x3aLogs
-(assert (not (str.in.re X (str.to.re "www.alfacleaner.comHost:Logs\x0a"))))
+; www\u{2E}alfacleaner\u{2E}comHost\u{3a}Logs
+(assert (not (str.in_re X (str.to_re "www.alfacleaner.comHost:Logs\u{a}"))))
 ; ^(\d*\s*\-?\s*\d*)$
-(assert (not (str.in.re X (re.++ (str.to.re "\x0a") (re.* (re.range "0" "9")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.opt (str.to.re "-")) (re.* (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (re.* (re.range "0" "9"))))))
-; /^\/\d\x2eexe/Ui
-(assert (not (str.in.re X (re.++ (str.to.re "//") (re.range "0" "9") (str.to.re ".exe/Ui\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "\u{a}") (re.* (re.range "0" "9")) (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.opt (str.to_re "-")) (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.* (re.range "0" "9"))))))
+; /^\/\d\u{2e}exe/Ui
+(assert (not (str.in_re X (re.++ (str.to_re "//") (re.range "0" "9") (str.to_re ".exe/Ui\u{a}")))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
 ; ShadowNetMyAgentServerconfigINTERNAL\.iniKeylogger-Prosearchreslt
-(assert (not (str.in.re X (str.to.re "ShadowNetMyAgentServerconfigINTERNAL.iniKeylogger-Prosearchreslt\x0a"))))
+(assert (not (str.in_re X (str.to_re "ShadowNetMyAgentServerconfigINTERNAL.iniKeylogger-Prosearchreslt\u{a}"))))
 (check-sat)

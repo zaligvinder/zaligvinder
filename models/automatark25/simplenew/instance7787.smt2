@@ -1,4 +1,4 @@
 (declare-const X String)
-; st=\s+Stopper\s+Host\x3AAgentProjectMyWebSearchSearchAssistant
-(assert (str.in.re X (re.++ (str.to.re "st=") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Stopper") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:AgentProjectMyWebSearchSearchAssistant\x0a"))))
+; st=\s+Stopper\s+Host\u{3A}AgentProjectMyWebSearchSearchAssistant
+(assert (str.in_re X (re.++ (str.to_re "st=") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Stopper") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:AgentProjectMyWebSearchSearchAssistant\u{a}"))))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
-; download\x2Eeblocs\x2EcomHost\x3AReferer\x3A
-(assert (not (str.in.re X (str.to.re "download.eblocs.comHost:Referer:\x0a"))))
-; wlpgskmv\x2flwzo\.qv#www\x2Ekliksearch\x2Ecom
-(assert (str.in.re X (str.to.re "wlpgskmv/lwzo.qv#www.kliksearch.com\x0a")))
+; download\u{2E}eblocs\u{2E}comHost\u{3A}Referer\u{3A}
+(assert (not (str.in_re X (str.to_re "download.eblocs.comHost:Referer:\u{a}"))))
+; wlpgskmv\u{2f}lwzo\.qv#www\u{2E}kliksearch\u{2E}com
+(assert (str.in_re X (str.to_re "wlpgskmv/lwzo.qv#www.kliksearch.com\u{a}")))
 (check-sat)

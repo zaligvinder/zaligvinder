@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,6 +14,6 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in.re var_4 (re.* (re.union (re.union (str.to.re "a") (str.to.re "b")) (str.to.re "c")))))
-(assert (not (str.in.re (str.++ "z" var_4 ) (re.++ (re.* (str.to.re "z")) (re.union (str.to.re "") (re.++ (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c"))) (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c"))))))))))
+(assert (str.in_re var_4 (re.* (re.union (re.union (str.to_re "a") (str.to_re "b")) (str.to_re "c")))))
+(assert (not (str.in_re (str.++ "z" var_4 ) (re.++ (re.* (str.to_re "z")) (re.union (str.to_re "") (re.++ (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c"))) (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c"))))))))))
 (check-sat)

@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "H<""'\n'g?Vbbape`LjaUhY&-lUU?W7s'\t'j/"))
-(assert (str.in.re x (re.* (re.+ (str.to.re "Ms?*p'\x0b'+4|3Yn'\r'>B:_4Oa")))))
+(assert (str.in_re x (re.* (re.+ (str.to_re "Ms?*p'\u{b}'+4|3Yn'\r'>B:_4Oa")))))
 (check-sat)

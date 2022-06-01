@@ -1,12 +1,12 @@
 (declare-const X String)
-; Handyst=ClassStopperHost\x3ASpamBlockerUtility
-(assert (not (str.in.re X (str.to.re "Handyst=ClassStopperHost:SpamBlockerUtility\x0a"))))
-; User-Agent\x3AUser-Agent\x3AHost\x3ASoftActivityYeah\!
-(assert (str.in.re X (str.to.re "User-Agent:User-Agent:Host:SoftActivity\x13Yeah!\x0a")))
+; Handyst=ClassStopperHost\u{3A}SpamBlockerUtility
+(assert (not (str.in_re X (str.to_re "Handyst=ClassStopperHost:SpamBlockerUtility\u{a}"))))
+; User-Agent\u{3A}User-Agent\u{3A}Host\u{3A}SoftActivityYeah\!
+(assert (str.in_re X (str.to_re "User-Agent:User-Agent:Host:SoftActivity\u{13}Yeah!\u{a}")))
 ; ^\d+((\.|\,)\d+)?$
-(assert (not (str.in.re X (re.++ (re.+ (re.range "0" "9")) (re.opt (re.++ (re.union (str.to.re ".") (str.to.re ",")) (re.+ (re.range "0" "9")))) (str.to.re "\x0a")))))
-; User-Agent\x3AUser-Agent\x3a
-(assert (not (str.in.re X (str.to.re "User-Agent:User-Agent:\x0a"))))
-; \x2Fta\x2FNEWS\x2Fpassword\x3B1\x3BOptix
-(assert (str.in.re X (str.to.re "/ta/NEWS/password;1;Optix\x0a")))
+(assert (not (str.in_re X (re.++ (re.+ (re.range "0" "9")) (re.opt (re.++ (re.union (str.to_re ".") (str.to_re ",")) (re.+ (re.range "0" "9")))) (str.to_re "\u{a}")))))
+; User-Agent\u{3A}User-Agent\u{3a}
+(assert (not (str.in_re X (str.to_re "User-Agent:User-Agent:\u{a}"))))
+; \u{2F}ta\u{2F}NEWS\u{2F}password\u{3B}1\u{3B}Optix
+(assert (str.in_re X (str.to_re "/ta/NEWS/password;1;Optix\u{a}")))
 (check-sat)

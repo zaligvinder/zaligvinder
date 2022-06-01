@@ -36,7 +36,7 @@ A symbolic model checking approach to the analysis of string and length constrai
 (assert (= T_6e (str.++ T0_190 T1_190)))
 (assert (= T1_190 (str.++ T2_190 T3_190)))
 (assert (= T2_190 (str.++ T4_190 T5_190)))
-(assert (not (str.in.re T4_190 (str.to.re ";"))))
+(assert (not (str.in_re T4_190 (str.to_re ";"))))
 (assert (= T5_190 ";"))
 (assert T_71)
 (assert (= T_71 (not T_70)))

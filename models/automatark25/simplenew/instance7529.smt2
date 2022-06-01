@@ -1,4 +1,4 @@
 (declare-const X String)
-; IDENTIFY.*\x2Fezsb\d+X-Mailer\x3A
-(assert (str.in.re X (re.++ (str.to.re "IDENTIFY") (re.* re.allchar) (str.to.re "/ezsb") (re.+ (re.range "0" "9")) (str.to.re "X-Mailer:\x13\x0a"))))
+; IDENTIFY.*\u{2F}ezsb\d+X-Mailer\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "IDENTIFY") (re.* re.allchar) (str.to_re "/ezsb") (re.+ (re.range "0" "9")) (str.to_re "X-Mailer:\u{13}\u{a}"))))
 (check-sat)

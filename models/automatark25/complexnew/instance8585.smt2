@@ -1,6 +1,6 @@
 (declare-const X String)
 ; <title>+(.*?)</title>
-(assert (not (str.in.re X (re.++ (str.to.re "<title") (re.+ (str.to.re ">")) (re.* re.allchar) (str.to.re "</title>\x0a")))))
-; /\x2ephp\x3f[a-z]+=[a-fA-Z0-9]+&[a-z]+=[0-9]+$/iU
-(assert (not (str.in.re X (re.++ (str.to.re "/.php?") (re.+ (re.range "a" "z")) (str.to.re "=") (re.+ (re.union (re.range "a" "f") (re.range "A" "Z") (re.range "0" "9"))) (str.to.re "&") (re.+ (re.range "a" "z")) (str.to.re "=") (re.+ (re.range "0" "9")) (str.to.re "/iU\x0a")))))
+(assert (not (str.in_re X (re.++ (str.to_re "<title") (re.+ (str.to_re ">")) (re.* re.allchar) (str.to_re "</title>\u{a}")))))
+; /\u{2e}php\u{3f}[a-z]+=[a-fA-Z0-9]+&[a-z]+=[0-9]+$/iU
+(assert (not (str.in_re X (re.++ (str.to_re "/.php?") (re.+ (re.range "a" "z")) (str.to_re "=") (re.+ (re.union (re.range "a" "f") (re.range "A" "Z") (re.range "0" "9"))) (str.to_re "&") (re.+ (re.range "a" "z")) (str.to_re "=") (re.+ (re.range "0" "9")) (str.to_re "/iU\u{a}")))))
 (check-sat)

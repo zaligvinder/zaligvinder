@@ -1,4 +1,4 @@
 (declare-const X String)
-; toolbar_domain_redirectriggiymd\x2fwdhi\.vhi
-(assert (str.in.re X (str.to.re "toolbar_domain_redirectriggiymd/wdhi.vhi\x0a")))
+; toolbar_domain_redirectriggiymd\u{2f}wdhi\.vhi
+(assert (str.in_re X (str.to_re "toolbar_domain_redirectriggiymd/wdhi.vhi\u{a}")))
 (check-sat)

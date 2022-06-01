@@ -1,4 +1,4 @@
 (declare-const X String)
-; www.*tool\x2Eworld2\x2Ecn
-(assert (not (str.in.re X (re.++ (str.to.re "www") (re.* re.allchar) (str.to.re "tool.world2.cn\x13\x0a")))))
+; www.*tool\u{2E}world2\u{2E}cn
+(assert (not (str.in_re X (re.++ (str.to_re "www") (re.* re.allchar) (str.to_re "tool.world2.cn\u{13}\u{a}")))))
 (check-sat)

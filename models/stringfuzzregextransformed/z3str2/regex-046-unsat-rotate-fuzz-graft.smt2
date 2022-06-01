@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
-(assert (str.in.re x (str.to.re "o")))
-(assert (> (str.to.int x) 0))
+(assert (str.in_re x (str.to_re "o")))
+(assert (> (str.to_int x) 0))
 (check-sat)

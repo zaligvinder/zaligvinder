@@ -1,6 +1,6 @@
 (declare-const X String)
-; thesearchresltLoggerHost\x3ABetaHWAEHost\x3Ais
-(assert (str.in.re X (str.to.re "thesearchresltLoggerHost:BetaHWAEHost:is\x0a")))
-; weather2ResultX-Sender\x3A
-(assert (str.in.re X (str.to.re "weather2ResultX-Sender:\x13\x0a")))
+; thesearchresltLoggerHost\u{3A}BetaHWAEHost\u{3A}is
+(assert (str.in_re X (str.to_re "thesearchresltLoggerHost:BetaHWAEHost:is\u{a}")))
+; weather2ResultX-Sender\u{3A}
+(assert (str.in_re X (str.to_re "weather2ResultX-Sender:\u{13}\u{a}")))
 (check-sat)

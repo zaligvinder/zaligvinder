@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "aaaaaaaa~~55FF;;''\\\\tt''33"))
-(assert (str.in.re x (re.+ (re.+ (str.to.re "II||eedd")))))
+(assert (str.in_re x (re.+ (re.+ (str.to_re "II||eedd")))))
 (check-sat)

@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "av+2yaSPQ,nAaKqcdddee"))
-(assert (str.in.re x (str.to.re "d|E(Gvc")))
+(assert (str.in_re x (str.to_re "d|E(Gvc")))
 (check-sat)

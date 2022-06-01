@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "\\\\&,hBJ+9>M2|SwR%i#Zrgi?u\\0b11ez]IPT'\r'F*%1;jJ?ok]~q#38nSnD6?7v'rM/G@8O9=_*\\(\\\\(Jm'\n';"))
-(assert (str.in.re x (re.* (str.to.re "SLIDtv2'\t'Iu{p>V#"))))
+(assert (str.in_re x (re.* (str.to_re "SLIDtv2'\t'Iu{p>V#"))))
 (check-sat)

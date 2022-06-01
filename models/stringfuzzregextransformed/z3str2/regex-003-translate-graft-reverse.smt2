@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "N(\\\\\\\\(\\\\\\\\]'b0x\\\\'N(\\\\\\\\"))
-(assert (str.in.re x (re.* (str.to.re "N(\\\\\\\\"))))
+(assert (str.in_re x (re.* (str.to_re "N(\\\\\\\\"))))
 (check-sat)

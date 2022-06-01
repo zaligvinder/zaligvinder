@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fbonzibuddy\x2Forigin\x3DsidefindApofisUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "/bonzibuddy/origin=sidefindApofisUser-Agent:\x0a"))))
+; \u{2F}bonzibuddy\u{2F}origin\u{3D}sidefindApofisUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "/bonzibuddy/origin=sidefindApofisUser-Agent:\u{a}"))))
 (check-sat)

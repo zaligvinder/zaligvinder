@@ -1,4 +1,4 @@
 (declare-const X String)
-; media\x2Edxcdirect\x2Ecom
-(assert (not (str.in.re X (str.to.re "media.dxcdirect.com\x0a"))))
+; media\u{2E}dxcdirect\u{2E}com
+(assert (not (str.in_re X (str.to_re "media.dxcdirect.com\u{a}"))))
 (check-sat)

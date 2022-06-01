@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "cm-"))
-(assert (str.in.re x (re.+ (re.+ (str.to.re "'\n'G%'\x0b'%y%")))))
+(assert (str.in_re x (re.+ (re.+ (str.to_re "'\n'G%'\u{b}'%y%")))))
 (check-sat)

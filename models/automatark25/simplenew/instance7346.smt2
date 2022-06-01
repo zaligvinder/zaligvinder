@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3Acdpnode=FILESIZE\x3E
-(assert (not (str.in.re X (str.to.re "Host:cdpnode=FILESIZE>\x13\x0a"))))
+; Host\u{3A}cdpnode=FILESIZE\u{3E}
+(assert (not (str.in_re X (str.to_re "Host:cdpnode=FILESIZE>\u{13}\u{a}"))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x2Fta\x2FNEWS\x2Fpassword\x3B1\x3BOptix
-(assert (str.in.re X (str.to.re "/ta/NEWS/password;1;Optix\x0a")))
+; \u{2F}ta\u{2F}NEWS\u{2F}password\u{3B}1\u{3B}Optix
+(assert (str.in_re X (str.to_re "/ta/NEWS/password;1;Optix\u{a}")))
 (check-sat)

@@ -1,10 +1,10 @@
 (declare-const X String)
-; from\x3AUser-Agent\x3AChildWebGuardian
-(assert (not (str.in.re X (str.to.re "from:User-Agent:ChildWebGuardian\x0a"))))
-; SpywareinformationToolBarX-Mailer\x3aUser-Agent\x3AMM_RECO\x2EEXE
-(assert (not (str.in.re X (str.to.re "SpywareinformationToolBarX-Mailer:\x13User-Agent:MM_RECO.EXE\x0a"))))
-; /filename=[^\n]*\x2epsd/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".psd/i\x0a"))))
+; from\u{3A}User-Agent\u{3A}ChildWebGuardian
+(assert (not (str.in_re X (str.to_re "from:User-Agent:ChildWebGuardian\u{a}"))))
+; SpywareinformationToolBarX-Mailer\u{3a}User-Agent\u{3A}MM_RECO\u{2E}EXE
+(assert (not (str.in_re X (str.to_re "SpywareinformationToolBarX-Mailer:\u{13}User-Agent:MM_RECO.EXE\u{a}"))))
+; /filename=[^\n]*\u{2e}psd/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".psd/i\u{a}"))))
 ; /\/jlnp\.html$/U
-(assert (str.in.re X (str.to.re "//jlnp.html/U\x0a")))
+(assert (str.in_re X (str.to_re "//jlnp.html/U\u{a}")))
 (check-sat)

@@ -1,12 +1,12 @@
 (declare-const X String)
-; stats\x2edrivecleaner\x2ecomExciteasdbiz\x2Ebiz
-(assert (not (str.in.re X (str.to.re "stats.drivecleaner.com\x13Exciteasdbiz.biz\x0a"))))
-; UI2ftpquickbrutehttp\x3A\x2F\x2Fdiscounts\x2Eshopathome\x2Ecom\x2Fframeset\x2Easp\?
-(assert (str.in.re X (str.to.re "UI2ftpquickbrutehttp://discounts.shopathome.com/frameset.asp?\x0a")))
-; snprtz\x7Cdialnoref\x3D\x25user\x5FidPG=SPEEDBAR
-(assert (str.in.re X (str.to.re "snprtz|dialnoref=%user_idPG=SPEEDBAR\x0a")))
+; stats\u{2e}drivecleaner\u{2e}comExciteasdbiz\u{2E}biz
+(assert (not (str.in_re X (str.to_re "stats.drivecleaner.com\u{13}Exciteasdbiz.biz\u{a}"))))
+; UI2ftpquickbrutehttp\u{3A}\u{2F}\u{2F}discounts\u{2E}shopathome\u{2E}com\u{2F}frameset\u{2E}asp\?
+(assert (str.in_re X (str.to_re "UI2ftpquickbrutehttp://discounts.shopathome.com/frameset.asp?\u{a}")))
+; snprtz\u{7C}dialnoref\u{3D}\u{25}user\u{5F}idPG=SPEEDBAR
+(assert (str.in_re X (str.to_re "snprtz|dialnoref=%user_idPG=SPEEDBAR\u{a}")))
 ; \d{5}\-\d{3}
-(assert (not (str.in.re X (re.++ ((_ re.loop 5 5) (re.range "0" "9")) (str.to.re "-") ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "\x0a")))))
-; Host\x3A\s+cyber@yahoo\x2Ecom\sWordSpy\-LockedURLBlaze
-(assert (str.in.re X (re.++ (str.to.re "Host:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "cyber@yahoo.com") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "WordSpy-LockedURLBlaze\x0a"))))
+(assert (not (str.in_re X (re.++ ((_ re.loop 5 5) (re.range "0" "9")) (str.to_re "-") ((_ re.loop 3 3) (re.range "0" "9")) (str.to_re "\u{a}")))))
+; Host\u{3A}\s+cyber@yahoo\u{2E}com\sWordSpy\-LockedURLBlaze
+(assert (str.in_re X (re.++ (str.to_re "Host:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "cyber@yahoo.com") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "WordSpy-LockedURLBlaze\u{a}"))))
 (check-sat)

@@ -1,12 +1,12 @@
 (declare-const X String)
 ; /(XBOX|Nintendo Wii|smarttv|playstation|hbbtv|philipstv|opera tv|inettv)/
-(assert (not (str.in.re X (re.++ (str.to.re "/") (re.union (str.to.re "XBOX") (str.to.re "Nintendo Wii") (str.to.re "smarttv") (str.to.re "playstation") (str.to.re "hbbtv") (str.to.re "philipstv") (str.to.re "opera tv") (str.to.re "inettv")) (str.to.re "/\x0a")))))
-; /filename=[^\n]*\x2epsd/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".psd/i\x0a")))))
-; /filename=[^\n]*\x2eogx/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".ogx/i\x0a")))))
-; URLUBAgent%3fSchwindlerurl=Host\x3ahttpUser-Agent\x3A
-(assert (str.in.re X (str.to.re "URLUBAgent%3fSchwindlerurl=Host:httpUser-Agent:\x0a")))
-; EIcdpnode=reportUID\x2FServertoX-Mailer\x3a
-(assert (not (str.in.re X (str.to.re "EIcdpnode=reportUID/ServertoX-Mailer:\x13\x0a"))))
+(assert (not (str.in_re X (re.++ (str.to_re "/") (re.union (str.to_re "XBOX") (str.to_re "Nintendo Wii") (str.to_re "smarttv") (str.to_re "playstation") (str.to_re "hbbtv") (str.to_re "philipstv") (str.to_re "opera tv") (str.to_re "inettv")) (str.to_re "/\u{a}")))))
+; /filename=[^\n]*\u{2e}psd/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".psd/i\u{a}")))))
+; /filename=[^\n]*\u{2e}ogx/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".ogx/i\u{a}")))))
+; URLUBAgent%3fSchwindlerurl=Host\u{3a}httpUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "URLUBAgent%3fSchwindlerurl=Host:httpUser-Agent:\u{a}")))
+; EIcdpnode=reportUID\u{2F}ServertoX-Mailer\u{3a}
+(assert (not (str.in_re X (str.to_re "EIcdpnode=reportUID/ServertoX-Mailer:\u{13}\u{a}"))))
 (check-sat)

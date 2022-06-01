@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "cd:Aba""00s(sc"))
-(assert (str.in.re x (str.to.re "N")))
+(assert (str.in_re x (str.to_re "N")))
 (check-sat)

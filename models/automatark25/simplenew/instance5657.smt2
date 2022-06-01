@@ -1,4 +1,4 @@
 (declare-const X String)
 ; http://www.mail-password-recovery.com/
-(assert (str.in.re X (re.++ (str.to.re "http://www") re.allchar (str.to.re "mail-password-recovery") re.allchar (str.to.re "com/\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "http://www") re.allchar (str.to_re "mail-password-recovery") re.allchar (str.to_re "com/\u{a}"))))
 (check-sat)

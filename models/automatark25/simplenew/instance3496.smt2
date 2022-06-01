@@ -1,4 +1,4 @@
 (declare-const X String)
-; yddznydqir\x2feviaresflashdownloader\x2Ecom
-(assert (str.in.re X (str.to.re "yddznydqir/eviaresflashdownloader.com\x0a")))
+; yddznydqir\u{2f}eviaresflashdownloader\u{2E}com
+(assert (str.in_re X (str.to_re "yddznydqir/eviaresflashdownloader.com\u{a}")))
 (check-sat)

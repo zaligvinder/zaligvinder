@@ -1,6 +1,6 @@
 (declare-const X String)
-; Host\x3A\x252EResultsUser-Agent\x3A
-(assert (str.in.re X (str.to.re "Host:%2EResultsUser-Agent:\x0a")))
-; Host\x3ATest\x3C\x2Fchat\x3EResultsSubject\x3A
-(assert (not (str.in.re X (str.to.re "Host:Test</chat>ResultsSubject:\x0a"))))
+; Host\u{3A}\u{25}2EResultsUser-Agent\u{3A}
+(assert (str.in_re X (str.to_re "Host:%2EResultsUser-Agent:\u{a}")))
+; Host\u{3A}Test\u{3C}\u{2F}chat\u{3E}ResultsSubject\u{3A}
+(assert (not (str.in_re X (str.to_re "Host:Test</chat>ResultsSubject:\u{a}"))))
 (check-sat)

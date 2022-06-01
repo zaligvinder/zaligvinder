@@ -1,4 +1,4 @@
 (declare-const X String)
-; www\x2Eblazefind\x2Ecom.*started\x2E\s+CodeguruBrowserwww\x2Esogou\x2Ecom
-(assert (not (str.in.re X (re.++ (str.to.re "www.blazefind.com") (re.* re.allchar) (str.to.re "started.") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "CodeguruBrowserwww.sogou.com\x0a")))))
+; www\u{2E}blazefind\u{2E}com.*started\u{2E}\s+CodeguruBrowserwww\u{2E}sogou\u{2E}com
+(assert (not (str.in_re X (re.++ (str.to_re "www.blazefind.com") (re.* re.allchar) (str.to_re "started.") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "CodeguruBrowserwww.sogou.com\u{a}")))))
 (check-sat)

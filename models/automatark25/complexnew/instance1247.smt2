@@ -1,10 +1,10 @@
 (declare-const X String)
-; User-Agent\x3A[^\n\r]*HTTP_RAT_
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.* (re.union (str.to.re "\x0a") (str.to.re "\x0d"))) (str.to.re "HTTP_RAT_\x0a"))))
-; Subject\x3Alinkautomatici\x2EcomReferer\x3Awww\x2Esearchreslt\x2Ecom
-(assert (str.in.re X (str.to.re "Subject:linkautomatici.comReferer:www.searchreslt.com\x0a")))
-; deskwizz\x2EcomReportsadblock\x2Elinkz\x2EcomUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "deskwizz.comReportsadblock.linkz.comUser-Agent:\x0a"))))
+; User-Agent\u{3A}[^\n\r]*HTTP_RAT_
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.* (re.union (str.to_re "\u{a}") (str.to_re "\u{d}"))) (str.to_re "HTTP_RAT_\u{a}"))))
+; Subject\u{3A}linkautomatici\u{2E}comReferer\u{3A}www\u{2E}searchreslt\u{2E}com
+(assert (str.in_re X (str.to_re "Subject:linkautomatici.comReferer:www.searchreslt.com\u{a}")))
+; deskwizz\u{2E}comReportsadblock\u{2E}linkz\u{2E}comUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "deskwizz.comReportsadblock.linkz.comUser-Agent:\u{a}"))))
 ; /*d(9,15)
-(assert (not (str.in.re X (re.++ (re.* (str.to.re "/")) (str.to.re "d9,15\x0a")))))
+(assert (not (str.in_re X (re.++ (re.* (str.to_re "/")) (str.to_re "d9,15\u{a}")))))
 (check-sat)

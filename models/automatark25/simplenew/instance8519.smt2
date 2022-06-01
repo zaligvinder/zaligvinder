@@ -1,4 +1,4 @@
 (declare-const X String)
-; url=http\x3AGamespyjspIDENTIFYserverHOST\x3ASubject\x3A
-(assert (str.in.re X (str.to.re "url=http:\x1bGamespyjspIDENTIFYserverHOST:Subject:\x0a")))
+; url=http\u{3A}GamespyjspIDENTIFYserverHOST\u{3A}Subject\u{3A}
+(assert (str.in_re X (str.to_re "url=http:\u{1b}GamespyjspIDENTIFYserverHOST:Subject:\u{a}")))
 (check-sat)

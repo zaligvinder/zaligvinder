@@ -1,4 +1,4 @@
 (declare-const X String)
-; s_sq=aolsnssigninUser-Agent\x3A
-(assert (not (str.in.re X (str.to.re "s_sq=aolsnssigninUser-Agent:\x0a"))))
+; s_sq=aolsnssigninUser-Agent\u{3A}
+(assert (not (str.in_re X (str.to_re "s_sq=aolsnssigninUser-Agent:\u{a}"))))
 (check-sat)

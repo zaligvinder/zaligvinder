@@ -1,4 +1,4 @@
 (declare-const X String)
-; \x0D\x0ACurrent\x2EearthlinkSpyBuddy
-(assert (not (str.in.re X (str.to.re "\x0d\x0aCurrent.earthlinkSpyBuddy\x0a"))))
+; \u{D}\u{A}Current\u{2E}earthlinkSpyBuddy
+(assert (not (str.in_re X (str.to_re "\u{d}\u{a}Current.earthlinkSpyBuddy\u{a}"))))
 (check-sat)

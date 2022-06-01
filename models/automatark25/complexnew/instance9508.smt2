@@ -1,6 +1,6 @@
 (declare-const X String)
-; \r\nSTATUS\x3AUser-Agent\x3AHost\x3aReferer\x3A
-(assert (str.in.re X (str.to.re "\x0d\x0aSTATUS:User-Agent:Host:Referer:\x0a")))
-; /\r\n\r\nsession\x3a\d{1,7}$/
-(assert (str.in.re X (re.++ (str.to.re "/\x0d\x0a\x0d\x0asession:") ((_ re.loop 1 7) (re.range "0" "9")) (str.to.re "/\x0a"))))
+; \r\nSTATUS\u{3A}User-Agent\u{3A}Host\u{3a}Referer\u{3A}
+(assert (str.in_re X (str.to_re "\u{d}\u{a}STATUS:User-Agent:Host:Referer:\u{a}")))
+; /\r\n\r\nsession\u{3a}\d{1,7}$/
+(assert (str.in_re X (re.++ (str.to_re "/\u{d}\u{a}\u{d}\u{a}session:") ((_ re.loop 1 7) (re.range "0" "9")) (str.to_re "/\u{a}"))))
 (check-sat)

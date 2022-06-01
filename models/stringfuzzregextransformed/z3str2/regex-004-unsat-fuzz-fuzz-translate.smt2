@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "OgV_'\n'e0H_Q'\t'z8d'\n''\n'U_'\n'Z_YH(d"))
-(assert (str.in.re x (re.union (re.+ (str.to.re "&V_'\n'D_tQ??a:' 'lUkRe0]r?\\")) (re.+ (str.to.re "01")))))
+(assert (str.in_re x (re.union (re.+ (str.to_re "&V_'\n'D_tQ??a:' 'lUkRe0]r?\\")) (re.+ (str.to_re "01")))))
 (check-sat)

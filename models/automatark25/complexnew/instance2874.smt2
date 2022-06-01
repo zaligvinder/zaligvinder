@@ -1,6 +1,6 @@
 (declare-const X String)
-; User-Agent\x3AUser-Agent\x3AHost\x3ASoftActivityYeah\!
-(assert (not (str.in.re X (str.to.re "User-Agent:User-Agent:Host:SoftActivity\x13Yeah!\x0a"))))
-; /\x2ewmv([\?\x5c\x2f]|$)/smiU
-(assert (not (str.in.re X (re.++ (str.to.re "/.wmv") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a")))))
+; User-Agent\u{3A}User-Agent\u{3A}Host\u{3A}SoftActivityYeah\!
+(assert (not (str.in_re X (str.to_re "User-Agent:User-Agent:Host:SoftActivity\u{13}Yeah!\u{a}"))))
+; /\u{2e}wmv([\?\u{5c}\u{2f}]|$)/smiU
+(assert (not (str.in_re X (re.++ (str.to_re "/.wmv") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}")))))
 (check-sat)

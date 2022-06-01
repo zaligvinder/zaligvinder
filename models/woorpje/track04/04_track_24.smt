@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-fun A () String)
 (assert (= (str.++  "aaddcccddaadbdbad" A "bbcddcbbbccc")  (str.++  "aaddcccddaadbdbad" A "bbcddcbbbccc") ))
 (assert (= (str.++  "b" A "acabcaccbbcababcbdddaddabdbadacdddbbdbbabbacdacada")  (str.++  "bdbbaacccacabcaccbbcababcbdddaddabdbadacdddbbdbbabbacdacada" "") ))

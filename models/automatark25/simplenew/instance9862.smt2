@@ -1,4 +1,4 @@
 (declare-const X String)
-; /filename=[a-z0-9]+\x0d\x0a/H
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (str.to.re "\x0d\x0a/H\x0a"))))
+; /filename=[a-z0-9]+\u{d}\u{a}/H
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (str.to_re "\u{d}\u{a}/H\u{a}"))))
 (check-sat)

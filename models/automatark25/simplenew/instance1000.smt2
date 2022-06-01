@@ -1,4 +1,4 @@
 (declare-const X String)
-; ^([^ \x21-\x26\x28-\x2C\x2E-\x40\x5B-\x60\x7B-\xAC\xAE-\xBF\xF7\xFE]+)$
-(assert (not (str.in.re X (re.++ (re.+ (re.union (str.to.re " ") (re.range "!" "&") (re.range "(" ",") (re.range "." "@") (re.range "[" "`") (re.range "{" "\xac") (re.range "\xae" "\xbf") (str.to.re "\xf7") (str.to.re "\xfe"))) (str.to.re "\x0a")))))
+; ^([^ \u{21}-\u{26}\u{28}-\u{2C}\u{2E}-\u{40}\u{5B}-\u{60}\u{7B}-\u{AC}\u{AE}-\u{BF}\u{F7}\u{FE}]+)$
+(assert (not (str.in_re X (re.++ (re.+ (re.union (str.to_re " ") (re.range "!" "&") (re.range "(" ",") (re.range "." "@") (re.range "[" "`") (re.range "{" "\u{ac}") (re.range "\u{ae}" "\u{bf}") (str.to_re "\u{f7}") (str.to_re "\u{fe}"))) (str.to_re "\u{a}")))))
 (check-sat)

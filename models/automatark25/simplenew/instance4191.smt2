@@ -1,4 +1,4 @@
 (declare-const X String)
-; Subject\x3Aas\x2Estarware\x2Ecom\x2Fdp\x2Fsearch\?x=
-(assert (str.in.re X (str.to.re "Subject:as.starware.com/dp/search?x=\x0a")))
+; Subject\u{3A}as\u{2E}starware\u{2E}com\u{2F}dp\u{2F}search\?x=
+(assert (str.in_re X (str.to_re "Subject:as.starware.com/dp/search?x=\u{a}")))
 (check-sat)

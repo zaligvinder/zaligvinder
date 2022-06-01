@@ -1,8 +1,8 @@
 (declare-const X String)
-; Logtraffbest\x2EbizAdToolsLogged
-(assert (str.in.re X (str.to.re "Logtraffbest.bizAdToolsLogged\x0a")))
-; X-Mailer\x3AfromReferer\x3Asearch\x2econduit\x2ecom\x2Fdss\x2Fcc\.2_0_0\.
-(assert (str.in.re X (str.to.re "X-Mailer:\x13fromReferer:search.conduit.com/dss/cc.2_0_0.\x0a")))
+; Logtraffbest\u{2E}bizAdToolsLogged
+(assert (str.in_re X (str.to_re "Logtraffbest.bizAdToolsLogged\u{a}")))
+; X-Mailer\u{3A}fromReferer\u{3A}search\u{2e}conduit\u{2e}com\u{2F}dss\u{2F}cc\.2_0_0\.
+(assert (str.in_re X (str.to_re "X-Mailer:\u{13}fromReferer:search.conduit.com/dss/cc.2_0_0.\u{a}")))
 ; (\\.|[^"])*
-(assert (not (str.in.re X (re.++ (re.* (re.union (re.++ (str.to.re "\x5c") re.allchar) (re.comp (str.to.re "\x22")))) (str.to.re "\x0a")))))
+(assert (not (str.in_re X (re.++ (re.* (re.union (re.++ (str.to_re "\u{5c}") re.allchar) (re.comp (str.to_re "\u{22}")))) (str.to_re "\u{a}")))))
 (check-sat)

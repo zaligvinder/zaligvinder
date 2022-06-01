@@ -1,4 +1,4 @@
 (declare-const X String)
-; BY\x7D\x7BUser\x3AHost\x3Aconnection\x2E
-(assert (not (str.in.re X (str.to.re "BY}{User:Host:connection.\x0a"))))
+; BY\u{7D}\u{7B}User\u{3A}Host\u{3A}connection\u{2E}
+(assert (not (str.in_re X (str.to_re "BY}{User:Host:connection.\u{a}"))))
 (check-sat)

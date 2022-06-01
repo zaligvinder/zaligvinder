@@ -1,5 +1,5 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (assert (= x "ABTGiSBh;Vt"))
-(assert (str.in.re x (re.++ (re.+ (re.+ (str.to.re ")'mf"))) (str.to.re "xyB"))))
+(assert (str.in_re x (re.++ (re.+ (re.+ (str.to_re ")'mf"))) (str.to_re "xyB"))))
 (check-sat)

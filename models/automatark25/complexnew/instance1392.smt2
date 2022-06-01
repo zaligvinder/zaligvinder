@@ -1,12 +1,12 @@
 (declare-const X String)
-; User-Agent\x3a\s+Host\x3AnamediepluginHost\x3AX-Mailer\x3A
-(assert (str.in.re X (re.++ (str.to.re "User-Agent:") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Host:namediepluginHost:X-Mailer:\x13\x0a"))))
-; \x2Etxt\stoolbar\.anwb\.nlHost\x3AiOpusA-311Servert=form-data\x3B\x20name=\x22pid\x22
-(assert (str.in.re X (re.++ (str.to.re ".txt") (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d")) (str.to.re "toolbar.anwb.nlHost:iOpusA-311Servert=form-data; name=\x22pid\x22\x0a"))))
+; User-Agent\u{3a}\s+Host\u{3A}namediepluginHost\u{3A}X-Mailer\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Host:namediepluginHost:X-Mailer:\u{13}\u{a}"))))
+; \u{2E}txt\stoolbar\.anwb\.nlHost\u{3A}iOpusA-311Servert=form-data\u{3B}\u{20}name=\u{22}pid\u{22}
+(assert (str.in_re X (re.++ (str.to_re ".txt") (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}")) (str.to_re "toolbar.anwb.nlHost:iOpusA-311Servert=form-data; name=\u{22}pid\u{22}\u{a}"))))
 ; ^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$
-(assert (not (str.in.re X (re.++ (re.opt (str.to.re "F-")) (re.union (re.++ (str.to.re "2") (re.union (str.to.re "A") (str.to.re "|") (str.to.re "B"))) ((_ re.loop 2 2) (re.range "0" "9"))) ((_ re.loop 3 3) (re.range "0" "9")) (str.to.re "\x0a")))))
-; /filename=[^\n]*\x2ekvl/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".kvl/i\x0a"))))
+(assert (not (str.in_re X (re.++ (re.opt (str.to_re "F-")) (re.union (re.++ (str.to_re "2") (re.union (str.to_re "A") (str.to_re "|") (str.to_re "B"))) ((_ re.loop 2 2) (re.range "0" "9"))) ((_ re.loop 3 3) (re.range "0" "9")) (str.to_re "\u{a}")))))
+; /filename=[^\n]*\u{2e}kvl/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".kvl/i\u{a}"))))
 ; (?i:on(blur|c(hange|lick)|dblclick|focus|keypress|(key|mouse)(down|up)|(un)?load|mouse(move|o(ut|ver))|reset|s(elect|ubmit)))
-(assert (str.in.re X (re.++ (str.to.re "\x0aon") (re.union (str.to.re "blur") (re.++ (str.to.re "c") (re.union (str.to.re "hange") (str.to.re "lick"))) (str.to.re "dblclick") (str.to.re "focus") (str.to.re "keypress") (re.++ (re.union (str.to.re "key") (str.to.re "mouse")) (re.union (str.to.re "down") (str.to.re "up"))) (re.++ (re.opt (str.to.re "un")) (str.to.re "load")) (re.++ (str.to.re "mouse") (re.union (str.to.re "move") (re.++ (str.to.re "o") (re.union (str.to.re "ut") (str.to.re "ver"))))) (str.to.re "reset") (re.++ (str.to.re "s") (re.union (str.to.re "elect") (str.to.re "ubmit")))))))
+(assert (str.in_re X (re.++ (str.to_re "\u{a}on") (re.union (str.to_re "blur") (re.++ (str.to_re "c") (re.union (str.to_re "hange") (str.to_re "lick"))) (str.to_re "dblclick") (str.to_re "focus") (str.to_re "keypress") (re.++ (re.union (str.to_re "key") (str.to_re "mouse")) (re.union (str.to_re "down") (str.to_re "up"))) (re.++ (re.opt (str.to_re "un")) (str.to_re "load")) (re.++ (str.to_re "mouse") (re.union (str.to_re "move") (re.++ (str.to_re "o") (re.union (str.to_re "ut") (str.to_re "ver"))))) (str.to_re "reset") (re.++ (str.to_re "s") (re.union (str.to_re "elect") (str.to_re "ubmit")))))))
 (check-sat)

@@ -1,4 +1,4 @@
 (declare-const X String)
-; security\d+Redirector\x22ServerHost\x3AX-Mailer\x3A
-(assert (str.in.re X (re.++ (str.to.re "security") (re.+ (re.range "0" "9")) (str.to.re "Redirector\x22ServerHost:X-Mailer:\x13\x0a"))))
+; security\d+Redirector\u{22}ServerHost\u{3A}X-Mailer\u{3A}
+(assert (str.in_re X (re.++ (str.to_re "security") (re.+ (re.range "0" "9")) (str.to_re "Redirector\u{22}ServerHost:X-Mailer:\u{13}\u{a}"))))
 (check-sat)

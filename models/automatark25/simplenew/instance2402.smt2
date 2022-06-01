@@ -1,4 +1,4 @@
 (declare-const X String)
-; Host\x3AHost\x3ALOGServer\.compressxpsp2-toolbar\x2Ehotblox\x2EcomAttached100013Agentsvr\x5E\x5EMerlin
-(assert (not (str.in.re X (str.to.re "Host:Host:LOGServer.compressxpsp2-toolbar.hotblox.comAttached100013Agentsvr^^Merlin\x13\x0a"))))
+; Host\u{3A}Host\u{3A}LOGServer\.compressxpsp2-toolbar\u{2E}hotblox\u{2E}comAttached100013Agentsvr\u{5E}\u{5E}Merlin
+(assert (not (str.in_re X (str.to_re "Host:Host:LOGServer.compressxpsp2-toolbar.hotblox.comAttached100013Agentsvr^^Merlin\u{13}\u{a}"))))
 (check-sat)

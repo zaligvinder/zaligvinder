@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic ALL)
 
 (declare-fun var_0 () String)
 (declare-fun var_1 () String)
@@ -14,10 +14,10 @@
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in.re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c")))) (re.union (str.to.re "") (re.++ (str.to.re "b") (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))))))))
-(assert (str.in.re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (str.to.re "z")) (re.union (str.to.re "") (re.++ (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c"))) (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))))))))
-(assert (str.in.re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (re.++ (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c"))) (re.++ (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))) (str.to.re "z")))) (re.++ (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c"))) (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c"))))))))
-(assert (str.in.re (str.++ "b" var_10 ) (re.* (re.range "a" "u"))))
-(assert (str.in.re var_9 (re.* (re.range "a" "u"))))
-(assert (not (str.in.re (str.++ var_9 "a" "z" var_10 ) (re.++ (re.* (re.++ (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c"))) (re.++ (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))) (str.to.re "z")))) (re.++ (re.union (str.to.re "z") (re.union (str.to.re "a") (str.to.re "c"))) (re.* (re.union (str.to.re "b") (re.union (str.to.re "a") (str.to.re "c")))))))))
+(assert (str.in_re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c")))) (re.union (str.to_re "") (re.++ (str.to_re "b") (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))))))))
+(assert (str.in_re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (str.to_re "z")) (re.union (str.to_re "") (re.++ (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c"))) (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))))))))
+(assert (str.in_re (str.++ var_9 "z" "b" var_10 ) (re.++ (re.* (re.++ (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c"))) (re.++ (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))) (str.to_re "z")))) (re.++ (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c"))) (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c"))))))))
+(assert (str.in_re (str.++ "b" var_10 ) (re.* (re.range "a" "u"))))
+(assert (str.in_re var_9 (re.* (re.range "a" "u"))))
+(assert (not (str.in_re (str.++ var_9 "a" "z" var_10 ) (re.++ (re.* (re.++ (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c"))) (re.++ (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))) (str.to_re "z")))) (re.++ (re.union (str.to_re "z") (re.union (str.to_re "a") (str.to_re "c"))) (re.* (re.union (str.to_re "b") (re.union (str.to_re "a") (str.to_re "c")))))))))
 (check-sat)

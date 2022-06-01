@@ -1,8 +1,8 @@
 (declare-const X String)
-; \r\nSTATUS\x3A\dHost\x3aReferer\x3AServerSubject\x3a
-(assert (not (str.in.re X (re.++ (str.to.re "\x0d\x0aSTATUS:") (re.range "0" "9") (str.to.re "Host:Referer:ServerSubject:\x0a")))))
-; User-Agent\x3aUser-Agent\x3A
-(assert (str.in.re X (str.to.re "User-Agent:User-Agent:\x0a")))
-; /\x2ecnt([\?\x5c\x2f]|$)/smiU
-(assert (str.in.re X (re.++ (str.to.re "/.cnt") (re.union (str.to.re "?") (str.to.re "\x5c") (str.to.re "/")) (str.to.re "/smiU\x0a"))))
+; \r\nSTATUS\u{3A}\dHost\u{3a}Referer\u{3A}ServerSubject\u{3a}
+(assert (not (str.in_re X (re.++ (str.to_re "\u{d}\u{a}STATUS:") (re.range "0" "9") (str.to_re "Host:Referer:ServerSubject:\u{a}")))))
+; User-Agent\u{3a}User-Agent\u{3A}
+(assert (str.in_re X (str.to_re "User-Agent:User-Agent:\u{a}")))
+; /\u{2e}cnt([\?\u{5c}\u{2f}]|$)/smiU
+(assert (str.in_re X (re.++ (str.to_re "/.cnt") (re.union (str.to_re "?") (str.to_re "\u{5c}") (str.to_re "/")) (str.to_re "/smiU\u{a}"))))
 (check-sat)

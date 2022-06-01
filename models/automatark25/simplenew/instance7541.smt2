@@ -1,4 +1,4 @@
 (declare-const X String)
-; Pass-Onseqepagqfphv\x2fsfdcargo=dnsgpstool\x2eglobaladserver\x2ecom
-(assert (str.in.re X (str.to.re "Pass-Onseqepagqfphv/sfdcargo=dnsgpstool.globaladserver.com\x0a")))
+; Pass-Onseqepagqfphv\u{2f}sfdcargo=dnsgpstool\u{2e}globaladserver\u{2e}com
+(assert (str.in_re X (str.to_re "Pass-Onseqepagqfphv/sfdcargo=dnsgpstool.globaladserver.com\u{a}")))
 (check-sat)

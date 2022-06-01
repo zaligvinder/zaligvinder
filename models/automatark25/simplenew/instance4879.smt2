@@ -1,4 +1,4 @@
 (declare-const X String)
 ; /\/pdfx\.html$/U
-(assert (str.in.re X (str.to.re "//pdfx.html/U\x0a")))
+(assert (str.in_re X (str.to_re "//pdfx.html/U\u{a}")))
 (check-sat)

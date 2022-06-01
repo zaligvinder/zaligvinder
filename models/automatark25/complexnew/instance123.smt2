@@ -1,6 +1,6 @@
 (declare-const X String)
-; /filename=[^\n]*\x2eair/i
-(assert (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".air/i\x0a"))))
-; /^\x2frouji.txt$/mU
-(assert (not (str.in.re X (re.++ (str.to.re "//rouji") re.allchar (str.to.re "txt/mU\x0a")))))
+; /filename=[^\n]*\u{2e}air/i
+(assert (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".air/i\u{a}"))))
+; /^\u{2f}rouji.txt$/mU
+(assert (not (str.in_re X (re.++ (str.to_re "//rouji") re.allchar (str.to_re "txt/mU\u{a}")))))
 (check-sat)

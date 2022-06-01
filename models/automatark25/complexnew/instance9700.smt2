@@ -1,12 +1,12 @@
 (declare-const X String)
-; www\x2eurlblaze\x2enetCurrentHost\x3A
-(assert (str.in.re X (str.to.re "www.urlblaze.netCurrentHost:\x0a")))
-; /filename=[^\n]*\x2emppl/i
-(assert (not (str.in.re X (re.++ (str.to.re "/filename=") (re.* (re.comp (str.to.re "\x0a"))) (str.to.re ".mppl/i\x0a")))))
+; www\u{2e}urlblaze\u{2e}netCurrentHost\u{3A}
+(assert (str.in_re X (str.to_re "www.urlblaze.netCurrentHost:\u{a}")))
+; /filename=[^\n]*\u{2e}mppl/i
+(assert (not (str.in_re X (re.++ (str.to_re "/filename=") (re.* (re.comp (str.to_re "\u{a}"))) (str.to_re ".mppl/i\u{a}")))))
 ; /^SpyBuddy\s+Activity\s+Logs/smi
-(assert (str.in.re X (re.++ (str.to.re "/SpyBuddy") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Activity") (re.+ (re.union (str.to.re " ") (str.to.re "\x09") (str.to.re "\x0a") (str.to.re "\x0c") (str.to.re "\x0d"))) (str.to.re "Logs/smi\x0a"))))
+(assert (str.in_re X (re.++ (str.to_re "/SpyBuddy") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Activity") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "Logs/smi\u{a}"))))
 ; ^\\w*$
-(assert (str.in.re X (re.++ (str.to.re "\x5c") (re.* (str.to.re "w")) (str.to.re "\x0a"))))
-; /^.{9}[^\x03\x0a\x11\x10]/R
-(assert (not (str.in.re X (re.++ (str.to.re "/") ((_ re.loop 9 9) re.allchar) (re.union (str.to.re "\x03") (str.to.re "\x0a") (str.to.re "\x11") (str.to.re "\x10")) (str.to.re "/R\x0a")))))
+(assert (str.in_re X (re.++ (str.to_re "\u{5c}") (re.* (str.to_re "w")) (str.to_re "\u{a}"))))
+; /^.{9}[^\u{3}\u{a}\u{11}\u{10}]/R
+(assert (not (str.in_re X (re.++ (str.to_re "/") ((_ re.loop 9 9) re.allchar) (re.union (str.to_re "\u{3}") (str.to_re "\u{a}") (str.to_re "\u{11}") (str.to_re "\u{10}")) (str.to_re "/R\u{a}")))))
 (check-sat)

@@ -1,6 +1,6 @@
 (declare-const X String)
-; Subject\x3aSpywareSpyBuddy
-(assert (not (str.in.re X (str.to.re "Subject:SpywareSpyBuddy\x0a"))))
+; Subject\u{3a}SpywareSpyBuddy
+(assert (not (str.in_re X (str.to_re "Subject:SpywareSpyBuddy\u{a}"))))
 ; [AaEeIiOoUuYy]
-(assert (str.in.re X (re.++ (re.union (str.to.re "A") (str.to.re "a") (str.to.re "E") (str.to.re "e") (str.to.re "I") (str.to.re "i") (str.to.re "O") (str.to.re "o") (str.to.re "U") (str.to.re "u") (str.to.re "Y") (str.to.re "y")) (str.to.re "\x0a"))))
+(assert (str.in_re X (re.++ (re.union (str.to_re "A") (str.to_re "a") (str.to_re "E") (str.to_re "e") (str.to_re "I") (str.to_re "i") (str.to_re "O") (str.to_re "o") (str.to_re "U") (str.to_re "u") (str.to_re "Y") (str.to_re "y")) (str.to_re "\u{a}"))))
 (check-sat)

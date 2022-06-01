@@ -1,4 +1,4 @@
 (declare-const X String)
-; Serverwjpropqmlpohj\x2floHost\x3AKEY=
-(assert (str.in.re X (str.to.re "Serverwjpropqmlpohj/loHost:KEY=\x0a")))
+; Serverwjpropqmlpohj\u{2f}loHost\u{3A}KEY=
+(assert (str.in_re X (str.to_re "Serverwjpropqmlpohj/loHost:KEY=\u{a}")))
 (check-sat)

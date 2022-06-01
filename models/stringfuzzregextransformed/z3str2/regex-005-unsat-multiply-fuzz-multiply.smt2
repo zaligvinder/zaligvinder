@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
 (assert (= x "{{\\\\\\\\PP..''\\\\nn''CCKKrr]]{{GGYYmm88nnPP{{aa$$gg$$??QQjj!!&&pp55rr66^^DD**aa''\\\\rr''LL''\\\\tt''ss}}//99aaaapp--))FF3311++xxcc##{{!!II..FFWWaa88JJ--MMZZFFUU``kkAA"))
-(assert (str.in.re x (re.+ (re.* (str.to.re "''\\\\nn''BB{{''\\\\xx00bb''nn77''\\\\rr''eeeeffSS__((\\\\\\\\**RRQQWW''\\\\xx00cc''")))))
+(assert (str.in_re x (re.+ (re.* (str.to_re "''\\\\nn''BB{{''\\\\u{x0}0bb''nn77''\\\\rr''eeeeffSS__((\\\\\\\\**RRQQWW''\\\\u{x0}0cc''")))))
 (check-sat)

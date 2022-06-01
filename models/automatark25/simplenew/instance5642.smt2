@@ -1,4 +1,4 @@
 (declare-const X String)
-; /^[^\x00][^\x00\x01]+$/
-(assert (str.in.re X (re.++ (str.to.re "/") (re.comp (str.to.re "\x00")) (re.+ (re.union (str.to.re "\x00") (str.to.re "\x01"))) (str.to.re "/\x0a"))))
+; /^[^\u{0}][^\u{0}\u{1}]+$/
+(assert (str.in_re X (re.++ (str.to_re "/") (re.comp (str.to_re "\u{0}")) (re.+ (re.union (str.to_re "\u{0}") (str.to_re "\u{1}"))) (str.to_re "/\u{a}"))))
 (check-sat)

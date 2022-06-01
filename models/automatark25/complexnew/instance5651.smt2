@@ -1,8 +1,8 @@
 (declare-const X String)
-; Host\x3aSubject\x3AClientnamedFrom\x3A
-(assert (str.in.re X (str.to.re "Host:Subject:ClientnamedFrom:\x0a")))
-; User-Agent\x3AreadyHost\x3AHost\x3ASubject\x3Awininetproducts
-(assert (str.in.re X (str.to.re "User-Agent:readyHost:Host:Subject:wininetproducts\x0a")))
-; filename=\x22Subject\x3awww\x2Eadoptim\x2Ecomreport\x2Fbar_pl\x2Fchk\.fcgi
-(assert (str.in.re X (str.to.re "filename=\x22Subject:www.adoptim.comreport/bar_pl/chk.fcgi\x0a")))
+; Host\u{3a}Subject\u{3A}ClientnamedFrom\u{3A}
+(assert (str.in_re X (str.to_re "Host:Subject:ClientnamedFrom:\u{a}")))
+; User-Agent\u{3A}readyHost\u{3A}Host\u{3A}Subject\u{3A}wininetproducts
+(assert (str.in_re X (str.to_re "User-Agent:readyHost:Host:Subject:wininetproducts\u{a}")))
+; filename=\u{22}Subject\u{3a}www\u{2E}adoptim\u{2E}comreport\u{2F}bar_pl\u{2F}chk\.fcgi
+(assert (str.in_re X (str.to_re "filename=\u{22}Subject:www.adoptim.comreport/bar_pl/chk.fcgi\u{a}")))
 (check-sat)

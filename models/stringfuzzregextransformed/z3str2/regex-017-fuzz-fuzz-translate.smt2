@@ -1,6 +1,6 @@
-(set-logic QF_S)
+(set-logic ALL)
 (declare-const x String)
 (declare-const y String)
-(assert (str.in.re x (re.* (re.union (str.to.re "i") (re.union (str.to.re "JYi7gAEn/0^E0'\n''\x0b'=vJ3^Ej^""i:+") (str.to.re "L36PO'Ywj&r2oNu"))))))
+(assert (str.in_re x (re.* (re.union (str.to_re "i") (re.union (str.to_re "JYi7gAEn/0^E0'\n''\u{b}'=vJ3^Ej^""i:+") (str.to_re "L36PO'Ywj&r2oNu"))))))
 (assert (= 1 (str.len x)))
 (check-sat)
