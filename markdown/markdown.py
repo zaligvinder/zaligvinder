@@ -22,16 +22,16 @@ class MarkdownGenerator:
         self._timeout = timeout
 
         # ideal solver
-        self._ideal = False
+        self._ideal = False #True
         self._virtualBestSolver = dict()
         self._hiddenSolvers = []
-        self._idealName = "virtualBestSolver"
+        self._idealName = "Z3str4-virtualBestSolver"
 
         self._totalName = "Total"
 
 
         # if we don't care about the errors and the following list is not empty it will be used for the smtcomp scores.
-        self._specialSolverList = [] #["Z3str3RE-ali","Z3str3RE-li","Z3str3RE-asi","Z3str3RE-psh","Z3str3RE-none","Z3str3RE-base"] #[]# ['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq']
+        self._specialSolverList = [] #['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq'] #[] #["Z3str3RE-ali","Z3str3RE-li","Z3str3RE-asi","Z3str3RE-psh","Z3str3RE-none","Z3str3RE-base"] #[]# ['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq']
 
         if self._ideal:
             self._hiddenSolvers = [s for s in self._specialSolverList if s not in self._solvers]
@@ -179,7 +179,7 @@ class MarkdownGenerator:
 
     # SMT Comp Score Calculation
     def calculateDivisionRanking(self,g):
-        scores = {s : (self._groupSolverData[s][g]["errors"],self._groupSolverData[s][g]["classified"],self._groupSolverData[s][g]["time"])  for s in self._solvers}
+        scores = {s : (self._groupSolverData[s][g]["errors"],self._groupSolverData[s][g]["classified"],self._groupSolverData[s][g]["time"])  for s in [ss for ss in self._solvers if ss not in self._hiddenSolvers] }
         self._divisionRankings[g] = {s: v for s, v in sorted(scores.items(), key=lambda x: (x[1][0],-x[1][1],x[1][2]))}
 
     def biggestLeadPerGroup(self,g):
@@ -195,8 +195,11 @@ class MarkdownGenerator:
             self._solverInstanceResults[s][g] = {i[0] : i[1] for i in sorted([r[1:] for r in self._res.getResultForSolverGroup (s,g)], key=lambda x: x[0])}
 
             if self._ignoreErrorInstances:
-                if self._errorInstances[g] == None:
-                    self._errorInstances[g] = self._res.getErrorsForSolversGroup(self._solvers,g)
+                # delete errors in all solvers
+                #if self._errorInstances[g] == None:
+                    #self._errorInstances[g] = self._res.getErrorsForSolversGroup(self._solvers,g)
+                self._errorInstances[g] = self._res.getErrorsForSolversGroup([s],g)
+
 
                 for iid in self._errorInstances[g]:
                     del self._solverInstanceResults[s][g][iid]
@@ -210,16 +213,19 @@ class MarkdownGenerator:
                 self._solverInstanceResults[s][self._totalName].update(self._solverInstanceResults[s][g].copy())
 
     def virtualBestForGroupSolvers(self,g,solvers,dontStore=False): # dontStore is used for the difference run
+        if not dontStore and g in self._virtualBestSolver:
+            return None
+
         virtualBest = dict()
         # we pass the solvers, 'cause we only want to consider sound solvers
         for s in solvers:
             for i in self._solverInstanceResults[s][g].keys():
                 iRes = self._solverInstanceResults[s][g][i]
+
                 if i not in virtualBest:
                     virtualBest[i] = iRes
                 elif (virtualBest[i].result == None and iRes.result != None) or (iRes.result != None and iRes.time < virtualBest[i].time) or (virtualBest[i].result == None and iRes.result == None and iRes.time < virtualBest[i].time): # last condition prefers unknowns over timeouts
                     virtualBest[i] = iRes
-
 
         if self._ideal and g not in self._virtualBestSolver and not dontStore:
             self._virtualBestSolver[g] = virtualBest
@@ -301,14 +307,24 @@ class MarkdownGenerator:
     def largestContribution(self,g,i=1):
         #i = 1 means we're looking at the correctly solved instances
         if self._ignoreErrorInstances:
-            soundSolvers = set(self._solvers)
+            soundSolvers = set([ss for ss in self._solvers if ss not in self._hiddenSolvers])
 
+            """
             if len(self._specialSolverList) > 0:
                 soundSolvers = set(self._specialSolverList)
-
+            """
         else:
             soundSolvers = set(s for s in self._divisionRankings[g].keys() if self._divisionRankings[g][s][0] == 0)
-        totalVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers)
+        totalVirtualBest = self.virtualBestForGroupSolvers(g,soundSolvers,True)
+
+
+
+        if self._ideal:
+            if len(self._specialSolverList) > 0:
+                tSolvers = set(self._specialSolverList)
+            else: 
+                tSolvers = set([ss for ss in self._solvers if ss not in self._hiddenSolvers])
+            self.virtualBestForGroupSolvers(g,tSolvers)
 
 
         print(g)
@@ -325,7 +341,7 @@ class MarkdownGenerator:
             #print(s,soundSolvers.difference(set({s})),sVirtualBest[i],totalVirtualBest[i],(1 - (sVirtualBest[i]/totalVirtualBest[i]))*self._normaliseFactor(g,s))
 
     def smtCompTotal(self):
-        self._divisionRankings[self._totalName] = {s : (0,0,0.0) for s in self._solvers}
+        self._divisionRankings[self._totalName] = {s : (0,0,0.0) for s in [ss for ss in self._solvers if ss not in self._hiddenSolvers]}
         self._largestContribution[self._totalName] = dict()
         for g in self._groups:
             # division ranks
@@ -420,7 +436,7 @@ class MarkdownGenerator:
         
         if self._ideal:
             data = self._groupSolverData[self._idealName][g]
-            output_string += f'|{self._solverString(self._idealName)}|{data["classified"]} ({contribution})|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
+            output_string += f'|{self._solverString(self._idealName)}|{data["classified"]} (-)|{data["sat"]}|{data["unsat"]}|{data["unknown"]}|{data["errors"]}|{data["crashes"]}|{data["timeouted"]}|{data["par2"]}|{round(data["total"],2)}|{round(data["totalWO"],2)}|{round(data["time"],2)}|{round(data["timeWO"],2)}\n'
         
 
         output_string += f"|===\n\n"

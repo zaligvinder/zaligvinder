@@ -19,9 +19,9 @@ class CactusGenerator:
         self._solverLine = None
 
 
-        self._virtualBestName = "virtualBest"
-        self._ideal = False #True
-        self._idealSolvers = [] #['woorpjeLevi-variableTermRatio-3.14-CVC4', 'woorpjeLevi-variableTermRatio-0.15-CVC4', 'woorpjeLevi-variableTermRatio-1.12358-CVC4', 'woorpjeLevi-waitingListLimit-314-CVC4', 'woorpjeLevi-waitingListLimit-15-CVC4', 'woorpjeLevi-waitingListLimit-1123-CVC4', 'woorpjeLevi-equationGrowth-0.15-CVC4', 'woorpjeLevi-equationGrowth-1.075-CVC4', 'woorpjeLevi-equationGrowth-2-CVC4', 'woorpjeLevi-equationLength-2-CVC4', 'woorpjeLevi-equationLength-20-CVC4', 'woorpjeLevi-equationLength-400-CVC4', 'woorpjeLevi-none-0-CVC4'] #[] #["CVC4RE-ali","CVC4RE-li","CVC4RE-asi","CVC4RE-psh","CVC4RE-none","CVC4RE-base"] #['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq']
+        self._virtualBestName = "virtualBestAll"
+        self._ideal = True
+        self._idealSolvers = ['CVC4', 'Z3seq', 'Z3str3', 'Z3str4'] #['woorpjeLevi-variableTermRatio-3.14-CVC4', 'woorpjeLevi-variableTermRatio-0.15-CVC4', 'woorpjeLevi-variableTermRatio-1.12358-CVC4', 'woorpjeLevi-waitingListLimit-314-CVC4', 'woorpjeLevi-waitingListLimit-15-CVC4', 'woorpjeLevi-waitingListLimit-1123-CVC4', 'woorpjeLevi-equationGrowth-0.15-CVC4', 'woorpjeLevi-equationGrowth-1.075-CVC4', 'woorpjeLevi-equationGrowth-2-CVC4', 'woorpjeLevi-equationLength-2-CVC4', 'woorpjeLevi-equationLength-20-CVC4', 'woorpjeLevi-equationLength-400-CVC4', 'woorpjeLevi-none-0-CVC4'] #[] #["CVC4RE-ali","CVC4RE-li","CVC4RE-asi","CVC4RE-psh","CVC4RE-none","CVC4RE-base"] #['Z3str4-alwayscf', 'Z3str4-nevercf', 'Z3str4-regex', 'Z3str4-seq']
 
         if self._ideal:
             self._solvers+=[self._virtualBestName]
@@ -123,7 +123,7 @@ class CactusGenerator:
 
             #[xmin=-1000,xlabel=Solved instances,ylabel=Time (seconds),,legend columns=2,legend style={nodes={scale=0.5, transform shape}, fill=none,anchor=east,align=center },axis line style={draw=none}, xtick pos=left, ytick pos=left, ymajorgrids=true, legend style={draw=none},x post scale=2,y post scale=1]
 
-    def getData (self,all_instances,bw=True):
+    def getData (self,all_instances,bw=False):
         groups = self._groups
         #all_instances = False #True # True
         cummulative = True #False # sum up the times
