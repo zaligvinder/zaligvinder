@@ -46,9 +46,19 @@ class ResultController:
             }
         return webserver.views.jsonview.JSONView (res)
 
-    def getRanks(self,params):
-        timout = 20
 
+    def __discoverTimeout(self):
+        c_max = 0 # if none timeouted just take max time needed
+        for tt in self._results.getAllResults ():
+            if tt[2].timeouted:
+                return tt[2].time
+            else:
+                if c_max <= float("%.2f" % tt[2].time):
+                    c_max = float("%.2f" % tt[2].time)
+        return c_max
+
+    def getRanks(self,params):
+        timout = self.__discoverTimeout()
 
         if "track" in params and int(params["track"]) != 0:
             data = self._results.getTrackInstancesClassification (params["track"])
