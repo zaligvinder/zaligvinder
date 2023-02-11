@@ -291,7 +291,7 @@ class CactusGenerator:
     def generateTable (self,output):
         self._output = output
         self.genLatexDocumentHead()
-        self.getData (self._all_instances)
+        self.getData (self._all_instances,True)
         self.genLatexDocumentFoot()
 
     def genLatexDocumentHead(self):

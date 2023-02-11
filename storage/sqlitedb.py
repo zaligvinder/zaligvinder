@@ -231,7 +231,7 @@ class ResultRepository:
         rows = self._db.executeRet (query,(solver,))
 
         #  remove t[6] - output again!!!!
-        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2],t[6])) for t in rows]
+        return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2],t[6],t[7],t[8])) for t in rows]
         #return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
 
 
@@ -342,7 +342,18 @@ class ResultRepository:
             query = '''SELECT * FROM Result ORDER BY time ASC '''
             rows = self._db.executeRet (query)
             #print (rows)
-            return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2])) for t in rows]
+
+            """
+                    self.result = result
+                self.time = time
+        self.timeouted = timeouted
+        self.smtcalls = smtcalls
+        self.output = output
+        self.model = model
+        self.verified = verified
+            """
+
+            return [(t[0],t[1],utils.Result(t[4],t[5],t[3],t[2],"","",t[8])) for t in rows]
 
     def getBestSolverForInstance(self,instanceid):
         query = '''SELECT Result.solver FROM Result,TrackInstance WHERE Result.instanceid = TrackInstance.id AND Result.instanceid = ? AND Result.result IS NOT NULL AND Result.result = TrackInstance.expected ORDER BY time ASC ''' # TODO ADD Result.verified IS NOT false

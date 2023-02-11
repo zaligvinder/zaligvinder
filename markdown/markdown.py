@@ -539,7 +539,7 @@ class MarkdownGenerator:
 
         #fileName = "heu_"+fileName
 
-        fig.savefig(f"{path}/img/{fileName}",format="png",dpi=320,prop=fontP,bbox_extra_artists=(lgd,), bbox_inches='tight')
+        fig.savefig(f"{path}/img/{fileName}",format="png",dpi=320,bbox_extra_artists=(lgd,), bbox_inches='tight')
 
     def buildPlots(self,path):
         for g in self._groups + [self._totalName]:
