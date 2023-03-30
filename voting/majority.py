@@ -10,8 +10,7 @@ class MajorityVoter:
         name,instances = track.name,track.instances
         for i,inst in enumerate(instances):
             if inst.expected == None:
-                toolResults = [r[i] for r in res.values ()]
-
+                toolResults = [res[solver][i] for solver in res.keys() if (solver in verifiers or len(verifiers) == 0)]
                 
                 satVerified = False
                 if len(verifiers) > 0:
@@ -19,7 +18,7 @@ class MajorityVoter:
                     if len(verifiedResults) > 0:
                         satVerified = reduce((lambda x, y: x or y), verifiedResults)
 
-                tts = [r for r in toolResults if r.result == True and r.verified != False]
+                tts = [r for r in toolResults if r.result == True]
                 ffs = [r for r in toolResults if r.result == False]
                 unk = [r for r in toolResults if r.result == None]
                 ctts = len(tts)
